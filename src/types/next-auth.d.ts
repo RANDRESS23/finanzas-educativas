@@ -10,7 +10,7 @@ declare module 'next-auth' {
       lastName: string
       phoneNumber: string
       email: string
-      password: string
+      hashedPassword: string
       createdAt: Date
       updatedAt: Date
     }
