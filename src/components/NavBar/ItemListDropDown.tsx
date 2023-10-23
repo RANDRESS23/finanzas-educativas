@@ -8,7 +8,7 @@ interface ItemListDropDownProps {
   handleResetMenus: () => void
 }
 
-function ItemListDropDown({
+export default function ItemListDropDown ({
   title,
   description,
   Icon,
@@ -34,5 +34,3 @@ function ItemListDropDown({
     </div>
   )
 }
-
-export default ItemListDropDown

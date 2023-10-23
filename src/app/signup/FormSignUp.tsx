@@ -2,15 +2,15 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
 
 export default function FormSignUp (): React.ReactNode {
   const [termsAccepted, setTermsAccepted] = useState(false)
-  const [_isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
+  const [isLoading, setIsLoading] = useState(false)
+  // const router = useRouter()
 
   const {
     register,
@@ -56,6 +56,12 @@ export default function FormSignUp (): React.ReactNode {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  if (isLoading) {
+    return (
+      <div>Cargando..</div>
+    )
   }
 
   return (

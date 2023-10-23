@@ -72,8 +72,8 @@ export default function MobileMenu ({
                     ? '/profile/user'
                     : status === 'authenticated' &&
                       session?.user?.document === '0000000000'
-                    ? '/profile/admin/home-preview'
-                    : '/'
+                      ? '/profile/admin/home-preview'
+                      : '/'
                 }
                 className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
                 onClick={handleResetMenus}
@@ -112,26 +112,28 @@ export default function MobileMenu ({
               </div>
             </div>
             <div className="py-6">
-              {status !== 'authenticated' ? (
-                <>
-                  <Link
-                    href="/signup"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
-                    onClick={handleResetMenus}
-                  >
-                    Registrarse
-                  </Link>
-                  <Link
-                    href="/signin"
-                    className="-mx-3 rounded-lg px-3 flex items-center gap-2 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
-                    onClick={handleResetMenus}
-                  >
-                    Ingresar
-                    <LogInIcon />
-                  </Link>
-                </>
-                  )
-                : (
+              {
+                status !== 'authenticated'
+                  ? (
+                    <>
+                      <Link
+                        href="/signup"
+                        className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+                        onClick={handleResetMenus}
+                      >
+                        Registrarse
+                      </Link>
+                      <Link
+                        href="/signin"
+                        className="-mx-3 rounded-lg px-3 flex items-center gap-2 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+                        onClick={handleResetMenus}
+                      >
+                        Ingresar
+                        <LogInIcon />
+                      </Link>
+                    </>
+                    )
+                  : (
                   <>
                     {
                       session?.user?.document === '0000000000'
@@ -182,7 +184,7 @@ export default function MobileMenu ({
                       <LogInIcon />
                     </button>
                   </>
-                  )
+                    )
             }
             </div>
           </div>

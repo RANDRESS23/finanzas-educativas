@@ -19,7 +19,7 @@ import ItemListDropDown from './ItemListDropDown'
 import MobileMenu from './MobileMenu'
 import { useSession, signOut } from 'next-auth/react'
 
-function NavBar(): React.ReactNode {
+function NavBar (): React.ReactNode {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isMenuMobileOpen, setIsMenuMobileOpen] = useState(false)
   const [isSubMenuAdminPanelOpen, setIsSubMenuAdminPanelOpen] = useState(false)
@@ -86,8 +86,8 @@ function NavBar(): React.ReactNode {
                 ? '/profile/user'
                 : status === 'authenticated' &&
                   session?.user?.document === '0000000000'
-                ? '/profile/admin/home-preview'
-                : '/'
+                  ? '/profile/admin/home-preview'
+                  : '/'
             }
             className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
             onClick={handleResetMenus}
@@ -172,7 +172,8 @@ function NavBar(): React.ReactNode {
           }`}
         >
           {
-            status !== 'authenticated' ? (
+            status !== 'authenticated'
+              ? (
               <>
                 <Link
                   href="/signup"
@@ -190,7 +191,8 @@ function NavBar(): React.ReactNode {
                   <LogInIcon />
                 </Link>
               </>
-            ) : (
+                )
+              : (
             <>
               {
                 session?.user?.document === '0000000000'
@@ -221,7 +223,7 @@ function NavBar(): React.ReactNode {
                 <LogInIcon />
               </button>
             </>
-            )
+                )
           }
         </div>
         <button
