@@ -58,12 +58,6 @@ export default function FormSignUp (): React.ReactNode {
     }
   }
 
-  if (isLoading) {
-    return (
-      <div>Cargando..</div>
-    )
-  }
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="space-y-12">
@@ -366,9 +360,9 @@ export default function FormSignUp (): React.ReactNode {
         <button
           type="submit"
           className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50"
-          disabled={!termsAccepted}
+          disabled={!termsAccepted || isLoading}
         >
-          REGISTRARME
+          {isLoading ? 'Cargando..' : 'REGISTRARME'}
         </button>
       </div>
       <p className="mt-10 text-center text-gray-500">
