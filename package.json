@@ -2,6 +2,26 @@
   "name": "finanzas-educativas",
   "version": "0.1.0",
   "private": true,
+  "contributors": [
+    {
+      "name": "Ricardo Rojas",
+      "email": "rojasricor@gmail.com"
+    },
+    {
+      "name": "Raúl Quimbaya",
+      "email": "raulquimbaya4@gmail.com"
+    },
+    {
+      "name": "unknow69code",
+      "email": "unknow69007@gmail.com"
+    }
+  ],
+  "keywords": [
+    "Educacion",
+    "finanzas",
+    "enseñanzas",
+    "ahorro"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,11 +29,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^6.4.2",
+    "@fortawesome/react-fontawesome": "^0.2.0",
+    "@next-auth/prisma-adapter": "^1.0.7",
+    "@prisma/client": "^5.4.2",
+    "axios": "^1.5.1",
+    "bcryptjs": "^2.4.3",
     "next": "13.5.6",
+    "next-auth": "^4.24.3",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.47.0",
+    "react-hot-toast": "^2.4.1"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -27,6 +57,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-react": "^7.33.2",
     "postcss": "^8",
+    "prisma": "^5.4.2",
     "tailwindcss": "^3",
     "typescript": "^5.2.2"
   }
