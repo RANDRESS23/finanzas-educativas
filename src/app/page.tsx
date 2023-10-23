@@ -7,11 +7,11 @@ import { redirect } from 'next/navigation'
 export default async function Home () {
   const session = await getServerSession()
 
-  // if (session !== null && session?.user?.email !== 'admin@gmail.com') {
-  //   return redirect('profile/user')
-  // } else if (session !== null && session?.user?.email === 'admin@gmail.com') {
-  //   return redirect('profile/admin/home-preview')
-  // }
+  if (session !== null && session?.user?.email !== 'admin@gmail.com') {
+    return redirect('profile/user')
+  } else if (session !== null && session?.user?.email === 'admin@gmail.com') {
+    return redirect('profile/admin/home-preview')
+  }
 
   return (
     <>

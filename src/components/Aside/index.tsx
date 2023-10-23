@@ -1,7 +1,7 @@
 import { UserIcon, DashboardIcon, HelpIcon } from './icons'
 import ItemList from './ItemList'
 
-export default function Aside(): React.ReactNode {
+export default function Aside (): React.ReactNode {
   return (
     <aside
       id="sidebar"

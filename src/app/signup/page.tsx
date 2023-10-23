@@ -9,11 +9,11 @@ import FormSignUp from './FormSignUp'
 async function Signup () {
   const session = await getServerSession()
 
-  // if (session !== null && session?.user?.email !== 'admin@gmail.com') {
-  //   return redirect('/profile/user')
-  // } else if (session !== null && session?.user?.email === 'admin@gmail.com') {
-  //   return redirect('/profile/admin')
-  // }
+  if (session !== null && session?.user?.email !== 'admin@gmail.com') {
+    return redirect('/profile/user')
+  } else if (session !== null && session?.user?.email === 'admin@gmail.com') {
+    return redirect('/profile/admin')
+  }
 
   return (
     <>
