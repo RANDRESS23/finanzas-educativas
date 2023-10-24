@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-export default function LoadingPage () {
+export default function LoadingPage() {
   return (
     <div className="top-0 left-0 w-screen h-screen flex items-center justify-center">
       <div className="absolute animate-spin rounded-full h-20 w-20 border-y-4 border-[#0E70DF]" />
@@ -12,5 +12,5 @@ export default function LoadingPage () {
         className="rounded-full"
       />
     </div>
-  )
+  );
 }

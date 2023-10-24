@@ -101,7 +101,7 @@ const Expense: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
         />
       </g>
     </svg>
-  )
-}
+  );
+};
 
-export default Expense
+export default Expense;

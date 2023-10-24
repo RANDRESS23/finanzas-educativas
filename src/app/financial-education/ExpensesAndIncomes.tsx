@@ -1,6 +1,6 @@
-import { Income, Expense } from './svgs'
+import { Income, Expense } from "./svgs";
 
-export default function ExpensesAndIncomes () {
+export default function ExpensesAndIncomes() {
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
       <div className="mx-auto mt-5 flex flex-col max-w-3xl lg:text-center">
@@ -50,5 +50,5 @@ export default function ExpensesAndIncomes () {
         </div>
       </div>
     </div>
-  )
+  );
 }

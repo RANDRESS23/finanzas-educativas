@@ -1,39 +1,39 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { toast } from 'react-hot-toast'
-import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
+import { useState } from "react";
+import { toast } from "react-hot-toast";
+import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
 
-export default function FormContact () {
-  const [isLoading, setIsLoading] = useState(false)
+export default function FormContact() {
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: '',
-      email: '',
-      phone_number: '',
-      message: ''
-    }
-  })
+      name: "",
+      email: "",
+      phone_number: "",
+      message: "",
+    },
+  });
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    toast.success('Mensaje enviado!')
-    reset()
+  const onSubmit: SubmitHandler<FieldValues> = async (_data) => {
+    toast.success("Mensaje enviado!");
+    reset();
     try {
-      setIsLoading(true)
+      setIsLoading(true);
     } catch (error: any) {
-      toast.error(error.response.data.message)
-      console.log({ errorMessage: error.response.data.message })
-      console.log({ error })
+      toast.error(error.response.data.message);
+      console.log({ errorMessage: error.response.data.message });
+      console.log({ error });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -47,19 +47,19 @@ export default function FormContact () {
         <input
           type="text"
           id="name"
-          {...register('name', {
-            required: 'El nombre es un campo obligatorio!'
+          {...register("name", {
+            required: "El nombre es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
                 ${
                   errors.name !== undefined
-                    ? 'ring-rose-500'
-                    : 'border-gray-300'
+                    ? "ring-rose-500"
+                    : "border-gray-300"
                 }}
                 ${
                   errors.name !== undefined
-                    ? 'focus:outline-rose-500'
-                    : 'focus:outline-[#008aae]'
+                    ? "focus:outline-rose-500"
+                    : "focus:outline-[#008aae]"
                 }`}
         />
         {errors.name !== undefined && (
@@ -79,19 +79,19 @@ export default function FormContact () {
         <input
           type="email"
           id="email"
-          {...register('email', {
-            required: 'El correo electrónico es un campo obligatorio!'
+          {...register("email", {
+            required: "El correo electrónico es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
                 ${
                   errors.email !== undefined
-                    ? 'ring-rose-500'
-                    : 'border-gray-300'
+                    ? "ring-rose-500"
+                    : "border-gray-300"
                 }}
                 ${
                   errors.email !== undefined
-                    ? 'focus:outline-rose-500'
-                    : 'focus:outline-[#008aae]'
+                    ? "focus:outline-rose-500"
+                    : "focus:outline-[#008aae]"
                 }`}
         />
         {errors.email !== undefined && (
@@ -111,19 +111,19 @@ export default function FormContact () {
         <input
           type="text"
           id="phone_number"
-          {...register('phone_number', {
-            required: 'El teléfono es un campo obligatorio!'
+          {...register("phone_number", {
+            required: "El teléfono es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
                 ${
                   errors.phone_number !== undefined
-                    ? 'ring-rose-500'
-                    : 'border-gray-300'
+                    ? "ring-rose-500"
+                    : "border-gray-300"
                 }}
                 ${
                   errors.phone_number !== undefined
-                    ? 'focus:outline-rose-500'
-                    : 'focus:outline-[#008aae]'
+                    ? "focus:outline-rose-500"
+                    : "focus:outline-[#008aae]"
                 }`}
         />
         {errors.phone_number !== undefined && (
@@ -144,21 +144,19 @@ export default function FormContact () {
           <textarea
             id="message"
             rows={4}
-            {...register('message', {
-              required: 'El mensaje es un campo obligatorio!'
+            {...register("message", {
+              required: "El mensaje es un campo obligatorio!",
             })}
             className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs resize-none
             ${
-              errors.message !== undefined
-                ? 'ring-rose-500'
-                : 'border-gray-300'
+              errors.message !== undefined ? "ring-rose-500" : "border-gray-300"
             }}
             ${
               errors.message !== undefined
-                ? 'focus:outline-rose-500'
-                : 'focus:outline-[#008aae]'
+                ? "focus:outline-rose-500"
+                : "focus:outline-[#008aae]"
             }`}
-            defaultValue={''}
+            defaultValue={""}
           />
         </div>
         {errors.message !== undefined && (
@@ -173,8 +171,8 @@ export default function FormContact () {
         className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full"
         disabled={isLoading}
       >
-        {isLoading ? 'Cargando..' : 'ENVIAR'}
+        {isLoading ? "Cargando.." : "ENVIAR"}
       </button>
     </form>
-  )
+  );
 }

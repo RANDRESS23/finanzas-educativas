@@ -862,7 +862,7 @@ const AboutUs: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
         fill="#2f2e41"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default AboutUs
+export default AboutUs;

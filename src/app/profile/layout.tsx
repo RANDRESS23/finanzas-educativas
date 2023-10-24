@@ -1,17 +1,13 @@
-import { type Metadata } from 'next'
+import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Finanzas Educativas | Perfíl'
-}
+  title: "Finanzas Educativas | Perfíl",
+};
 
-export default async function RootLayout ({
-  children
+export default async function RootLayout({
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
-  return (
-    <>
-      {children}
-    </>
-  )
+  return <>{children}</>;
 }

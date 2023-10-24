@@ -254,7 +254,7 @@ const Vision: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
         fill="#fff"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default Vision
+export default Vision;

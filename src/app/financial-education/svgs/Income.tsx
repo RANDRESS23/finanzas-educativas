@@ -143,7 +143,7 @@ const Income: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
         />
       </g>
     </svg>
-  )
-}
+  );
+};
 
-export default Income
+export default Income;

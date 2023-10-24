@@ -1,41 +1,41 @@
-import pkg from '@/../package.json'
-import { sendEmailSchema } from '@/schemas/security.schema'
-import { NextResponse } from 'next/server'
-import { Resend } from 'resend'
-import Jwt from 'jsonwebtoken'
-import { db } from '@/libs/prismaDB'
+import pkg from "@/../package.json";
+import { sendEmailSchema } from "@/schemas/security.schema";
+import { NextResponse } from "next/server";
+import Jwt from "jsonwebtoken";
+import { db } from "@/libs/prismaDB";
+import { sendEmail } from "@/libs/sgMail";
 
-export async function GET (
-  request: Request,
-  { params }: { params: { email: string } }
+export async function GET(
+  _request: Request,
+  { params }: { params: { email: string } },
 ) {
-  const { to } = sendEmailSchema.parse(params)
+  const { to } = sendEmailSchema.parse(params);
 
   const userFound = await db.user.findUnique({
     where: {
-      email: to
-    }
-  })
+      email: to,
+    },
+  });
 
   if (userFound === null) {
     return NextResponse.json(
-      { message: 'El email no se encuentra registrado.' },
-      { status: 404 }
-    )
+      { message: "El email no se encuentra registrado." },
+      { status: 404 },
+    );
   }
 
   const payload = {
     document: userFound.document,
-    email: userFound.email
-  }
+    email: userFound.email,
+  };
 
   const tokenRecoverPsw = Jwt.sign(
     payload,
-    process.env.secret ?? 'secretkey',
-    { expiresIn: 10 * 60 } // 10 minutos
-  )
+    process.env.secret ?? "secretkey",
+    { expiresIn: 10 * 60 }, // 10 minutos
+  );
 
-  const resetPasswordLink = `${process.env.NEXTAUTH_URL}/forgot-password/${tokenRecoverPsw}`
+  const resetPasswordLink = `${process.env.NEXTAUTH_URL}/forgot-password/${tokenRecoverPsw}`;
 
   const html = `
     <p>Hemos detectado que solicitaste un <strong>cambio de contraseña</strong>.</p>
@@ -47,24 +47,28 @@ export async function GET (
 
     <i><strong>Cordialmente,<br>
     El equipo de ${pkg.description} ITFIP.</strong></i>
-  `
+  `;
 
-  const resend = new Resend(process.env.RESEND_API_KEY)
+  const subject = "Solicitud de cambio de contraseña";
 
   try {
-    const response = await resend.emails.send({
-      from: process.env.EMAILS_SENDER ?? '',
-      to,
-      subject: 'Solicitud de cambio de contraseña',
-      html
-    })
+    const msgSended = await sendEmail(to, subject, html);
+    if (!msgSended?.response) {
+      return NextResponse.json(
+        { message: `Error sending email to ${to}` },
+        { status: 500 },
+      );
+    }
 
-    return NextResponse.json(response, { status: 201 })
-  } catch (error) {
-    console.error(error)
     return NextResponse.json(
-      { message: 'Something went wrong.', error },
-      { status: 500 }
-    )
+      { message: `Email sended to ${to}` },
+      { status: 201 },
+    );
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json(
+      { message: "Something went wrong.", error },
+      { status: 500 },
+    );
   }
 }

@@ -1,16 +1,16 @@
-import { faContao, faHackerNews } from '@fortawesome/free-brands-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { type Metadata } from 'next'
-import Image from 'next/image'
-import Link from 'next/link'
+import { faContao, faHackerNews } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { type Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: 'Finanzas Educativas | Página No Encontrada'
-}
+  title: "Finanzas Educativas | Página No Encontrada",
+};
 
-export default function NotFound () {
-  const Contacto = faContao
-  const Youtube = faHackerNews
+export default function NotFound() {
+  const Contacto = faContao;
+  const Youtube = faHackerNews;
 
   return (
     <div className="min-h-screen flex items-center justify-center w-10/12 m-auto">
@@ -46,5 +46,5 @@ export default function NotFound () {
         </Link>
       </div>
     </div>
-  )
+  );
 }

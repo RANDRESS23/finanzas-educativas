@@ -1,56 +1,56 @@
-'use client'
+"use client";
 
-import api from '@/libs/api'
-import { AxiosError } from 'axios'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { useForm, type FieldValues, type SubmitHandler } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import api from "@/libs/api";
+import { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const FormChangePsw: React.FC = () => {
-  const goBack = useRouter().back
+  const goBack = useRouter().back;
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      password: '',
-      confirmPassword: ''
-    }
-  })
+      password: "",
+      confirmPassword: "",
+    },
+  });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
 
-      const response = await api.post('/security/forgot-password', {
+      const response = await api.post("/security/forgot-password", {
         password: data.password,
-        confirmPassword: data.confirmPassword
-      })
+        confirmPassword: data.confirmPassword,
+      });
 
       if (response.status !== 201) {
         toast.error(
-          'Ha ocurrido un error al cambiar la contraseña, intente nuevamente más tarde.'
-        )
-        return
+          "Ha ocurrido un error al cambiar la contraseña, intente nuevamente más tarde.",
+        );
+        return;
       }
 
-      toast.success('Su contraseña ha sido cambiada exitosamente')
-      reset()
+      toast.success("Su contraseña ha sido cambiada exitosamente");
+      reset();
     } catch (error) {
       if (error instanceof AxiosError) {
-        toast.error(error.response?.data.message)
-        console.log({ errorMessage: error.response?.data.message })
+        toast.error(error.response?.data.message);
+        console.log({ errorMessage: error.response?.data.message });
       }
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -65,20 +65,20 @@ const FormChangePsw: React.FC = () => {
         <input
           type="password"
           id="password"
-          {...register('password', {
-            required: 'La contraseña es un campo obligatorio!'
+          {...register("password", {
+            required: "La contraseña es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs"
                 autoComplete="off
                 ${
                   errors.password !== undefined
-                    ? 'ring-rose-500'
-                    : 'border-gray-300'
+                    ? "ring-rose-500"
+                    : "border-gray-300"
                 }}
                 ${
                   errors.password !== undefined
-                    ? 'focus:outline-rose-500'
-                    : 'focus:outline-[#008aae]'
+                    ? "focus:outline-rose-500"
+                    : "focus:outline-[#008aae]"
                 }`}
         />
         {errors.password !== undefined && (
@@ -98,20 +98,20 @@ const FormChangePsw: React.FC = () => {
         <input
           type="password"
           id="confirmPassword"
-          {...register('confirmPassword', {
-            required: 'La contraseña es un campo obligatorio!'
+          {...register("confirmPassword", {
+            required: "La contraseña es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs"
                 autoComplete="off
                 ${
                   errors.confirmPassword !== undefined
-                    ? 'ring-rose-500'
-                    : 'border-gray-300'
+                    ? "ring-rose-500"
+                    : "border-gray-300"
                 }}
                 ${
                   errors.confirmPassword !== undefined
-                    ? 'focus:outline-rose-500'
-                    : 'focus:outline-[#008aae]'
+                    ? "focus:outline-rose-500"
+                    : "focus:outline-[#008aae]"
                 }`}
         />
         {errors.confirmPassword !== undefined && (
@@ -126,7 +126,7 @@ const FormChangePsw: React.FC = () => {
         className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full"
         disabled={isLoading}
       >
-        {isLoading ? 'CARGANDO...' : 'CONTINUAR'}
+        {isLoading ? "CARGANDO..." : "CONTINUAR"}
       </button>
 
       <button
@@ -137,7 +137,7 @@ const FormChangePsw: React.FC = () => {
         Volver atrás
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default FormChangePsw
+export default FormChangePsw;

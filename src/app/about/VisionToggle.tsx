@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import ArrowDown from './icons/ArrowDown'
-import ArrowUp from './icons/ArrowUp'
+import { useState } from "react";
+import ArrowDown from "./icons/ArrowDown";
+import ArrowUp from "./icons/ArrowUp";
 
-export default function VisionToggle () {
-  const [viewMoreInfoVision, setViewMoreInfoVision] = useState(false)
+export default function VisionToggle() {
+  const [viewMoreInfoVision, setViewMoreInfoVision] = useState(false);
 
   const handleViewMoreInfoVision = () => {
-    setViewMoreInfoVision(!viewMoreInfoVision)
-  }
+    setViewMoreInfoVision(!viewMoreInfoVision);
+  };
 
   return (
     <>
@@ -25,15 +25,15 @@ export default function VisionToggle () {
       )}
       <button
         className={`text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-2 bg-[#008aae] hover:bg-[#79ad34]${
-          viewMoreInfoVision ? '' : ' animate-pulse'
+          viewMoreInfoVision ? "" : " animate-pulse"
         }`}
         onClick={handleViewMoreInfoVision}
       >
         {viewMoreInfoVision
-          ? 'Ocultar Información extra'
-          : 'Mostrar más información'}
+          ? "Ocultar Información extra"
+          : "Mostrar más información"}
         {viewMoreInfoVision ? <ArrowUp /> : <ArrowDown />}
       </button>
     </>
-  )
+  );
 }

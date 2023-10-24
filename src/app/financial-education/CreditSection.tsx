@@ -1,50 +1,50 @@
-import Image from 'next/image'
-import { Credit } from './svgs'
+import Image from "next/image";
+import { Credit } from "./svgs";
 
 const features = [
   {
-    name: 'Tarjeta de Crédito',
+    name: "Tarjeta de Crédito",
     description:
-      'Una tarjeta de crédito es un tipo de crédito que te permite hacer compras y pagarlas más adelante. Funciona como un préstamo que debes pagar en el futuro. Puedes usarla para comprar cosas en tiendas, restaurantes y en línea.'
+      "Una tarjeta de crédito es un tipo de crédito que te permite hacer compras y pagarlas más adelante. Funciona como un préstamo que debes pagar en el futuro. Puedes usarla para comprar cosas en tiendas, restaurantes y en línea.",
   },
   {
-    name: 'Préstamos Personales',
+    name: "Préstamos Personales",
     description:
-      'Los préstamos personales son un tipo de crédito que puedes pedir prestado para cualquier necesidad personal. Puedes usarlo para cosas como pagar el colegio, hacer mejoras en tu hogar o incluso ir de vacaciones. Por lo general, tienes que devolverlo con intereses y en pagos mensuales.'
+      "Los préstamos personales son un tipo de crédito que puedes pedir prestado para cualquier necesidad personal. Puedes usarlo para cosas como pagar el colegio, hacer mejoras en tu hogar o incluso ir de vacaciones. Por lo general, tienes que devolverlo con intereses y en pagos mensuales.",
   },
   {
-    name: 'Línea de Crédito',
+    name: "Línea de Crédito",
     description:
-      'Una línea de crédito es un monto de dinero que te prestan y que puedes gastar según tus necesidades. Es como si tuvieras un límite máximo de dinero al que puedes acceder cuando lo necesites. Solo pagas intereses por el dinero que realmente uses.'
+      "Una línea de crédito es un monto de dinero que te prestan y que puedes gastar según tus necesidades. Es como si tuvieras un límite máximo de dinero al que puedes acceder cuando lo necesites. Solo pagas intereses por el dinero que realmente uses.",
   },
   {
-    name: 'Hipoteca',
+    name: "Hipoteca",
     description:
-      'Una hipoteca es un préstamo que obtienes para comprar una casa. Es un crédito a largo plazo, generalmente de varios años, y debes hacer pagos mensuales para devolverlo. Si no pagas, el prestamista puede tomar posesión de la propiedad.'
+      "Una hipoteca es un préstamo que obtienes para comprar una casa. Es un crédito a largo plazo, generalmente de varios años, y debes hacer pagos mensuales para devolverlo. Si no pagas, el prestamista puede tomar posesión de la propiedad.",
   },
   {
-    name: 'Préstamos Estudiantiles',
+    name: "Préstamos Estudiantiles",
     description:
-      'Son préstamos que se otorgan a estudiantes para ayudarles a pagar los estudios superiores. Los estudiantes pueden pedir dinero prestado para cubrir los costos de la matrícula, libros y otros gastos relacionados con la educación. Los préstamos estudiantiles se deben devolver después de que te gradúes.'
+      "Son préstamos que se otorgan a estudiantes para ayudarles a pagar los estudios superiores. Los estudiantes pueden pedir dinero prestado para cubrir los costos de la matrícula, libros y otros gastos relacionados con la educación. Los préstamos estudiantiles se deben devolver después de que te gradúes.",
   },
   {
-    name: 'Microcréditos',
+    name: "Microcréditos",
     description:
-      'Los microcréditos son préstamos pequeños que se otorgan a personas de bajos recursos económicos o emprendedores que necesitan capital para comenzar o expandir un negocio pequeño. Por lo general, se caracterizan por tener tasas de interés más bajas y plazos de pago flexibles.'
+      "Los microcréditos son préstamos pequeños que se otorgan a personas de bajos recursos económicos o emprendedores que necesitan capital para comenzar o expandir un negocio pequeño. Por lo general, se caracterizan por tener tasas de interés más bajas y plazos de pago flexibles.",
   },
   {
-    name: 'Financiamiento de automóviles',
+    name: "Financiamiento de automóviles",
     description:
-      'Es un tipo de crédito que te permite comprar un automóvil nuevo o usado. El prestamista te presta el dinero y tú pagas una cantidad mensual durante un período acordado hasta saldar la deuda.'
+      "Es un tipo de crédito que te permite comprar un automóvil nuevo o usado. El prestamista te presta el dinero y tú pagas una cantidad mensual durante un período acordado hasta saldar la deuda.",
   },
   {
-    name: 'Tarjetas de Tiendas',
+    name: "Tarjetas de Tiendas",
     description:
-      'Son tarjetas de crédito que se emiten para usar exclusivamente en una tienda o cadena de tiendas específica. Puedes comprar productos en esa tienda y pagar más adelante. A menudo ofrecen descuentos y beneficios especiales para los clientes.'
-  }
-]
+      "Son tarjetas de crédito que se emiten para usar exclusivamente en una tienda o cadena de tiendas específica. Puedes comprar productos en esa tienda y pagar más adelante. A menudo ofrecen descuentos y beneficios especiales para los clientes.",
+  },
+];
 
-export default function CreditSection () {
+export default function CreditSection() {
   return (
     <div className="bg-white">
       <div className="mx-auto max-w-2xl items-center gap-x-8 gap-y-16 px-4 py-20 sm:px-6 lg:max-w-7xl lg:px-8">
@@ -146,5 +146,5 @@ export default function CreditSection () {
         </div>
       </div>
     </div>
-  )
+  );
 }

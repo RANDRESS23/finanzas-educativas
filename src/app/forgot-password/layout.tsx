@@ -1,13 +1,13 @@
-import { type Metadata } from 'next'
+import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: 'Finanzas Educativas | Recuperar Contraseña'
-}
+  title: "Finanzas Educativas | Recuperar Contraseña",
+};
 
-export default function RecoveryPasswordLayout ({
-  children
+export default function RecoveryPasswordLayout({
+  children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }): React.ReactNode {
-  return <>{children}</>
+  return <>{children}</>;
 }

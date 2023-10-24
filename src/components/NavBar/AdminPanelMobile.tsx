@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import { DashboardIcon, HelpIcon, UserIcon } from '../Aside/icons'
+import Link from "next/link";
+import { DashboardIcon, HelpIcon, UserIcon } from "../Aside/icons";
 
 interface AdminPanelMobileProps {
-  handleResetMenus: () => void
+  handleResetMenus: () => void;
 }
 
-export default function AdminPanelMobile ({
-  handleResetMenus
+export default function AdminPanelMobile({
+  handleResetMenus,
 }: AdminPanelMobileProps): React.ReactNode {
   return (
     <div className="my-2 space-y-2" id="disclosure-1">
@@ -35,5 +35,5 @@ export default function AdminPanelMobile ({
         <HelpIcon />
       </Link>
     </div>
-  )
+  );
 }

@@ -1,18 +1,14 @@
-import ChangePasswordGif from '@/app/forgot-password/gifs/ChangePassword.png'
-import Title from '@/components/Title'
-import Image from 'next/image'
-import FormChangePsw from './FormChangePsw'
+import ChangePasswordGif from "@/app/forgot-password/gifs/ChangePassword.png";
+import Title from "@/components/Title";
+import Image from "next/image";
+import FormChangePsw from "./FormChangePsw";
 
-export default async function PasswordChanger ({
-  params: { tk }
-}: {
-  params: { tk: string }
-}): Promise<React.ReactElement> {
+export default async function PasswordChanger(): Promise<React.ReactElement> {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mb-10 py-20">
       <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
         <h2 className="mt-10 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
-          Cambiar contraseña en{' '}
+          Cambiar contraseña en{" "}
           <Title text="¡Finanzas Educativas!" isTextStatic />
         </h2>
       </div>
@@ -25,5 +21,5 @@ export default async function PasswordChanger ({
         </div>
       </div>
     </div>
-  )
+  );
 }

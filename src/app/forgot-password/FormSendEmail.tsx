@@ -1,48 +1,48 @@
-'use client'
+"use client";
 
-import api from '@/libs/api'
-import { AxiosError } from 'axios'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
-import { useForm, type FieldValues, type SubmitHandler } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import api from "@/libs/api";
+import { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
+import toast from "react-hot-toast";
 
 const FormSendEmail: React.FC = () => {
-  const goBack = useRouter().back
+  const goBack = useRouter().back;
 
-  const [isLoading, setIsLoading] = useState(false)
+  const [isLoading, setIsLoading] = useState(false);
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
-  } = useForm<FieldValues>({ defaultValues: { email: '' } })
+    formState: { errors },
+  } = useForm<FieldValues>({ defaultValues: { email: "" } });
 
   const onSubmit: SubmitHandler<FieldValues> = async ({ email }) => {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
 
-      const response = await api(`/security/forgot-password/${email}`)
+      const response = await api(`/security/forgot-password/${email}`);
 
       if (response.status !== 201) {
-        toast.error('Ha ocurrido un error al enviar el correo electrónico')
-        return
+        toast.error("Ha ocurrido un error al enviar el correo electrónico");
+        return;
       }
 
       toast.success(
-        `Hemos enviado a ${email} un link para recuperar tu contraseña.`
-      )
-      reset()
+        `Hemos enviado a ${email} un link para recuperar tu contraseña.`,
+      );
+      reset();
     } catch (error) {
       if (error instanceof AxiosError) {
-        toast.error(error.response?.data.message)
-        console.log({ errorMessage: error.response?.data.message })
+        toast.error(error.response?.data.message);
+        console.log({ errorMessage: error.response?.data.message });
       }
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -57,16 +57,16 @@ const FormSendEmail: React.FC = () => {
         <input
           type="email"
           id="email"
-          {...register('email', {
-            required: 'Por favor ingresa el correo electrónico de registro!'
+          {...register("email", {
+            required: "Por favor ingresa el correo electrónico de registro!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs ${
-            errors.email !== undefined ? 'ring-rose-500' : 'border-gray-300'
+            errors.email !== undefined ? "ring-rose-500" : "border-gray-300"
           }}
           ${
             errors.email !== undefined
-              ? 'focus:outline-rose-500'
-              : 'focus:outline-[#008aae]'
+              ? "focus:outline-rose-500"
+              : "focus:outline-[#008aae]"
           }`}
         />
         {errors.email !== undefined && (
@@ -81,7 +81,7 @@ const FormSendEmail: React.FC = () => {
         className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full"
         disabled={isLoading}
       >
-        {isLoading ? 'ENVIANDO...' : 'ENVIAR'}
+        {isLoading ? "ENVIANDO..." : "ENVIAR"}
       </button>
 
       <button
@@ -92,7 +92,7 @@ const FormSendEmail: React.FC = () => {
         Volver atrás
       </button>
     </form>
-  )
-}
+  );
+};
 
-export default FormSendEmail
+export default FormSendEmail;

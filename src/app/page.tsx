@@ -1,16 +1,16 @@
-import Title from '@/components/Title'
-import { getServerSession } from 'next-auth/next'
-import Link from 'next/link'
-import { redirect } from 'next/navigation'
+import Title from "@/components/Title";
+import { getServerSession } from "next-auth/next";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 // import ContactBot from './contact/ContactBot'
 
-export default async function Home () {
-  const session = await getServerSession()
+export default async function Home() {
+  const session = await getServerSession();
 
-  if (session !== null && session?.user?.email !== 'admin@gmail.com') {
-    return redirect('profile/user')
-  } else if (session !== null && session?.user?.email === 'admin@gmail.com') {
-    return redirect('profile/admin/home-preview')
+  if (session !== null && session?.user?.email !== "admin@gmail.com") {
+    return redirect("profile/user");
+  } else if (session !== null && session?.user?.email === "admin@gmail.com") {
+    return redirect("profile/admin/home-preview");
   }
 
   return (
@@ -19,7 +19,7 @@ export default async function Home () {
         <div className="mx-auto max-w-2xl h-screen flex flex-col justify-center items-center">
           <div className="flex mb-8 justify-center">
             <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Aprender un poco sobre finanzas.{' '}
+              Aprender un poco sobre finanzas.{" "}
               <Link
                 href="/financial-education"
                 className="font-semibold text-[#008aae]"
@@ -31,7 +31,7 @@ export default async function Home () {
           </div>
           <div className="text-center">
             <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Bienvenido a <Title text='¡Finanzas Educativas!' isTextStatic />
+              Bienvenido a <Title text="¡Finanzas Educativas!" isTextStatic />
             </h1>
             <p className="text-lg leading-8 text-gray-600">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
@@ -202,5 +202,5 @@ export default async function Home () {
         {/* <ContactBot /> */}
       </div>
     </>
-  )
+  );
 }
