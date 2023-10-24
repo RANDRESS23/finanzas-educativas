@@ -1,4 +1,4 @@
-import ForgotPasswordGif from '@/app/forgot-password/gifs/ForgotPassword.png'
+import ForgotPasswordGif from '@/app/forgot-password/gifs/ForgotPassword.gif'
 import Title from '@/components/Title'
 import Image from 'next/image'
 import FormSendEmail from './FormSendEmail'

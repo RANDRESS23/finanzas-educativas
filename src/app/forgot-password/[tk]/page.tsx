@@ -1,4 +1,4 @@
-import ChangePasswordGif from '@/app/forgot-password/gifs/ChangePassword.png'
+import ChangePasswordGif from '@/app/forgot-password/gifs/ChangePassword.gif'
 import Title from '@/components/Title'
 import Image from 'next/image'
 import FormChangePsw from './FormChangePsw'
