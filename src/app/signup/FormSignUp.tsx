@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
+import { signIn } from 'next-auth/react'
 import api from '@/libs/api'
 
 export default function FormSignUp (): React.ReactNode {
@@ -15,6 +16,7 @@ export default function FormSignUp (): React.ReactNode {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors }
   } = useForm<FieldValues>({
     defaultValues: {
@@ -37,8 +39,22 @@ export default function FormSignUp (): React.ReactNode {
 
       if (response.status === 201) {
         toast.success('Te registraste exitosamente!')
-        router.refresh()
-        router.push('/profile/user')
+
+        const response = await signIn('credentials', {
+          document: data.document,
+          password: data.password,
+          redirect: false
+        })
+
+        if (response?.error !== null) {
+          return toast.error('Datos incorrectos!')
+        }
+
+        if (response?.ok) {
+          router.refresh()
+          router.push('/profile/user')
+          reset()
+        }
       } else toast.error('Error al registrarse!')
     } catch (error: any) {
       if (error.response.data !== undefined) {
