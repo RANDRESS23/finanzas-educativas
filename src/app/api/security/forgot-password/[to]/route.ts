@@ -35,9 +35,7 @@ export async function GET (
     { expiresIn: 10 * 60 } // 10 minutos
   )
 
-  const resetPasswordLink = `${request.headers.get(
-    'origin'
-  )}/forgot-password/${tokenRecoverPsw}`
+  const resetPasswordLink = `${process.env.NEXTAUTH_URL}/forgot-password/${tokenRecoverPsw}`
 
   const html = `
     <p>Hemos detectado que solicitaste un <strong>cambio de contraseña</strong>.</p>
