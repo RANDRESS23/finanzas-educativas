@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import api from '@/libs/api'
+import { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
-import axios, { AxiosError } from 'axios'
+import { useState } from 'react'
+import { useForm, type FieldValues, type SubmitHandler } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 const FormChangePsw: React.FC = () => {
   const goBack = useRouter().back
@@ -27,7 +28,7 @@ const FormChangePsw: React.FC = () => {
     try {
       setIsLoading(true)
 
-      const response = await axios.post('/api/security/forgot-password', {
+      const response = await api.post('/security/forgot-password', {
         password: data.password,
         confirmPassword: data.confirmPassword
       })

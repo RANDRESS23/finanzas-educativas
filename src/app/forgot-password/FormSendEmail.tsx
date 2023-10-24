@@ -1,10 +1,11 @@
 'use client'
 
-import { useState } from 'react'
-import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
-import toast from 'react-hot-toast'
+import api from '@/libs/api'
+import { AxiosError } from 'axios'
 import { useRouter } from 'next/navigation'
-import axios, { AxiosError } from 'axios'
+import { useState } from 'react'
+import { useForm, type FieldValues, type SubmitHandler } from 'react-hook-form'
+import toast from 'react-hot-toast'
 
 const FormSendEmail: React.FC = () => {
   const goBack = useRouter().back
@@ -22,7 +23,7 @@ const FormSendEmail: React.FC = () => {
     try {
       setIsLoading(true)
 
-      const response = await axios(`/api/security/forgot-password/${email}`)
+      const response = await api(`/security/forgot-password/${email}`)
 
       if (response.status !== 201) {
         toast.error('Ha ocurrido un error al enviar el correo electrónico')

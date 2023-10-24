@@ -6,8 +6,9 @@ import { useState } from 'react'
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
+import api from '@/libs/api'
 
-export default function FormSignUp (): React.ReactNode {
+export default function FormSignUp(): React.ReactNode {
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   // const router = useRouter()
@@ -33,7 +34,7 @@ export default function FormSignUp (): React.ReactNode {
     try {
       setIsLoading(true)
 
-      const response = await axios.post('/api/user', data)
+      const response = await api.post('/user', data)
 
       if (response.status === 201) {
         toast.success('Te registraste exitosamente!')
