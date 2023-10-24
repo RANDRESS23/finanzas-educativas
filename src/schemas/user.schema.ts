@@ -1,7 +1,42 @@
 import { z } from 'zod'
 
-export const signUpSchema = z
-  .object({
+export const baseUserSchema = z.object({
+  password: z
+    .string()
+    .min(8, {
+      message: 'La contraseña debe tener al menos 8 caracteres.'
+    })
+    .max(50, {
+      message: 'La contraseña debe tener un máximo de 50 caracteres.'
+    }),
+
+  confirmPassword: z.string().min(8, {
+    message: 'La contraseña debe tener al menos 8 caracteres.'
+  })
+})
+
+export const userPasswordsSchema = baseUserSchema
+  .extend({
+    password: z
+      .string()
+      .min(8, {
+        message: 'La contraseña debe tener al menos 8 caracteres.'
+      })
+      .max(50, {
+        message: 'La contraseña debe tener un máximo de 50 caracteres.'
+      }),
+
+    confirmPassword: z.string().min(8, {
+      message: 'La contraseña debe tener al menos 8 caracteres.'
+    })
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: 'Las contraseñas no coinciden.',
+    path: ['confirm_password']
+  })
+
+export const signUpSchema = baseUserSchema
+  .extend({
     documentType: z.string(),
 
     document: z
@@ -42,20 +77,7 @@ export const signUpSchema = z
       })
       .max(12, {
         message: 'El número de teléfono debe tener un máximo de 12 caracteres.'
-      }),
-
-    password: z
-      .string()
-      .min(8, {
-        message: 'La contraseña debe tener al menos 8 caracteres.'
       })
-      .max(50, {
-        message: 'La contraseña debe tener un máximo de 50 caracteres.'
-      }),
-
-    confirmPassword: z.string().min(8, {
-      message: 'La contraseña debe tener al menos 8 caracteres.'
-    })
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: 'Las contraseñas no coinciden.',

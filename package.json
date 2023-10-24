@@ -1,6 +1,6 @@
 {
   "name": "finanzas-educativas",
-  "description": "Finanzas educativas",
+  "description": "Finanzas Educativas",
   "version": "0.1.0",
   "private": true,
   "contributors": [
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.5",
+    "@types/jsonwebtoken": "^9.0.4",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

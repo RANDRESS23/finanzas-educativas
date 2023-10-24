@@ -7,7 +7,7 @@ import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
-export default function FormSignIn () {
+export default function FormSignIn() {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
@@ -139,7 +139,7 @@ export default function FormSignIn () {
             </div> */}
       <p className="mb-6 text-sm">
         <Link
-          href="/signup"
+          href="/forgot-password"
           className="leading-6 text-[#008aae] hover:text-[#79ad34]"
         >
           ¿Olvidaste tu contraseña?
