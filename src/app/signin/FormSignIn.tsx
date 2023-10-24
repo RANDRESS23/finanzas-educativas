@@ -7,7 +7,7 @@ import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
 import { signIn } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 
-export default function FormSignIn() {
+export default function FormSignIn () {
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 

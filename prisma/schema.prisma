@@ -7,6 +7,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  ADMIN
+  USER
+}
+
 model User {
   id              String   @id @default(auto()) @map("_id") @db.ObjectId
   documentType    String
@@ -16,92 +21,32 @@ model User {
   phoneNumber     String
   email           String   @unique
   hashedPassword  String
+  role            Role     @default(USER)
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
+
+  moreInfo        UserMoreInfo[]
 }
 
-// model User {
-//   id              String   @id @default(auto()) @map("_id") @db.ObjectId
-//   documentType    String
-//   document        String   @unique
-//   firstName       String
-//   lastName        String
-//   phoneNumber     String
-//   email           String  @unique
-//   hashedPassword  String
-//   createdAt       DateTime @default(now())
-//   updatedAt       DateTime @updatedAt
+model UserMoreInfo {
+  id                            String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId                        String   @db.ObjectId
+  gender                        String
+  age                           Int[]
+  civilStatus                   String
+  educationLevel                String
+  residenceArea                 String
+  typeOfHousing                 String
+  houseServices                 String[]
+  socioeconomicLevel            Int
+  numberPeopleContributing      Int
+  incomeComeFrom                String
+  isInAPensionFund              Boolean
+  healthSystemAffiliation       String
+  numberPeopleDependFinancially Int
+  financialProducts             String[]
+  createdAt                     DateTime @default(now())
+  updatedAt                     DateTime @updatedAt
 
-//   accounts Account[]
-//   listings Listing[]
-//   reservations Reservation[]
-// }
-
-// model Account {
-//   id String @id @default(auto()) @map("_id") @db.ObjectId
-//   userId             String   @db.ObjectId
-//   type               String
-//   provider           String
-//   providerAccountId  String
-//   refresh_token      String?  @db.String
-//   access_token       String?  @db.String
-//   expires_at         Int?
-//   token_type         String?
-//   scope              String?
-//   id_token           String?  @db.String
-//   session_state      String?
-
-//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-//   @@unique([provider, providerAccountId])
-// }
-
-// model Account {
-//   id String @id @default(auto()) @map("_id") @db.ObjectId
-//   userId             String   @db.ObjectId
-//   type               String
-//   provider           String
-//   providerAccountId  String
-//   refresh_token      String?  @db.String
-//   access_token       String?  @db.String
-//   expires_at         Int?
-//   token_type         String?
-//   scope              String?
-//   id_token           String?  @db.String
-//   session_state      String?
-
-//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-//   @@unique([provider, providerAccountId])
-// }
-
-// model Listing {
-//   id             String @id @default(auto()) @map("_id") @db.ObjectId
-//   title String
-//   description String
-//   imageSrc String
-//   createdAt DateTime @default(now())
-//   category  String
-//   roomCount Int
-//   bathroomCount Int
-//   guestCount Int
-//   locationValue String
-//   userId String @db.ObjectId
-//   price Int
-
-//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   reservations Reservation[]
-// }
-
-// model Reservation {
-//   id String @id @default(auto()) @map("_id") @db.ObjectId
-//   userId String @db.ObjectId
-//   listingId String @db.ObjectId  
-//   startDate DateTime
-//   endDate DateTime
-//   totalPrice Int
-//   createdAt DateTime @default(now())
-
-//   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   listing Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
-// }
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

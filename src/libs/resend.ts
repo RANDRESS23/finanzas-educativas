@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 
-export type PayloadResend = {
+export interface PayloadResend {
   from: string
   to: string
   subject: string
@@ -10,5 +10,6 @@ export type PayloadResend = {
 export const sendEmail = async (payload: PayloadResend) => {
   const resend = new Resend(process.env.RESEND_API_KEY)
 
-  return await resend.emails.send({ ...payload })
+  const result = await resend.emails.send({ ...payload })
+  return result
 }

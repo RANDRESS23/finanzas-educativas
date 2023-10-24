@@ -3,7 +3,7 @@ import Title from '@/components/Title'
 import Image from 'next/image'
 import FormChangePsw from './FormChangePsw'
 
-export default async function PasswordChanger({
+export default async function PasswordChanger ({
   params: { tk }
 }: {
   params: { tk: string }

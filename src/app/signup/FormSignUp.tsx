@@ -2,16 +2,15 @@
 
 import Link from 'next/link'
 import { useState } from 'react'
-// import { useRouter } from 'next/navigation'
-import axios from 'axios'
+import { useRouter } from 'next/navigation'
 import { toast } from 'react-hot-toast'
 import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
 import api from '@/libs/api'
 
-export default function FormSignUp(): React.ReactNode {
+export default function FormSignUp (): React.ReactNode {
   const [termsAccepted, setTermsAccepted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  // const router = useRouter()
+  const router = useRouter()
 
   const {
     register,
@@ -38,8 +37,8 @@ export default function FormSignUp(): React.ReactNode {
 
       if (response.status === 201) {
         toast.success('Te registraste exitosamente!')
-        // router.refresh()
-        // router.push('/profile/user')
+        router.refresh()
+        router.push('/profile/user')
       } else toast.error('Error al registrarse!')
     } catch (error: any) {
       if (error.response.data !== undefined) {

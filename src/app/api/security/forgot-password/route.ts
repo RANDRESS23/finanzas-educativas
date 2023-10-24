@@ -1,13 +1,13 @@
-import pkg from '@/../package.json'
-import { sendEmailSchema } from '@/schemas/security.schema'
+// import pkg from '@/../package.json'
+// import { sendEmailSchema } from '@/schemas/security.schema'
 import { NextResponse } from 'next/server'
-import { Resend } from 'resend'
+// import { Resend } from 'resend'
 import Jwt from 'jsonwebtoken'
 import { userPasswordsSchema } from '@/schemas/user.schema'
 import { db } from '@/libs/prismaDB'
 import bcrypt from 'bcryptjs'
 
-export async function POST(
+export async function POST (
   request: Request,
   { params }: { params: { tk: string } }
 ) {
@@ -25,7 +25,7 @@ export async function POST(
 
     const payload = Jwt.verify(
       params.tk,
-      process.env.secret || 'secretkey'
+      process.env.secret ?? 'secretkey'
     ) as any
     const userFound = await db.user.findUnique({
       where: {
@@ -33,7 +33,7 @@ export async function POST(
       }
     })
 
-    if (!userFound) {
+    if (userFound === null) {
       return NextResponse.json(
         { message: 'El email no se encuentra registrado.' },
         { status: 404 }
@@ -49,7 +49,7 @@ export async function POST(
       }
     })
 
-    if (!updatedUser) {
+    if (updatedUser === null) {
       return NextResponse.json(
         { message: 'No se pudo actualizar la contraseña.' },
         { status: 500 }

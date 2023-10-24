@@ -4,7 +4,7 @@ export const metadata: Metadata = {
   title: 'Finanzas Educativas | Recuperar Contraseña'
 }
 
-export default function RecoveryPasswordLayout({
+export default function RecoveryPasswordLayout ({
   children
 }: {
   children: React.ReactNode

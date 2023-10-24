@@ -5,7 +5,7 @@ import { Resend } from 'resend'
 import Jwt from 'jsonwebtoken'
 import { db } from '@/libs/prismaDB'
 
-export async function GET(
+export async function GET (
   request: Request,
   { params }: { params: { email: string } }
 ) {
@@ -17,7 +17,7 @@ export async function GET(
     }
   })
 
-  if (!userFound) {
+  if (userFound === null) {
     return NextResponse.json(
       { message: 'El email no se encuentra registrado.' },
       { status: 404 }
@@ -29,15 +29,15 @@ export async function GET(
     email: userFound.email
   }
 
-  const token_recover_psw = Jwt.sign(
+  const tokenRecoverPsw = Jwt.sign(
     payload,
-    process.env.secret || 'secretkey',
+    process.env.secret ?? 'secretkey',
     { expiresIn: 10 * 60 } // 10 minutos
   )
 
   const resetPasswordLink = `${request.headers.get(
     'origin'
-  )}/forgot-password/${token_recover_psw}`
+  )}/forgot-password/${tokenRecoverPsw}`
 
   const html = `
     <p>Hemos detectado que solicitaste un <strong>cambio de contraseña</strong>.</p>
@@ -55,7 +55,7 @@ export async function GET(
 
   try {
     const response = await resend.emails.send({
-      from: process.env.EMAILS_SENDER!,
+      from: process.env.EMAILS_SENDER ?? '',
       to,
       subject: 'Solicitud de cambio de contraseña',
       html
