@@ -4,25 +4,25 @@ import { userPasswordsSchema } from "@/schemas/user.schema";
 import Jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
-export async function POST(
-  request: Request,
-  { params }: { params: { tk: string } },
-) {
+export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    const { password, confirmPassword } = userPasswordsSchema.parse(body);
+    const { password, confirmPassword } = userPasswordsSchema.parse({
+      password: body.password,
+      confirmPassword: body.confirmPassword,
+    });
 
     if (password !== confirmPassword) {
       return NextResponse.json(
         { message: "Las contraseñas no coinciden." },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
     const payload = Jwt.verify(
-      params.tk,
-      process.env.secret ?? "secretkey",
+      body.jwtToken,
+      process.env.secret ?? "secretkey"
     ) as any;
     const userFound = await db.user.findUnique({
       where: {
@@ -33,7 +33,7 @@ export async function POST(
     if (userFound === null) {
       return NextResponse.json(
         { message: "El email no se encuentra registrado." },
-        { status: 404 },
+        { status: 404 }
       );
     }
 
@@ -49,7 +49,7 @@ export async function POST(
     if (updatedUser === null) {
       return NextResponse.json(
         { message: "No se pudo actualizar la contraseña." },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
@@ -58,7 +58,7 @@ export async function POST(
     console.error(error);
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
