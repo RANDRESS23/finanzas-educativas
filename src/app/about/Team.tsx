@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import Image from "next/image";
 
-export default function Team () {
+export default function Team() {
   return (
     <div className="w-full bg-white mt-10">
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
@@ -120,5 +120,5 @@ export default function Team () {
         </div>
       </section>
     </div>
-  )
+  );
 }

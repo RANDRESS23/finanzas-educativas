@@ -138,7 +138,7 @@ const Saving: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
         fill="#3f3d56"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default Saving
+export default Saving;

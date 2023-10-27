@@ -132,7 +132,7 @@ const Mision: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
         fill="#ffb6b6"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default Mision
+export default Mision;

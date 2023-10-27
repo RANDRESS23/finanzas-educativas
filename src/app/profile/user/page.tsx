@@ -1,23 +1,23 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth/next'
-import Title from '@/components/Title'
+import Link from "next/link";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth/next";
+import Title from "@/components/Title";
 
-export default async function ProfileUserPage () {
-  const session = await getServerSession()
+export default async function ProfileUserPage() {
+  const session = await getServerSession();
 
-  if (session?.user?.email === 'admin@gmail.com') {
-    return redirect('/profile/admin')
+  if (session?.user?.email === "admin@gmail.com") {
+    return redirect("/profile/admin");
   }
 
   return (
-    <div className='mb-20'>
+    <div className="mb-20">
       <div className="relative isolate px-6 pb-20 lg:py-0 lg:pl-36 lg:flex lg:justify-between lg:gap-10 lg:h-screen">
         <div className="max-w-xl h-screen lg:h-full flex flex-col justify-center items-start bg-white">
           <div className="flex mb-8 justify-center">
             <div className="relative rounded-full px-5 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Completar mi información personal.{' '}
+              Completar mi información personal.{" "}
               <Link
                 href="/financial-education"
                 className="font-semibold text-[#008aae]"
@@ -57,5 +57,5 @@ export default async function ProfileUserPage () {
         </div>
       </div>
     </div>
-  )
+  );
 }

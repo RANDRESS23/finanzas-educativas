@@ -1,23 +1,23 @@
-import Link from 'next/link'
-import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth/next'
-import Image from 'next/image'
-import Title from '@/components/Title'
+import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth/next";
+import Image from "next/image";
+import Title from "@/components/Title";
 
-export default async function ProfileAdminPage () {
-  const session = await getServerSession()
+export default async function ProfileAdminPage() {
+  const session = await getServerSession();
 
-  if (session?.user?.email !== 'admin@gmail.com') {
-    return redirect('/profile/user')
+  if (session?.user?.email !== "admin@gmail.com") {
+    return redirect("/profile/user");
   }
 
   return (
-    <div className='mb-20'>
+    <div className="mb-20">
       <div className="relative isolate px-6 pb-20 lg:py-0 lg:pl-36 lg:flex lg:justify-between lg:gap-10 lg:h-screen">
         <div className="max-w-xl h-screen lg:h-full flex flex-col justify-center items-start bg-white">
           <div className="flex mb-8 justify-center">
             <div className="relative rounded-full px-5 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-              Completar mi información personal.{' '}
+              Completar mi información personal.{" "}
               <Link
                 href="/financial-education"
                 className="font-semibold text-[#008aae]"
@@ -29,8 +29,8 @@ export default async function ProfileAdminPage () {
           </div>
           <div className="relative">
             <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
-              Bienvenido a{' '}
-              <span className="text-[#79ad34]">¡Finanzas Educativas!</span>{' '}
+              Bienvenido a{" "}
+              <span className="text-[#79ad34]">¡Finanzas Educativas!</span>{" "}
               <Title text="¡Finanzas Educativas!" isTextStatic={false} />
             </h1>
             <p className="text-lg leading-8 text-gray-600 text-left">
@@ -59,5 +59,5 @@ export default async function ProfileAdminPage () {
         </div>
       </div>
     </div>
-  )
+  );
 }

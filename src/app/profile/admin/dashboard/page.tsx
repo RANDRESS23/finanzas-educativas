@@ -1,12 +1,12 @@
-import { redirect } from 'next/navigation'
-import { getServerSession } from 'next-auth/next'
-import Image from 'next/image'
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth/next";
+import Image from "next/image";
 
-export default async function DashboardPage () {
-  const session = await getServerSession()
+export default async function DashboardPage() {
+  const session = await getServerSession();
 
-  if (session?.user?.email !== 'admin@gmail.com') {
-    return redirect('/profile/user')
+  if (session?.user?.email !== "admin@gmail.com") {
+    return redirect("/profile/user");
   }
 
   return (
@@ -96,7 +96,7 @@ export default async function DashboardPage () {
                             <tbody className="bg-white">
                               <tr>
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                  Payment from{' '}
+                                  Payment from{" "}
                                   <span className="font-semibold">
                                     Bonnie Green
                                   </span>
@@ -110,7 +110,7 @@ export default async function DashboardPage () {
                               </tr>
                               <tr className="bg-gray-50">
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                  Payment refund to{' '}
+                                  Payment refund to{" "}
                                   <span className="font-semibold">#00910</span>
                                 </td>
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
@@ -122,7 +122,7 @@ export default async function DashboardPage () {
                               </tr>
                               <tr>
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                  Payment failed from{' '}
+                                  Payment failed from{" "}
                                   <span className="font-semibold">#087651</span>
                                 </td>
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
@@ -134,7 +134,7 @@ export default async function DashboardPage () {
                               </tr>
                               <tr className="bg-gray-50">
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                  Payment from{' '}
+                                  Payment from{" "}
                                   <span className="font-semibold">
                                     Lana Byrd
                                   </span>
@@ -148,7 +148,7 @@ export default async function DashboardPage () {
                               </tr>
                               <tr>
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                  Payment from{' '}
+                                  Payment from{" "}
                                   <span className="font-semibold">
                                     Jese Leos
                                   </span>
@@ -162,7 +162,7 @@ export default async function DashboardPage () {
                               </tr>
                               <tr className="bg-gray-50">
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900 rounded-lg rounded-left">
-                                  Payment from{' '}
+                                  Payment from{" "}
                                   <span className="font-semibold">
                                     THEMESBERG LLC
                                   </span>
@@ -176,7 +176,7 @@ export default async function DashboardPage () {
                               </tr>
                               <tr>
                                 <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                  Payment from{' '}
+                                  Payment from{" "}
                                   <span className="font-semibold">
                                     Lana Lysle
                                   </span>
@@ -481,7 +481,7 @@ export default async function DashboardPage () {
                                 <div className="w-full bg-gray-200 rounded-sm h-2">
                                   <div
                                     className="bg-cyan-600 h-2 rounded-sm"
-                                    style={{ width: '30%' }}
+                                    style={{ width: "30%" }}
                                   ></div>
                                 </div>
                               </div>
@@ -504,7 +504,7 @@ export default async function DashboardPage () {
                                 <div className="w-full bg-gray-200 rounded-sm h-2">
                                   <div
                                     className="bg-orange-300 h-2 rounded-sm"
-                                    style={{ width: '24%' }}
+                                    style={{ width: "24%" }}
                                   ></div>
                                 </div>
                               </div>
@@ -527,7 +527,7 @@ export default async function DashboardPage () {
                                 <div className="w-full bg-gray-200 rounded-sm h-2">
                                   <div
                                     className="bg-teal-400 h-2 rounded-sm"
-                                    style={{ width: '18%' }}
+                                    style={{ width: "18%" }}
                                   ></div>
                                 </div>
                               </div>
@@ -550,7 +550,7 @@ export default async function DashboardPage () {
                                 <div className="w-full bg-gray-200 rounded-sm h-2">
                                   <div
                                     className="bg-pink-600 h-2 rounded-sm"
-                                    style={{ width: '12%' }}
+                                    style={{ width: "12%" }}
                                   ></div>
                                 </div>
                               </div>
@@ -573,7 +573,7 @@ export default async function DashboardPage () {
                                 <div className="w-full bg-gray-200 rounded-sm h-2">
                                   <div
                                     className="bg-indigo-600 h-2 rounded-sm"
-                                    style={{ width: '9%' }}
+                                    style={{ width: "9%" }}
                                   ></div>
                                 </div>
                               </div>
@@ -596,7 +596,7 @@ export default async function DashboardPage () {
                                 <div className="w-full bg-gray-200 rounded-sm h-2">
                                   <div
                                     className="bg-purple-500 h-2 rounded-sm"
-                                    style={{ width: '7%' }}
+                                    style={{ width: "7%" }}
                                   ></div>
                                 </div>
                               </div>
@@ -613,5 +613,5 @@ export default async function DashboardPage () {
         </div>
       </div>
     </div>
-  )
+  );
 }

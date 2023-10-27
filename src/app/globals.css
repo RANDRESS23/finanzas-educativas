@@ -1,30 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-.typewriter-container {
-  @apply flex justify-center items-center flex-wrap overflow-hidden m-0;
-}
-
-.typewriter-text {
-  @apply whitespace-nowrap overflow-hidden;
-  animation:
-    typing 3s steps(40) infinite,
-    blink-caret 0.75s step-end infinite;
-}
-
-@keyframes typing {
-  from {
-    @apply w-0;
-  }
-  to {
-    @apply w-full;
-  }
-}
-
-@keyframes blink-caret {
-  from,
-  to {
-    @apply border-transparent;
-  }
-}

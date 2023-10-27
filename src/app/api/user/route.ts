@@ -1,24 +1,27 @@
-import { db } from '@/libs/prismaDB'
-import { NextResponse } from 'next/server'
-import { signUpSchema } from '@/schemas/user.schema'
-import bcrypt from 'bcryptjs'
+import { encryptPassword } from "@/libs/bcrypt";
+import { db } from "@/libs/prismaDB";
+import { signUpSchema } from "@/schemas/user.schema";
+import { NextResponse } from "next/server";
 
-export async function GET () {
+export async function GET() {
   try {
-    const users = await db.user.findMany()
-    console.log({ users })
+    const users = await db.user.findMany();
+    console.log({ users });
 
-    return NextResponse.json(users)
+    return NextResponse.json(users);
   } catch (error) {
-    console.log({ error })
+    console.log({ error });
 
-    return NextResponse.json({ message: 'Something went wrong.', error }, { status: 500 })
+    return NextResponse.json(
+      { message: "Something went wrong.", error },
+      { status: 500 },
+    );
   }
 }
 
-export async function POST (request: Request) {
+export async function POST(request: Request) {
   try {
-    const body = await request.json()
+    const body = await request.json();
 
     const {
       documentType,
@@ -27,32 +30,32 @@ export async function POST (request: Request) {
       lastName,
       phoneNumber,
       email,
-      password
-    } = signUpSchema.parse(body)
+      password,
+    } = signUpSchema.parse(body);
 
     const existingUserByDocument = await db.user.findUnique({
-      where: { document }
-    })
+      where: { document },
+    });
 
     if (existingUserByDocument !== null) {
       return NextResponse.json(
-        { messsage: 'Document already exists' },
-        { status: 400 }
-      )
+        { messsage: "Document already exists" },
+        { status: 400 },
+      );
     }
 
     const existingUserByEmail = await db.user.findUnique({
-      where: { email }
-    })
+      where: { email },
+    });
 
     if (existingUserByEmail !== null) {
       return NextResponse.json(
-        { messsage: 'Email already exists' },
-        { status: 400 }
-      )
+        { messsage: "Email already exists" },
+        { status: 400 },
+      );
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12)
+    const hashedPassword = await encryptPassword(password);
     const newUser = await db.user.create({
       data: {
         documentType,
@@ -61,38 +64,38 @@ export async function POST (request: Request) {
         lastName,
         phoneNumber,
         email,
-        hashedPassword
-      }
-    })
+        hashedPassword,
+      },
+    });
 
-    const { hashedPassword: _, ...user } = newUser
+    const { hashedPassword: _, ...user } = newUser;
 
     return NextResponse.json(
       {
         user,
-        message: 'User created successfully'
+        message: "User created successfully",
       },
-      { status: 201 }
-    )
+      { status: 201 },
+    );
   } catch (error: any) {
-    console.log({ error })
+    console.log({ error });
 
     if (error?.errors !== null) {
-      const errorsMessages: Record<string, string> = {}
-      const { errors } = error
+      const errorsMessages: Record<string, string> = {};
+      const { errors } = error;
 
       errors.forEach(
-        ({ message, path }: { message: string, path: string[] }) => {
-          errorsMessages[path.join('')] = message
-        }
-      )
+        ({ message, path }: { message: string; path: string[] }) => {
+          errorsMessages[path.join("")] = message;
+        },
+      );
 
-      return NextResponse.json(errorsMessages, { status: 500 })
+      return NextResponse.json(errorsMessages, { status: 500 });
     }
 
     return NextResponse.json(
-      { message: 'Something went wrong.', error },
-      { status: 500 }
-    )
+      { message: "Something went wrong.", error },
+      { status: 500 },
+    );
   }
 }

@@ -1,63 +1,63 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import { toast } from 'react-hot-toast'
-import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
-import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useState } from "react";
+import Link from "next/link";
+import { toast } from "react-hot-toast";
+import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
-export default function FormSignIn () {
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
+export default function FormSignIn() {
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      document: '',
-      password: ''
-    }
-  })
+      document: "",
+      password: "",
+    },
+  });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
 
-      const response = await signIn('credentials', {
+      const response = await signIn("credentials", {
         document: data.document,
         password: data.password,
-        redirect: false
-      })
+        redirect: false,
+      });
 
       if (response?.error !== null) {
-        return toast.error('Datos incorrectos!')
+        return toast.error("Datos incorrectos!");
       }
 
       if (response?.ok) {
-        if (data.document === '0000000000') {
-          toast.success('Admin logueado!')
-          router.refresh()
-          router.push('/profile/admin')
-          reset()
+        if (data.document === "0000000000") {
+          toast.success("Admin logueado!");
+          router.refresh();
+          router.push("/profile/admin");
+          reset();
         } else {
-          toast.success('Usuario logueado!')
-          router.refresh()
-          router.push('/profile/user')
-          reset()
+          toast.success("Usuario logueado!");
+          router.refresh();
+          router.push("/profile/user");
+          reset();
         }
       }
     } catch (error: any) {
-      toast.error(error.response.data.message)
-      console.log({ errorMessage: error.response.data.message })
-      console.log({ error })
+      toast.error(error.response.data.message);
+      console.log({ errorMessage: error.response.data.message });
+      console.log({ error });
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -72,19 +72,19 @@ export default function FormSignIn () {
         <input
           type="text"
           id="document"
-          {...register('document', {
-            required: 'El número de identificación es un campo obligatorio!'
+          {...register("document", {
+            required: "El número de identificación es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
                 ${
                   errors.document !== undefined
-                    ? 'ring-rose-500'
-                    : 'border-gray-300'
+                    ? "ring-rose-500"
+                    : "border-gray-300"
                 }}
                 ${
                   errors.document !== undefined
-                    ? 'focus:outline-rose-500'
-                    : 'focus:outline-[#008aae]'
+                    ? "focus:outline-rose-500"
+                    : "focus:outline-[#008aae]"
                 }`}
         />
         {errors.document !== undefined && (
@@ -104,20 +104,20 @@ export default function FormSignIn () {
         <input
           type="password"
           id="password"
-          {...register('password', {
-            required: 'La contraseña es un campo obligatorio!'
+          {...register("password", {
+            required: "La contraseña es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs"
                 autoComplete="off
                 ${
                   errors.password !== undefined
-                    ? 'ring-rose-500'
-                    : 'border-gray-300'
+                    ? "ring-rose-500"
+                    : "border-gray-300"
                 }}
                 ${
                   errors.password !== undefined
-                    ? 'focus:outline-rose-500'
-                    : 'focus:outline-[#008aae]'
+                    ? "focus:outline-rose-500"
+                    : "focus:outline-[#008aae]"
                 }`}
         />
         {errors.password !== undefined && (
@@ -150,8 +150,8 @@ export default function FormSignIn () {
         className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full"
         disabled={isLoading}
       >
-        {isLoading ? 'Cargando..' : 'INGRESAR'}
+        {isLoading ? "Cargando.." : "INGRESAR"}
       </button>
     </form>
-  )
+  );
 }

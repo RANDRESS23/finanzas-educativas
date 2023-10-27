@@ -1,9 +1,9 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 interface ItemListProps {
-  href: string
-  Icon: React.FC
-  title: string
+  href: string;
+  Icon: React.FC;
+  title: string;
 }
 
 const ItemList: React.FC<ItemListProps> = ({ href, Icon, title }) => {
@@ -15,7 +15,7 @@ const ItemList: React.FC<ItemListProps> = ({ href, Icon, title }) => {
       <Icon />
       <span className="ml-3 flex-1 whitespace-nowrap">{title}</span>
     </Link>
-  )
-}
+  );
+};
 
-export default ItemList
+export default ItemList;

@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowDownIcon,
   ArrowUpIcon,
@@ -13,45 +13,45 @@ import {
   VisionIcon,
   TeamIcon,
   AdminIcon,
-  UserIcon
-} from './icons'
-import ItemListDropDown from './ItemListDropDown'
-import MobileMenu from './MobileMenu'
-import { useSession, signOut } from 'next-auth/react'
+  UserIcon,
+} from "./icons";
+import ItemListDropDown from "./ItemListDropDown";
+import MobileMenu from "./MobileMenu";
+import { useSession, signOut } from "next-auth/react";
 
-function NavBar (): React.ReactNode {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isMenuMobileOpen, setIsMenuMobileOpen] = useState(false)
-  const [isSubMenuAdminPanelOpen, setIsSubMenuAdminPanelOpen] = useState(false)
-  const [isSubMenuMobileOpen, setIsSubMenuMobileOpen] = useState(false)
-  const { data: session, status } = useSession()
+function NavBar(): React.ReactNode {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuMobileOpen, setIsMenuMobileOpen] = useState(false);
+  const [isSubMenuAdminPanelOpen, setIsSubMenuAdminPanelOpen] = useState(false);
+  const [isSubMenuMobileOpen, setIsSubMenuMobileOpen] = useState(false);
+  const { data: session, status } = useSession();
 
   const handleMenuOpen = (): void => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   const handleMenuMobileOpen = (): void => {
-    setIsMenuMobileOpen(!isMenuMobileOpen)
-  }
+    setIsMenuMobileOpen(!isMenuMobileOpen);
+  };
 
   const handleSubMenuMobileOpen = (): void => {
-    setIsSubMenuMobileOpen(!isSubMenuMobileOpen)
-  }
+    setIsSubMenuMobileOpen(!isSubMenuMobileOpen);
+  };
 
   const handleSubMenuAdminPanelOpen = (): void => {
-    setIsSubMenuAdminPanelOpen(!isSubMenuAdminPanelOpen)
-  }
+    setIsSubMenuAdminPanelOpen(!isSubMenuAdminPanelOpen);
+  };
 
   const handleResetMenus = (): void => {
-    setIsMenuOpen(false)
-    setIsMenuMobileOpen(false)
-    setIsSubMenuMobileOpen(false)
-    setIsSubMenuAdminPanelOpen(false)
-  }
+    setIsMenuOpen(false);
+    setIsMenuMobileOpen(false);
+    setIsSubMenuMobileOpen(false);
+    setIsSubMenuAdminPanelOpen(false);
+  };
 
   const handleCloseSession = (): void => {
-    signOut()
-  }
+    signOut();
+  };
 
   return (
     <header className="bg-white border border-[#0f172a1a] fixed top-0 w-full z-10">
@@ -59,12 +59,13 @@ function NavBar (): React.ReactNode {
         <div className="flex lg:flex-1">
           <Link
             href={
-              status === 'authenticated' &&
-              session?.user?.document !== '0000000000'
-                ? '/profile/user'
-                : status === 'authenticated' && session?.user?.document === '0000000000'
-                  ? '/profile/admin'
-                  : '/'
+              status === "authenticated" &&
+              session?.user?.document !== "0000000000"
+                ? "/profile/user"
+                : status === "authenticated" &&
+                  session?.user?.document === "0000000000"
+                ? "/profile/admin"
+                : "/"
             }
             className="-m-1.5 p-1.5"
             onClick={handleResetMenus}
@@ -81,13 +82,13 @@ function NavBar (): React.ReactNode {
         <div className="hidden lg:flex lg:gap-x-12">
           <Link
             href={
-              status === 'authenticated' &&
-              session?.user?.document !== '0000000000'
-                ? '/profile/user'
-                : status === 'authenticated' &&
-                  session?.user?.document === '0000000000'
-                  ? '/profile/admin/home-preview'
-                  : '/'
+              status === "authenticated" &&
+              session?.user?.document !== "0000000000"
+                ? "/profile/user"
+                : status === "authenticated" &&
+                  session?.user?.document === "0000000000"
+                ? "/profile/admin/home-preview"
+                : "/"
             }
             className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
             onClick={handleResetMenus}
@@ -123,8 +124,8 @@ function NavBar (): React.ReactNode {
             <div
               className={`${
                 isMenuOpen
-                  ? 'transition ease-out duration-200 opacity-100 translate-y-0'
-                  : 'transition ease-in duration-150 opacity-0 translate-y-1'
+                  ? "transition ease-out duration-200 opacity-100 translate-y-0"
+                  : "transition ease-in duration-150 opacity-0 translate-y-1"
               }`}
             >
               {isMenuOpen && (
@@ -166,65 +167,57 @@ function NavBar (): React.ReactNode {
         </div>
         <div
           className={`hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12 ${
-            status === 'authenticated' &&
-            session?.user?.document === '0000000000' &&
-            'lg:w-40 lg:ml-20'
+            status === "authenticated" &&
+            session?.user?.document === "0000000000" &&
+            "lg:w-40 lg:ml-20"
           }`}
         >
-          {
-            status !== 'authenticated'
-              ? (
-              <>
-                <Link
-                  href="/signup"
-                  className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
-                  onClick={handleResetMenus}
-                >
-                  Registrarse
-                </Link>
-                <Link
-                  href="/signin"
-                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
-                  onClick={handleResetMenus}
-                >
-                  Ingresar
-                  <LogInIcon />
-                </Link>
-              </>
-                )
-              : (
+          {status !== "authenticated" ? (
             <>
-              {
-                session?.user?.document === '0000000000'
-                  ? (
-                      <Link
-                        href='/profile/admin/dashboard'
-                        className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
-                      >
-                          Panel Administrador
-                        <AdminIcon />
-                      </Link>
-                    )
-                  : (
-                      <Link
-                        href='/profile/user/personal-information'
-                        className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
-                      >
-                          Perfil
-                        <UserIcon />
-                      </Link>
-                    )
-              }
+              <Link
+                href="/signup"
+                className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                onClick={handleResetMenus}
+              >
+                Registrarse
+              </Link>
+              <Link
+                href="/signin"
+                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                onClick={handleResetMenus}
+              >
+                Ingresar
+                <LogInIcon />
+              </Link>
+            </>
+          ) : (
+            <>
+              {session?.user?.document === "0000000000" ? (
+                <Link
+                  href="/profile/admin/dashboard"
+                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                >
+                  Panel Administrador
+                  <AdminIcon />
+                </Link>
+              ) : (
+                <Link
+                  href="/profile/user/personal-information"
+                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                >
+                  Perfil
+                  <UserIcon />
+                </Link>
+              )}
               <button
                 className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
                 onClick={handleCloseSession}
               >
-                  Cerrar Sesión
+                Cerrar Sesión
                 <LogInIcon />
               </button>
             </>
-                )
-          }
+          )}
         </div>
         <button
           className="lg:hidden hover:text-[#79ad34]"
@@ -245,7 +238,7 @@ function NavBar (): React.ReactNode {
         />
       )}
     </header>
-  )
+  );
 }
 
-export default NavBar
+export default NavBar;

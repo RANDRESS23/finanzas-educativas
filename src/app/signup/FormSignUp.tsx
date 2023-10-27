@@ -1,78 +1,78 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { toast } from 'react-hot-toast'
-import { type FieldValues, type SubmitHandler, useForm } from 'react-hook-form'
-import { signIn } from 'next-auth/react'
-import api from '@/libs/api'
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
+import { signIn } from "next-auth/react";
+import api from "@/libs/api";
 
-export default function FormSignUp (): React.ReactNode {
-  const [termsAccepted, setTermsAccepted] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const router = useRouter()
+export default function FormSignUp(): React.ReactNode {
+  const [termsAccepted, setTermsAccepted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      documentType: 'cedula_ciudadania',
-      document: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      password: '',
-      confirmPassword: ''
-    }
-  })
+      documentType: "cedula_ciudadania",
+      document: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      phoneNumber: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
 
-      const response = await api.post('/user', data)
+      const response = await api.post("/user", data);
 
       if (response.status === 201) {
-        toast.success('Te registraste exitosamente!')
+        toast.success("Te registraste exitosamente!");
 
-        const response = await signIn('credentials', {
+        const response = await signIn("credentials", {
           document: data.document,
           password: data.password,
-          redirect: false
-        })
+          redirect: false,
+        });
 
         if (response?.error !== null) {
-          return toast.error('Datos incorrectos!')
+          return toast.error("Datos incorrectos!");
         }
 
         if (response?.ok) {
-          router.refresh()
-          router.push('/profile/user')
-          reset()
+          router.refresh();
+          router.push("/profile/user");
+          reset();
         }
-      } else toast.error('Error al registrarse!')
+      } else toast.error("Error al registrarse!");
     } catch (error: any) {
       if (error.response.data !== undefined) {
-        const errorsMessages = Object.values(error.response.data)
-        let errorsMessagesString = ''
+        const errorsMessages = Object.values(error.response.data);
+        let errorsMessagesString = "";
 
         errorsMessages.forEach((message: any) => {
-          errorsMessagesString += `🔸 ${message} ${'\n'}`
-        })
+          errorsMessagesString += `🔸 ${message} ${"\n"}`;
+        });
 
-        toast.error(errorsMessagesString, { className: 'text-center' })
+        toast.error(errorsMessagesString, { className: "text-center" });
       } else {
-        console.log({ error })
+        console.log({ error });
       }
     } finally {
-      setIsLoading(false)
+      setIsLoading(false);
     }
-  }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -89,8 +89,8 @@ export default function FormSignUp (): React.ReactNode {
               <div className="mt-2">
                 <select
                   id="documentType"
-                  {...register('documentType', {
-                    required: 'El tipo de documento es un campo obligatorio!'
+                  {...register("documentType", {
+                    required: "El tipo de documento es un campo obligatorio!",
                   })}
                   className="block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs"
                 >
@@ -115,20 +115,20 @@ export default function FormSignUp (): React.ReactNode {
                 <input
                   type="text"
                   id="document"
-                  {...register('document', {
+                  {...register("document", {
                     required:
-                      'El número de identificación es un campo obligatorio!'
+                      "El número de identificación es un campo obligatorio!",
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.document !== undefined
-                            ? 'ring-rose-500'
-                            : 'border-gray-300'
+                            ? "ring-rose-500"
+                            : "border-gray-300"
                         }}
                         ${
                           errors.document !== undefined
-                            ? 'focus:outline-rose-500'
-                            : 'focus:outline-[#008aae]'
+                            ? "focus:outline-rose-500"
+                            : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
@@ -150,19 +150,19 @@ export default function FormSignUp (): React.ReactNode {
                 <input
                   type="text"
                   id="firstName"
-                  {...register('firstName', {
-                    required: 'Los nombres son un campo obligatorio!'
+                  {...register("firstName", {
+                    required: "Los nombres son un campo obligatorio!",
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.first_name !== undefined
-                            ? 'ring-rose-500'
-                            : 'border-gray-300'
+                            ? "ring-rose-500"
+                            : "border-gray-300"
                         }}
                         ${
                           errors.first_name !== undefined
-                            ? 'focus:outline-rose-500'
-                            : 'focus:outline-[#008aae]'
+                            ? "focus:outline-rose-500"
+                            : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
@@ -184,19 +184,19 @@ export default function FormSignUp (): React.ReactNode {
                 <input
                   type="text"
                   id="lastName"
-                  {...register('lastName', {
-                    required: 'Los apellidos son un campo obligatorio!'
+                  {...register("lastName", {
+                    required: "Los apellidos son un campo obligatorio!",
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.last_name !== undefined
-                            ? 'ring-rose-500'
-                            : 'border-gray-300'
+                            ? "ring-rose-500"
+                            : "border-gray-300"
                         }}
                         ${
                           errors.last_name !== undefined
-                            ? 'focus:outline-rose-500'
-                            : 'focus:outline-[#008aae]'
+                            ? "focus:outline-rose-500"
+                            : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
@@ -218,19 +218,19 @@ export default function FormSignUp (): React.ReactNode {
                 <input
                   type="tel"
                   id="phoneNumber"
-                  {...register('phoneNumber', {
-                    required: 'El número de teléfono es un campo obligatorio!'
+                  {...register("phoneNumber", {
+                    required: "El número de teléfono es un campo obligatorio!",
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.phone_number !== undefined
-                            ? 'ring-rose-500'
-                            : 'border-gray-300'
+                            ? "ring-rose-500"
+                            : "border-gray-300"
                         }}
                         ${
                           errors.phone_number !== undefined
-                            ? 'focus:outline-rose-500'
-                            : 'focus:outline-[#008aae]'
+                            ? "focus:outline-rose-500"
+                            : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
@@ -252,19 +252,19 @@ export default function FormSignUp (): React.ReactNode {
                 <input
                   id="email"
                   type="email"
-                  {...register('email', {
-                    required: 'El correo electrónico es un campo obligatorio!'
+                  {...register("email", {
+                    required: "El correo electrónico es un campo obligatorio!",
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.email !== undefined
-                            ? 'ring-rose-500'
-                            : 'border-gray-300'
+                            ? "ring-rose-500"
+                            : "border-gray-300"
                         }}
                         ${
                           errors.email !== undefined
-                            ? 'focus:outline-rose-500'
-                            : 'focus:outline-[#008aae]'
+                            ? "focus:outline-rose-500"
+                            : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
@@ -286,19 +286,19 @@ export default function FormSignUp (): React.ReactNode {
                 <input
                   type="password"
                   id="password"
-                  {...register('password', {
-                    required: 'La contraseña es un campo obligatorio!'
+                  {...register("password", {
+                    required: "La contraseña es un campo obligatorio!",
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.password !== undefined
-                            ? 'ring-rose-500'
-                            : 'border-gray-300'
+                            ? "ring-rose-500"
+                            : "border-gray-300"
                         }}
                         ${
                           errors.password !== undefined
-                            ? 'focus:outline-rose-500'
-                            : 'focus:outline-[#008aae]'
+                            ? "focus:outline-rose-500"
+                            : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
@@ -320,20 +320,20 @@ export default function FormSignUp (): React.ReactNode {
                 <input
                   type="password"
                   id="confirmPassword"
-                  {...register('confirmPassword', {
+                  {...register("confirmPassword", {
                     required:
-                      'La confirmación de la contraseña es un campo obligatorio!'
+                      "La confirmación de la contraseña es un campo obligatorio!",
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.confirm_password !== undefined
-                            ? 'ring-rose-500'
-                            : 'border-gray-300'
+                            ? "ring-rose-500"
+                            : "border-gray-300"
                         }}
                         ${
                           errors.confirm_password !== undefined
-                            ? 'focus:outline-rose-500'
-                            : 'focus:outline-[#008aae]'
+                            ? "focus:outline-rose-500"
+                            : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
@@ -357,7 +357,7 @@ export default function FormSignUp (): React.ReactNode {
                   className="h-6 w-6 rounded border-gray-300 text-[#008aae] focus:ring-[#79ad34]"
                   checked={termsAccepted}
                   onChange={() => {
-                    setTermsAccepted(!termsAccepted)
+                    setTermsAccepted(!termsAccepted);
                   }}
                 />
               </div>
@@ -378,11 +378,11 @@ export default function FormSignUp (): React.ReactNode {
           className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50"
           disabled={!termsAccepted || isLoading}
         >
-          {isLoading ? 'Cargando..' : 'REGISTRARME'}
+          {isLoading ? "Cargando.." : "REGISTRARME"}
         </button>
       </div>
       <p className="mt-10 text-center text-gray-500">
-        ¿Ya estás registrado?{' '}
+        ¿Ya estás registrado?{" "}
         <Link
           href="/signin"
           className="font-semibold leading-6 text-[#008aae] hover:text-[#79ad34]"
@@ -391,5 +391,5 @@ export default function FormSignUp (): React.ReactNode {
         </Link>
       </p>
     </form>
-  )
+  );
 }

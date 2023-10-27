@@ -1,12 +1,12 @@
-import Link from 'next/link'
-import { MisionIcon, QuestionIcon, TeamIcon, VisionIcon } from './icons'
+import Link from "next/link";
+import { MisionIcon, QuestionIcon, TeamIcon, VisionIcon } from "./icons";
 
 interface AboutListMobileProps {
-  handleResetMenus: () => void
+  handleResetMenus: () => void;
 }
 
-export default function AboutListMobile ({
-  handleResetMenus
+export default function AboutListMobile({
+  handleResetMenus,
 }: AboutListMobileProps): React.ReactNode {
   return (
     <div className="mt-2 space-y-2" id="disclosure-1">
@@ -43,5 +43,5 @@ export default function AboutListMobile ({
         <TeamIcon />
       </Link>
     </div>
-  )
+  );
 }

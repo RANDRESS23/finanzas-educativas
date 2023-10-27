@@ -157,7 +157,7 @@ const Credit: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
         fill="#3f3d56"
       />
     </svg>
-  )
-}
+  );
+};
 
-export default Credit
+export default Credit;
