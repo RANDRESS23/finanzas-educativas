@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 
-const FormChangePsw: React.FC = () => {
+const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
   const goBack = useRouter().back;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -31,11 +31,12 @@ const FormChangePsw: React.FC = () => {
       const response = await api.post("/security/forgot-password", {
         password: data.password,
         confirmPassword: data.confirmPassword,
+        jwtToken,
       });
 
       if (response.status !== 201) {
         toast.error(
-          "Ha ocurrido un error al cambiar la contraseña, intente nuevamente más tarde.",
+          "Ha ocurrido un error al cambiar la contraseña, intente nuevamente más tarde."
         );
         return;
       }

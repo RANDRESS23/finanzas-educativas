@@ -4,10 +4,11 @@ import { NextResponse } from "next/server";
 import Jwt from "jsonwebtoken";
 import { db } from "@/libs/prismaDB";
 import { sendEmail } from "@/libs/sgMail";
+import { TPayload } from "@/types/TPayload";
 
 export async function GET(
   _request: Request,
-  { params }: { params: { email: string } },
+  { params }: { params: { email: string } }
 ) {
   const { to } = sendEmailSchema.parse(params);
 
@@ -20,11 +21,11 @@ export async function GET(
   if (userFound === null) {
     return NextResponse.json(
       { message: "El email no se encuentra registrado." },
-      { status: 404 },
+      { status: 404 }
     );
   }
 
-  const payload = {
+  const payload: TPayload = {
     document: userFound.document,
     email: userFound.email,
   };
@@ -32,7 +33,7 @@ export async function GET(
   const tokenRecoverPsw = Jwt.sign(
     payload,
     process.env.secret ?? "secretkey",
-    { expiresIn: 10 * 60 }, // 10 minutos
+    { expiresIn: 10 * 60 } // 10 minutos
   );
 
   const resetPasswordLink = `${process.env.NEXTAUTH_URL}/forgot-password/${tokenRecoverPsw}`;
@@ -56,19 +57,19 @@ export async function GET(
     if (!msgSended?.response) {
       return NextResponse.json(
         { message: `Error sending email to ${to}` },
-        { status: 500 },
+        { status: 500 }
       );
     }
 
     return NextResponse.json(
       { message: `Email sended to ${to}` },
-      { status: 201 },
+      { status: 201 }
     );
   } catch (error) {
     console.error(error);
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
