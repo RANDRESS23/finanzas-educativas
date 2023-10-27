@@ -1,7 +1,6 @@
 "use client";
 
 import api from "@/libs/api";
-import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
@@ -9,6 +8,7 @@ import toast from "react-hot-toast";
 
 const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
   const goBack = useRouter().back;
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -42,11 +42,21 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
       }
 
       toast.success("Su contraseña ha sido cambiada exitosamente");
+      router.refresh();
+      router.push("/signin");
       reset();
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        toast.error(error.response?.data.message);
-        console.log({ errorMessage: error.response?.data.message });
+    } catch (error: any) {
+      if (error.response.data !== undefined) {
+        const errorsMessages = Object.values(error.response.data);
+        let errorsMessagesString = "";
+
+        errorsMessages.forEach((message: any) => {
+          errorsMessagesString += `🔸 ${message} ${"\n"}`;
+        });
+
+        toast.error(errorsMessagesString, { className: "text-center" });
+      } else {
+        console.log({ error });
       }
     } finally {
       setIsLoading(false);

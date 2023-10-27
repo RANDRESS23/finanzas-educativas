@@ -12,7 +12,7 @@ export default function EmailSender(): React.ReactNode {
           <Title text="¡Finanzas Educativas!" isTextStatic />
         </h2>
       </div>
-      <div className="flex justify-center items-center gap-16 mt-10">
+      <div className="flex justify-center items-center gap-16">
         <div className="lg:flex lg:justify-center lg:items-center hidden">
           <Image width={400} height={400} src={ForgotPasswordGif} alt="" />
         </div>

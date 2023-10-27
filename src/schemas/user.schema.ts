@@ -32,7 +32,7 @@ export const userPasswordsSchema = baseUserSchema
   })
   .refine((data) => data.password === data.confirmPassword, {
     message: "Las contraseñas no coinciden.",
-    path: ["confirm_password"],
+    path: ["confirmPassword"],
   });
 
 export const signUpSchema = baseUserSchema

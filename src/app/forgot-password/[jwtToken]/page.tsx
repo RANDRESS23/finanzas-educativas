@@ -1,4 +1,4 @@
-import ChangePasswordGif from "@/app/forgot-password/gifs/ChangePassword.png";
+import ChangePasswordGif from "@/app/forgot-password/gifs/ChangePassword.gif";
 import NotFound from "@/app/not-found";
 import Title from "@/components/Title";
 import Jwt from "jsonwebtoken";
@@ -25,7 +25,7 @@ export default async function PasswordChanger({
             <Title text="¡Finanzas Educativas!" isTextStatic />
           </h2>
         </div>
-        <div className="flex justify-center items-center gap-16 mt-10">
+        <div className="flex justify-center items-center gap-16 mt-5">
           <div className="lg:flex lg:justify-center lg:items-center hidden">
             <Image width={400} height={400} src={ChangePasswordGif} alt="" />
           </div>
