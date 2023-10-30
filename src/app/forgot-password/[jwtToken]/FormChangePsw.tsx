@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
+import { MdOutlineChangeCircle as ChangeIcon } from "react-icons/md";
 
 const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
   const router = useRouter();
@@ -117,11 +118,12 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
       <button
         type="submit"
         className={clsx(
-          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full",
+          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-1",
           { "cursor-not-allowed": isLoading }
         )}
         disabled={isLoading}
       >
+        <ChangeIcon />
         {isLoading ? "CARGANDO..." : "CONTINUAR"}
       </button>
 

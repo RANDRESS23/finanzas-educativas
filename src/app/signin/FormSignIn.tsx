@@ -8,6 +8,7 @@ import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import clsx from "clsx";
 import clsxe from "@/libs/clsxe";
+import { PiSignIn as SignInIcon } from "react-icons/pi";
 
 export default function FormSignIn() {
   const [isLoading, setIsLoading] = useState(false);
@@ -135,11 +136,12 @@ export default function FormSignIn() {
       <button
         type="submit"
         className={clsx(
-          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full",
+          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-1",
           { "cursor-not-allowed": isLoading }
         )}
         disabled={isLoading}
       >
+        <SignInIcon />
         {isLoading ? "CARGANDO..." : "INGRESAR"}
       </button>
     </form>

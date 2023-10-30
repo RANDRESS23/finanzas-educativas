@@ -9,6 +9,7 @@ import { signIn } from "next-auth/react";
 import api from "@/libs/api";
 import clsx from "clsx";
 import clsxe from "@/libs/clsxe";
+import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
 export default function FormSignUp(): React.ReactNode {
   const [termsAccepted, setTermsAccepted] = useState(false);
@@ -326,11 +327,12 @@ export default function FormSignUp(): React.ReactNode {
         <button
           type="submit"
           className={clsx(
-            "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50",
+            "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 flex items-center justify-center gap-1",
             { "cursor-not-allowed": !termsAccepted || isLoading }
           )}
           disabled={!termsAccepted || isLoading}
         >
+          <SignupIcon />
           {isLoading ? "CARGANDO..." : "REGISTRARME"}
         </button>
       </div>

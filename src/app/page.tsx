@@ -2,6 +2,8 @@ import Title from "@/components/Title";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
+
 // import ContactBot from './contact/ContactBot'
 
 export default async function Home() {
@@ -41,9 +43,10 @@ export default async function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/signup"
-                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300"
+                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-1"
               >
                 Registrarse
+                <SignupIcon />
               </Link>
               <Link
                 href="/signin"
