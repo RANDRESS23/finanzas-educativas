@@ -106,7 +106,7 @@ export default function MobileMenu({
               <div className="-mx-3">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] animate-pulse"
+                  className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
                   aria-controls="disclosure-1"
                   aria-expanded="false"
                   onClick={handleSubMenuMobileOpen}

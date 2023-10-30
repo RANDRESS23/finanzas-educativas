@@ -1,10 +1,15 @@
+import Title from "@/components/Title";
+import { type Metadata } from "next";
+import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import Link from "next/link";
-import SignInGif from "./gifs/signIn.gif";
 import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth/next";
-import Title from "@/components/Title";
 import FormSignIn from "./FormSignIn";
+import SignInGif from "./gifs/signIn.gif";
+
+export const metadata: Metadata = {
+  title: "Finanzas Educativas | Iniciar Sesión",
+};
 
 export default async function Signin() {
   const session = await getServerSession();

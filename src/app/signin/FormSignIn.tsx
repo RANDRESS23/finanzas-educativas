@@ -6,9 +6,12 @@ import { toast } from "react-hot-toast";
 import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import clsx from "clsx";
+import clsxe from "@/libs/clsxe";
 
 export default function FormSignIn() {
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const router = useRouter();
 
   const {
@@ -75,17 +78,7 @@ export default function FormSignIn() {
           {...register("document", {
             required: "El número de identificación es un campo obligatorio!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
-                ${
-                  errors.document !== undefined
-                    ? "ring-rose-500"
-                    : "border-gray-300"
-                }}
-                ${
-                  errors.document !== undefined
-                    ? "focus:outline-rose-500"
-                    : "focus:outline-[#008aae]"
-                }`}
+          className={clsxe(errors.document)}
         />
         {errors.document !== undefined && (
           <p className="my-2 text-sm text-rose-500">
@@ -102,23 +95,12 @@ export default function FormSignIn() {
           Contraseña
         </label>
         <input
-          type="password"
+          type={passwordVisible ? "text" : "password"}
           id="password"
           {...register("password", {
             required: "La contraseña es un campo obligatorio!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs"
-                autoComplete="off
-                ${
-                  errors.password !== undefined
-                    ? "ring-rose-500"
-                    : "border-gray-300"
-                }}
-                ${
-                  errors.password !== undefined
-                    ? "focus:outline-rose-500"
-                    : "focus:outline-[#008aae]"
-                }`}
+          className={clsxe(errors.password)}
         />
         {errors.password !== undefined && (
           <p className="mt-2 text-sm text-rose-500">
@@ -126,17 +108,22 @@ export default function FormSignIn() {
           </p>
         )}
       </div>
-      {/* <div className="mb-4 flex items-center">
-              <input
-                type="checkbox"
-                id="remember"
-                name="remember"
-                className="text-blue-500"
-              />
-              <label htmlFor="remember" className="text-gray-600 ml-2">
-                Remember Me
-              </label>
-            </div> */}
+      <div className="mb-4 flex items-center">
+        <input
+          type="checkbox"
+          id="showPassword"
+          className="text-blue-500"
+          onChange={() => setPasswordVisible(!passwordVisible)}
+          checked={passwordVisible}
+          disabled={isLoading}
+        />
+        <label
+          htmlFor="showPassword"
+          className="text-gray-600 ml-2 mb-1 text-sm"
+        >
+          Mostrar contraseña
+        </label>
+      </div>
       <p className="mb-6 text-sm">
         <Link
           href="/forgot-password"
@@ -147,10 +134,13 @@ export default function FormSignIn() {
       </p>
       <button
         type="submit"
-        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full"
+        className={clsx(
+          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full",
+          { "cursor-not-allowed": isLoading }
+        )}
         disabled={isLoading}
       >
-        {isLoading ? "Cargando.." : "INGRESAR"}
+        {isLoading ? "CARGANDO..." : "INGRESAR"}
       </button>
     </form>
   );

@@ -1,4 +1,4 @@
-import { faContao, faHackerNews } from "@fortawesome/free-brands-svg-icons";
+import { faContao, faHouzz } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { type Metadata } from "next";
 import Image from "next/image";
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   const Contacto = faContao;
-  const Youtube = faHackerNews;
+  const Home = faHouzz;
 
   return (
     <div className="min-h-screen flex items-center justify-center w-10/12 m-auto">
@@ -34,7 +34,7 @@ export default function NotFound() {
           href="/"
           className="px-4 py-3 mx-2 bg-blue-500 text-white rounded-lg inline-flex items-center hover:bg-blue-600 transition duration-300 ease-in-out mb-4"
         >
-          <FontAwesomeIcon className="mr-1 w-4 h-4" icon={Youtube} />
+          <FontAwesomeIcon className="mr-1 w-4 h-4" icon={Home} />
           <span className="text-xs">Go to Home</span>
         </Link>
         <Link

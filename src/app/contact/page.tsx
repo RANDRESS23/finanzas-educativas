@@ -1,7 +1,12 @@
 import Title from "@/components/Title";
+import { type Metadata } from "next";
 import Image from "next/image";
-import ContactUsGif from "./gifs/ContactUs.gif";
 import FormContact from "./FormContact";
+import ContactUsGif from "./gifs/ContactUs.gif";
+
+export const metadata: Metadata = {
+  title: "Finanzas Educativas | Contáctanos",
+};
 
 export default function Contact(): React.ReactNode {
   return (

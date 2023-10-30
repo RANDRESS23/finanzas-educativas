@@ -1,7 +1,9 @@
 "use client";
 
 import api from "@/libs/api";
+import clsxe from "@/libs/clsxe";
 import { AxiosError } from "axios";
+import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
@@ -31,7 +33,7 @@ const FormSendEmail: React.FC = () => {
       }
 
       toast.success(
-        `Hemos enviado a ${email} un link para recuperar tu contraseña.`,
+        `Hemos enviado a ${email} un link para recuperar tu contraseña.`
       );
       reset();
     } catch (error) {
@@ -60,14 +62,7 @@ const FormSendEmail: React.FC = () => {
           {...register("email", {
             required: "Por favor ingresa el correo electrónico de registro!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs ${
-            errors.email !== undefined ? "ring-rose-500" : "border-gray-300"
-          }}
-          ${
-            errors.email !== undefined
-              ? "focus:outline-rose-500"
-              : "focus:outline-[#008aae]"
-          }`}
+          className={clsxe(errors.email)}
         />
         {errors.email !== undefined && (
           <p className="my-2 text-sm text-rose-500">
@@ -78,7 +73,10 @@ const FormSendEmail: React.FC = () => {
 
       <button
         type="submit"
-        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full"
+        className={clsx(
+          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full",
+          { "cursor-not-allowed": isLoading }
+        )}
         disabled={isLoading}
       >
         {isLoading ? "ENVIANDO..." : "ENVIAR"}

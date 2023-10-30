@@ -1,5 +1,10 @@
+import { type Metadata } from "next";
 import AboutSection from "./AboutSection";
 import Team from "./Team";
+
+export const metadata: Metadata = {
+  title: "Finanzas Educativas | Nosotros",
+};
 
 export default function About(): React.ReactNode {
   return (
