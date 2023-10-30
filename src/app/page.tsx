@@ -43,7 +43,7 @@ export default async function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/signup"
-                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-1"
+                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1"
               >
                 Registrarse
                 <SignupIcon />

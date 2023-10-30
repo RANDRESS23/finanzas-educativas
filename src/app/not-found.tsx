@@ -1,8 +1,8 @@
 import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { MdOutlineConnectWithoutContact as ContactIcon } from "react-icons/md";
-import { BiHomeSmile as HomeIcon } from "react-icons/bi";
+import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
+import { MdContactSupport as ContactIcon } from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Página No Encontrada",
@@ -29,7 +29,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="px-4 py-3 mx-2 bg-blue-500 text-white rounded-lg inline-flex items-center hover:bg-blue-600 transition duration-300 ease-in-out mb-4"
+          className="px-4 py-3 mx-2 bg-blue-500 text-white rounded-lg inline-flex items-center hover:bg-blue-600 transition duration-300 ease-in-out mb-4 gap-x-1"
         >
           <HomeIcon />
           <span className="text-xs">Go to Home</span>

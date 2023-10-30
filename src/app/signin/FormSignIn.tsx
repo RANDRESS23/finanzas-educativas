@@ -136,7 +136,7 @@ export default function FormSignIn() {
       <button
         type="submit"
         className={clsx(
-          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-1",
+          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-x-1",
           { "cursor-not-allowed": isLoading }
         )}
         disabled={isLoading}

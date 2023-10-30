@@ -18,6 +18,11 @@ import {
 import ItemListDropDown from "./ItemListDropDown";
 import MobileMenu from "./MobileMenu";
 import { useSession, signOut } from "next-auth/react";
+import { RiTeamFill as UsIcon } from "react-icons/ri";
+import { BiBookReader as EducationIcon } from "react-icons/bi";
+import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
+import { MdContactSupport as ContactIcon } from "react-icons/md";
+import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
 function NavBar(): React.ReactNode {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,23 +95,26 @@ function NavBar(): React.ReactNode {
                 ? "/profile/admin/home-preview"
                 : "/"
             }
-            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center gap-x-1 justify-center"
             onClick={handleResetMenus}
           >
+            <HomeIcon className="-mb-1" />
             Inicio
           </Link>
           <Link
             href="/financial-education"
-            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center justify-center gap-x-1"
             onClick={handleResetMenus}
           >
+            <EducationIcon className="-mb-1" />
             Educación Financiera
           </Link>
           <Link
             href="/contact"
-            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center justify-center gap-x-1"
             onClick={handleResetMenus}
           >
+            <ContactIcon />
             Contacto
           </Link>
 
@@ -117,6 +125,7 @@ function NavBar(): React.ReactNode {
               aria-expanded="false"
               onClick={handleMenuOpen}
             >
+              <UsIcon />
               Nosotros
               {isMenuOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
             </button>
@@ -176,10 +185,11 @@ function NavBar(): React.ReactNode {
             <>
               <Link
                 href="/signup"
-                className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center justify-center gap-x-1"
                 onClick={handleResetMenus}
               >
                 Registrarse
+                <SignupIcon className="-mb-1" />
               </Link>
               <Link
                 href="/signin"

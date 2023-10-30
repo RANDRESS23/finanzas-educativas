@@ -3,6 +3,7 @@ import Image from "next/image";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth/next";
 import Title from "@/components/Title";
+import { TbBrandSpeedtest as TestIcon } from "react-icons/tb";
 
 export default async function ProfileUserPage() {
   const session = await getServerSession();
@@ -29,7 +30,9 @@ export default async function ProfileUserPage() {
           </div>
           <div className="relative w-full">
             <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl w-full">
-              Bienvenido a <span className='text-[#79ad34]'>¡Finanzas Educativas!</span> <Title text='¡Finanzas Educativas!' isTextStatic={false} />
+              Bienvenido a{" "}
+              <span className="text-[#79ad34]">¡Finanzas Educativas!</span>{" "}
+              <Title text="¡Finanzas Educativas!" isTextStatic={false} />
             </h1>
             <p className="text-lg leading-8 text-gray-600 text-left">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
@@ -39,9 +42,10 @@ export default async function ProfileUserPage() {
             <div className="mt-10 flex items-center justify-start gap-x-6">
               <Link
                 href="/signup"
-                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-300"
+                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-2"
               >
                 REALIZAR TEST DE CONOCIMIENTO
+                <TestIcon />
               </Link>
             </div>
           </div>
@@ -52,7 +56,7 @@ export default async function ProfileUserPage() {
             height={400}
             src="https://images.unsplash.com/photo-1498758536662-35b82cd15e29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80"
             alt=""
-            className="object-cover lg:h-full w-[180%] h-auto aspect-square"
+            className="object-cover lg:h-full w-[180%] h-auto aspect-square rounded-md"
           />
         </div>
       </div>
