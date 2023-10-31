@@ -51,6 +51,16 @@ model UserMoreInfo {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model Contact {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  email       String
+  phoneNumber String
+  message     String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
 model InformationSchema {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   mision    String

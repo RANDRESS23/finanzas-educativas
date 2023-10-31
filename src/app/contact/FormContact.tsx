@@ -26,15 +26,13 @@ export default function FormContact() {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    try {
-      setIsLoading(true);
+    setIsLoading(true);
 
-      const response = await api.post("/contact", {
-        data,
-      });
+    try {
+      const response = await api.post("/contact", { ...data });
 
       if (response.status === 201) {
-        toast.success(response.data);
+        toast.success(response.data.message);
         reset();
       }
     } catch (error: any) {
