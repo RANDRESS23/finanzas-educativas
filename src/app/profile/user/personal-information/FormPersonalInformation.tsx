@@ -68,17 +68,17 @@ export default function FormPersonalInformation() {
   
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     console.log({data});
-    // toast.success("Mensaje enviado!");
-    // reset();
-    // try {
-    //   setIsLoading(true);
-    // } catch (error: any) {
-    //   toast.error(error.response.data.message);
-    //   console.log({ errorMessage: error.response.data.message });
-    //   console.log({ error });
-    // } finally {
-    //   setIsLoading(false);
-    // }
+    toast.success("Mensaje enviado!");
+    reset();
+    try {
+      setIsLoading(true);
+    } catch (error: any) {
+      toast.error(error.response.data.message);
+      console.log({ errorMessage: error.response.data.message });
+      console.log({ error });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
