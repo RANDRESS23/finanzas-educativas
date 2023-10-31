@@ -171,7 +171,7 @@ export default function MobileMenu({
                       >
                         <div className="flex justify-center items-center gap-2">
                           <AdminIcon />
-                          Panel Administrador
+                          Admin.
                         </div>
                         {isSubMenuAdminPanelOpen ? (
                           <ArrowUpIcon />

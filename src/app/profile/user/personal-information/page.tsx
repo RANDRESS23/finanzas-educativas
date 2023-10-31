@@ -8,5 +8,9 @@ export default async function PersonalInformationPage() {
     return redirect("/profile/admin");
   }
 
-  return <div>PersonalInformationPage</div>;
+  return (
+    <div>
+      <h1>PersonalInformationPage</h1>
+    </div>
+  );
 }

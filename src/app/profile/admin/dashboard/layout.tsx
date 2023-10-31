@@ -11,9 +11,9 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <main>
       <Aside />
       {children}
-    </>
+    </main>
   );
 }

@@ -207,7 +207,7 @@ function NavBar(): React.ReactNode {
                   href="/profile/admin/dashboard"
                   className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
                 >
-                  Panel Administrador
+                  Admin.
                   <AdminIcon />
                 </Link>
               ) : (
