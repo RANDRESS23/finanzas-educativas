@@ -16,7 +16,7 @@ export default function FormContact() {
     defaultValues: {
       name: "",
       email: "",
-      phone_number: "",
+      phoneNumber: "",
       message: "",
     },
   });
@@ -103,32 +103,32 @@ export default function FormContact() {
 
       <div className="mb-4">
         <label
-          htmlFor="phone_number"
+          htmlFor="phoneNumber"
           className="block font-medium leading-6 text-gray-900"
         >
           Teléfono
         </label>
         <input
           type="text"
-          id="phone_number"
-          {...register("phone_number", {
+          id="phoneNumber"
+          {...register("phoneNumber", {
             required: "El teléfono es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
                 ${
-                  errors.phone_number !== undefined
+                  errors.phoneNumber !== undefined
                     ? "ring-rose-500"
                     : "border-gray-300"
                 }}
                 ${
-                  errors.phone_number !== undefined
+                  errors.phoneNumber !== undefined
                     ? "focus:outline-rose-500"
                     : "focus:outline-[#008aae]"
                 }`}
         />
-        {errors.phone_number !== undefined && (
+        {errors.phoneNumber !== undefined && (
           <p className="my-2 text-sm text-rose-500">
-            {errors.phone_number.message as any}
+            {errors.phoneNumber.message as any}
           </p>
         )}
       </div>

@@ -155,20 +155,20 @@ export default function FormSignUp(): React.ReactNode {
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
-                          errors.first_name !== undefined
+                          errors.firstName !== undefined
                             ? "ring-rose-500"
                             : "border-gray-300"
                         }}
                         ${
-                          errors.first_name !== undefined
+                          errors.firstName !== undefined
                             ? "focus:outline-rose-500"
                             : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
-              {errors.first_name !== undefined && (
+              {errors.firstName !== undefined && (
                 <p className="mt-2 text-sm text-rose-500">
-                  {errors.first_name.message as any}
+                  {errors.firstName.message as any}
                 </p>
               )}
             </div>
@@ -189,20 +189,20 @@ export default function FormSignUp(): React.ReactNode {
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
-                          errors.last_name !== undefined
+                          errors.lastName !== undefined
                             ? "ring-rose-500"
                             : "border-gray-300"
                         }}
                         ${
-                          errors.last_name !== undefined
+                          errors.lastName !== undefined
                             ? "focus:outline-rose-500"
                             : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
-              {errors.last_name !== undefined && (
+              {errors.lastName !== undefined && (
                 <p className="mt-2 text-sm text-rose-500">
-                  {errors.last_name.message as any}
+                  {errors.lastName.message as any}
                 </p>
               )}
             </div>
@@ -223,20 +223,20 @@ export default function FormSignUp(): React.ReactNode {
                   })}
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
-                          errors.phone_number !== undefined
+                          errors.phoneNumber !== undefined
                             ? "ring-rose-500"
                             : "border-gray-300"
                         }}
                         ${
-                          errors.phone_number !== undefined
+                          errors.phoneNumber !== undefined
                             ? "focus:outline-rose-500"
                             : "focus:outline-[#008aae]"
                         }`}
                 />
               </div>
-              {errors.phone_number !== undefined && (
+              {errors.phoneNumber !== undefined && (
                 <p className="mt-2 text-sm text-rose-500">
-                  {errors.phone_number.message as any}
+                  {errors.phoneNumber.message as any}
                 </p>
               )}
             </div>

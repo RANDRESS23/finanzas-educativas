@@ -19,7 +19,7 @@ export default async function ProfileUserPage() {
             <div className="relative rounded-full px-5 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
               Completar mi información personal.{" "}
               <Link
-                href="/financial-education"
+                href="/profile/user/personal-information"
                 className="font-semibold text-[#008aae]"
               >
                 <span className="absolute inset-0" aria-hidden="true" />

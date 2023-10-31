@@ -3,7 +3,7 @@ import NextAuth from "next-auth"; // eslint-disable-line
 declare module "next-auth" {
   interface Session {
     user: {
-      id: integer;
+      id: string;
       documentType: string;
       document: string;
       firstName: string;

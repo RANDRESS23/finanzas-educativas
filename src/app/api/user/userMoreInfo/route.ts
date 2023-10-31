@@ -3,22 +3,6 @@ import { db } from "@/libs/prismaDB";
 import { signUpSchema } from "@/schemas/user.schema";
 import { NextResponse } from "next/server";
 
-export async function GET() {
-  try {
-    const users = await db.user.findMany();
-    console.log({ users });
-
-    return NextResponse.json(users);
-  } catch (error) {
-    console.log({ error });
-
-    return NextResponse.json(
-      { message: "Something went wrong.", error },
-      { status: 500 },
-    );
-  }
-}
-
 export async function POST(request: Request) {
   try {
     const body = await request.json();

@@ -17,7 +17,7 @@ export default function Contact(): React.ReactNode {
           <div className="lg:flex lg:justify-center lg:items-center hidden">
             <Image width={400} height={400} src={ContactUsGif} alt="" />
           </div>
-          <div className="border-b border-gray-900/10 pb-12 w-80">
+          <div className="pb-12 w-80">
             <FormContact />
           </div>
         </div>

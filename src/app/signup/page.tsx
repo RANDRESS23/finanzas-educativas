@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Image from "next/image";
 import SignUpGif from "./gifs/signUp.gif";
 import { redirect } from "next/navigation";
@@ -17,10 +16,6 @@ async function Signup() {
 
   return (
     <>
-      <Head>
-        <title>Finanzas Educativas | Registrarse</title>
-      </Head>
-
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mb-10 py-20">
         <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
           <h2 className="mt-3 text-center text-4xl md:text-3xl font-bold leading-9 tracking-tight text-gray-900">
