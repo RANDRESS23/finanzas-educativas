@@ -147,21 +147,7 @@ export default function FormSignUp(): React.ReactNode {
                   {...register("firstName", {
                     required: "Los nombres son un campo obligatorio!",
                   })}
-<<<<<<< HEAD
-                  className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
-                        ${
-                          errors.firstName !== undefined
-                            ? "ring-rose-500"
-                            : "border-gray-300"
-                        }}
-                        ${
-                          errors.firstName !== undefined
-                            ? "focus:outline-rose-500"
-                            : "focus:outline-[#008aae]"
-                        }`}
-=======
                   className={clsxe(errors.firstName)}
->>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
                 />
               </div>
               {errors.firstName !== undefined && (
@@ -185,21 +171,7 @@ export default function FormSignUp(): React.ReactNode {
                   {...register("lastName", {
                     required: "Los apellidos son un campo obligatorio!",
                   })}
-<<<<<<< HEAD
-                  className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
-                        ${
-                          errors.lastName !== undefined
-                            ? "ring-rose-500"
-                            : "border-gray-300"
-                        }}
-                        ${
-                          errors.lastName !== undefined
-                            ? "focus:outline-rose-500"
-                            : "focus:outline-[#008aae]"
-                        }`}
-=======
                   className={clsxe(errors.lastName)}
->>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
                 />
               </div>
               {errors.lastName !== undefined && (
@@ -223,21 +195,7 @@ export default function FormSignUp(): React.ReactNode {
                   {...register("phoneNumber", {
                     required: "El número de teléfono es un campo obligatorio!",
                   })}
-<<<<<<< HEAD
-                  className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
-                        ${
-                          errors.phoneNumber !== undefined
-                            ? "ring-rose-500"
-                            : "border-gray-300"
-                        }}
-                        ${
-                          errors.phoneNumber !== undefined
-                            ? "focus:outline-rose-500"
-                            : "focus:outline-[#008aae]"
-                        }`}
-=======
                   className={clsxe(errors.phoneNumber)}
->>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
                 />
               </div>
               {errors.phoneNumber !== undefined && (
