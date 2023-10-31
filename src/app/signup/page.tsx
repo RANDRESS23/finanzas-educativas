@@ -20,8 +20,7 @@ async function Signup() {
   }
 
   return (
-<<<<<<< HEAD
-    <>
+    <div>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mb-10 py-20">
         <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
           <h2 className="mt-3 text-center text-4xl md:text-3xl font-bold leading-9 tracking-tight text-gray-900">
@@ -37,13 +36,6 @@ async function Signup() {
           </div>
           <FormSignUp />
         </div>
-=======
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mb-10 py-20">
-      <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
-        <h2 className="mt-3 text-center text-4xl md:text-3xl font-bold leading-9 tracking-tight text-gray-900">
-          Registrarse en <Title text="¡Finanzas Educativas!" isTextStatic />
-        </h2>
->>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
       </div>
 
       <div className="mt-4 flex gap-10 sm:mx-auto sm:w-full sm:max-w-xl md:max-w-6xl">

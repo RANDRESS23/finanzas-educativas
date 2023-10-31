@@ -99,22 +99,8 @@ export default function FormContact() {
           {...register("phoneNumber", {
             required: "El teléfono es un campo obligatorio!",
           })}
-<<<<<<< HEAD
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
-                ${
-                  errors.phoneNumber !== undefined
-                    ? "ring-rose-500"
-                    : "border-gray-300"
-                }}
-                ${
-                  errors.phoneNumber !== undefined
-                    ? "focus:outline-rose-500"
-                    : "focus:outline-[#008aae]"
-                }`}
-=======
           className={clsxe(errors.phone_number)}
           spellCheck="false"
->>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
         />
         {errors.phoneNumber !== undefined && (
           <p className="my-2 text-sm text-rose-500">
