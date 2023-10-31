@@ -14,6 +14,7 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
   const goBack = () => router.back();
 
   const [isLoading, setIsLoading] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const {
     register,
@@ -77,7 +78,7 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
           Nueva contraseña
         </label>
         <input
-          type="password"
+          type={passwordVisible ? "text" : "password"}
           id="password"
           {...register("password", {
             required: "La contraseña es un campo obligatorio!",
@@ -92,7 +93,7 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
         )}
       </div>
 
-      <div className="mb-4">
+      <div className="mb-2">
         <label
           htmlFor="confirmPassword"
           className="block font-medium leading-6 text-gray-900"
@@ -100,7 +101,7 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
           Confirmar nueva contraseña
         </label>
         <input
-          type="password"
+          type={passwordVisible ? "text" : "password"}
           id="confirmPassword"
           {...register("confirmPassword", {
             required: "La contraseña es un campo obligatorio!",
@@ -113,6 +114,23 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
             {errors.confirmPassword.message as any}
           </p>
         )}
+      </div>
+
+      <div className="mb-4 flex items-center">
+        <input
+          type="checkbox"
+          id="showPassword"
+          className="text-blue-500"
+          onChange={() => setPasswordVisible(!passwordVisible)}
+          checked={passwordVisible}
+          disabled={isLoading}
+        />
+        <label
+          htmlFor="showPassword"
+          className="text-gray-600 ml-2 mb-1 text-sm"
+        >
+          Mostrar contraseña
+        </label>
       </div>
 
       <button
