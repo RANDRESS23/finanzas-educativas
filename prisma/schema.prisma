@@ -50,3 +50,12 @@ model UserMoreInfo {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model InformationSchema {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  mision    String
+  vision    String
+  whoami    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

@@ -1,16 +1,14 @@
-import Image from "next/image";
-
 export default function LoadingPage() {
   return (
     <div className="top-0 left-0 w-screen h-screen flex items-center justify-center">
-      <div className="absolute animate-spin rounded-full h-20 w-20 border-y-4 border-[#0E70DF]" />
-      <Image
-        width={60}
-        height={60}
-        alt="money"
-        src="/money.png"
-        className="rounded-full"
-      />
+      <div
+        className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+        role="status"
+      >
+        <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+          Loading...
+        </span>
+      </div>
     </div>
   );
 }

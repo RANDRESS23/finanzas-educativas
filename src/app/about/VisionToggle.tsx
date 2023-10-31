@@ -24,9 +24,7 @@ export default function VisionToggle() {
         </p>
       )}
       <button
-        className={`text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-2 bg-[#008aae] hover:bg-[#79ad34]${
-          viewMoreInfoVision ? "" : " animate-pulse"
-        }`}
+        className="text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-2 bg-[#008aae] hover:bg-[#79ad34]"
         onClick={handleViewMoreInfoVision}
       >
         {viewMoreInfoVision

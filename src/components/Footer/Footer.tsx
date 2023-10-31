@@ -1,23 +1,16 @@
 "use client";
 
-import {
-  faFacebook,
-  faGithub,
-  faInstagramSquare,
-  faTwitter,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
-import { useSession, signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
+import {
+  FaFacebook as FaceIcon,
+  FaInstagramSquare as InstaIcon,
+  FaTwitter as TweetIcon,
+  FaYoutube as YtIcon,
+} from "react-icons/fa";
 
 export default function Footer(): React.ReactNode {
-  const Facebook = faFacebook;
-  const Twitter = faTwitter;
-  const GithHub = faGithub;
-  const Instagram = faInstagramSquare;
-  const Youtube = faYoutube;
   const { data: session, status } = useSession();
   const pathname = usePathname();
 
@@ -103,52 +96,22 @@ export default function Footer(): React.ReactNode {
         <ul className="flex justify-center items-center gap-5 sm:gap-12">
           <li>
             <Link href="#" className="flex justify-center items-center">
-              <FontAwesomeIcon
-                icon={Facebook}
-                className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6"
-                key="facebook"
-                id="facebook"
-              />
+              <FaceIcon className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6" />
             </Link>
           </li>
           <li>
             <Link href="#" className="flex justify-center items-center">
-              <FontAwesomeIcon
-                icon={Instagram}
-                className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6"
-                key="instagram"
-                id="instagram"
-              />
+              <InstaIcon className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6" />
             </Link>
           </li>
           <li>
             <Link href="#" className="flex justify-center items-center">
-              <FontAwesomeIcon
-                icon={Twitter}
-                className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6"
-                key="twitter"
-                id="twitter"
-              />
+              <TweetIcon className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6" />
             </Link>
           </li>
           <li>
             <Link href="#" className="flex justify-center items-center">
-              <FontAwesomeIcon
-                icon={GithHub}
-                className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6"
-                key="github"
-                id="github"
-              />
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="flex justify-center items-center">
-              <FontAwesomeIcon
-                icon={Youtube}
-                className="text-gray-400 hover:text-[#008aae] transition-colors w-7 h-6"
-                key="youtube"
-                id="youtube"
-              />
+              <YtIcon className="text-gray-400 hover:text-[#008aae] transition-colors w-7 h-6" />
             </Link>
           </li>
         </ul>

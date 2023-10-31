@@ -7,9 +7,13 @@ import { toast } from "react-hot-toast";
 import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
 import { signIn } from "next-auth/react";
 import api from "@/libs/api";
+import clsx from "clsx";
+import clsxe from "@/libs/clsxe";
+import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
 export default function FormSignUp(): React.ReactNode {
   const [termsAccepted, setTermsAccepted] = useState(false);
+  const [passwordVisible, setPasswordVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
 
@@ -119,17 +123,7 @@ export default function FormSignUp(): React.ReactNode {
                     required:
                       "El número de identificación es un campo obligatorio!",
                   })}
-                  className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
-                        ${
-                          errors.document !== undefined
-                            ? "ring-rose-500"
-                            : "border-gray-300"
-                        }}
-                        ${
-                          errors.document !== undefined
-                            ? "focus:outline-rose-500"
-                            : "focus:outline-[#008aae]"
-                        }`}
+                  className={clsxe(errors.document)}
                 />
               </div>
               {errors.document !== undefined && (
@@ -153,6 +147,7 @@ export default function FormSignUp(): React.ReactNode {
                   {...register("firstName", {
                     required: "Los nombres son un campo obligatorio!",
                   })}
+<<<<<<< HEAD
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.firstName !== undefined
@@ -164,6 +159,9 @@ export default function FormSignUp(): React.ReactNode {
                             ? "focus:outline-rose-500"
                             : "focus:outline-[#008aae]"
                         }`}
+=======
+                  className={clsxe(errors.firstName)}
+>>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
                 />
               </div>
               {errors.firstName !== undefined && (
@@ -187,6 +185,7 @@ export default function FormSignUp(): React.ReactNode {
                   {...register("lastName", {
                     required: "Los apellidos son un campo obligatorio!",
                   })}
+<<<<<<< HEAD
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.lastName !== undefined
@@ -198,6 +197,9 @@ export default function FormSignUp(): React.ReactNode {
                             ? "focus:outline-rose-500"
                             : "focus:outline-[#008aae]"
                         }`}
+=======
+                  className={clsxe(errors.lastName)}
+>>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
                 />
               </div>
               {errors.lastName !== undefined && (
@@ -221,6 +223,7 @@ export default function FormSignUp(): React.ReactNode {
                   {...register("phoneNumber", {
                     required: "El número de teléfono es un campo obligatorio!",
                   })}
+<<<<<<< HEAD
                   className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
                         ${
                           errors.phoneNumber !== undefined
@@ -232,6 +235,9 @@ export default function FormSignUp(): React.ReactNode {
                             ? "focus:outline-rose-500"
                             : "focus:outline-[#008aae]"
                         }`}
+=======
+                  className={clsxe(errors.phoneNumber)}
+>>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
                 />
               </div>
               {errors.phoneNumber !== undefined && (
@@ -241,7 +247,7 @@ export default function FormSignUp(): React.ReactNode {
               )}
             </div>
 
-            <div className="sm:col-span-4">
+            <div className="sm:col-span-3">
               <label
                 htmlFor="email"
                 className="block font-medium leading-6 text-gray-900"
@@ -255,17 +261,7 @@ export default function FormSignUp(): React.ReactNode {
                   {...register("email", {
                     required: "El correo electrónico es un campo obligatorio!",
                   })}
-                  className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
-                        ${
-                          errors.email !== undefined
-                            ? "ring-rose-500"
-                            : "border-gray-300"
-                        }}
-                        ${
-                          errors.email !== undefined
-                            ? "focus:outline-rose-500"
-                            : "focus:outline-[#008aae]"
-                        }`}
+                  className={clsxe(errors.email)}
                 />
               </div>
               {errors.email !== undefined && (
@@ -284,22 +280,12 @@ export default function FormSignUp(): React.ReactNode {
               </label>
               <div className="mt-2">
                 <input
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   id="password"
                   {...register("password", {
                     required: "La contraseña es un campo obligatorio!",
                   })}
-                  className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
-                        ${
-                          errors.password !== undefined
-                            ? "ring-rose-500"
-                            : "border-gray-300"
-                        }}
-                        ${
-                          errors.password !== undefined
-                            ? "focus:outline-rose-500"
-                            : "focus:outline-[#008aae]"
-                        }`}
+                  className={clsxe(errors.password)}
                 />
               </div>
               {errors.password !== undefined && (
@@ -318,30 +304,37 @@ export default function FormSignUp(): React.ReactNode {
               </label>
               <div className="mt-2">
                 <input
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   id="confirmPassword"
                   {...register("confirmPassword", {
                     required:
                       "La confirmación de la contraseña es un campo obligatorio!",
                   })}
-                  className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
-                        ${
-                          errors.confirm_password !== undefined
-                            ? "ring-rose-500"
-                            : "border-gray-300"
-                        }}
-                        ${
-                          errors.confirm_password !== undefined
-                            ? "focus:outline-rose-500"
-                            : "focus:outline-[#008aae]"
-                        }`}
+                  className={clsxe(errors.confirmPassword)}
                 />
               </div>
-              {errors.confirm_password !== undefined && (
+              {errors.confirmPassword !== undefined && (
                 <p className="mt-2 text-sm text-rose-500">
-                  {errors.confirm_password.message as any}
+                  {errors.confirmPassword.message as any}
                 </p>
               )}
+            </div>
+
+            <div className="sm:col-span-3 -my-5">
+              <input
+                type="checkbox"
+                id="showPassword"
+                className="text-blue-500"
+                onChange={() => setPasswordVisible(!passwordVisible)}
+                checked={passwordVisible}
+                disabled={isLoading}
+              />
+              <label
+                htmlFor="showPassword"
+                className="text-gray-600 ml-2 mb-1 text-sm"
+              >
+                Mostrar contraseña
+              </label>
             </div>
           </div>
         </div>
@@ -375,10 +368,14 @@ export default function FormSignUp(): React.ReactNode {
       <div className="mt-6 flex items-center justify-center gap-x-6">
         <button
           type="submit"
-          className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50"
+          className={clsx(
+            "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 flex items-center justify-center gap-x-1",
+            { "cursor-not-allowed": !termsAccepted || isLoading }
+          )}
           disabled={!termsAccepted || isLoading}
         >
-          {isLoading ? "Cargando.." : "REGISTRARME"}
+          <SignupIcon />
+          {isLoading ? "CARGANDO..." : "REGISTRARME"}
         </button>
       </div>
       <p className="mt-10 text-center text-gray-500">

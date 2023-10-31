@@ -13,6 +13,11 @@ import {
 } from "./icons";
 import { useSession, signOut } from "next-auth/react";
 import AdminPanelMobile from "./AdminPanelMobile";
+import { RiTeamFill as UsIcon } from "react-icons/ri";
+import { BiBookReader as EducationIcon } from "react-icons/bi";
+import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
+import { MdContactSupport as ContactIcon } from "react-icons/md";
+import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
 interface MobileMenuProps {
   isSubMenuMobileOpen: boolean;
@@ -83,35 +88,41 @@ export default function MobileMenu({
                     ? "/profile/admin/home-preview"
                     : "/"
                 }
-                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
+                <HomeIcon className="-mb-1" />
                 Inicio
               </Link>
               <Link
                 href="/financial-education"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
+                <EducationIcon className="-mb-1" />
                 Educación Financiera
               </Link>
               <Link
                 href="/contact"
-                className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
+                <ContactIcon />
                 Contacto
               </Link>
 
               <div className="-mx-3">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] animate-pulse"
+                  className="w-full flex justify-between items-center rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
                   aria-controls="disclosure-1"
                   aria-expanded="false"
                   onClick={handleSubMenuMobileOpen}
                 >
-                  Nosotros
+                  <span className="flex items-center justify-center gap-x-1">
+                    <UsIcon />
+                    Nosotros
+                  </span>
                   {isSubMenuMobileOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
                 </button>
                 {isSubMenuMobileOpen && (
@@ -124,10 +135,11 @@ export default function MobileMenu({
                 <>
                   <Link
                     href="/signup"
-                    className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+                    className="-mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] flex items-center gap-x-1"
                     onClick={handleResetMenus}
                   >
                     Registrarse
+                    <SignupIcon className="-mb-1" />
                   </Link>
                   <Link
                     href="/signin"
@@ -159,7 +171,7 @@ export default function MobileMenu({
                       >
                         <div className="flex justify-center items-center gap-2">
                           <AdminIcon />
-                          Panel Administrador
+                          Admin.
                         </div>
                         {isSubMenuAdminPanelOpen ? (
                           <ArrowUpIcon />

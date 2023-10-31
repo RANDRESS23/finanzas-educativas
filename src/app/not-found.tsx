@@ -1,17 +1,14 @@
-import { faContao, faHackerNews } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
+import { MdContactSupport as ContactIcon } from "react-icons/md";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Página No Encontrada",
 };
 
 export default function NotFound() {
-  const Contacto = faContao;
-  const Youtube = faHackerNews;
-
   return (
     <div className="min-h-screen flex items-center justify-center w-10/12 m-auto">
       <div className="hidden md:flex md:w-1/2 p-8">
@@ -32,16 +29,16 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="px-4 py-3 mx-2 bg-blue-500 text-white rounded-lg inline-flex items-center hover:bg-blue-600 transition duration-300 ease-in-out mb-4"
+          className="px-4 py-3 mx-2 bg-blue-500 text-white rounded-lg inline-flex items-center hover:bg-blue-600 transition duration-300 ease-in-out mb-4 gap-x-1"
         >
-          <FontAwesomeIcon className="mr-1 w-4 h-4" icon={Youtube} />
+          <HomeIcon />
           <span className="text-xs">Go to Home</span>
         </Link>
         <Link
           href="/contact"
           className="px-4 py-3 mx-2 bg-blue-500 text-white rounded-lg inline-flex items-center hover:bg-blue-600 transition duration-300 ease-in-out mb-4"
         >
-          <FontAwesomeIcon className="mr-1 w-4 h-4" icon={Contacto} />
+          <ContactIcon />
           <span className="text-xs">Go to Contact</span>
         </Link>
       </div>

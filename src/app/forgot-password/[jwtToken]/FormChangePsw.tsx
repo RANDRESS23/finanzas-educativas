@@ -1,14 +1,17 @@
 "use client";
 
 import api from "@/libs/api";
+import clsxe from "@/libs/clsxe";
+import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
+import { MdOutlineChangeCircle as ChangeIcon } from "react-icons/md";
 
 const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
-  const goBack = useRouter().back;
   const router = useRouter();
+  const goBack = () => router.back();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -79,18 +82,8 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
           {...register("password", {
             required: "La contraseña es un campo obligatorio!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs"
-                autoComplete="off
-                ${
-                  errors.password !== undefined
-                    ? "ring-rose-500"
-                    : "border-gray-300"
-                }}
-                ${
-                  errors.password !== undefined
-                    ? "focus:outline-rose-500"
-                    : "focus:outline-[#008aae]"
-                }`}
+          className={clsxe(errors.password)}
+          autoComplete="off"
         />
         {errors.password !== undefined && (
           <p className="mt-2 text-sm text-rose-500">
@@ -112,18 +105,8 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
           {...register("confirmPassword", {
             required: "La contraseña es un campo obligatorio!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs"
-                autoComplete="off
-                ${
-                  errors.confirmPassword !== undefined
-                    ? "ring-rose-500"
-                    : "border-gray-300"
-                }}
-                ${
-                  errors.confirmPassword !== undefined
-                    ? "focus:outline-rose-500"
-                    : "focus:outline-[#008aae]"
-                }`}
+          className={clsxe(errors.confirmPassword)}
+          autoComplete="off"
         />
         {errors.confirmPassword !== undefined && (
           <p className="mt-2 text-sm text-rose-500">
@@ -134,9 +117,13 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
 
       <button
         type="submit"
-        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full"
+        className={clsx(
+          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-x-1",
+          { "cursor-not-allowed": isLoading }
+        )}
         disabled={isLoading}
       >
+        <ChangeIcon />
         {isLoading ? "CARGANDO..." : "CONTINUAR"}
       </button>
 

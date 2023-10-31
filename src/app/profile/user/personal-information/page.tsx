@@ -11,6 +11,7 @@ export default async function PersonalInformationPage() {
   }
 
   return (
+<<<<<<< HEAD
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mb-10 py-20">
         <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
@@ -27,4 +28,10 @@ export default async function PersonalInformationPage() {
       </div>
     </>
   )
+=======
+    <div>
+      <h1>PersonalInformationPage</h1>
+    </div>
+  );
+>>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
 }

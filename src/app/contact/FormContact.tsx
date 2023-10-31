@@ -1,8 +1,11 @@
 "use client";
 
+import clsxe from "@/libs/clsxe";
+import clsx from "clsx";
 import { useState } from "react";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
+import { VscFeedback as SendIcon } from "react-icons/vsc";
 
 export default function FormContact() {
   const [isLoading, setIsLoading] = useState(false);
@@ -50,17 +53,8 @@ export default function FormContact() {
           {...register("name", {
             required: "El nombre es un campo obligatorio!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
-                ${
-                  errors.name !== undefined
-                    ? "ring-rose-500"
-                    : "border-gray-300"
-                }}
-                ${
-                  errors.name !== undefined
-                    ? "focus:outline-rose-500"
-                    : "focus:outline-[#008aae]"
-                }`}
+          className={clsxe(errors.name)}
+          spellCheck="false"
         />
         {errors.name !== undefined && (
           <p className="my-2 text-sm text-rose-500">
@@ -82,17 +76,8 @@ export default function FormContact() {
           {...register("email", {
             required: "El correo electrónico es un campo obligatorio!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
-                ${
-                  errors.email !== undefined
-                    ? "ring-rose-500"
-                    : "border-gray-300"
-                }}
-                ${
-                  errors.email !== undefined
-                    ? "focus:outline-rose-500"
-                    : "focus:outline-[#008aae]"
-                }`}
+          className={clsxe(errors.email)}
+          spellCheck="false"
         />
         {errors.email !== undefined && (
           <p className="my-2 text-sm text-rose-500">
@@ -114,6 +99,7 @@ export default function FormContact() {
           {...register("phoneNumber", {
             required: "El teléfono es un campo obligatorio!",
           })}
+<<<<<<< HEAD
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs
                 ${
                   errors.phoneNumber !== undefined
@@ -125,6 +111,10 @@ export default function FormContact() {
                     ? "focus:outline-rose-500"
                     : "focus:outline-[#008aae]"
                 }`}
+=======
+          className={clsxe(errors.phone_number)}
+          spellCheck="false"
+>>>>>>> 5bfc5638286e77a60e81277f657306f5146e5421
         />
         {errors.phoneNumber !== undefined && (
           <p className="my-2 text-sm text-rose-500">
@@ -133,7 +123,7 @@ export default function FormContact() {
         )}
       </div>
 
-      <div className="mb-4">
+      <div className="mb-6">
         <label
           htmlFor="message"
           className="block font-medium leading-6 text-gray-900"
@@ -147,16 +137,9 @@ export default function FormContact() {
             {...register("message", {
               required: "El mensaje es un campo obligatorio!",
             })}
-            className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae] sm:max-w-xs resize-none
-            ${
-              errors.message !== undefined ? "ring-rose-500" : "border-gray-300"
-            }}
-            ${
-              errors.message !== undefined
-                ? "focus:outline-rose-500"
-                : "focus:outline-[#008aae]"
-            }`}
+            className={clsxe(errors.message, "resize-none")}
             defaultValue={""}
+            spellCheck="false"
           />
         </div>
         {errors.message !== undefined && (
@@ -168,10 +151,14 @@ export default function FormContact() {
 
       <button
         type="submit"
-        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full"
+        className={clsx(
+          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-x-1",
+          { "cursor-not-allowed": isLoading }
+        )}
         disabled={isLoading}
       >
-        {isLoading ? "Cargando.." : "ENVIAR"}
+        <SendIcon />
+        {isLoading ? "CARGANDO..." : "ENVIAR"}
       </button>
     </form>
   );
