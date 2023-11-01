@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: "Finanzas Educativas | Nosotros",
 };
 
-export const revalidate = "5";
+export const dynamic = "force-dynamic";
 
 export default async function About(): Promise<React.ReactElement> {
   const [aboutInfo] =
