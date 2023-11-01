@@ -32,7 +32,7 @@ model UserMoreInfo {
   id                            String   @id @default(auto()) @map("_id") @db.ObjectId
   userId                        String   @db.ObjectId
   gender                        String
-  age                           Int[]
+  age                           String[]
   civilStatus                   String
   educationLevel                String
   residenceArea                 String

@@ -130,7 +130,6 @@ export const userMoreInfoSchema = z.object({
       message: "El correo electrónico debe ser válido.",
     }),
 
-    // gender: "",
     // age: [0, 0],
     // civilStatus: "",
     // educationLevel: "",

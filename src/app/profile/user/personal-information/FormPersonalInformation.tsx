@@ -8,10 +8,13 @@ import Input from "@/components/Input";
 import InputSelect from "@/components/InputSelect";
 import InputCheckBox from "@/components/InputCheckBox";
 import InputRadio from "@/components/InputRadio";
+import { useRouter } from "next/navigation";
+import api from "@/libs/api";
 
 export default function FormPersonalInformation() {
   const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
+  const router = useRouter();
   
   const {
     register,
@@ -36,7 +39,7 @@ export default function FormPersonalInformation() {
       socioeconomicLevel: 0,
       numberPeopleContributing: 0,
       incomeComeFrom: "",
-      isInAPensionFund: false,
+      isInAPensionFund: "No",
       healthSystemAffiliation: "",
       numberPeopleDependFinancially: 0,
       financialProducts: [],
@@ -66,12 +69,43 @@ export default function FormPersonalInformation() {
     }
   }, [session?.user, reset])
   
+  useEffect(() => {
+    const getMoreInfoUser = async () => {
+      const response = await api.get(`/user/userMoreInfo/${session?.user?.id}`);
+
+      if (response.status === 404) return console.log("No hay datos del usuario");
+
+      console.log(response.data);
+
+      reset(formValues => ({
+        ...formValues,
+        ...response.data,
+        isInAPensionFund: response.data.isInAPensionFund ? "Si" : "No",
+      }))
+    }
+
+    if (session?.user) {
+      getMoreInfoUser();
+    }
+  }, [session?.user, reset])
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log({data});
-    toast.success("Mensaje enviado!");
-    reset();
     try {
       setIsLoading(true);
+
+      const response = await api.post("/user/userMoreInfo", {
+        userId: session?.user?.id,
+        documentSession: session?.user?.document,
+        emailSession: session?.user?.email,
+        isInAPensionFund: data.isInAPensionFund === "Si",
+        ...data
+      });
+
+      if (response.status === 201) {
+        toast.success("¡Datos completados exitosamente!");
+        router.refresh();
+        router.push("/profile/user");
+      } else toast.error("Error al completar datos!");
     } catch (error: any) {
       toast.error(error.response.data.message);
       console.log({ errorMessage: error.response.data.message });
@@ -283,8 +317,8 @@ export default function FormPersonalInformation() {
         label="¿Está afiliado a un fondo de pensiones?"
         register={register}
         options={[
-          { value: true, label: "Si" },
-          { value: false, label: "No" },
+          { value: "Si", label: "Si" },
+          { value: "No", label: "No" },
         ]}
       />
 

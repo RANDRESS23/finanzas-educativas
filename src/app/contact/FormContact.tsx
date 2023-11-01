@@ -99,7 +99,7 @@ export default function FormContact() {
           {...register("phoneNumber", {
             required: "El teléfono es un campo obligatorio!",
           })}
-          className={clsxe(errors.phone_number)}
+          className={clsxe(errors.phoneNumber)}
           spellCheck="false"
         />
         {errors.phoneNumber !== undefined && (

@@ -1,83 +1,67 @@
-import { encryptPassword } from "@/libs/bcrypt";
 import { db } from "@/libs/prismaDB";
-import { signUpSchema } from "@/schemas/user.schema";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const diferentDocuments = body.documentSession !== body.document
+    const diferentEmails = body.emailSession !== body.email
 
-    const {
-      documentType,
-      document,
-      firstName,
-      lastName,
-      phoneNumber,
-      email,
-      password,
-    } = signUpSchema.parse(body);
-
-    const existingUserByDocument = await db.user.findUnique({
-      where: { document },
-    });
-
-    if (existingUserByDocument !== null) {
-      return NextResponse.json(
-        { messsage: "Document already exists" },
-        { status: 400 },
-      );
+    if (diferentDocuments) {
+      const existingUserByDocument = await db.user.findUnique({
+        where: { document: body.document },
+      });
+  
+      if (existingUserByDocument !== null) {
+        return NextResponse.json(
+          { messsage: "El número de documento ya está en uso" },
+          { status: 400 },
+        );
+      }
     }
 
-    const existingUserByEmail = await db.user.findUnique({
-      where: { email },
-    });
-
-    if (existingUserByEmail !== null) {
-      return NextResponse.json(
-        { messsage: "Email already exists" },
-        { status: 400 },
-      );
+    if (diferentEmails) {
+      const existingUserByEmail = await db.user.findUnique({
+        where: { email: body.email },
+      });
+  
+      if (existingUserByEmail !== null) {
+        return NextResponse.json(
+          { messsage: "El correo electrónico ya se encuentra en uso" },
+          { status: 400 },
+        );
+      }
     }
 
-    const hashedPassword = await encryptPassword(password);
-    const newUser = await db.user.create({
-      data: {
-        documentType,
-        document,
-        firstName,
-        lastName,
-        phoneNumber,
-        email,
-        hashedPassword,
+    const userExtraInfo = await db.userMoreInfo.create({
+      data: {             
+        userId: body.userId,                        
+        gender: body.gender,                        
+        age: body.age.split(","),                           
+        civilStatus: body.civilStatus,                   
+        educationLevel: body.educationLevel,                
+        residenceArea: body.residenceArea,                 
+        typeOfHousing: body.typeOfHousing,                 
+        houseServices: body.houseServices,                 
+        socioeconomicLevel: Number(body.socioeconomicLevel),            
+        numberPeopleContributing: Number(body.numberPeopleContributing),      
+        incomeComeFrom: body.incomeComeFrom,                
+        isInAPensionFund: Boolean(body.isInAPensionFund),              
+        healthSystemAffiliation: body.healthSystemAffiliation,       
+        numberPeopleDependFinancially: Number(body.numberPeopleDependFinancially), 
+        financialProducts: body.financialProducts,
       },
     });
 
-    const { hashedPassword: _, ...user } = newUser;
-
     return NextResponse.json(
       {
-        user,
-        message: "User created successfully",
+        userExtraInfo,
+        message: "Información adicional registrada correctamente",
       },
       { status: 201 },
     );
   } catch (error: any) {
     console.log({ error });
-
-    if (error?.errors !== null) {
-      const errorsMessages: Record<string, string> = {};
-      const { errors } = error;
-
-      errors.forEach(
-        ({ message, path }: { message: string; path: string[] }) => {
-          if (!Object.values(errorsMessages).includes(message)) {
-            errorsMessages[path.join("")] = message;
-          }
-        },
-      );
-
-      return NextResponse.json(errorsMessages, { status: 500 });
-    }
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
