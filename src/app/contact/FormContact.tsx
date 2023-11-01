@@ -1,5 +1,6 @@
 "use client";
 
+import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
 import clsx from "clsx";
 import { useState } from "react";
@@ -24,11 +25,16 @@ export default function FormContact() {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = async (_data) => {
-    toast.success("Mensaje enviado!");
-    reset();
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    setIsLoading(true);
+
     try {
-      setIsLoading(true);
+      const response = await api.post("/contact", { ...data });
+
+      if (response.status === 201) {
+        toast.success(response.data.message);
+        reset();
+      }
     } catch (error: any) {
       toast.error(error.response.data.message);
       console.log({ errorMessage: error.response.data.message });

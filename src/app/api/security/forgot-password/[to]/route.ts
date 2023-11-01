@@ -1,10 +1,10 @@
-import pkg from "@/../package.json";
-import { sendEmailSchema } from "@/schemas/security.schema";
-import { NextResponse } from "next/server";
-import Jwt from "jsonwebtoken";
+import { htmlForChangePsw } from "@/email_templates";
 import { db } from "@/libs/prismaDB";
 import { sendEmail } from "@/libs/sgMail";
+import { sendEmailSchema } from "@/schemas/security.schema";
 import { TPayload } from "@/types/TPayload";
+import Jwt from "jsonwebtoken";
+import { NextResponse } from "next/server";
 
 export async function GET(
   _request: Request,
@@ -38,22 +38,12 @@ export async function GET(
 
   const resetPasswordLink = `${process.env.NEXTAUTH_URL}/forgot-password/${tokenRecoverPsw}`;
 
-  const html = `
-    <p>Hemos detectado que solicitaste un <strong>cambio de contraseña</strong>.</p>
-
-    <p>Por favor, haga clic en el siguiente enlace para cambiar tu contraseña.</p>
-    <a href="${resetPasswordLink}">Cambiar contraseña</a>
-    
-    <p>Si no solicitaste este cambio, por favor, ignora este correo electrónico.</p>
-
-    <i><strong>Cordialmente,<br>
-    El equipo de ${pkg.description} ITFIP.</strong></i>
-  `;
-
-  const subject = "Solicitud de cambio de contraseña";
-
   try {
-    const msgSended = await sendEmail(to, subject, html);
+    const msgSended = await sendEmail(
+      to,
+      "Solicitud de cambio de contraseña",
+      htmlForChangePsw(resetPasswordLink)
+    );
     if (!msgSended?.response) {
       return NextResponse.json(
         { message: `Error sending email to ${to}` },

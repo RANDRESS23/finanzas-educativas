@@ -21,7 +21,7 @@ export default async function HomePreviewPage() {
                   width={120}
                   height={120}
                   alt="user avatar"
-                  className="rounded-full"
+                  className="rounded-full hover:opacity-90 transition-opacity"
                 />
               </div>
               <div className="text-center p-4">

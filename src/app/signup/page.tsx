@@ -37,15 +37,6 @@ async function Signup() {
           <FormSignUp />
         </div>
       </div>
-
-      <div className="mt-4 flex gap-10 sm:mx-auto sm:w-full sm:max-w-xl md:max-w-6xl">
-        <div className="hidden md:block">
-          <div>
-            <Image width={500} height={500} src={SignUpGif} alt="" />
-          </div>
-        </div>
-        <FormSignUp />
-      </div>
     </div>
   );
 }
