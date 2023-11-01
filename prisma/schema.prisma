@@ -63,9 +63,9 @@ model Contact {
 
 model InformationSchema {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  mision    String
-  vision    String
-  whoami    String
+  mision    String[]
+  vision    String[]
+  whoami    String[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

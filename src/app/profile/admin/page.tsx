@@ -54,7 +54,7 @@ export default async function ProfileAdminPage() {
             height={400}
             src="https://images.pexels.com/photos/4195342/pexels-photo-4195342.jpeg?auto=compress&cs=tinysrgb&w=600"
             alt=""
-            className="object-cover lg:h-full w-[180%] h-auto aspect-square rounded-md"
+            className="object-cover lg:h-full w-[180%] h-auto aspect-square rounded-xl hover:opacity-90 transition-opacity"
           />
         </div>
       </div>

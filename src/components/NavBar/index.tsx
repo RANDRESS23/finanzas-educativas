@@ -80,6 +80,7 @@ function NavBar(): React.ReactNode {
               height={32}
               className="w-8 h-8"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              priority
               alt=""
             />
           </Link>

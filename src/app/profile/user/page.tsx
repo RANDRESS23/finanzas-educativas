@@ -56,7 +56,7 @@ export default async function ProfileUserPage() {
             height={400}
             src="https://images.unsplash.com/photo-1498758536662-35b82cd15e29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80"
             alt=""
-            className="object-cover lg:h-full w-[180%] h-auto aspect-square rounded-md"
+            className="object-cover lg:h-full w-[180%] h-auto aspect-square rounded-xl hover:opacity-90 transition-opacity"
           />
         </div>
       </div>

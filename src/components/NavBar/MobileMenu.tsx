@@ -64,6 +64,7 @@ export default function MobileMenu({
               height={32}
               className="w-8 h-8"
               src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+              priority
               alt=""
             />
           </Link>
