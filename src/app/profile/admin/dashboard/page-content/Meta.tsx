@@ -1,17 +1,14 @@
 "use client";
 
 import MetaModal from "@/components/Modals/MetaModal";
-import { LiaEdit as EditIcon } from "react-icons/lia";
-import { useEffect, useState } from "react";
+import P from "@/components/Skeletons/P";
+import Round from "@/components/Skeletons/Round";
 import api from "@/libs/api";
 import { InformationSchema } from "@prisma/client";
 import { AxiosError } from "axios";
+import { cache, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import P from "@/components/Skeletons/P";
-import Round from "@/components/Skeletons/Round";
-import { cache } from "react";
-
-export const revalidate = 0;
+import { LiaEdit as EditIcon } from "react-icons/lia";
 
 export default function Meta() {
   const [aboutInfo, setAboutInfo] = useState<Partial<InformationSchema>>({

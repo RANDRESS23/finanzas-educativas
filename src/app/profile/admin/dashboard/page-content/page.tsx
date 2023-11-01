@@ -2,6 +2,8 @@ import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import Meta from "./Meta";
 
+export const revalidate = 0;
+
 export default async function PageContent() {
   const session = await getServerSession();
 
