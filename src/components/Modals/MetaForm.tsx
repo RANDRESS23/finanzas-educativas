@@ -2,11 +2,11 @@ import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { META } from "./MetaModal";
+import type { META } from "./MetaModal";
 
-export default function FormMision({ meta }: { meta: META }) {
+export default function MetaForm({ meta }: { meta: META }) {
   const router = useRouter();
 
   const {
@@ -29,7 +29,7 @@ export default function FormMision({ meta }: { meta: META }) {
       },
     } = await api(`/admin/meta/${meta}`);
     setValue(meta, metaD);
-    setValue("moreMision", moreMetaD);
+    setValue(`more${meta}`, moreMetaD);
   };
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {

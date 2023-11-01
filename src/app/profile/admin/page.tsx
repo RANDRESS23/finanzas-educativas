@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import Title from "@/components/Title";
+import { AdminIcon } from "@/components/NavBar/icons";
 
 export default async function ProfileAdminPage() {
   const session = await getServerSession();
@@ -41,9 +42,10 @@ export default async function ProfileAdminPage() {
             <div className="mt-10 flex items-center justify-start gap-x-6">
               <Link
                 href="/profile/admin/dashboard"
-                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-300"
+                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-2"
               >
                 IR AL PANEL DE ADMINISTRADOR
+                <AdminIcon />
               </Link>
             </div>
           </div>
