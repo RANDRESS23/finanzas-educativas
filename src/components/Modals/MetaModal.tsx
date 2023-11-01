@@ -1,6 +1,10 @@
 "use client";
 
-import { MisionIcon } from "@/components/NavBar/icons";
+import {
+  MisionIcon,
+  VisionIcon,
+  QuestionIcon,
+} from "@/components/NavBar/icons";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useRef } from "react";
 import MetaForm from "./MetaForm";
@@ -59,7 +63,13 @@ export default function MetaModal({
                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
                     <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-[#79ad3481] sm:mx-0 sm:h-10 sm:w-10">
-                      <MisionIcon />
+                      {meta === META.mision ? (
+                        <MisionIcon />
+                      ) : meta === META.whoami ? (
+                        <QuestionIcon />
+                      ) : (
+                        <VisionIcon />
+                      )}
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title
