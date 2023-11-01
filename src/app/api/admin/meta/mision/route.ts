@@ -1,4 +1,5 @@
 import { db } from "@/libs/prismaDB";
+import { informationSchema as ZInfoSchema } from "@/schemas/information.schema";
 import { InformationSchema } from "@prisma/client";
 import { NextResponse } from "next/server";
 
@@ -18,9 +19,28 @@ export async function GET() {
   }
 }
 
-export async function POST(request: Request) {
+export async function PATCH(request: Request) {
   try {
-    await request.json();
+    const body = await request.json();
+
+    const mision = ZInfoSchema.parse([
+      ...body.mision,
+    ]) as InformationSchema["mision"];
+
+    const updatedMision = await db.informationSchema.update({
+      where: { id: body.id },
+      data: { mision },
+    });
+
+    if (updatedMision === null) {
+      return NextResponse.json(
+        {
+          message:
+            "No se pudo actualizar la información, por favor intente más tarde.",
+        },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       message: "Información actualizada exitosamente.",

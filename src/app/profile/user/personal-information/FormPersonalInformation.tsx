@@ -1,21 +1,24 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { toast } from "react-hot-toast";
-import { type FieldValues, type SubmitHandler, useForm } from "react-hook-form";
-import { useSession } from "next-auth/react";
 import Input from "@/components/Input";
-import InputSelect from "@/components/InputSelect";
 import InputCheckBox from "@/components/InputCheckBox";
 import InputRadio from "@/components/InputRadio";
-import { useRouter } from "next/navigation";
+import InputSelect from "@/components/InputSelect";
 import api from "@/libs/api";
+import { AxiosError } from "axios";
+import clsx from "clsx";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import { BsFillPatchCheckFill as CompleteIcon } from "react-icons/bs";
 
 export default function FormPersonalInformation() {
   const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
-  
+
   const {
     register,
     handleSubmit,
@@ -54,10 +57,10 @@ export default function FormPersonalInformation() {
         firstName,
         lastName,
         phoneNumber,
-        email
+        email,
       } = session.user;
 
-      reset(formValues => ({
+      reset((formValues) => ({
         ...formValues,
         documentType,
         document,
@@ -65,29 +68,40 @@ export default function FormPersonalInformation() {
         lastName,
         phoneNumber,
         email,
-      }))
+      }));
     }
-  }, [session?.user, reset])
-  
+  }, [session?.user, reset]);
+
   useEffect(() => {
     const getMoreInfoUser = async () => {
-      const response = await api.get(`/user/userMoreInfo/${session?.user?.id}`);
+      try {
+        const response = await api.get(
+          `/user/userMoreInfo/${session?.user?.id}`
+        );
 
-      if (response.status === 404) return console.log("No hay datos del usuario");
+        if (response.status === 404)
+          return console.log("No hay datos del usuario");
 
-      console.log(response.data);
+        console.log(response.data);
 
-      reset(formValues => ({
-        ...formValues,
-        ...response.data,
-        isInAPensionFund: response.data.isInAPensionFund ? "Si" : "No",
-      }))
-    }
+        reset((formValues) => ({
+          ...formValues,
+          ...response.data,
+          isInAPensionFund: response.data.isInAPensionFund ? "Si" : "No",
+        }));
+      } catch (error) {
+        if (error instanceof AxiosError) {
+          toast(error.response?.data.message, {
+            icon: "⚠️",
+          });
+        }
+      }
+    };
 
     if (session?.user) {
       getMoreInfoUser();
     }
-  }, [session?.user, reset])
+  }, [session?.user, reset]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
@@ -98,7 +112,7 @@ export default function FormPersonalInformation() {
         documentSession: session?.user?.document,
         emailSession: session?.user?.email,
         isInAPensionFund: data.isInAPensionFund === "Si",
-        ...data
+        ...data,
       });
 
       if (response.status === 201) {
@@ -182,7 +196,7 @@ export default function FormPersonalInformation() {
           { value: "otro", label: "Otro" },
         ]}
       />
-      
+
       <InputSelect
         name="age"
         label="Rango de edad"
@@ -198,7 +212,7 @@ export default function FormPersonalInformation() {
           { value: ["58", "130"], label: "Más de 57 años" },
         ]}
       />
-      
+
       <InputSelect
         name="civilStatus"
         label="Estado Civil"
@@ -212,7 +226,7 @@ export default function FormPersonalInformation() {
           { value: "viudo(a)", label: "Viudo(a)" },
         ]}
       />
-      
+
       <InputSelect
         name="educationLevel"
         label="Nivel de Educación"
@@ -229,7 +243,7 @@ export default function FormPersonalInformation() {
           { value: "postgrado", label: "Postgrado" },
         ]}
       />
-      
+
       <InputSelect
         name="residenceArea"
         label="¿En que zona vive?"
@@ -240,7 +254,7 @@ export default function FormPersonalInformation() {
           { value: "rural", label: "Rural" },
         ]}
       />
-      
+
       <InputSelect
         name="typeOfHousing"
         label="Tipo de vivienda donde habita"
@@ -250,10 +264,14 @@ export default function FormPersonalInformation() {
           { value: "propia", label: "Propia" },
           { value: "alquilada", label: "Alquilada (arrendamiento)" },
           { value: "hipotecada", label: "Hipotecada" },
-          { value: "cedida", label: "Cedida (propiedad de un familiar que le permite habitar allí)" },
+          {
+            value: "cedida",
+            label:
+              "Cedida (propiedad de un familiar que le permite habitar allí)",
+          },
         ]}
       />
-      
+
       <InputCheckBox
         name="houseServices"
         label="Servicios con los que cuenta"
@@ -284,7 +302,7 @@ export default function FormPersonalInformation() {
           { value: 5, label: "Estrato 5" },
         ]}
       />
-      
+
       <InputSelect
         name="numberPeopleContributing"
         label="Número de personas que aportan ingresos al hogar"
@@ -297,7 +315,7 @@ export default function FormPersonalInformation() {
           { value: 4, label: "4 o más personas" },
         ]}
       />
-      
+
       <InputSelect
         name="incomeComeFrom"
         label="Los ingresos que percibe provienen de"
@@ -305,7 +323,10 @@ export default function FormPersonalInformation() {
         errors={errors}
         options={[
           { value: "ventas informales", label: "Ventas informales" },
-          { value: "vinculacion laboral con una empresa", label: "Vinculación laboral con una empresa" },
+          {
+            value: "vinculacion laboral con una empresa",
+            label: "Vinculación laboral con una empresa",
+          },
           { value: "subsidios del gobierno", label: "Subsidios del gobierno" },
           { value: "emprendimiento propio", label: "Emprendimiento propio" },
           { value: "ninguno", label: "No percibo ningún tipo de ingresos" },
@@ -330,7 +351,10 @@ export default function FormPersonalInformation() {
         options={[
           { value: "regimen contributivo", label: "Régimen contributivo" },
           { value: "regimen subsidiado", label: "Régimen subsidiado" },
-          { value: "ninguno", label: "No cuento con ningún tipo de afiliación" },
+          {
+            value: "ninguno",
+            label: "No cuento con ningún tipo de afiliación",
+          },
         ]}
       />
 
@@ -358,8 +382,14 @@ export default function FormPersonalInformation() {
           { value: "tarjeta de credito", label: "Tarjeta de crédito" },
           { value: "tarjeta debito", label: "Tarjeta debito" },
           { value: "CDT", label: "CDT" },
-          { value: "credito hipotecario", label: "Crédito hipotecario (crédito de vivienda)" },
-          { value: "credito de libre inversión", label: "Crédito de libre inversión" },
+          {
+            value: "credito hipotecario",
+            label: "Crédito hipotecario (crédito de vivienda)",
+          },
+          {
+            value: "credito de libre inversión",
+            label: "Crédito de libre inversión",
+          },
           { value: "fondos de inversion", label: "Fondos de inversión" },
           { value: "credito educativo", label: "Crédito educativo" },
           { value: "ninguno", label: "Ninguno de los anteriores" },
@@ -368,10 +398,14 @@ export default function FormPersonalInformation() {
 
       <button
         type="submit"
-        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full col-span-2"
+        className={clsx(
+          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full col-span-2 flex items-center justify-center gap-x-1",
+          { "cursor-not-allowed": isLoading }
+        )}
         disabled={isLoading}
       >
-        {isLoading ? "Cargando.." : "COMPLETAR PERFIL"}
+        <CompleteIcon />
+        {isLoading ? "CARGANDO..." : "COMPLETAR PERFIL"}
       </button>
     </form>
   );

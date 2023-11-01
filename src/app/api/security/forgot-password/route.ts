@@ -4,7 +4,7 @@ import { userPasswordsSchema } from "@/schemas/user.schema";
 import Jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
-export async function POST(request: Request) {
+export async function PATCH(request: Request) {
   try {
     const body = await request.json();
 
@@ -64,7 +64,7 @@ export async function POST(request: Request) {
           if (!Object.values(errorsMessages).includes(message)) {
             errorsMessages[path.join("")] = message;
           }
-        },
+        }
       );
 
       return NextResponse.json(errorsMessages, { status: 500 });
@@ -72,7 +72,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

@@ -2,12 +2,16 @@
 
 import {
   MisionIcon,
-  VisionIcon,
   QuestionIcon,
+  VisionIcon,
 } from "@/components/NavBar/icons";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useRef } from "react";
+import { InformationSchema } from "@prisma/client";
+import { Fragment, useRef, useState } from "react";
+import { FcCancel as CancelIcon } from "react-icons/fc";
+import { FiEdit2 as EditIcon } from "react-icons/fi";
 import MetaForm from "./MetaForm";
+import clsx from "clsx";
 
 export enum META {
   mision = "mision",
@@ -18,15 +22,19 @@ export enum META {
 export default function MetaModal({
   meta,
   description,
+  aboutInfo,
   open,
   setOpen,
 }: {
   meta: META;
   description: string;
+  aboutInfo: Partial<InformationSchema>;
   open: boolean;
   setOpen: (st: boolean) => void;
 }) {
   const cancelButtonRef = useRef(null);
+
+  const [isLoadingForm, setIsLoadingForm] = useState(false);
 
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -79,25 +87,40 @@ export default function MetaModal({
                         Actualizar {description}
                       </Dialog.Title>
                       <div className="mt-2">
-                        <MetaForm meta={META[meta]} />
+                        <MetaForm
+                          meta={META[meta]}
+                          aboutInfo={aboutInfo}
+                          closeMetaModal={() => setOpen(false)}
+                          setIsLoadingForm={setIsLoadingForm}
+                        />
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <div className="bg-gray-50 px-4 py-7 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
-                    type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-[#79ad34] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#69952e] sm:ml-3 sm:w-auto"
-                    onClick={() => setOpen(false)}
+                    type="submit"
+                    className={clsx(
+                      "inline-flex w-full justify-center rounded-md bg-[#79ad34] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#69952e] sm:ml-3 sm:w-auto items-center gap-x-1",
+                      { "cursor-not-allowed": isLoadingForm }
+                    )}
+                    form="metaForm"
+                    disabled={isLoadingForm}
                   >
-                    Actualizar
+                    <EditIcon />
+                    {isLoadingForm ? "Cargando..." : "Actualizar"}
                   </button>
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                    className={clsx(
+                      "mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto items-center gap-x-1",
+                      { "cursor-not-allowed": isLoadingForm }
+                    )}
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
+                    disabled={isLoadingForm}
                   >
+                    <CancelIcon />
                     Cancelar
                   </button>
                 </div>

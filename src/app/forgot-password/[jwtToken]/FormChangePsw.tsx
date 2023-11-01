@@ -32,7 +32,7 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
     try {
       setIsLoading(true);
 
-      const response = await api.post("/security/forgot-password", {
+      const response = await api.patch("/security/forgot-password", {
         password: data.password,
         confirmPassword: data.confirmPassword,
         jwtToken,

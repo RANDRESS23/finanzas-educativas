@@ -4,28 +4,44 @@ import MetaModal from "@/components/Modals/MetaModal";
 import { LiaEdit as EditIcon } from "react-icons/lia";
 import { useEffect, useState } from "react";
 import api from "@/libs/api";
+import { InformationSchema } from "@prisma/client";
+import { AxiosError } from "axios";
+import toast from "react-hot-toast";
+import P from "@/components/Skeletons/P";
+import Round from "@/components/Skeletons/Round";
 
 export default function Meta() {
-  const [aboutInfo, setAboutInfo] = useState({
-    whoami: "",
-    mision: "",
-    vision: "",
+  const [aboutInfo, setAboutInfo] = useState<Partial<InformationSchema>>({
+    id: "",
+    whoami: ["", ""],
+    mision: ["", ""],
+    vision: ["", ""],
   });
   const [openWhoami, setOpenWhoami] = useState(false);
   const [openMision, setOpenMision] = useState(false);
   const [openVision, setOpenVision] = useState(false);
+  const [isMetaLoading, setIsMetaLoading] = useState(true);
 
   const getAboutInfo = async () => {
-    const {
-      data: {
-        message: {
-          mision: [mision],
-          vision: [vision],
-          whoami: [whoami],
+    try {
+      const {
+        data: {
+          message: {
+            _id: { $oid },
+            mision,
+            vision,
+            whoami,
+          },
         },
-      },
-    } = await api("/admin/meta");
-    setAboutInfo({ mision, vision, whoami });
+      } = await api("/admin/meta");
+      setAboutInfo({ id: $oid, mision, vision, whoami });
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        toast.error("Error cargando información.");
+      }
+    } finally {
+      setIsMetaLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -41,16 +57,28 @@ export default function Meta() {
               Quienes Somos?
             </span>
             <h3 className="text-base font-normal text-gray-500">
-              {aboutInfo.whoami.split(" ").slice(0, 4).join(" ")}...
+              {isMetaLoading ? (
+                <P />
+              ) : (
+                aboutInfo
+                  .whoami![0].split(" ")
+                  .slice(0, 4)
+                  .join(" ")
+                  .concat("...")
+              )}
             </h3>
           </div>
           <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-            <button
-              onClick={() => setOpenWhoami(true)}
-              className="rounded-full p-5 bg-green-100 hover:bg-green-200"
-            >
-              <EditIcon />
-            </button>
+            {isMetaLoading ? (
+              <Round />
+            ) : (
+              <button
+                onClick={() => setOpenWhoami(true)}
+                className="rounded-full p-5 bg-green-100 hover:bg-green-200"
+              >
+                <EditIcon />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -61,13 +89,25 @@ export default function Meta() {
               Misión
             </span>
             <h3 className="text-base font-normal text-gray-500">
-              {aboutInfo.mision.split(" ").slice(0, 4).join(" ")}...
+              {isMetaLoading ? (
+                <P />
+              ) : (
+                aboutInfo
+                  .mision![0].split(" ")
+                  .slice(0, 4)
+                  .join(" ")
+                  .concat("...")
+              )}
             </h3>
           </div>
           <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-            <button className="rounded-full p-5 bg-green-100 hover:bg-green-200">
-              <EditIcon onClick={() => setOpenMision(true)} />
-            </button>
+            {isMetaLoading ? (
+              <Round />
+            ) : (
+              <button className="rounded-full p-5 bg-green-100 hover:bg-green-200">
+                <EditIcon onClick={() => setOpenMision(true)} />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -78,13 +118,25 @@ export default function Meta() {
               Visión
             </span>
             <h3 className="text-base font-normal text-gray-500">
-              {aboutInfo.vision.split(" ").slice(0, 4).join(" ")}...
+              {isMetaLoading ? (
+                <P />
+              ) : (
+                aboutInfo
+                  .vision![0].split(" ")
+                  .slice(0, 4)
+                  .join(" ")
+                  .concat("...")
+              )}
             </h3>
           </div>
           <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-            <button className="rounded-full p-5 bg-green-100 hover:bg-green-200">
-              <EditIcon onClick={() => setOpenVision(true)} />
-            </button>
+            {isMetaLoading ? (
+              <Round />
+            ) : (
+              <button className="rounded-full p-5 bg-green-100 hover:bg-green-200">
+                <EditIcon onClick={() => setOpenVision(true)} />
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -92,18 +144,21 @@ export default function Meta() {
       <MetaModal
         meta={"whoami" as any}
         description="Quienes somos"
+        aboutInfo={aboutInfo}
         open={openWhoami}
         setOpen={setOpenWhoami}
       />
       <MetaModal
         meta={"mision" as any}
         description="Misión"
+        aboutInfo={aboutInfo}
         open={openMision}
         setOpen={setOpenMision}
       />
       <MetaModal
         meta={"vision" as any}
         description="Visión"
+        aboutInfo={aboutInfo}
         open={openVision}
         setOpen={setOpenVision}
       />
