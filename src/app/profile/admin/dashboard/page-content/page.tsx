@@ -2,6 +2,9 @@ import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import Meta from "./Meta";
 
+// const revalidate = 60;
+export const dynamic = "force-dynamic";
+
 export default async function PageContent() {
   const session = await getServerSession();
 
