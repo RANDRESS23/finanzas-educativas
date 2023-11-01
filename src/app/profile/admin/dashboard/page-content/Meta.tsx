@@ -9,6 +9,9 @@ import { AxiosError } from "axios";
 import toast from "react-hot-toast";
 import P from "@/components/Skeletons/P";
 import Round from "@/components/Skeletons/Round";
+import { cache } from "react";
+
+export const revalidate = 0;
 
 export default function Meta() {
   const [aboutInfo, setAboutInfo] = useState<Partial<InformationSchema>>({
@@ -22,7 +25,7 @@ export default function Meta() {
   const [openVision, setOpenVision] = useState(false);
   const [isMetaLoading, setIsMetaLoading] = useState(true);
 
-  const getAboutInfo = async () => {
+  const getAboutInfo = cache(async () => {
     try {
       const {
         data: {
@@ -42,7 +45,7 @@ export default function Meta() {
     } finally {
       setIsMetaLoading(false);
     }
-  };
+  });
 
   useEffect(() => {
     getAboutInfo();
