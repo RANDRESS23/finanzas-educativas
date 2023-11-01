@@ -3,10 +3,8 @@
 import MetaModal from "@/components/Modals/MetaModal";
 import P from "@/components/Skeletons/P";
 import Round from "@/components/Skeletons/Round";
-import api from "@/libs/api";
 import { InformationSchema } from "@prisma/client";
-import { AxiosError } from "axios";
-import { cache, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { LiaEdit as EditIcon } from "react-icons/lia";
 
@@ -22,30 +20,21 @@ export default function Meta() {
   const [openVision, setOpenVision] = useState(false);
   const [isMetaLoading, setIsMetaLoading] = useState(true);
 
-  const getAboutInfo = cache(async () => {
-    try {
-      const {
-        data: {
+  useEffect(() => {
+    fetch("/api/admin/meta", { cache: "no-cache" })
+      .then((res) => res.json())
+      .then(
+        ({
           message: {
             _id: { $oid },
             mision,
             vision,
             whoami,
           },
-        },
-      } = await api("/admin/meta");
-      setAboutInfo({ id: $oid, mision, vision, whoami });
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        toast.error("Error cargando información.");
-      }
-    } finally {
-      setIsMetaLoading(false);
-    }
-  });
-
-  useEffect(() => {
-    getAboutInfo();
+        }) => setAboutInfo({ id: $oid, mision, vision, whoami })
+      )
+      .catch(() => toast.error("Error cargando información."))
+      .finally(() => setIsMetaLoading(false));
   }, []);
 
   return (

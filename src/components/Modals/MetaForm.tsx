@@ -1,6 +1,7 @@
 import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
 import { InformationSchema } from "@prisma/client";
+import { AxiosError } from "axios";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import type { META } from "./MetaModal";
@@ -43,10 +44,14 @@ export default function MetaForm({
         closeMetaModal();
         window.location.reload();
       }
-    } catch (error: any) {
-      toast.error(error.response.data.message);
-      console.log({ errorMessage: error.response.data.message });
-      console.log({ error });
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        toast.error(error.response?.data.message);
+        console.log({ errorMessage: error.response?.data.message });
+        console.log({ error });
+      }
+    } finally {
+      setIsLoadingForm(false);
     }
   };
 
