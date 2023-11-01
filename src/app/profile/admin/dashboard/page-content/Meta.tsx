@@ -21,7 +21,7 @@ export default function Meta() {
   const [isMetaLoading, setIsMetaLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/admin/meta", { cache: "no-store" })
+    fetch("/api/admin/meta", { next: { revalidate: 0 }, cache: "no-store" })
       .then((res) => res.json())
       .then(
         ({
