@@ -9,6 +9,8 @@ export default async function HomePreviewPage() {
     return redirect("/profile/user");
   }
 
+  await new Promise((re) => setTimeout(re, 5000));
+
   return (
     <section className="top-0 left-0 w-screen h-screen flex items-center justify-center">
       <div className="container mx-auto">

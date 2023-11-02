@@ -14,8 +14,8 @@ export default function LoadingHomePreviewPage() {
               </div>
               <div className="flex justify-center text-center p-4">
                 <div role="status" className="max-w-sm animate-pulse">
-                  <div className="h-4 bg-gray-200 rounded-full w-40 my-3" />
-                  <div className="h-3 bg-gray-200 rounded-full w-52 my-3" />
+                  <div className="h-4 bg-gray-200 rounded-full w-28 my-3" />
+                  <div className="h-3 bg-gray-200 rounded-full w-36 my-3" />
                 </div>
               </div>
             </div>
