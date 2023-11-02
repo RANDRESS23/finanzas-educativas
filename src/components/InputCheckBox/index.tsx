@@ -3,7 +3,7 @@ interface InputCheckBoxProps {
   label: string;
   register: any;
   errors: any;
-  options: Array<{value: string, label: string}>;
+  options: { value: string; label: string }[];
 }
 
 export default function InputCheckBox({
@@ -22,26 +22,24 @@ export default function InputCheckBox({
         {label}
       </label>
       <div className="mt-4 grid grid-cols-2 gap-4">
-        {
-          options.map(({value, label}) => (
-            <div key={value} className="relative flex gap-x-3">
-              <div className="flex h-6 items-center">
-                <input
-                  id={value}
-                  {...register(name)} 
-                  type="checkbox"
-                  value={value}
-                  className="h-4 w-4 rounded border-gray-300 text-[#008aae] focus:ring-[#008aae]"
-                />
-              </div>
-              <div className="text-sm leading-6">
-                <label htmlFor={value} className="font-medium text-gray-900">
-                  {label}
-                </label>
-              </div>
+        {options.map(({ value, label }) => (
+          <div key={value} className="relative flex gap-x-3">
+            <div className="flex h-6 items-center">
+              <input
+                id={value}
+                {...register(name)}
+                type="checkbox"
+                value={value}
+                className="h-4 w-4 rounded border-gray-300 text-[#008aae] focus:ring-[#008aae]"
+              />
             </div>
-          ))
-        }
+            <div className="text-sm leading-6">
+              <label htmlFor={value} className="font-medium text-gray-900">
+                {label}
+              </label>
+            </div>
+          </div>
+        ))}
       </div>
       {errors[name] !== undefined && (
         <p className="mt-2 text-sm text-rose-500">

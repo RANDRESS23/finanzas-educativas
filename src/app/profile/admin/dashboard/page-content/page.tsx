@@ -1,3 +1,4 @@
+import { db } from "@/libs/prismaDB";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import Meta from "./Meta";
@@ -11,6 +12,15 @@ export default async function PageContent() {
     return redirect("/profile/user");
   }
 
+  const [
+    {
+      _id: { $oid },
+      mision,
+      vision,
+      whoami,
+    },
+  ] = (await db.informationSchema.findRaw()) as any;
+
   return (
     <div>
       <div className="flex overflow-hidden bg-white">
@@ -21,7 +31,7 @@ export default async function PageContent() {
           <main>
             <div className="pt-6 px-4">
               <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                <Meta />
+                <Meta aboutInfo={{ id: $oid, mision, vision, whoami }} />
               </div>
             </div>
           </main>

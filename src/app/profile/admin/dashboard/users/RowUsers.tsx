@@ -1,6 +1,6 @@
 import { User } from "@prisma/client";
 
-function RowUsers({ users }: { users: Array<User> }) {
+function RowUsers({ users }: { users: User[] }) {
   return users.map((u) => (
     <tr key={u.id}>
       <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">

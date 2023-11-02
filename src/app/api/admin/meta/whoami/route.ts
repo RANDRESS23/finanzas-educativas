@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const [{ whoami }] =
-      (await db.informationSchema.findRaw()) as unknown as Array<InformationSchema>;
+      (await db.informationSchema.findRaw()) as unknown as InformationSchema[];
 
     return NextResponse.json({ message: whoami });
   } catch (error) {

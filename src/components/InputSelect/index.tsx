@@ -3,7 +3,7 @@ interface InputSelectProps {
   label: string;
   register: any;
   errors: any;
-  options: Array<{value: string | string[] | number, label: string}>;
+  options: { value: string | string[] | number; label: string }[];
 }
 
 export default function InputSelect({
@@ -28,22 +28,18 @@ export default function InputSelect({
             required: "Este es un campo obligatorio!",
           })}
           className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-[#008aae]
-          ${
-            errors[name] !== undefined
-              ? "ring-rose-500"
-              : "border-gray-300"
-          }}
+          ${errors[name] !== undefined ? "ring-rose-500" : "border-gray-300"}}
           ${
             errors[name] !== undefined
               ? "focus:outline-rose-500"
               : "focus:outline-[#008aae]"
           }`}
         >
-          {
-            options.map(({value, label}) => (
-              <option key={label} value={value}>{label}</option>
-            ))
-          }
+          {options.map(({ value, label }) => (
+            <option key={label} value={value}>
+              {label}
+            </option>
+          ))}
         </select>
       </div>
       {errors[name] !== undefined && (

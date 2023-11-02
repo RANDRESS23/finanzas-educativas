@@ -5,6 +5,7 @@ import { AxiosError } from "axios";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import toast from "react-hot-toast";
 import type { META } from "./MetaModal";
+import { useRouter } from "next/navigation";
 
 export default function MetaForm({
   meta,
@@ -17,6 +18,8 @@ export default function MetaForm({
   closeMetaModal: () => void;
   setIsLoadingForm: (st: boolean) => void;
 }) {
+  const router = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -42,7 +45,7 @@ export default function MetaForm({
         toast.success("Informacíon actualizada exitosamente!");
         reset();
         closeMetaModal();
-        window.location.reload();
+        router.refresh();
       }
     } catch (error) {
       if (error instanceof AxiosError) {

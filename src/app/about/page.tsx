@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 
 export default async function About(): Promise<React.ReactElement> {
   const [aboutInfo] =
-    (await db.informationSchema.findRaw()) as unknown as Array<InformationSchema>;
+    (await db.informationSchema.findRaw()) as unknown as InformationSchema[];
   const {
     whoami: [whoami, moreWhoami],
     mision: [mision, moreMision],
