@@ -26,7 +26,7 @@ export default async function UsersPreviewPage() {
                         Nuestros usuarios registrados
                       </h3>
                       <span className="text-base font-normal text-gray-500">
-                        Ésta es una lista de todos los usuarios activos bajo
+                        Esta es una lista de todos los usuarios activos bajo
                         tenencia!
                       </span>
                     </div>
@@ -35,7 +35,7 @@ export default async function UsersPreviewPage() {
                         href="#"
                         className="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2"
                       >
-                        View all
+                        Ver todos
                       </a>
                     </div>
                   </div>

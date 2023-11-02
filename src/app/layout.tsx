@@ -3,6 +3,7 @@ import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar";
 import SessionProviderContext from "@/providers/SessionProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
+import clsx from "clsx";
 import { type Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
@@ -27,7 +28,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={oswald.className}>
+    <html lang="es" className={clsx(oswald.className)}>
       <body>
         <SessionProviderContext>
           <NavBar />

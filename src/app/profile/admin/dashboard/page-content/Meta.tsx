@@ -22,7 +22,7 @@ export default function Meta({
             <span className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
               Quienes Somos?
             </span>
-            <h3 className="text-base font-normal text-gray-500">
+            <h3 className="text-base font-normal text-gray-500 whitespace-nowrap overflow-hidden animate-typing">
               {aboutInfo
                 .whoami![0].split(" ")
                 .slice(0, 4)
@@ -46,7 +46,7 @@ export default function Meta({
             <span className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
               Misión
             </span>
-            <h3 className="text-base font-normal text-gray-500">
+            <h3 className="text-base font-normal text-gray-500 whitespace-nowrap overflow-hidden animate-typing">
               {aboutInfo
                 .mision![0].split(" ")
                 .slice(0, 4)
@@ -67,7 +67,7 @@ export default function Meta({
             <span className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
               Visión
             </span>
-            <h3 className="text-base font-normal text-gray-500">
+            <h3 className="text-base font-normal text-gray-500 whitespace-nowrap overflow-hidden animate-typing">
               {aboutInfo
                 .vision![0].split(" ")
                 .slice(0, 4)
