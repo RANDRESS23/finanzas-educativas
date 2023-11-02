@@ -30,10 +30,10 @@ export default function Meta({
                 .concat("...")}
             </h3>
           </div>
-          <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
+          <div className="ml-5 w-0 flex items-center justify-end flex-1 text-gray-900 text-base font-bold">
             <button
               onClick={() => setOpenWhoami(true)}
-              className="rounded-full p-5 bg-lime-100 hover:bg-lime-200"
+              className="rounded-full p-5 bg-[#79ad3481] hover:bg-[#79ad3453]"
             >
               <EditIcon />
             </button>
@@ -54,8 +54,8 @@ export default function Meta({
                 .concat("...")}
             </h3>
           </div>
-          <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-            <button className="rounded-full p-5 bg-lime-100 hover:bg-lime-200">
+          <div className="ml-5 w-0 flex items-center justify-end flex-1 text-gray-900 text-base font-bold">
+            <button className="rounded-full p-5 bg-[#79ad3481] hover:bg-[#79ad3453]">
               <EditIcon onClick={() => setOpenMision(true)} />
             </button>
           </div>
@@ -75,8 +75,8 @@ export default function Meta({
                 .concat("...")}
             </h3>
           </div>
-          <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-            <button className="rounded-full p-5 bg-lime-100 hover:bg-lime-200">
+          <div className="ml-5 w-0 flex items-center justify-end flex-1 text-gray-900 text-base font-bold">
+            <button className="rounded-full p-5 bg-[#79ad3481] hover:bg-[#79ad3453]">
               <EditIcon onClick={() => setOpenVision(true)} />
             </button>
           </div>
