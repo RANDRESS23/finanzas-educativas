@@ -1,4 +1,4 @@
-export default function LoadingPage() {
+export default function LoadingPageContent() {
   return (
     <div>
       <div className="flex overflow-hidden bg-white">
