@@ -10,7 +10,7 @@ import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useForm, type FieldValues, type SubmitHandler, set } from "react-hook-form";
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { BsFillPatchCheckFill as CompleteIcon } from "react-icons/bs";
 
