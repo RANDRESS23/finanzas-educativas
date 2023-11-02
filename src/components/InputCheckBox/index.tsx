@@ -4,6 +4,7 @@ interface InputCheckBoxProps {
   register: any;
   errors: any;
   options: { value: string; label: string }[];
+  disabled: boolean;
 }
 
 export default function InputCheckBox({
@@ -12,6 +13,7 @@ export default function InputCheckBox({
   register,
   errors,
   options,
+  disabled
 }: InputCheckBoxProps): React.ReactNode {
   return (
     <div>
@@ -31,10 +33,11 @@ export default function InputCheckBox({
                 type="checkbox"
                 value={value}
                 className="h-4 w-4 rounded border-gray-300 text-[#008aae] focus:ring-[#008aae]"
+                disabled={disabled}
               />
             </div>
             <div className="text-sm leading-6">
-              <label htmlFor={value} className="font-medium text-gray-900">
+              <label htmlFor={value} className={`font-medium ${disabled ? "text-gray-600" : "text-gray-900"}`}>
                 {label}
               </label>
             </div>

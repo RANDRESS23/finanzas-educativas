@@ -37,7 +37,7 @@ export async function POST(request: Request) {
       data: {             
         userId: body.userId,                        
         gender: body.gender,                        
-        age: body.age.split(","),                           
+        age: Array.isArray(body.age) ? body.age : body.age.split(","),                           
         civilStatus: body.civilStatus,                   
         educationLevel: body.educationLevel,                
         residenceArea: body.residenceArea,                 

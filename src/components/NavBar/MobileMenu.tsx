@@ -92,7 +92,7 @@ export default function MobileMenu({
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
-                <HomeIcon className="-mb-1" />
+                <HomeIcon className="text-xl" />
                 Inicio
               </Link>
               <Link
@@ -100,7 +100,7 @@ export default function MobileMenu({
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
-                <EducationIcon className="-mb-1" />
+                <EducationIcon className="text-xl" />
                 Educación Financiera
               </Link>
               <Link
@@ -108,7 +108,7 @@ export default function MobileMenu({
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34] flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
-                <ContactIcon />
+                <ContactIcon className="text-xl" />
                 Contacto
               </Link>
 
@@ -121,7 +121,7 @@ export default function MobileMenu({
                   onClick={handleSubMenuMobileOpen}
                 >
                   <span className="flex items-center justify-center gap-x-1">
-                    <UsIcon />
+                    <UsIcon className="text-xl" />
                     Nosotros
                   </span>
                   {isSubMenuMobileOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
@@ -140,7 +140,7 @@ export default function MobileMenu({
                     onClick={handleResetMenus}
                   >
                     Registrarse
-                    <SignupIcon className="-mb-1" />
+                    <SignupIcon className="-mb-1 text-2xl" />
                   </Link>
                   <Link
                     href="/signin"

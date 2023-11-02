@@ -4,6 +4,7 @@ interface InputProps {
   label: string;
   register: any;
   errors: any;
+  disabled: boolean;
 }
 
 export default function Input({
@@ -12,6 +13,7 @@ export default function Input({
   label,
   register,
   errors,
+  disabled,
 }: InputProps): React.ReactNode {
   return (
     <div>
@@ -28,7 +30,7 @@ export default function Input({
           {...register(name, {
             required: "Este es un campo obligatorio!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae]
+          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae] disabled:bg-[#edeef1] disabled:cursor-not-allowed disabled:text-opacity-60 disabled:ring-gray-200
           ${
             errors[name] !== undefined
               ? "ring-rose-500"
@@ -39,6 +41,7 @@ export default function Input({
               ? "focus:outline-rose-500"
               : "focus:outline-[#008aae]"
           }`}
+          disabled={disabled}
         />
       </div>
       {errors[name] !== undefined && (

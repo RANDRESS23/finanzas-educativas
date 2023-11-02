@@ -10,11 +10,14 @@ import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
+import { useForm, type FieldValues, type SubmitHandler, set } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import { BsFillPatchCheckFill as CompleteIcon } from "react-icons/bs";
 
 export default function FormPersonalInformation() {
+  const [isLoadingDataUser, setIsLoadingDataUser] = useState(true);
+  const [isExistUserData, setIsExistUserData] = useState(true);
+  const [editInfo, setEditInfo] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
@@ -79,10 +82,11 @@ export default function FormPersonalInformation() {
           `/user/userMoreInfo/${session?.user?.id}`
         );
 
-        if (response.status === 404)
+        if (response.status === 404) {
+          setIsExistUserData(false);
+          setEditInfo(false);
           return console.log("No hay datos del usuario");
-
-        console.log(response.data);
+        }
 
         reset((formValues) => ({
           ...formValues,
@@ -95,6 +99,8 @@ export default function FormPersonalInformation() {
             icon: "⚠️",
           });
         }
+      } finally {
+        setIsLoadingDataUser(false);
       }
     };
 
@@ -104,30 +110,61 @@ export default function FormPersonalInformation() {
   }, [session?.user, reset]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    try {
-      setIsLoading(true);
+    if (editInfo) {
+      try {
+        setIsLoading(true);
+        let response;
 
-      const response = await api.post("/user/userMoreInfo", {
-        userId: session?.user?.id,
-        documentSession: session?.user?.document,
-        emailSession: session?.user?.email,
-        isInAPensionFund: data.isInAPensionFund === "Si",
-        ...data,
-      });
+        if (isExistUserData) {
+          response = await api.put(`/user/userMoreInfo/${session?.user?.id}`, {
+            ...data,
+            userId: session?.user?.id,
+            documentSession: session?.user?.document,
+            emailSession: session?.user?.email,
+            isInAPensionFund: data.isInAPensionFund === "Si",
+          }
+          );
+        } else {
+          response = await api.post("/user/userMoreInfo", {
+            ...data,
+            userId: session?.user?.id,
+            documentSession: session?.user?.document,
+            emailSession: session?.user?.email,
+            isInAPensionFund: data.isInAPensionFund === "Si",
+          });
+        }
 
-      if (response.status === 201) {
-        toast.success("¡Datos completados exitosamente!");
-        router.refresh();
-        router.push("/profile/user");
-      } else toast.error("Error al completar datos!");
-    } catch (error: any) {
-      toast.error(error.response.data.message);
-      console.log({ errorMessage: error.response.data.message });
-      console.log({ error });
-    } finally {
-      setIsLoading(false);
+        if (response.status === 201) {
+          toast.success("¡Datos completados exitosamente!");
+          router.refresh();
+          router.push("/profile/user");
+        } else toast.error("Error al completar datos!");
+      } catch (error: any) {
+        toast.error(error.response.data.message);
+        console.log({ errorMessage: error.response.data.message });
+        console.log({ error });
+      } finally {
+        setIsLoading(false);
+      }
     }
   };
+
+  if (isLoadingDataUser) {
+    return (
+      <div 
+        className="top-0 left-0 w-screen h-screen flex justify-center mt-20"
+      >
+        <div
+          className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
+          role="status"
+        >
+          <span className="!absolute !-m-px !h-px !w-px !overflow-hidden !whitespace-nowrap !border-0 !p-0 ![clip:rect(0,0,0,0)]">
+            Loading...
+          </span>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <form
@@ -143,6 +180,7 @@ export default function FormPersonalInformation() {
           { value: "cedula_ciudadania", label: "Cédula de Ciudadanía" },
           { value: "cedula_extranjeria", label: "Cédula de Extranjería" },
         ]}
+        disabled={editInfo}
       />
 
       <Input
@@ -151,6 +189,7 @@ export default function FormPersonalInformation() {
         label="Número de Identificación"
         register={register}
         errors={errors}
+        disabled={editInfo}
       />
 
       <Input
@@ -159,6 +198,7 @@ export default function FormPersonalInformation() {
         label="Nombres"
         register={register}
         errors={errors}
+        disabled={editInfo}
       />
 
       <Input
@@ -167,6 +207,7 @@ export default function FormPersonalInformation() {
         label="Apellidos"
         register={register}
         errors={errors}
+        disabled={editInfo}
       />
 
       <Input
@@ -175,6 +216,7 @@ export default function FormPersonalInformation() {
         label="Celular"
         register={register}
         errors={errors}
+        disabled={editInfo}
       />
 
       <Input
@@ -183,6 +225,7 @@ export default function FormPersonalInformation() {
         label="Correo Electrónico"
         register={register}
         errors={errors}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -195,6 +238,7 @@ export default function FormPersonalInformation() {
           { value: "femenino", label: "Femenino" },
           { value: "otro", label: "Otro" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -211,6 +255,7 @@ export default function FormPersonalInformation() {
           { value: ["50", "57"], label: "Entre 50 y 57 años" },
           { value: ["58", "130"], label: "Más de 57 años" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -225,6 +270,7 @@ export default function FormPersonalInformation() {
           { value: "divorciado(a)", label: "Divorciado(a)" },
           { value: "viudo(a)", label: "Viudo(a)" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -242,6 +288,7 @@ export default function FormPersonalInformation() {
           { value: "profesional completo", label: "Profesional completo" },
           { value: "postgrado", label: "Postgrado" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -253,6 +300,7 @@ export default function FormPersonalInformation() {
           { value: "urbana", label: "Urbana" },
           { value: "rural", label: "Rural" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -270,6 +318,7 @@ export default function FormPersonalInformation() {
               "Cedida (propiedad de un familiar que le permite habitar allí)",
           },
         ]}
+        disabled={editInfo}
       />
 
       <InputCheckBox
@@ -287,6 +336,7 @@ export default function FormPersonalInformation() {
           { value: "tv por cable", label: "TV por cable" },
           { value: "ninguno", label: "Ninguno de los anteriores" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -301,6 +351,7 @@ export default function FormPersonalInformation() {
           { value: 4, label: "Estrato 4" },
           { value: 5, label: "Estrato 5" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -314,6 +365,7 @@ export default function FormPersonalInformation() {
           { value: 3, label: "3 personas" },
           { value: 4, label: "4 o más personas" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -331,6 +383,7 @@ export default function FormPersonalInformation() {
           { value: "emprendimiento propio", label: "Emprendimiento propio" },
           { value: "ninguno", label: "No percibo ningún tipo de ingresos" },
         ]}
+        disabled={editInfo}
       />
 
       <InputRadio
@@ -341,6 +394,7 @@ export default function FormPersonalInformation() {
           { value: "Si", label: "Si" },
           { value: "No", label: "No" },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -356,6 +410,7 @@ export default function FormPersonalInformation() {
             label: "No cuento con ningún tipo de afiliación",
           },
         ]}
+        disabled={editInfo}
       />
 
       <InputSelect
@@ -369,6 +424,7 @@ export default function FormPersonalInformation() {
           { value: 3, label: "3 personas" },
           { value: 4, label: "4 o más personas" },
         ]}
+        disabled={editInfo}
       />
 
       <InputCheckBox
@@ -394,6 +450,7 @@ export default function FormPersonalInformation() {
           { value: "credito educativo", label: "Crédito educativo" },
           { value: "ninguno", label: "Ninguno de los anteriores" },
         ]}
+        disabled={editInfo}
       />
 
       <button
@@ -403,9 +460,19 @@ export default function FormPersonalInformation() {
           { "cursor-not-allowed": isLoading }
         )}
         disabled={isLoading}
+        onClick={() => {
+          if (editInfo) setEditInfo(false)
+          else setEditInfo(true)
+        }}
       >
         <CompleteIcon />
-        {isLoading ? "CARGANDO..." : "COMPLETAR PERFIL"}
+        {
+          isLoading
+            ? "CARGANDO..."
+            : editInfo
+              ? "EDITAR PERFIL"
+              : "COMPLETAR PERFIL"
+        }
       </button>
     </form>
   );

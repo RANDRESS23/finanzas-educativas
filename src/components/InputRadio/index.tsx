@@ -3,6 +3,7 @@ interface InputRadioProps {
   label: string;
   register: any;
   options: { value: string | boolean; label: string }[];
+  disabled: boolean;
 }
 
 export default function InputRadio({
@@ -10,6 +11,7 @@ export default function InputRadio({
   label,
   register,
   options,
+  disabled
 }: InputRadioProps): React.ReactNode {
   return (
     <div>
@@ -29,10 +31,11 @@ export default function InputRadio({
                 type="radio"
                 value={value}
                 className="h-4 w-4 rounded border-gray-300 text-[#008aae] focus:ring-[#008aae]"
+                disabled={disabled}
               />
             </div>
             <div className="text-sm leading-6">
-              <label htmlFor={label} className="font-medium text-gray-900">
+              <label htmlFor={label} className={`font-medium ${disabled ? "text-gray-600" : "text-gray-900"}`}>
                 {label}
               </label>
             </div>

@@ -99,7 +99,7 @@ function NavBar(): React.ReactNode {
             className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center gap-x-1 justify-center"
             onClick={handleResetMenus}
           >
-            <HomeIcon className="-mb-1" />
+            <HomeIcon className="text-xl" />
             Inicio
           </Link>
           <Link
@@ -107,7 +107,7 @@ function NavBar(): React.ReactNode {
             className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center justify-center gap-x-1"
             onClick={handleResetMenus}
           >
-            <EducationIcon className="-mb-1" />
+            <EducationIcon className="text-xl" />
             Educación Financiera
           </Link>
           <Link
@@ -115,7 +115,7 @@ function NavBar(): React.ReactNode {
             className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center justify-center gap-x-1"
             onClick={handleResetMenus}
           >
-            <ContactIcon />
+            <ContactIcon className="text-xl" />
             Contacto
           </Link>
 
@@ -126,7 +126,7 @@ function NavBar(): React.ReactNode {
               aria-expanded="false"
               onClick={handleMenuOpen}
             >
-              <UsIcon />
+              <UsIcon className="text-xl" />
               Nosotros
               {isMenuOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
             </button>
@@ -190,7 +190,7 @@ function NavBar(): React.ReactNode {
                 onClick={handleResetMenus}
               >
                 Registrarse
-                <SignupIcon className="-mb-1" />
+                <SignupIcon className="-mb-1 text-2xl" />
               </Link>
               <Link
                 href="/signin"
