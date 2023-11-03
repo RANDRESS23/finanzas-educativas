@@ -1,3 +1,4 @@
+import Pill from "@/components/Pill";
 import Title from "@/components/Title";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
@@ -5,6 +6,37 @@ import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
 // import ContactBot from './contact/ContactBot'
+
+const KNOWLEDGE_PILLS = [
+  {
+    title: "Ingresos y Gastos",
+    description: "Comienza por comprender tus ingresos y gastos. Crea un presupuesto que te permita controlar tus finanzas y asignar dinero para ahorros.",
+  },
+  {
+    title: "El Ahorro",
+    description: "El ahorro es fundamental. Establece metas de ahorro a corto y largo plazo. Considera abrir una cuenta de ahorros o una cuenta de jubilación para aprovechar el interés compuesto.",
+  },
+  {
+    title: "Tipos de Deuda",
+    description: "Aprende sobre los tipos de deuda, como la deuda buena (como una hipoteca) y la deuda mala (como tarjetas de crédito con intereses altos). Utiliza el crédito de manera responsable y conozca las tasas de interés.",
+  },
+  {
+    title: "Puntaje de Crédito",
+    description: "Tu puntaje de crédito afecta tu capacidad para obtener préstamos y las tasas de interés que se te ofrecen. Monitorea tu puntaje y trabaja en mejorarlo.",
+  },
+  {
+    title: "Opciones de Inversión",
+    description: "Aprende sobre diferentes opciones de inversión, como acciones, bonos, bienes raíces y fondos mutuos. Comprende los riesgos y recompensas asociados con cada opción.",
+  },
+  {
+    title: "Seguro Adecuado",
+    description: "Asegúrate de tener el seguro adecuado para proteger tus activos y tu salud. Comprende las pólizas de seguro de vida, salud, automóvil y hogar.",
+  },
+  {
+    title: "Educación Financiera",
+    description: "Recuerda que la educación financiera es un proceso a largo plazo, y cada persona tiene necesidades financieras únicas. Personaliza tu enfoque de acuerdo con tus metas y circunstancias personales.",
+  },
+]
 
 export default async function Home() {
   const session = await getServerSession();
@@ -59,87 +91,22 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="bg-white py-7 sm:py-32">
+      <div className="bg-white mb-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9 mb-5">
-            <p>Consejos Financieros...</p>
+          <blockquote className="text-center text-xl font-semibold leading-8 text-[#79ad34] sm:text-3xl sm:leading-9 mb-10">
+            <p>Pildoras de Conocimiento</p>
           </blockquote>
-          <dl className="grid grid-cols-1 gap-x-8 gap-y-16 text-center lg:grid-cols-3">
-            <div
-              role="status"
-              className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-200"
-            >
-              <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-300">
-                <svg
-                  className="w-10 h-10 text-gray-200 dark:text-gray-200"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 16 20"
-                >
-                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                </svg>
-              </div>
-              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-300 w-48 mb-4"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300"></div>
-            </div>
-
-            <div
-              role="status"
-              className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-200"
-            >
-              <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-300">
-                <svg
-                  className="w-10 h-10 text-gray-200 dark:text-gray-200"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 16 20"
-                >
-                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                </svg>
-              </div>
-              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-300 w-48 mb-4"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300"></div>
-            </div>
-
-            <div
-              role="status"
-              className="max-w-sm p-4 border border-gray-200 rounded shadow animate-pulse md:p-6 dark:border-gray-200"
-            >
-              <div className="flex items-center justify-center h-48 mb-4 bg-gray-300 rounded dark:bg-gray-300">
-                <svg
-                  className="w-10 h-10 text-gray-200 dark:text-gray-200"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 16 20"
-                >
-                  <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM10.5 6a1.5 1.5 0 1 1 0 2.999A1.5 1.5 0 0 1 10.5 6Zm2.221 10.515a1 1 0 0 1-.858.485h-8a1 1 0 0 1-.9-1.43L5.6 10.039a.978.978 0 0 1 .936-.57 1 1 0 0 1 .9.632l1.181 2.981.541-1a.945.945 0 0 1 .883-.522 1 1 0 0 1 .879.529l1.832 3.438a1 1 0 0 1-.031.988Z" />
-                  <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                </svg>
-              </div>
-              <div className="h-2.5 bg-gray-200 rounded-full dark:bg-gray-300 w-48 mb-4"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300 mb-2.5"></div>
-              <div className="h-2 bg-gray-200 rounded-full dark:bg-gray-300"></div>
-            </div>
-          </dl>
+          <div className="flex justify-center items-center gap-9 flex-wrap">
+            {
+              KNOWLEDGE_PILLS.map(({ title, description }, index) => (
+                <Pill 
+                  key={index}
+                  title={title}
+                  description={description}
+                />
+              ))
+            }
+          </div>
         </div>
       </div>
 
