@@ -98,7 +98,7 @@ export default async function Home() {
 
       <div className="mb-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-xl font-semibold leading-8 text-[#79ad34] sm:text-3xl sm:leading-9 mb-10">
+          <blockquote className="text-center text-xl font-semibold leading-8 text-sushi-500 sm:text-3xl sm:leading-9 mb-10">
             <p>Pildoras de Conocimiento</p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
@@ -111,16 +111,16 @@ export default async function Home() {
 
       <div className="py-7 pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9 mb-5">
-            <p>Videos...</p>
+          <blockquote className="text-center text-xl font-semibold leading-8 text-sushi-500 sm:text-2xl sm:leading-9 mb-5">
+            <p>Videos Interactivos</p>
           </blockquote>
           <dl className="flex text-center items-center justify-between">
             <div
               role="status"
-              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-800 w-11/12"
+              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-11/12"
             >
               <svg
-                className="w-10 h-10 text-gray-200 dark:text-gray-200"
+                className="w-10 h-10 text-gray-200 dark:text-gray-600"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -131,13 +131,12 @@ export default async function Home() {
               </svg>
               <span className="sr-only">Loading...</span>
             </div>
-
             <div
               role="status"
-              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-300 w-11/12"
+              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-11/12"
             >
               <svg
-                className="w-10 h-10 text-gray-200 dark:text-gray-200"
+                className="w-10 h-10 text-gray-200 dark:text-gray-600"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
@@ -148,13 +147,12 @@ export default async function Home() {
               </svg>
               <span className="sr-only">Loading...</span>
             </div>
-
             <div
               role="status"
-              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-300 w-11/12"
+              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-11/12"
             >
               <svg
-                className="w-10 h-10 text-gray-200 dark:text-gray-200"
+                className="w-10 h-10 text-gray-200 dark:text-gray-600"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
