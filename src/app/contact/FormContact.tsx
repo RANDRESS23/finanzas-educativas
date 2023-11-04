@@ -1,8 +1,8 @@
 "use client";
 
+import Input from "@/components/Input";
 import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
-import clsx from "clsx";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -47,79 +47,37 @@ export default function FormContact() {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
-        <label
-          htmlFor="name"
-          className="block font-medium leading-6 text-gray-900"
-        >
-          Nombres
-        </label>
-        <input
+        <Input
+          name="name"
           type="text"
-          id="name"
-          {...register("name", {
-            required: "El nombre es un campo obligatorio!",
-          })}
-          className={clsxe(errors.name)}
-          spellCheck="false"
+          label="Nombres"
+          register={register}
+          errors={errors}
         />
-        {errors.name !== undefined && (
-          <p className="my-2 text-sm text-rose-500">
-            {errors.name.message as any}
-          </p>
-        )}
       </div>
 
       <div className="mb-4">
-        <label
-          htmlFor="email"
-          className="block font-medium leading-6 text-gray-900"
-        >
-          Correo electrónico
-        </label>
-        <input
+        <Input
+          name="email"
           type="email"
-          id="email"
-          {...register("email", {
-            required: "El correo electrónico es un campo obligatorio!",
-          })}
-          className={clsxe(errors.email)}
-          spellCheck="false"
+          label="Correo electrónico"
+          register={register}
+          errors={errors}
         />
-        {errors.email !== undefined && (
-          <p className="my-2 text-sm text-rose-500">
-            {errors.email.message as any}
-          </p>
-        )}
       </div>
 
       <div className="mb-4">
-        <label
-          htmlFor="phoneNumber"
-          className="block font-medium leading-6 text-gray-900"
-        >
-          Teléfono
-        </label>
-        <input
+        <Input
+          name="phoneNumber"
           type="text"
-          id="phoneNumber"
-          {...register("phoneNumber", {
-            required: "El teléfono es un campo obligatorio!",
-          })}
-          className={clsxe(errors.phoneNumber)}
-          spellCheck="false"
+          label="Teléfono"
+          register={register}
+          errors={errors}
         />
-        {errors.phoneNumber !== undefined && (
-          <p className="my-2 text-sm text-rose-500">
-            {errors.phoneNumber.message as any}
-          </p>
-        )}
       </div>
 
       <div className="mb-6">
-        <label
-          htmlFor="message"
-          className="block font-medium leading-6 text-gray-900"
-        >
+        <label htmlFor="message" className="block font-medium leading-6">
           Mensaje
         </label>
         <div>
@@ -143,10 +101,7 @@ export default function FormContact() {
 
       <button
         type="submit"
-        className={clsx(
-          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-x-1",
-          { "cursor-not-allowed": isLoading }
-        )}
+        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
         disabled={isLoading}
       >
         <SendIcon />

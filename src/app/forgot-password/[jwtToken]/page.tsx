@@ -27,7 +27,13 @@ export default async function PasswordChanger({
         </div>
         <div className="flex justify-center items-center gap-16 mt-5">
           <div className="lg:flex lg:justify-center lg:items-center hidden">
-            <Image width={400} height={400} src={ChangePasswordGif} alt="" />
+            <Image
+              className="rounded-xl"
+              width={400}
+              height={400}
+              src={ChangePasswordGif}
+              alt=""
+            />
           </div>
           <div className="border-b border-gray-900/10 pb-12 w-80">
             <FormChangePsw jwtToken={jwtToken} />

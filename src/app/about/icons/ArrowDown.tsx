@@ -3,7 +3,7 @@ const ArrowDown: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
     <svg
       viewBox="0 0 16 16"
       fill="currentColor"
-      className="h-6 w-6 group-hover:text-[#79ad34]"
+      className="h-6 w-6 group-hover:text-sushi-500"
       {...props}
     >
       <path

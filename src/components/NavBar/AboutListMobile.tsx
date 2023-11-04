@@ -12,7 +12,7 @@ export default function AboutListMobile({
     <div className="mt-2 space-y-2" id="disclosure-1">
       <Link
         href="/about/#quienesSomos"
-        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >
         ¿Quienes somos?
@@ -20,7 +20,7 @@ export default function AboutListMobile({
       </Link>
       <Link
         href="/about/#mision"
-        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >
         Misión
@@ -28,7 +28,7 @@ export default function AboutListMobile({
       </Link>
       <Link
         href="/about/#vision"
-        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >
         Visión
@@ -36,7 +36,7 @@ export default function AboutListMobile({
       </Link>
       <Link
         href="/about/#team"
-        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50 hover:text-[#79ad34]"
+        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >
         Nuestro Equipo

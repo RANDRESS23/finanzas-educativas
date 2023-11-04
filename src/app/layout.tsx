@@ -3,7 +3,6 @@ import Footer from "@/components/Footer/Footer";
 import NavBar from "@/components/NavBar";
 import SessionProviderContext from "@/providers/SessionProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
-import clsx from "clsx";
 import { type Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
@@ -28,8 +27,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={clsx(oswald.className)}>
-      <body>
+    <html lang="es" className={oswald.className}>
+      <body className="antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 transition-colors">
         <SessionProviderContext>
           <NavBar />
           <ToasterProvider />

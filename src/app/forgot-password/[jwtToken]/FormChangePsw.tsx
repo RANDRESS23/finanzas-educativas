@@ -1,8 +1,8 @@
 "use client";
 
+import Input from "@/components/Input";
+import InputShowPsw from "@/components/inputShowPsw";
 import api from "@/libs/api";
-import clsxe from "@/libs/clsxe";
-import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
@@ -70,75 +70,36 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {/* <!-- Username Input --> */}
+
       <div className="mb-4">
-        <label
-          htmlFor="password"
-          className="block font-medium leading-6 text-gray-900"
-        >
-          Nueva contraseña
-        </label>
-        <input
+        <Input
+          name="password"
           type={passwordVisible ? "text" : "password"}
-          id="password"
-          {...register("password", {
-            required: "La contraseña es un campo obligatorio!",
-          })}
-          className={clsxe(errors.password)}
-          autoComplete="off"
+          label="Nueva contraseña"
+          register={register}
+          errors={errors}
         />
-        {errors.password !== undefined && (
-          <p className="mt-2 text-sm text-rose-500">
-            {errors.password.message as any}
-          </p>
-        )}
       </div>
-
       <div className="mb-2">
-        <label
-          htmlFor="confirmPassword"
-          className="block font-medium leading-6 text-gray-900"
-        >
-          Confirmar nueva contraseña
-        </label>
-        <input
+        <Input
+          name="confirmPassword"
           type={passwordVisible ? "text" : "password"}
-          id="confirmPassword"
-          {...register("confirmPassword", {
-            required: "La contraseña es un campo obligatorio!",
-          })}
-          className={clsxe(errors.confirmPassword)}
-          autoComplete="off"
+          label="Confirmar nueva contraseña"
+          register={register}
+          errors={errors}
         />
-        {errors.confirmPassword !== undefined && (
-          <p className="mt-2 text-sm text-rose-500">
-            {errors.confirmPassword.message as any}
-          </p>
-        )}
       </div>
-
       <div className="mb-4 flex items-center">
-        <input
-          type="checkbox"
-          id="showPassword"
-          className="text-blue-500"
-          onChange={() => setPasswordVisible(!passwordVisible)}
+        <InputShowPsw
+          set={setPasswordVisible}
           checked={passwordVisible}
-          disabled={isLoading}
+          isLoading={isLoading}
         />
-        <label
-          htmlFor="showPassword"
-          className="text-gray-600 ml-2 mb-1 text-sm"
-        >
-          Mostrar contraseña
-        </label>
       </div>
 
       <button
         type="submit"
-        className={clsx(
-          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-x-1",
-          { "cursor-not-allowed": isLoading }
-        )}
+        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
         disabled={isLoading}
       >
         <ChangeIcon />
@@ -148,7 +109,7 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
       <button
         type="button"
         onClick={goBack}
-        className=" my-3 text-sm leading-6 text-[#008aae] hover:text-[#79ad34]"
+        className=" my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500"
       >
         Volver atrás
       </button>

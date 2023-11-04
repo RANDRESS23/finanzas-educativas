@@ -5,38 +5,43 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
-// import ContactBot from './contact/ContactBot'
-
 const KNOWLEDGE_PILLS = [
   {
     title: "Ingresos y Gastos",
-    description: "Comienza por comprender tus ingresos y gastos. Crea un presupuesto que te permita controlar tus finanzas y asignar dinero para ahorros.",
+    description:
+      "Comienza por comprender tus ingresos y gastos. Crea un presupuesto que te permita controlar tus finanzas y asignar dinero para ahorros.",
   },
   {
     title: "El Ahorro",
-    description: "El ahorro es fundamental. Establece metas de ahorro a corto y largo plazo. Considera abrir una cuenta de ahorros o una cuenta de jubilación para aprovechar el interés compuesto.",
+    description:
+      "El ahorro es fundamental. Establece metas de ahorro a corto y largo plazo. Considera abrir una cuenta de ahorros o una cuenta de jubilación para aprovechar el interés compuesto.",
   },
   {
     title: "Tipos de Deuda",
-    description: "Aprende sobre los tipos de deuda, como la deuda buena (como una hipoteca) y la deuda mala (como tarjetas de crédito con intereses altos). Utiliza el crédito de manera responsable y conozca las tasas de interés.",
+    description:
+      "Aprende sobre los tipos de deuda, como la deuda buena (como una hipoteca) y la deuda mala (como tarjetas de crédito con intereses altos). Utiliza el crédito de manera responsable y conozca las tasas de interés.",
   },
   {
     title: "Puntaje de Crédito",
-    description: "Tu puntaje de crédito afecta tu capacidad para obtener préstamos y las tasas de interés que se te ofrecen. Monitorea tu puntaje y trabaja en mejorarlo.",
+    description:
+      "Tu puntaje de crédito afecta tu capacidad para obtener préstamos y las tasas de interés que se te ofrecen. Monitorea tu puntaje y trabaja en mejorarlo.",
   },
   {
     title: "Opciones de Inversión",
-    description: "Aprende sobre diferentes opciones de inversión, como acciones, bonos, bienes raíces y fondos mutuos. Comprende los riesgos y recompensas asociados con cada opción.",
+    description:
+      "Aprende sobre diferentes opciones de inversión, como acciones, bonos, bienes raíces y fondos mutuos. Comprende los riesgos y recompensas asociados con cada opción.",
   },
   {
     title: "Seguro Adecuado",
-    description: "Asegúrate de tener el seguro adecuado para proteger tus activos y tu salud. Comprende las pólizas de seguro de vida, salud, automóvil y hogar.",
+    description:
+      "Asegúrate de tener el seguro adecuado para proteger tus activos y tu salud. Comprende las pólizas de seguro de vida, salud, automóvil y hogar.",
   },
   {
     title: "Educación Financiera",
-    description: "Recuerda que la educación financiera es un proceso a largo plazo, y cada persona tiene necesidades financieras únicas. Personaliza tu enfoque de acuerdo con tus metas y circunstancias personales.",
+    description:
+      "Recuerda que la educación financiera es un proceso a largo plazo, y cada persona tiene necesidades financieras únicas. Personaliza tu enfoque de acuerdo con tus metas y circunstancias personales.",
   },
-]
+];
 
 export default async function Home() {
   const session = await getServerSession();
@@ -52,11 +57,11 @@ export default async function Home() {
       <div className="relative isolate px-6 mt-[-5rem] lg:px-8 py-20">
         <div className="mx-auto max-w-2xl h-screen flex flex-col justify-center items-center">
           <div className="flex mb-8 justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-200/10 dark:hover:ring-gray-200/20">
               Aprender un poco sobre finanzas.{" "}
               <Link
                 href="/financial-education"
-                className="font-semibold text-[#008aae]"
+                className="font-semibold text-boston-blue-600"
               >
                 <span className="absolute inset-0" aria-hidden="true" />
                 Leer más <span aria-hidden="true">&rarr;</span>
@@ -64,10 +69,10 @@ export default async function Home() {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight sm:text-6xl">
               Bienvenido a <Title text="¡Finanzas Educativas!" isTextStatic />
             </h1>
-            <p className="text-lg leading-8 text-gray-600">
+            <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
               lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
               fugiat aliqua.
@@ -75,14 +80,14 @@ export default async function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/signup"
-                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1"
+                className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1"
               >
                 Registrarse
                 <SignupIcon />
               </Link>
               <Link
                 href="/signin"
-                className="text-sm font-semibold leading-6 text-gray-900 hover:bg-[#008aae] transition-colors duration-300 rounded-md px-3.5 py-2 hover:text-white shadow-md"
+                className="text-sm font-semibold leading-6 bg-zinc-50 dark:text-slate-900 hover:bg-boston-blue-600 transition-colors duration-300 rounded-md px-3.5 py-2 dark:hover:text-white hover:text-white shadow-md"
               >
                 Ingresar <span aria-hidden="true">→</span>
               </Link>
@@ -91,26 +96,20 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="bg-white mb-20">
+      <div className="mb-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <blockquote className="text-center text-xl font-semibold leading-8 text-[#79ad34] sm:text-3xl sm:leading-9 mb-10">
             <p>Pildoras de Conocimiento</p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
-            {
-              KNOWLEDGE_PILLS.map(({ title, description }, index) => (
-                <Pill 
-                  key={index}
-                  title={title}
-                  description={description}
-                />
-              ))
-            }
+            {KNOWLEDGE_PILLS.map(({ title, description }, index) => (
+              <Pill key={index} title={title} description={description} />
+            ))}
           </div>
         </div>
       </div>
 
-      <div className="bg-white py-7 pb-24 sm:pb-32">
+      <div className="py-7 pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9 mb-5">
             <p>Videos...</p>
@@ -118,7 +117,7 @@ export default async function Home() {
           <dl className="flex text-center items-center justify-between">
             <div
               role="status"
-              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-300 w-11/12"
+              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-800 w-11/12"
             >
               <svg
                 className="w-10 h-10 text-gray-200 dark:text-gray-200"
@@ -168,8 +167,6 @@ export default async function Home() {
             </div>
           </dl>
         </div>
-
-        {/* <ContactBot /> */}
       </div>
     </>
   );

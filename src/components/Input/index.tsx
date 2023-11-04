@@ -1,10 +1,12 @@
+import clsxe from "@/libs/clsxe";
+
 interface InputProps {
   name: string;
-  type: string;
+  type: React.JSX.IntrinsicElements["input"]["type"];
   label: string;
   register: any;
   errors: any;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export default function Input({
@@ -17,30 +19,17 @@ export default function Input({
 }: InputProps): React.ReactNode {
   return (
     <div>
-      <label
-        htmlFor={name}
-        className="block font-medium leading-6 text-gray-900"
-      >
+      <label htmlFor={name} className="block font-medium leading-6">
         {label}
       </label>
-      <div className="mt-2">
+      <div className="mt-2 w-full">
         <input
           type={type}
           id={name}
           {...register(name, {
             required: "Este es un campo obligatorio!",
           })}
-          className={`block w-full rounded-md border-0 p-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-[#008aae] disabled:bg-[#edeef1] disabled:cursor-not-allowed disabled:text-opacity-60 disabled:ring-gray-200
-          ${
-            errors[name] !== undefined
-              ? "ring-rose-500"
-              : "border-gray-300"
-          }}
-          ${
-            errors[name] !== undefined
-              ? "focus:outline-rose-500"
-              : "focus:outline-[#008aae]"
-          }`}
+          className={clsxe(errors[name])}
           disabled={disabled}
         />
       </div>

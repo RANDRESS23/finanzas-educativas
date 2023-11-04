@@ -1,9 +1,8 @@
 "use client";
 
+import Input from "@/components/Input";
 import api from "@/libs/api";
-import clsxe from "@/libs/clsxe";
 import { AxiosError } from "axios";
-import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
@@ -49,35 +48,19 @@ const FormSendEmail: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* <!-- Username Input --> */}
       <div className="mb-4">
-        <label
-          htmlFor="email"
-          className="block font-medium leading-6 text-gray-900"
-        >
-          Correo electrónico de registro
-        </label>
-        <input
+        <Input
+          name="email"
           type="email"
-          id="email"
-          {...register("email", {
-            required: "Por favor ingresa el correo electrónico de registro!",
-          })}
-          className={clsxe(errors.email)}
+          label="Correo electrónico de registro"
+          register={register}
+          errors={errors}
         />
-        {errors.email !== undefined && (
-          <p className="my-2 text-sm text-rose-500">
-            {errors.email.message as any}
-          </p>
-        )}
       </div>
 
       <button
         type="submit"
-        className={clsx(
-          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full flex items-center justify-center gap-x-1",
-          { "cursor-not-allowed": isLoading }
-        )}
+        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
         disabled={isLoading}
       >
         <SendIcon />
@@ -87,7 +70,7 @@ const FormSendEmail: React.FC = () => {
       <button
         type="button"
         onClick={goBack}
-        className=" my-3 text-sm leading-6 text-[#008aae] hover:text-[#79ad34]"
+        className=" my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500"
       >
         Volver atrás
       </button>

@@ -14,7 +14,7 @@ export default async function HomePreviewPage() {
       <div className="container mx-auto">
         <div className="grid place-items-center">
           <div className="w-1/2">
-            <div className="bg-zinc-50 border rounded-xl shadow-md">
+            <div className="bg-zinc-50 dark:bg-slate-800 border dark:border-zinc-600 rounded-xl shadow-md dark:shadow-slate-800">
               <div className="text-center p-10">
                 <Image
                   src={"https://reqres.in/img/faces/4-image.jpg"}
@@ -30,7 +30,9 @@ export default async function HomePreviewPage() {
                     ? "Administrador"
                     : "Usuario"}
                 </h3>
-                <p>Email: {session.user.email}</p>
+                <p className="text-gray-600 dark:text-gray-400">
+                  Email: {session.user.email}
+                </p>
               </div>
             </div>
           </div>
