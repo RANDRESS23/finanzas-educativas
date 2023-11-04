@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 interface InputCheckBoxProps {
   name: string;
   label: string;
@@ -13,14 +15,11 @@ export default function InputCheckBox({
   register,
   errors,
   options,
-  disabled
+  disabled,
 }: InputCheckBoxProps): React.ReactNode {
   return (
     <div>
-      <label
-        htmlFor={name}
-        className="block font-medium leading-6 text-gray-900"
-      >
+      <label htmlFor={name} className="block font-medium leading-6">
         {label}
       </label>
       <div className="mt-4 grid grid-cols-2 gap-4">
@@ -32,12 +31,17 @@ export default function InputCheckBox({
                 {...register(name)}
                 type="checkbox"
                 value={value}
-                className="h-4 w-4 rounded border-gray-300 text-[#008aae] focus:ring-[#008aae]"
+                className="h-4 w-4 accent-boston-blue-600 cursor-pointer bg-zinc-50 dark:bg-slate-800 disabled:cursor-not-allowed"
                 disabled={disabled}
               />
             </div>
             <div className="text-sm leading-6">
-              <label htmlFor={value} className={`font-medium ${disabled ? "text-gray-600" : "text-gray-900"}`}>
+              <label
+                htmlFor={value}
+                className={clsx("font-medium", {
+                  "text-gray-600 dark:text-gray-400": disabled,
+                })}
+              >
                 {label}
               </label>
             </div>

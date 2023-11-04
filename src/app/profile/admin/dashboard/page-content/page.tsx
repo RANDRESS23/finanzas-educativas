@@ -23,10 +23,10 @@ export default async function PageContent() {
 
   return (
     <div>
-      <div className="flex overflow-hidden bg-white">
+      <div className="flex overflow-hidden">
         <div
           id="main-content"
-          className="h-full w-full bg-gray-50 py-20 relative overflow-y-auto lg:ml-64"
+          className="h-full w-full bg-gray-50 dark:bg-slate-800/20 py-20 relative overflow-y-auto lg:ml-64"
         >
           <main>
             <div className="pt-6 px-4">

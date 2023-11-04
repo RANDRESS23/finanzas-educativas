@@ -37,13 +37,17 @@ export default function AboutSection({
         <div className="hidden md:block lg:w-96">{SVGS_IMAGES[svgName]()}</div>
       )}
       <div className="flex flex-col gap-3 w-full md:w-5/12">
-        <h1 className="font-bold text-4xl text-[#79ad34]">{title}</h1>
-        <p className="text-gray-600 text-lg">{description}</p>
+        <h1 className="font-bold text-4xl text-sushi-500">{title}</h1>
+        <p className="text-gray-600 dark:text-gray-400 text-lg">
+          {description}
+        </p>
         {viewMoreInfoVision && (
-          <p className="text-gray-600 text-lg">{moreDescription}</p>
+          <p className="text-gray-600 dark:text-gray-400 text-lg">
+            {moreDescription}
+          </p>
         )}
         <button
-          className="text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-2 bg-[#008aae] hover:bg-[#79ad34]"
+          className="text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-2 bg-boston-blue-600 hover:bg-sushi-500"
           onClick={handleViewMoreInfoVision}
         >
           {viewMoreInfoVision

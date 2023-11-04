@@ -3,7 +3,7 @@ const AdminIcon: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
     <svg
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="h-6 w-6 group-hover:text-[#008aae]"
+      className="h-6 w-6 group-hover:text-boston-blue-600"
       {...props}
     >
       <path fill="none" d="M0 0h24v24H0z" />

@@ -1,5 +1,6 @@
 "use client";
 
+import clsx from "clsx";
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -20,15 +21,16 @@ export default function Footer(): React.ReactNode {
 
   return (
     <footer
-      className={`flex flex-col justify-center items-center gap-10 py-10 border-t border-[#0f172a1a] ${
-        pathname.includes("/profile/admin") && "lg:ml-64"
-      }`}
+      className={clsx(
+        "flex flex-col justify-center items-center gap-10 py-10 border-t border-slate-900/10",
+        { "lg:ml-64": pathname.includes("/profile/admin") }
+      )}
     >
       <div>
         <ul className="grid grid-cols-2 grid-rows-3 gap-5 sm:flex sm:gap-8 text-gray-400">
           <li className="flex justify-center items-center">
             <Link
-              className="hover:text-[#79ad34] transition-all"
+              className="hover:text-sushi-500 transition-all"
               href={
                 status === "authenticated" &&
                 session?.user?.document !== "0000000000"
@@ -44,7 +46,7 @@ export default function Footer(): React.ReactNode {
           </li>
           <li className="flex justify-center items-center">
             <Link
-              className="hover:text-[#79ad34] transition-all"
+              className="hover:text-sushi-500 transition-all"
               href="/financial-education"
             >
               Educación Financiera
@@ -52,14 +54,14 @@ export default function Footer(): React.ReactNode {
           </li>
           <li className="flex justify-center items-center">
             <Link
-              className="hover:text-[#79ad34] transition-all"
+              className="hover:text-sushi-500 transition-all"
               href="/contact"
             >
               Contacto
             </Link>
           </li>
           <li className="flex justify-center items-center">
-            <Link className="hover:text-[#79ad34] transition-all" href="/about">
+            <Link className="hover:text-sushi-500 transition-all" href="/about">
               Nosotros
             </Link>
           </li>
@@ -67,7 +69,7 @@ export default function Footer(): React.ReactNode {
             <>
               <li className="flex justify-center items-center">
                 <Link
-                  className="hover:text-[#79ad34] transition-all"
+                  className="hover:text-sushi-500 transition-all"
                   href="/signup"
                 >
                   Registrarse
@@ -75,7 +77,7 @@ export default function Footer(): React.ReactNode {
               </li>
               <li className="flex justify-center items-center">
                 <Link
-                  className="hover:text-[#79ad34] transition-all"
+                  className="hover:text-sushi-500 transition-all"
                   href="/signin"
                 >
                   Ingresar
@@ -84,7 +86,7 @@ export default function Footer(): React.ReactNode {
             </>
           ) : (
             <button
-              className="hover:text-[#79ad34] transition-all col-span-2"
+              className="hover:text-sushi-500 transition-all col-span-2"
               onClick={handleCloseSession}
             >
               Cerrar Sesión
@@ -96,22 +98,22 @@ export default function Footer(): React.ReactNode {
         <ul className="flex justify-center items-center gap-5 sm:gap-12">
           <li>
             <Link href="#" className="flex justify-center items-center">
-              <FaceIcon className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6" />
+              <FaceIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-6 h-6" />
             </Link>
           </li>
           <li>
             <Link href="#" className="flex justify-center items-center">
-              <InstaIcon className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6" />
+              <InstaIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-6 h-6" />
             </Link>
           </li>
           <li>
             <Link href="#" className="flex justify-center items-center">
-              <TweetIcon className="text-gray-400 hover:text-[#008aae] transition-colors w-6 h-6" />
+              <TweetIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-6 h-6" />
             </Link>
           </li>
           <li>
             <Link href="#" className="flex justify-center items-center">
-              <YtIcon className="text-gray-400 hover:text-[#008aae] transition-colors w-7 h-6" />
+              <YtIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-7 h-6" />
             </Link>
           </li>
         </ul>

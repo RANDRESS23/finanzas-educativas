@@ -1,28 +1,32 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import Toggler from "@/components/Theme/Toggler";
+import clsx from "clsx";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 import {
+  BiBookReader as EducationIcon,
+  BiHomeAlt2 as HomeIcon,
+} from "react-icons/bi";
+import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
+import { MdContactSupport as ContactIcon } from "react-icons/md";
+import { RiTeamFill as UsIcon } from "react-icons/ri";
+import ItemListDropDown from "./ItemListDropDown";
+import MobileMenu from "./MobileMenu";
+import {
+  AdminIcon,
   ArrowDownIcon,
   ArrowUpIcon,
   LogInIcon,
   MenuIcon,
   MisionIcon,
   QuestionIcon,
-  VisionIcon,
   TeamIcon,
-  AdminIcon,
   UserIcon,
+  VisionIcon,
 } from "./icons";
-import ItemListDropDown from "./ItemListDropDown";
-import MobileMenu from "./MobileMenu";
-import { useSession, signOut } from "next-auth/react";
-import { RiTeamFill as UsIcon } from "react-icons/ri";
-import { BiBookReader as EducationIcon } from "react-icons/bi";
-import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
-import { MdContactSupport as ContactIcon } from "react-icons/md";
-import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
 function NavBar(): React.ReactNode {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -59,7 +63,15 @@ function NavBar(): React.ReactNode {
   };
 
   return (
-    <header className="bg-white border border-[#0f172a1a] fixed top-0 w-full z-10">
+    <header
+      className={clsx(
+        "fixed top-0 z-40 border-b border-slate-950/10 w-full flex-none transition-colors duration-500 dark:border-slate-50/[0.06] bg-white/95 dark:bg-slate-900 lg:z-50",
+        {
+          "backdrop-blur supports-backdrop-blur:bg-white/60 dark:bg-transparent":
+            !isMenuMobileOpen,
+        }
+      )}
+    >
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
         <div className="flex lg:flex-1">
           <Link
@@ -96,7 +108,7 @@ function NavBar(): React.ReactNode {
                 ? "/profile/admin/home-preview"
                 : "/"
             }
-            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center gap-x-1 justify-center"
+            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center gap-x-1 justify-center"
             onClick={handleResetMenus}
           >
             <HomeIcon className="text-xl" />
@@ -104,7 +116,7 @@ function NavBar(): React.ReactNode {
           </Link>
           <Link
             href="/financial-education"
-            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center justify-center gap-x-1"
+            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
             onClick={handleResetMenus}
           >
             <EducationIcon className="text-xl" />
@@ -112,7 +124,7 @@ function NavBar(): React.ReactNode {
           </Link>
           <Link
             href="/contact"
-            className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center justify-center gap-x-1"
+            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
             onClick={handleResetMenus}
           >
             <ContactIcon className="text-xl" />
@@ -122,7 +134,7 @@ function NavBar(): React.ReactNode {
           <div className="relative">
             <button
               type="button"
-              className="flex items-center gap-x-1 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+              className="flex items-center gap-x-1 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
               aria-expanded="false"
               onClick={handleMenuOpen}
             >
@@ -132,14 +144,14 @@ function NavBar(): React.ReactNode {
             </button>
 
             <div
-              className={`${
-                isMenuOpen
-                  ? "transition ease-out duration-200 opacity-100 translate-y-0"
-                  : "transition ease-in duration-150 opacity-0 translate-y-1"
-              }`}
+              className={clsx({
+                "transition ease-out duration-200 opacity-100 translate-y-0":
+                  isMenuOpen,
+                "transition translate-y-1": !isMenuOpen,
+              })}
             >
               {isMenuOpen && (
-                <div className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                <div className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white dark:bg-slate-800 shadow-lg ring-1 ring-gray-900/5">
                   <div className="p-4">
                     <ItemListDropDown
                       title="¿Quienes somos?"
@@ -186,7 +198,7 @@ function NavBar(): React.ReactNode {
             <>
               <Link
                 href="/signup"
-                className="text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34] flex items-center justify-center gap-x-1"
+                className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
                 onClick={handleResetMenus}
               >
                 Registrarse
@@ -194,7 +206,7 @@ function NavBar(): React.ReactNode {
               </Link>
               <Link
                 href="/signin"
-                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
                 onClick={handleResetMenus}
               >
                 Ingresar
@@ -206,7 +218,7 @@ function NavBar(): React.ReactNode {
               {session?.user?.document === "0000000000" ? (
                 <Link
                   href="/profile/admin/dashboard"
-                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
                 >
                   Admin.
                   <AdminIcon />
@@ -214,14 +226,14 @@ function NavBar(): React.ReactNode {
               ) : (
                 <Link
                   href="/profile/user/personal-information"
-                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
                 >
                   Perfil
                   <UserIcon />
                 </Link>
               )}
               <button
-                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 hover:text-[#79ad34]"
+                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
                 onClick={handleCloseSession}
               >
                 Cerrar Sesión
@@ -229,9 +241,11 @@ function NavBar(): React.ReactNode {
               </button>
             </>
           )}
+
+          <Toggler />
         </div>
         <button
-          className="lg:hidden hover:text-[#79ad34]"
+          className="lg:hidden hover:text-sushi-500"
           onClick={handleMenuMobileOpen}
         >
           <MenuIcon />

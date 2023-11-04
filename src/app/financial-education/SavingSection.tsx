@@ -42,10 +42,10 @@ const features = [
 
 export default function SavingSection() {
   return (
-    <div className="bg-white py-16">
+    <div className="py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl lg:text-center">
-          <h2 className="text-4xl font-semibold leading-7 text-[#79ad34] mb-10">
+          <h2 className="text-4xl font-semibold leading-7 text-sushi-500 mb-10">
             Ahorro
           </h2>
           <div className="mt-4 flex justify-center items-center gap-14 sm:text-4xl">
@@ -53,10 +53,10 @@ export default function SavingSection() {
               <Saving />
             </div>
             <div>
-              <p className="text-3xl text-left font-bold tracking-tight text-gray-900">
+              <p className="text-3xl text-left font-bold tracking-tight">
                 ¿Qué es el ahorro?
               </p>
-              <p className="mt-6 text-lg text-left leading-8 text-gray-600">
+              <p className="mt-6 text-lg text-left leading-8 text-gray-600 dark:text-gray-400">
                 El ahorro es guardar una parte de nuestro dinero (ingresos) para
                 ser usado en un futuro, ya sea para un imprevisto, una
                 emergencia o una inversión en crecimiento. El ahorro se refiere
@@ -67,7 +67,7 @@ export default function SavingSection() {
               </p>
             </div>
           </div>
-          <p className="mt-16 text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+          <p className="mt-16 text-2xl font-bold tracking-tight sm:text-3xl">
             Formas de ahorro
           </p>
         </div>
@@ -75,13 +75,13 @@ export default function SavingSection() {
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
             {features.map(({ name, description, Icon }) => (
               <div key={name} className="relative pl-16">
-                <dt className="text-base font-bold leading-7 text-[#79ad34]">
-                  <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-[#008aae]">
+                <dt className="text-base font-bold leading-7 text-sushi-500">
+                  <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-boston-blue-600">
                     <Icon />
                   </div>
                   {name}
                 </dt>
-                <dd className="mt-2 text-base leading-7 text-gray-600">
+                <dd className="mt-2 text-base leading-7 text-gray-600 dark:text-gray-400">
                   {description}
                 </dd>
               </div>

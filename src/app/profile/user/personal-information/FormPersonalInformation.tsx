@@ -6,7 +6,6 @@ import InputRadio from "@/components/InputRadio";
 import InputSelect from "@/components/InputSelect";
 import api from "@/libs/api";
 import { AxiosError } from "axios";
-import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -122,8 +121,7 @@ export default function FormPersonalInformation() {
             documentSession: session?.user?.document,
             emailSession: session?.user?.email,
             isInAPensionFund: data.isInAPensionFund === "Si",
-          }
-          );
+          });
         } else {
           response = await api.post("/user/userMoreInfo", {
             ...data,
@@ -151,9 +149,7 @@ export default function FormPersonalInformation() {
 
   if (isLoadingDataUser) {
     return (
-      <div 
-        className="top-0 left-0 w-screen h-screen flex justify-center mt-20"
-      >
+      <div className="top-0 left-0 w-screen h-screen flex justify-center mt-20">
         <div
           className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
           role="status"
@@ -163,7 +159,7 @@ export default function FormPersonalInformation() {
           </span>
         </div>
       </div>
-    )
+    );
   }
 
   return (
@@ -455,24 +451,16 @@ export default function FormPersonalInformation() {
 
       <button
         type="submit"
-        className={clsx(
-          "rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-[#008aae] hover:bg-[#79ad34] disabled:opacity-50 w-full col-span-2 flex items-center justify-center gap-x-1",
-          { "cursor-not-allowed": isLoading }
-        )}
+        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full col-span-2 flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
         disabled={isLoading}
-        onClick={() => {
-          if (editInfo) setEditInfo(false)
-          else setEditInfo(true)
-        }}
+        onClick={() => (editInfo ? setEditInfo(false) : setEditInfo(true))}
       >
         <CompleteIcon />
-        {
-          isLoading
-            ? "CARGANDO..."
-            : editInfo
-              ? "EDITAR PERFIL"
-              : "COMPLETAR PERFIL"
-        }
+        {isLoading
+          ? "CARGANDO..."
+          : editInfo
+          ? "EDITAR PERFIL"
+          : "COMPLETAR PERFIL"}
       </button>
     </form>
   );

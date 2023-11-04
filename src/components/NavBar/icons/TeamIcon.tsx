@@ -3,7 +3,7 @@ const TeamIcon: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
     <svg
       viewBox="0 0 24 24"
       fill="currentColor"
-      className="h-6 w-6 text-gray-600 group-hover:text-[#79ad34]"
+      className="h-6 w-6 text-gray-600 group-hover:text-sushi-500"
       {...props}
     >
       <path fill="none" d="M0 0h24v24H0z" />

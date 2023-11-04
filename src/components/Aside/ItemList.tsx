@@ -10,7 +10,7 @@ const ItemList: React.FC<ItemListProps> = ({ href, Icon, title }) => {
   return (
     <Link
       href={href}
-      className="text-base text-gray-900 font-semibold rounded-lg hover:text-[#79ad34] hover:bg-gray-100 flex items-center p-2 group "
+      className="text-base font-semibold rounded-lg hover:text-sushi-500 hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center p-2 group "
     >
       <Icon />
       <span className="ml-3 flex-1 whitespace-nowrap">{title}</span>

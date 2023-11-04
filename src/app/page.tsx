@@ -4,8 +4,6 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
-// import ContactBot from './contact/ContactBot'
-
 export default async function Home() {
   const session = await getServerSession();
 
@@ -20,11 +18,11 @@ export default async function Home() {
       <div className="relative isolate px-6 mt-[-5rem] lg:px-8 py-20">
         <div className="mx-auto max-w-2xl h-screen flex flex-col justify-center items-center">
           <div className="flex mb-8 justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
+            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-200/10 dark:hover:ring-gray-200/20">
               Aprender un poco sobre finanzas.{" "}
               <Link
                 href="/financial-education"
-                className="font-semibold text-[#008aae]"
+                className="font-semibold text-boston-blue-600"
               >
                 <span className="absolute inset-0" aria-hidden="true" />
                 Leer más <span aria-hidden="true">&rarr;</span>
@@ -32,10 +30,10 @@ export default async function Home() {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+            <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight sm:text-6xl">
               Bienvenido a <Title text="¡Finanzas Educativas!" isTextStatic />
             </h1>
-            <p className="text-lg leading-8 text-gray-600">
+            <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
               lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
               fugiat aliqua.
@@ -43,14 +41,14 @@ export default async function Home() {
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/signup"
-                className="rounded-md bg-[#008aae] hover:bg-[#79ad34] px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1"
+                className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1"
               >
                 Registrarse
                 <SignupIcon />
               </Link>
               <Link
                 href="/signin"
-                className="text-sm font-semibold leading-6 text-gray-900 hover:bg-[#008aae] transition-colors duration-300 rounded-md px-3.5 py-2 hover:text-white shadow-md"
+                className="text-sm font-semibold leading-6 bg-zinc-50 dark:text-slate-900 hover:bg-boston-blue-600 transition-colors duration-300 rounded-md px-3.5 py-2 dark:hover:text-white hover:text-white shadow-md"
               >
                 Ingresar <span aria-hidden="true">→</span>
               </Link>
@@ -59,7 +57,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="bg-white py-7 sm:py-32">
+      <div className="py-7 sm:py-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9 mb-5">
             <p>Consejos Financieros...</p>
@@ -143,7 +141,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="bg-white py-7 pb-24 sm:pb-32">
+      <div className="py-7 pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <blockquote className="text-center text-xl font-semibold leading-8 text-gray-900 sm:text-2xl sm:leading-9 mb-5">
             <p>Videos...</p>
