@@ -1,6 +1,6 @@
 "use client";
 
-import Toggler from "@/components/Theme/Toggler";
+import ThemeToggle from "@/components/Theme/ThemeToggle";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
@@ -72,7 +72,7 @@ export default function MobileMenu({
             />
           </Link>
 
-          <Toggler id="themeTogglerMobile" />
+          <ThemeToggle id="themeTogglerMobile" />
 
           <button
             type="button"

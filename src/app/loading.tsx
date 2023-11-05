@@ -1,6 +1,6 @@
 export default function LoadingPage() {
   return (
-    <div className="top-0 left-0 w-screen h-screen flex items-center justify-center">
+    <div className="top-0 left-0 w-screen h-screen flex items-center justify-center overflow-hidden">
       <div
         className="inline-block h-8 w-8 animate-[spin_.5s_linear_infinite] rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]"
         role="status"

@@ -1,6 +1,6 @@
 "use client";
 
-import Toggler from "@/components/Theme/Toggler";
+import ThemeToggle from "@/components/Theme/ThemeToggle";
 import clsx from "clsx";
 import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
@@ -27,6 +27,7 @@ import {
   UserIcon,
   VisionIcon,
 } from "./icons";
+import ThemeTooltip from "../Tooltip/ThemeTooltip";
 
 function NavBar(): React.ReactNode {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -242,7 +243,9 @@ function NavBar(): React.ReactNode {
             </>
           )}
 
-          <Toggler id="themeToggler" />
+          <ThemeTooltip message="Alternar tema">
+            <ThemeToggle id="themeToggler" />
+          </ThemeTooltip>
         </div>
         <button
           className="lg:hidden hover:text-sushi-500"

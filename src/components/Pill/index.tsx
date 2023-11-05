@@ -11,7 +11,7 @@ export default function Pill({
   description,
 }: PillProps): React.ReactNode {
   return (
-    <div className="relative flex w-80 flex-col rounded-xl bg-white dark:bg-slate-800/10 bg-clip-border text-gray-700 shadow-md">
+    <div className="relative flex w-80 flex-col rounded-xl bg-white dark:bg-slate-950/40 bg-clip-border text-gray-700 shadow-2xl shadow-slate-500/20 dark:shadow-slate-950/60">
       <div className="px-6 pt-6 pb-3">
         <div className="flex items-center gap-4">
           <GiPill className="text-4xl text-boston-blue-600" />
