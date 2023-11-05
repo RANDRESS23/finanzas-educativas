@@ -47,7 +47,7 @@ export default function MobileMenu({
 
   return (
     <div className="lg:hidden" role="dialog" aria-modal="true">
-      <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-slate-900 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+      <div className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white dark:bg-slate-800 px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
         <div className="flex items-center justify-between">
           <Link
             href={
@@ -72,7 +72,7 @@ export default function MobileMenu({
             />
           </Link>
 
-          <Toggler />
+          <Toggler id="themeTogglerMobile" />
 
           <button
             type="button"
@@ -95,7 +95,7 @@ export default function MobileMenu({
                     ? "/profile/admin/home-preview"
                     : "/"
                 }
-                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500 flex items-center gap-x-1"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
                 <HomeIcon className="text-xl" />
@@ -103,7 +103,7 @@ export default function MobileMenu({
               </Link>
               <Link
                 href="/financial-education"
-                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500 flex items-center gap-x-1"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
                 <EducationIcon className="text-xl" />
@@ -111,7 +111,7 @@ export default function MobileMenu({
               </Link>
               <Link
                 href="/contact"
-                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500 flex items-center gap-x-1"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
                 <ContactIcon className="text-xl" />
@@ -121,7 +121,7 @@ export default function MobileMenu({
               <div className="-mx-3">
                 <button
                   type="button"
-                  className="w-full flex justify-between items-center rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+                  className="w-full flex justify-between items-center rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
                   aria-controls="disclosure-1"
                   aria-expanded="false"
                   onClick={handleSubMenuMobileOpen}
@@ -142,7 +142,7 @@ export default function MobileMenu({
                 <>
                   <Link
                     href="/signup"
-                    className="-mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500 flex items-center gap-x-1"
+                    className="-mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
                     onClick={handleResetMenus}
                   >
                     Registrarse
@@ -150,7 +150,7 @@ export default function MobileMenu({
                   </Link>
                   <Link
                     href="/signin"
-                    className="-mx-3 rounded-lg px-3 flex items-center gap-2 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+                    className="-mx-3 rounded-lg px-3 flex items-center gap-2 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
                     onClick={handleResetMenus}
                   >
                     Ingresar
@@ -162,7 +162,7 @@ export default function MobileMenu({
                   {session?.user?.document === "0000000000" ? (
                     // <Link
                     //   href='/profile/admin/dashboard'
-                    //   className="-mx-3 flex items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+                    //   className="-mx-3 flex items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
                     //   onClick={handleResetMenus}
                     // >
                     //     Panel Administrador
@@ -171,7 +171,7 @@ export default function MobileMenu({
                     <div className="-mx-3">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
                         aria-controls="disclosure-1"
                         aria-expanded="false"
                         onClick={handleSubMenuAdminPanelOpen}
@@ -193,7 +193,7 @@ export default function MobileMenu({
                   ) : (
                     <Link
                       href="/profile/user/personal-information"
-                      className="-mx-3 flex items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+                      className="-mx-3 flex items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
                       onClick={handleResetMenus}
                     >
                       Perfil
@@ -201,7 +201,7 @@ export default function MobileMenu({
                     </Link>
                   )}
                   <button
-                    className="-mx-3 flex w-[calc(100%+23px)] items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+                    className="-mx-3 flex w-[calc(100%+23px)] items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
                     onClick={handleCloseSession}
                   >
                     Cerrar Sesión

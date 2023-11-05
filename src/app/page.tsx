@@ -1,3 +1,4 @@
+import { LogInIcon } from "@/components/NavBar/icons";
 import Pill from "@/components/Pill";
 import Title from "@/components/Title";
 import { getServerSession } from "next-auth/next";
@@ -63,7 +64,6 @@ export default async function Home() {
                 href="/financial-education"
                 className="font-semibold text-boston-blue-600"
               >
-                <span className="absolute inset-0" aria-hidden="true" />
                 Leer más <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
@@ -83,13 +83,14 @@ export default async function Home() {
                 className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1"
               >
                 Registrarse
-                <SignupIcon />
+                <SignupIcon className="text-xl" />
               </Link>
               <Link
                 href="/signin"
-                className="text-sm font-semibold leading-6 bg-zinc-50 dark:text-slate-900 hover:bg-boston-blue-600 transition-colors duration-300 rounded-md px-3.5 py-2 dark:hover:text-white hover:text-white shadow-md"
+                className="text-sm font-semibold leading-6 bg-zinc-50 dark:text-slate-900 hover:bg-boston-blue-600 transition-colors duration-300 rounded-md px-3.5 py-2 dark:hover:text-white hover:text-white shadow-md flex items-center justify-center gap-x-1"
               >
-                Ingresar <span aria-hidden="true">→</span>
+                Ingresar
+                <LogInIcon />
               </Link>
             </div>
           </div>

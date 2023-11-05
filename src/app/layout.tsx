@@ -1,6 +1,7 @@
 import pkg from "@/../package.json";
-import Footer from "@/components/Footer/Footer";
+import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
+import Overflow from "@/components/Overflow";
 import SessionProviderContext from "@/providers/SessionProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
 import { type Metadata } from "next";
@@ -30,6 +31,7 @@ export default async function RootLayout({
     <html lang="es" className={oswald.className}>
       <body className="antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 transition-colors">
         <SessionProviderContext>
+          <Overflow />
           <NavBar />
           <ToasterProvider />
 

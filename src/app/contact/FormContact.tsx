@@ -3,9 +3,9 @@
 import Input from "@/components/Input";
 import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
+import { tosty } from "@/libs/tosty";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import { toast } from "react-hot-toast";
 import { VscFeedback as SendIcon } from "react-icons/vsc";
 
 export default function FormContact() {
@@ -32,11 +32,11 @@ export default function FormContact() {
       const response = await api.post("/contact", { ...data });
 
       if (response.status === 201) {
-        toast.success(response.data.message);
+        tosty.success(response.data.message);
         reset();
       }
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      tosty.error(error.response.data.message);
       console.log({ errorMessage: error.response.data.message });
       console.log({ error });
     } finally {
@@ -48,8 +48,12 @@ export default function FormContact() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
         <Input
-          name="name"
-          type="text"
+          inputProps={{
+            id: "name",
+            type: "text",
+            placeholder: "John Doe",
+            autoComplete: "off",
+          }}
           label="Nombres"
           register={register}
           errors={errors}
@@ -58,8 +62,12 @@ export default function FormContact() {
 
       <div className="mb-4">
         <Input
-          name="email"
-          type="email"
+          inputProps={{
+            id: "email",
+            type: "email",
+            placeholder: "johndoe@finanzas-educativas.com",
+            autoComplete: "username",
+          }}
           label="Correo electrónico"
           register={register}
           errors={errors}
@@ -68,8 +76,11 @@ export default function FormContact() {
 
       <div className="mb-4">
         <Input
-          name="phoneNumber"
-          type="text"
+          inputProps={{
+            id: "phoneNumber",
+            type: "text",
+            placeholder: "3XX XXX XXXX",
+          }}
           label="Teléfono"
           register={register}
           errors={errors}
@@ -90,6 +101,7 @@ export default function FormContact() {
             className={clsxe(errors.message, "resize-none")}
             defaultValue={""}
             spellCheck="false"
+            placeholder="Por favor deja tu mensaje aquí..."
           />
         </div>
         {errors.message !== undefined && (

@@ -65,7 +65,7 @@ function NavBar(): React.ReactNode {
   return (
     <header
       className={clsx(
-        "fixed top-0 z-40 border-b border-slate-950/10 w-full flex-none transition-colors duration-500 dark:border-slate-50/[0.06] bg-white/95 dark:bg-slate-900 lg:z-50",
+        "fixed top-0 z-40 border-b border-slate-950/10 w-full flex-none transition-colors duration-500 dark:border-slate-50/[0.06] bg-white/60 dark:bg-slate-900 lg:z-50",
         {
           "backdrop-blur supports-backdrop-blur:bg-white/60 dark:bg-transparent":
             !isMenuMobileOpen,
@@ -151,7 +151,7 @@ function NavBar(): React.ReactNode {
               })}
             >
               {isMenuOpen && (
-                <div className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white dark:bg-slate-800 shadow-lg ring-1 ring-gray-900/5">
+                <div className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white/95 dark:bg-slate-800/95 shadow-xl dark:shadow-slate-950/30 ring-1 ring-gray-900/5">
                   <div className="p-4">
                     <ItemListDropDown
                       title="¿Quienes somos?"
@@ -242,7 +242,7 @@ function NavBar(): React.ReactNode {
             </>
           )}
 
-          <Toggler />
+          <Toggler id="themeToggler" />
         </div>
         <button
           className="lg:hidden hover:text-sushi-500"

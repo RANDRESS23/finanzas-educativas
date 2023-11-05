@@ -1,8 +1,12 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUp, ArrowDown } from "./icons";
 import { AboutUs, Mision, Vision } from "./svgs";
+import clsx from "clsx";
+import {
+  HiArrowNarrowUp as ArrowUpIcon,
+  HiArrowNarrowDown as ArrowDownIcon,
+} from "react-icons/hi";
 
 const SVGS_IMAGES: Record<string, () => JSX.Element> = {
   ABOUT_US: () => <AboutUs />,
@@ -47,13 +51,19 @@ export default function AboutSection({
           </p>
         )}
         <button
-          className="text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-2 bg-boston-blue-600 hover:bg-sushi-500"
+          className="text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-x-2 bg-boston-blue-600 hover:bg-sushi-500"
           onClick={handleViewMoreInfoVision}
         >
           {viewMoreInfoVision
             ? "Ocultar Información extra"
             : "Mostrar más información"}
-          {viewMoreInfoVision ? <ArrowUp /> : <ArrowDown />}
+          <p
+            className={clsx("text-xl", {
+              "animate-bounce": !viewMoreInfoVision,
+            })}
+          >
+            {viewMoreInfoVision ? <ArrowUpIcon /> : <ArrowDownIcon />}
+          </p>
         </button>
       </div>
       {!svgInLeftPosition && (

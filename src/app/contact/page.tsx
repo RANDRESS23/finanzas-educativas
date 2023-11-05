@@ -3,6 +3,7 @@ import { type Metadata } from "next";
 import Image from "next/image";
 import FormContact from "./FormContact";
 import ContactUsGif from "./gifs/ContactUs.gif";
+import ContactUsGifDark from "./gifs/ContactUs-dark.gif";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Contáctanos",
@@ -21,10 +22,17 @@ export default function Contact(): React.ReactNode {
         <div className="flex justify-center items-center gap-16 mt-7">
           <div className="lg:flex lg:justify-center lg:items-center hidden">
             <Image
-              className="rounded-xl"
+              className="dark:hidden rounded-xl"
               width={400}
               height={400}
               src={ContactUsGif}
+              alt=""
+            />
+            <Image
+              className="hidden dark:block rounded-xl"
+              width={400}
+              height={400}
+              src={ContactUsGifDark}
               alt=""
             />
           </div>

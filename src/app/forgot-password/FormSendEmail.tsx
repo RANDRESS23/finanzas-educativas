@@ -2,11 +2,11 @@
 
 import Input from "@/components/Input";
 import api from "@/libs/api";
+import { tosty } from "@/libs/tosty";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import toast from "react-hot-toast";
 import { SiMinutemailer as SendIcon } from "react-icons/si";
 
 const FormSendEmail: React.FC = () => {
@@ -28,17 +28,17 @@ const FormSendEmail: React.FC = () => {
       const response = await api(`/security/forgot-password/${email}`);
 
       if (response.status !== 201) {
-        toast.error("Ha ocurrido un error al enviar el correo electrónico");
+        tosty.error("Ha ocurrido un error al enviar el correo electrónico");
         return;
       }
 
-      toast.success(
+      tosty.success(
         `Hemos enviado a ${email} un link para recuperar tu contraseña.`
       );
       reset();
     } catch (error) {
       if (error instanceof AxiosError) {
-        toast.error(error.response?.data.message);
+        tosty.error(error.response?.data.message);
         console.log({ errorMessage: error.response?.data.message });
       }
     } finally {
@@ -50,8 +50,12 @@ const FormSendEmail: React.FC = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
         <Input
-          name="email"
-          type="email"
+          inputProps={{
+            id: "email",
+            type: "email",
+            placeholder: "johndoe@finanzas-educativas.com",
+            autoComplete: "username",
+          }}
           label="Correo electrónico de registro"
           register={register}
           errors={errors}

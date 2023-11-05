@@ -15,7 +15,7 @@ export default function NotFound() {
         <Image
           width={500}
           height={500}
-          src="/gatico2.jpg"
+          src="/gatico2.png"
           alt="Placeholder Image"
           className="rounded-xl"
         />

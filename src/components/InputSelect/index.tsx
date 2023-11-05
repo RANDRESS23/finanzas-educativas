@@ -1,35 +1,44 @@
 import clsxe from "@/libs/clsxe";
+import type {
+  FieldErrors,
+  FieldValues,
+  UseFormRegister,
+} from "react-hook-form";
 
-interface InputSelectProps {
-  name: string;
+type InputSelectAttributes = React.JSX.IntrinsicElements["select"];
+
+type InputSelectProps = {
   label: string;
-  register: any;
-  errors: any;
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
   options: { value: string | string[] | number; label: string }[];
-  disabled?: boolean;
-}
+  selectProps: InputSelectAttributes;
+};
 
 export default function InputSelect({
-  name,
+  errors,
   label,
   register,
-  errors,
   options,
-  disabled,
+  selectProps,
 }: InputSelectProps): React.ReactNode {
   return (
     <div>
-      <label htmlFor={name} className="block font-medium leading-6">
+      <label htmlFor={selectProps.id} className="block font-medium leading-6">
         {label}
       </label>
       <div className="mt-2 w-full">
         <select
-          id={name}
-          {...register(name, {
+          id={selectProps.id}
+          {...register(selectProps.id!, {
             required: "Este es un campo obligatorio!",
           })}
-          className={clsxe(errors[name])}
-          disabled={disabled}
+          className={clsxe(
+            errors[selectProps.id!],
+            "cursor-pointer " + selectProps.className
+          )}
+          disabled={selectProps.disabled}
+          {...selectProps}
         >
           {options.map(({ value, label }) => (
             <option key={label} value={value}>
@@ -38,9 +47,9 @@ export default function InputSelect({
           ))}
         </select>
       </div>
-      {errors[name] !== undefined && (
+      {errors[selectProps.id!] !== undefined && (
         <p className="mt-2 text-sm text-rose-500">
-          {errors[name].message as any}
+          {errors[selectProps.id!]?.message as string}
         </p>
       )}
     </div>

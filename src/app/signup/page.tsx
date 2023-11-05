@@ -1,5 +1,6 @@
 import Image from "next/image";
 import SignUpGif from "./gifs/signUp.gif";
+import SignUpGifDark from "./gifs/signUp-dark.gif";
 import { redirect } from "next/navigation";
 import { getServerSession } from "next-auth/next";
 import Title from "@/components/Title";
@@ -32,10 +33,17 @@ async function Signup() {
           <div className="hidden md:block">
             <div>
               <Image
-                className="rounded-xl"
+                className="dark:hidden rounded-xl"
                 width={500}
                 height={500}
                 src={SignUpGif}
+                alt=""
+              />
+              <Image
+                className="hidden dark:block rounded-xl"
+                width={500}
+                height={500}
+                src={SignUpGifDark}
                 alt=""
               />
             </div>

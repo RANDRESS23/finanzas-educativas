@@ -6,6 +6,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import FormSignIn from "./FormSignIn";
 import SignInGif from "./gifs/signIn.gif";
+import SignInGifDark from "./gifs/signIn-dark.gif";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Iniciar Sesión",
@@ -30,10 +31,17 @@ export default async function Signin() {
       <div className="flex justify-center items-center gap-16 mt-4">
         <div className="lg:flex lg:justify-center lg:items-center hidden">
           <Image
-            className="rounded-xl"
+            className="dark:hidden rounded-xl"
             width={400}
             height={400}
             src={SignInGif}
+            alt=""
+          />
+          <Image
+            className="hidden dark:block rounded-xl"
+            width={400}
+            height={400}
+            src={SignInGifDark}
             alt=""
           />
         </div>

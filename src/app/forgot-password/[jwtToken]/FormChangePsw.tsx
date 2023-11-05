@@ -1,17 +1,21 @@
 "use client";
 
+import InputShowPsw from "@/components/ChkbxPsw";
 import Input from "@/components/Input";
-import InputShowPsw from "@/components/inputShowPsw";
 import api from "@/libs/api";
+import { tosty } from "@/libs/tosty";
+import { TPayload } from "@/types/TPayload";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import toast from "react-hot-toast";
 import { MdOutlineChangeCircle as ChangeIcon } from "react-icons/md";
 
-const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
+const FormChangePsw: React.FC<{ jwtToken: string; payload: TPayload }> = ({
+  jwtToken,
+  payload,
+}) => {
   const router = useRouter();
-  const goBack = () => router.back();
 
   const [isLoading, setIsLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -39,13 +43,13 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
       });
 
       if (response.status !== 201) {
-        toast.error(
+        tosty.error(
           "Ha ocurrido un error al cambiar la contraseña, intente nuevamente más tarde."
         );
         return;
       }
 
-      toast.success("Su contraseña ha sido cambiada exitosamente");
+      tosty.success("Su contraseña ha sido cambiada exitosamente");
       router.refresh();
       router.push("/signin");
       reset();
@@ -58,7 +62,7 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
           errorsMessagesString += `🔸 ${message} ${"\n"}`;
         });
 
-        toast.error(errorsMessagesString, { className: "text-center" });
+        tosty.error(errorsMessagesString);
       } else {
         console.log({ error });
       }
@@ -69,12 +73,27 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* <!-- Username Input --> */}
+      {/* hidden field for accesibility */}
+      <div className="hidden">
+        <label htmlFor="username">Nombre de usuario:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          autoComplete="username"
+          defaultValue={payload.email}
+        />
+      </div>
+      {/* hidden field for accesibility */}
 
       <div className="mb-4">
         <Input
-          name="password"
-          type={passwordVisible ? "text" : "password"}
+          inputProps={{
+            id: "password",
+            type: passwordVisible ? "text" : "password",
+            placeholder: "•••••••••",
+            autoComplete: "new-password",
+          }}
           label="Nueva contraseña"
           register={register}
           errors={errors}
@@ -82,8 +101,12 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
       </div>
       <div className="mb-2">
         <Input
-          name="confirmPassword"
-          type={passwordVisible ? "text" : "password"}
+          inputProps={{
+            id: "confirmPassword",
+            type: passwordVisible ? "text" : "password",
+            placeholder: "•••••••••",
+            autoComplete: "new-password",
+          }}
           label="Confirmar nueva contraseña"
           register={register}
           errors={errors}
@@ -106,13 +129,12 @@ const FormChangePsw: React.FC<{ jwtToken: string }> = ({ jwtToken }) => {
         {isLoading ? "CARGANDO..." : "CONTINUAR"}
       </button>
 
-      <button
-        type="button"
-        onClick={goBack}
+      <Link
+        href="/"
         className=" my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500"
       >
-        Volver atrás
-      </button>
+        Ir al inicio
+      </Link>
     </form>
   );
 };

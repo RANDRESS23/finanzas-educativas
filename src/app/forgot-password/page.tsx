@@ -1,4 +1,5 @@
 import ForgotPasswordGif from "@/app/forgot-password/gifs/ForgotPassword.gif";
+import ForgotPasswordGifDark from "@/app/forgot-password/gifs/ForgotPassword-dark.gif";
 import Title from "@/components/Title";
 import Image from "next/image";
 import FormSendEmail from "./FormSendEmail";
@@ -15,10 +16,17 @@ export default function EmailSender(): React.ReactNode {
       <div className="flex justify-center items-center gap-16">
         <div className="lg:flex lg:justify-center lg:items-center hidden">
           <Image
-            className="rounded-xl"
+            className="dark:hidden rounded-xl"
             width={400}
             height={400}
             src={ForgotPasswordGif}
+            alt=""
+          />
+          <Image
+            className="hidden dark:block rounded-xl"
+            width={400}
+            height={400}
+            src={ForgotPasswordGifDark}
             alt=""
           />
         </div>

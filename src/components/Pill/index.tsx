@@ -15,7 +15,7 @@ export default function Pill({
       <div className="px-6 pt-6 pb-3">
         <div className="flex items-center gap-4">
           <GiPill className="text-4xl text-boston-blue-600" />
-          <h5 className="text-xl font-semibold leading-snug tracking-normal text-sushi-500 antialiased">
+          <h5 className="text-xl font-semibold leading-snug tracking-normal text-sushi-500">
             {title}
           </h5>
         </div>

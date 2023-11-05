@@ -5,12 +5,12 @@ import InputCheckBox from "@/components/InputCheckBox";
 import InputRadio from "@/components/InputRadio";
 import InputSelect from "@/components/InputSelect";
 import api from "@/libs/api";
+import { tosty } from "@/libs/tosty";
 import { AxiosError } from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import { toast } from "react-hot-toast";
 import { BsFillPatchCheckFill as CompleteIcon } from "react-icons/bs";
 
 export default function FormPersonalInformation() {
@@ -94,9 +94,7 @@ export default function FormPersonalInformation() {
         }));
       } catch (error) {
         if (error instanceof AxiosError) {
-          toast(error.response?.data.message, {
-            icon: "⚠️",
-          });
+          tosty.warn(error.response?.data.message);
         }
       } finally {
         setIsLoadingDataUser(false);
@@ -133,12 +131,12 @@ export default function FormPersonalInformation() {
         }
 
         if (response.status === 201) {
-          toast.success("¡Datos completados exitosamente!");
+          tosty.success("¡Datos completados exitosamente!");
           router.refresh();
           router.push("/profile/user");
-        } else toast.error("Error al completar datos!");
+        } else tosty.error("Error al completar datos!");
       } catch (error: any) {
-        toast.error(error.response.data.message);
+        tosty.error(error.response.data.message);
         console.log({ errorMessage: error.response.data.message });
         console.log({ error });
       } finally {
@@ -168,7 +166,7 @@ export default function FormPersonalInformation() {
       className="flex flex-col sm:grid md:grid-cols-2 gap-5 md:gap-7 md:place-content-center w-[330px] sm:w-[500px] md:w-[600px] lg:w-[700px]"
     >
       <InputSelect
-        name="documentType"
+        selectProps={{ id: "documentType", disabled: editInfo }}
         label="Tipo de Documento"
         register={register}
         errors={errors}
@@ -176,56 +174,71 @@ export default function FormPersonalInformation() {
           { value: "cedula_ciudadania", label: "Cédula de Ciudadanía" },
           { value: "cedula_extranjeria", label: "Cédula de Extranjería" },
         ]}
-        disabled={editInfo}
       />
 
       <Input
-        name="document"
-        type="text"
+        inputProps={{
+          id: "document",
+          type: "text",
+          disabled: editInfo,
+          placeholder: "0000000000",
+        }}
         label="Número de Identificación"
         register={register}
         errors={errors}
-        disabled={editInfo}
       />
 
       <Input
-        name="firstName"
-        type="text"
+        inputProps={{
+          id: "firstName",
+          type: "text",
+          disabled: editInfo,
+          placeholder: "John",
+        }}
         label="Nombres"
         register={register}
         errors={errors}
-        disabled={editInfo}
       />
 
       <Input
-        name="lastName"
-        type="text"
+        inputProps={{
+          id: "lastName",
+          type: "text",
+          disabled: editInfo,
+          placeholder: "Doe",
+        }}
         label="Apellidos"
         register={register}
         errors={errors}
-        disabled={editInfo}
       />
 
       <Input
-        name="phoneNumber"
-        type="tel"
+        inputProps={{
+          id: "phoneNumber",
+          type: "tel",
+          disabled: editInfo,
+          placeholder: "3XX XXX XXXX",
+        }}
         label="Celular"
         register={register}
         errors={errors}
-        disabled={editInfo}
       />
 
       <Input
-        name="email"
-        type="email"
+        inputProps={{
+          id: "email",
+          type: "email",
+          disabled: editInfo,
+          placeholder: "johndoe@finanzas-educativas.com",
+          autoComplete: "username",
+        }}
         label="Correo Electrónico"
         register={register}
         errors={errors}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="gender"
+        selectProps={{ id: "gender", disabled: editInfo }}
         label="Género"
         register={register}
         errors={errors}
@@ -234,11 +247,10 @@ export default function FormPersonalInformation() {
           { value: "femenino", label: "Femenino" },
           { value: "otro", label: "Otro" },
         ]}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="age"
+        selectProps={{ id: "age", disabled: editInfo }}
         label="Rango de edad"
         register={register}
         errors={errors}
@@ -251,11 +263,10 @@ export default function FormPersonalInformation() {
           { value: ["50", "57"], label: "Entre 50 y 57 años" },
           { value: ["58", "130"], label: "Más de 57 años" },
         ]}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="civilStatus"
+        selectProps={{ id: "civilStatus", disabled: editInfo }}
         label="Estado Civil"
         register={register}
         errors={errors}
@@ -266,11 +277,10 @@ export default function FormPersonalInformation() {
           { value: "divorciado(a)", label: "Divorciado(a)" },
           { value: "viudo(a)", label: "Viudo(a)" },
         ]}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="educationLevel"
+        selectProps={{ id: "educationLevel", disabled: editInfo }}
         label="Nivel de Educación"
         register={register}
         errors={errors}
@@ -284,11 +294,10 @@ export default function FormPersonalInformation() {
           { value: "profesional completo", label: "Profesional completo" },
           { value: "postgrado", label: "Postgrado" },
         ]}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="residenceArea"
+        selectProps={{ id: "residenceArea", disabled: editInfo }}
         label="¿En que zona vive?"
         register={register}
         errors={errors}
@@ -296,11 +305,10 @@ export default function FormPersonalInformation() {
           { value: "urbana", label: "Urbana" },
           { value: "rural", label: "Rural" },
         ]}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="typeOfHousing"
+        selectProps={{ id: "typeOfHousing", disabled: editInfo }}
         label="Tipo de vivienda donde habita"
         register={register}
         errors={errors}
@@ -314,7 +322,6 @@ export default function FormPersonalInformation() {
               "Cedida (propiedad de un familiar que le permite habitar allí)",
           },
         ]}
-        disabled={editInfo}
       />
 
       <InputCheckBox
@@ -330,13 +337,13 @@ export default function FormPersonalInformation() {
           { value: "telefonia", label: "Telefonía" },
           { value: "internet", label: "Internet" },
           { value: "tv por cable", label: "TV por cable" },
-          { value: "ninguno", label: "Ninguno de los anteriores" },
+          { value: "no-house-services", label: "Ninguno de los anteriores" },
         ]}
         disabled={editInfo}
       />
 
       <InputSelect
-        name="socioeconomicLevel"
+        selectProps={{ id: "socioeconomicLevel", disabled: editInfo }}
         label="Estrato Socioeconómico"
         register={register}
         errors={errors}
@@ -347,11 +354,10 @@ export default function FormPersonalInformation() {
           { value: 4, label: "Estrato 4" },
           { value: 5, label: "Estrato 5" },
         ]}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="numberPeopleContributing"
+        selectProps={{ id: "numberPeopleContributing", disabled: editInfo }}
         label="Número de personas que aportan ingresos al hogar"
         register={register}
         errors={errors}
@@ -361,11 +367,10 @@ export default function FormPersonalInformation() {
           { value: 3, label: "3 personas" },
           { value: 4, label: "4 o más personas" },
         ]}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="incomeComeFrom"
+        selectProps={{ id: "incomeComeFrom", disabled: editInfo }}
         label="Los ingresos que percibe provienen de"
         register={register}
         errors={errors}
@@ -377,9 +382,8 @@ export default function FormPersonalInformation() {
           },
           { value: "subsidios del gobierno", label: "Subsidios del gobierno" },
           { value: "emprendimiento propio", label: "Emprendimiento propio" },
-          { value: "ninguno", label: "No percibo ningún tipo de ingresos" },
+          { value: "no-income", label: "No percibo ningún tipo de ingresos" },
         ]}
-        disabled={editInfo}
       />
 
       <InputRadio
@@ -394,7 +398,7 @@ export default function FormPersonalInformation() {
       />
 
       <InputSelect
-        name="healthSystemAffiliation"
+        selectProps={{ id: "healthSystemAffiliation", disabled: editInfo }}
         label="Que tipo de afiliación tiene al sistema de salud"
         register={register}
         errors={errors}
@@ -406,11 +410,13 @@ export default function FormPersonalInformation() {
             label: "No cuento con ningún tipo de afiliación",
           },
         ]}
-        disabled={editInfo}
       />
 
       <InputSelect
-        name="numberPeopleDependFinancially"
+        selectProps={{
+          id: "numberPeopleDependFinancially",
+          disabled: editInfo,
+        }}
         label="Número de personas que dependen económicamente de usted"
         register={register}
         errors={errors}
@@ -420,7 +426,6 @@ export default function FormPersonalInformation() {
           { value: 3, label: "3 personas" },
           { value: 4, label: "4 o más personas" },
         ]}
-        disabled={editInfo}
       />
 
       <InputCheckBox

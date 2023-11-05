@@ -1,13 +1,13 @@
 "use client";
 
+import InputShowPsw from "@/components/ChkbxPsw";
 import Input from "@/components/Input";
-import InputShowPsw from "@/components/inputShowPsw";
+import { tosty } from "@/libs/tosty";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import { toast } from "react-hot-toast";
 import { PiSignIn as SignInIcon } from "react-icons/pi";
 
 export default function FormSignIn() {
@@ -38,24 +38,24 @@ export default function FormSignIn() {
       });
 
       if (response?.error !== null) {
-        return toast.error("Datos incorrectos!");
+        return tosty.error("Datos incorrectos!");
       }
 
       if (response?.ok) {
         if (data.document === "0000000000") {
-          toast.success("Admin logueado!");
+          tosty.success("Admin logueado!");
           router.refresh();
           router.push("/profile/admin");
           reset();
         } else {
-          toast.success("Usuario logueado!");
+          tosty.success("Usuario logueado!");
           router.refresh();
           router.push("/profile/user");
           reset();
         }
       }
     } catch (error: any) {
-      toast.error(error.response.data.message);
+      tosty.error(error.response.data.message);
       console.log({ errorMessage: error.response.data.message });
       console.log({ error });
     } finally {
@@ -67,8 +67,12 @@ export default function FormSignIn() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4">
         <Input
-          name="document"
-          type="text"
+          inputProps={{
+            id: "document",
+            type: "text",
+            placeholder: "0000000000",
+            autoComplete: "username",
+          }}
           label="Número de Identificación"
           register={register}
           errors={errors}
@@ -77,8 +81,12 @@ export default function FormSignIn() {
 
       <div className="mb-1">
         <Input
-          name="password"
-          type={passwordVisible ? "text" : "password"}
+          inputProps={{
+            id: "password",
+            type: passwordVisible ? "text" : "password",
+            placeholder: "•••••••••",
+            autoComplete: "current-password",
+          }}
           label="Contraseña"
           register={register}
           errors={errors}

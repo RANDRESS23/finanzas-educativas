@@ -1,41 +1,46 @@
 import clsxe from "@/libs/clsxe";
+import type {
+  FieldErrors,
+  FieldValues,
+  UseFormRegister,
+} from "react-hook-form";
 
-interface InputProps {
-  name: string;
-  type: React.JSX.IntrinsicElements["input"]["type"];
+type InputAttributes = React.JSX.IntrinsicElements["input"];
+
+type InputProps = {
   label: string;
-  register: any;
-  errors: any;
-  disabled?: boolean;
-}
+  register: UseFormRegister<FieldValues>;
+  errors: FieldErrors<FieldValues>;
+  inputProps: InputAttributes;
+};
 
 export default function Input({
-  name,
-  type,
+  errors,
   label,
   register,
-  errors,
-  disabled,
+  inputProps,
 }: InputProps): React.ReactNode {
   return (
     <div>
-      <label htmlFor={name} className="block font-medium leading-6">
+      <label htmlFor={inputProps.id} className="block font-medium leading-6">
         {label}
       </label>
       <div className="mt-2 w-full">
         <input
-          type={type}
-          id={name}
-          {...register(name, {
+          type={inputProps.type}
+          id={inputProps.id}
+          {...register(inputProps.id!, {
             required: "Este es un campo obligatorio!",
           })}
-          className={clsxe(errors[name])}
-          disabled={disabled}
+          className={clsxe(errors[inputProps.id!], inputProps.className)}
+          disabled={inputProps.disabled}
+          spellCheck="false"
+          {...inputProps}
         />
       </div>
-      {errors[name] !== undefined && (
+      {errors[inputProps.id!] !== undefined && (
         <p className="mt-2 text-sm text-rose-500">
-          {errors[name].message as any}
+          {errors[inputProps.id!]?.message as string}
         </p>
       )}
     </div>
