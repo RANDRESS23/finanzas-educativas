@@ -1,17 +1,8 @@
 import pkg from "@/../package.json";
 import { type Contact } from "@prisma/client";
+import { recoveryPassword } from "./recoveryPassword";
 
-const htmlForChangePsw = (resetPasswordLink: string) => `
-<p>Hemos detectado que solicitaste un <strong>cambio de contraseña</strong>.</p>
-
-<p>Por favor, haga clic en el siguiente enlace para cambiar tu contraseña.</p>
-<a href="${resetPasswordLink}">Cambiar contraseña</a>
-
-<p>Si no solicitaste este cambio, por favor, ignora este correo electrónico.</p>
-
-<i><strong>Cordialmente,<br>
-El equipo de ${pkg.description} ITFIP.</strong></i>
-`;
+const htmlForChangePsw = (resetPasswordLink: string) => recoveryPassword({ resetPasswordLink });
 
 const htmlForUserContact = () => `
 <p>Gracias por contactar al equipo de <strong>Finanzas Educativas</strong>.</p>
