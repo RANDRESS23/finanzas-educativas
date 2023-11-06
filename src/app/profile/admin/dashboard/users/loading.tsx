@@ -10,9 +10,14 @@ export default function LoadingUsersPage() {
             <div className="w-full grid grid-cols-1 gap-4">
               <div className="shadow dark:shadow-slate-700 rounded-lg p-4 sm:p-6 xl:p-8 ">
                 <div className="mb-4 flex items-center justify-between">
-                  <div role="status" className="max-w-sm animate-pulse">
-                    <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded-full w-48 my-4" />
-                    <div className="h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full w-52 my-4" />
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">
+                      Nuestros usuarios registrados
+                    </h3>
+                    <span className="text-base font-normal text-gray-500 dark:text-gray-300">
+                      Esta es una lista de todos los usuarios activos bajo
+                      tenencia!
+                    </span>
                   </div>
                   <div className="flex-shrink-0">
                     <div role="status" className="max-w-sm animate-pulse">
@@ -31,85 +36,67 @@ export default function LoadingUsersPage() {
                             <tr>
                               <th
                                 scope="col"
-                                className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="p-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
                               >
-                                <div
-                                  role="status"
-                                  className="max-w-sm animate-pulse"
-                                >
-                                  <div className="h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full w-32 my-1" />
-                                </div>
+                                Nombre usuario
                               </th>
                               <th
                                 scope="col"
-                                className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="p-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
                               >
-                                <div
-                                  role="status"
-                                  className="max-w-sm animate-pulse"
-                                >
-                                  <div className="h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full w-32 my-1" />
-                                </div>
+                                Email
                               </th>
                               <th
                                 scope="col"
-                                className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="p-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
                               >
-                                <div
-                                  role="status"
-                                  className="max-w-sm animate-pulse"
-                                >
-                                  <div className="h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full w-32 my-1" />
-                                </div>
+                                Se unió en
                               </th>
                               <th
                                 scope="col"
-                                className="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                                className="p-4 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider"
                               >
-                                <div
-                                  role="status"
-                                  className="max-w-sm animate-pulse"
-                                >
-                                  <div className="h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full w-32 my-1" />
-                                </div>
+                                Dinero en proceso
                               </th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
-                                <div
-                                  role="status"
-                                  className="max-w-sm animate-pulse"
-                                >
-                                  <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full w-52" />
-                                </div>
-                              </td>
-                              <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                                <div
-                                  role="status"
-                                  className="max-w-sm animate-pulse"
-                                >
-                                  <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full w-52" />
-                                </div>
-                              </td>
-                              <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                <div
-                                  role="status"
-                                  className="max-w-sm animate-pulse"
-                                >
-                                  <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full w-52" />
-                                </div>
-                              </td>
-                              <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
-                                <div
-                                  role="status"
-                                  className="max-w-sm animate-pulse"
-                                >
-                                  <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full w-52" />
-                                </div>
-                              </td>
-                            </tr>
+                            {Array.from({ length: 3 }, (_, i) => (
+                              <tr key={i}>
+                                <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-900">
+                                  <div
+                                    role="status"
+                                    className="max-w-sm animate-pulse"
+                                  >
+                                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full w-52" />
+                                  </div>
+                                </td>
+                                <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
+                                  <div
+                                    role="status"
+                                    className="max-w-sm animate-pulse"
+                                  >
+                                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full w-52" />
+                                  </div>
+                                </td>
+                                <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                  <div
+                                    role="status"
+                                    className="max-w-sm animate-pulse"
+                                  >
+                                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full w-52" />
+                                  </div>
+                                </td>
+                                <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
+                                  <div
+                                    role="status"
+                                    className="max-w-sm animate-pulse"
+                                  >
+                                    <div className="h-3 bg-gray-200 dark:bg-gray-700 rounded-full w-52" />
+                                  </div>
+                                </td>
+                              </tr>
+                            ))}
                           </tbody>
                         </table>
                       </div>

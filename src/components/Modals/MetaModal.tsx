@@ -11,12 +11,7 @@ import { Fragment, useRef, useState } from "react";
 import { FcCancel as CancelIcon } from "react-icons/fc";
 import { FiEdit2 as EditIcon } from "react-icons/fi";
 import MetaForm from "./MetaForm";
-
-export enum META {
-  mision = "mision",
-  vision = "vision",
-  whoami = "whoami",
-}
+import { META } from "@/types/TMeta";
 
 export default function MetaModal({
   meta,

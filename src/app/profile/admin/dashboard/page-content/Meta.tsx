@@ -1,7 +1,8 @@
 "use client";
 
-import MetaModal, { META } from "@/components/Modals/MetaModal";
+import MetaModal from "@/components/Modals/MetaModal";
 import { getMetaActions } from "@/helpers/meta.helper";
+import { type META } from "@/types/TMeta";
 import { type InformationSchema } from "@prisma/client";
 import { useState } from "react";
 import { LiaEdit as EditIcon } from "react-icons/lia";
