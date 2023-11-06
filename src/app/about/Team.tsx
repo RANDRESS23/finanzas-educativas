@@ -14,7 +14,7 @@ export default function Team() {
           {teamMembers.map((member, index) => (
             <div
               key={index}
-              className="w-full bg-gray-900 dark:bg-slate-800 hover:bg-gray-900/95 rounded-lg shadow-lg shadow-slate-950/40 p-12 relative overflow-hidden transition-colors duration-300"
+              className="w-full bg-gray-900 dark:bg-slate-800 hover:bg-gray-900/95 dark:hover:bg-slate-800/80 rounded-lg shadow-lg shadow-slate-950/40 p-12 relative overflow-hidden transition-colors duration-300"
             >
               <div className="flex flex-col justify-center items-center transform hover:scale-110 hover:brightness-105 transition-all duration-300 cursor-pointer">
                 <div className="mb-8">

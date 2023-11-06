@@ -5,7 +5,7 @@ import Title from "@/components/Title";
 import Jwt from "jsonwebtoken";
 import Image from "next/image";
 import FormChangePsw from "./FormChangePsw";
-import { TPayload } from "@/types/TPayload";
+import { type TPayload } from "@/types/TPayload";
 
 export default async function PasswordChanger({
   params: { jwtToken },

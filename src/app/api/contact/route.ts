@@ -2,7 +2,7 @@ import { htmlForAdminContact, htmlForUserContact } from "@/email_templates";
 import { db } from "@/libs/prismaDB";
 import { sendEmail } from "@/libs/sgMail";
 import { contactSchema } from "@/schemas/contact.schema";
-import { Contact } from "@prisma/client";
+import { type Contact } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {

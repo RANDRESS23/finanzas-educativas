@@ -1,4 +1,4 @@
-import { User } from "@prisma/client";
+import { type User } from "@prisma/client";
 
 function RowUsers({ users }: { users: User[] }) {
   return users.map((u) => (

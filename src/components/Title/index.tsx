@@ -2,7 +2,7 @@
 
 import { shorttxt } from "@/libs/shorttxt";
 import clsx from "clsx";
-import { Session } from "next-auth";
+import { type Session } from "next-auth";
 import { useSession } from "next-auth/react";
 
 interface TitleProps {

@@ -1,5 +1,5 @@
 import pkg from "@/../package.json";
-import { Contact } from "@prisma/client";
+import { type Contact } from "@prisma/client";
 
 const htmlForChangePsw = (resetPasswordLink: string) => `
 <p>Hemos detectado que solicitaste un <strong>cambio de contraseña</strong>.</p>

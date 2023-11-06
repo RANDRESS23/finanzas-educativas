@@ -48,7 +48,7 @@ export default function InputCheckBox({
       </div>
       {errors[name] !== undefined && (
         <p className="mt-2 text-sm text-rose-500">
-          {errors[name].message as any}
+          {errors[name].message as string}
         </p>
       )}
     </div>

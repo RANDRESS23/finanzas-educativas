@@ -6,7 +6,7 @@ import {
   VisionIcon,
 } from "@/components/NavBar/icons";
 import { Dialog, Transition } from "@headlessui/react";
-import { InformationSchema } from "@prisma/client";
+import { type InformationSchema } from "@prisma/client";
 import { Fragment, useRef, useState } from "react";
 import { FcCancel as CancelIcon } from "react-icons/fc";
 import { FiEdit2 as EditIcon } from "react-icons/fi";
@@ -69,7 +69,7 @@ export default function MetaModal({
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg text-left shadow-xl dark:shadow-slate-700 transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div className="bg-white dark:bg-slate-800 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-sushi-400 sm:mx-0 sm:h-10 sm:w-10">
+                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-sushi-400 hover:bg-sushi-500/10 sm:mx-0 sm:h-10 sm:w-10 transition-colors duration-300">
                       {meta === META.mision ? (
                         <MisionIcon />
                       ) : meta === META.whoami ? (

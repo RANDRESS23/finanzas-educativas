@@ -1,5 +1,5 @@
 import { db } from "@/libs/prismaDB";
-import { InformationSchema } from "@prisma/client";
+import { type InformationSchema } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function GET() {

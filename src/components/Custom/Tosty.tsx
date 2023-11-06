@@ -1,4 +1,4 @@
-import { TostyProps } from "@/libs/tosty";
+import { type TostyProps } from "@/libs/tosty";
 import clsx from "clsx";
 import Image from "next/image";
 import toast from "react-hot-toast";

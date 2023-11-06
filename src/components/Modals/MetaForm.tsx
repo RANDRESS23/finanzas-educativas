@@ -1,11 +1,11 @@
 import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
 import { tosty } from "@/libs/tosty";
-import { InformationSchema } from "@prisma/client";
+import { type InformationSchema } from "@prisma/client";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import type { META } from "./MetaModal";
+import { type META } from "./MetaModal";
 
 export default function MetaForm({
   meta,
@@ -83,7 +83,7 @@ export default function MetaForm({
 
       {errors[meta] !== undefined && (
         <p className="my-2 text-sm text-rose-500">
-          {errors[meta]!.message as any}
+          {errors[meta]!.message as string}
         </p>
       )}
     </section>

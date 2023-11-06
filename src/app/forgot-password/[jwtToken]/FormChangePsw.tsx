@@ -4,7 +4,7 @@ import InputShowPsw from "@/components/ChkbxPsw";
 import Input from "@/components/Input";
 import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
-import { TPayload } from "@/types/TPayload";
+import { type TPayload } from "@/types/TPayload";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

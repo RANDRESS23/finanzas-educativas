@@ -4,8 +4,8 @@ import {
 } from "react-icons/ai";
 import { BiSolidErrorCircle as ErrorIcon } from "react-icons/bi";
 import { BsInfoCircleFill as InfoIcon } from "react-icons/bs";
-import { IconType } from "react-icons";
-import { ToastOptions } from "react-hot-toast";
+import { type IconType } from "react-icons";
+import { type ToastOptions } from "react-hot-toast";
 import Tosty from "@/components/Custom/Tosty";
 
 export type TostyProps = {

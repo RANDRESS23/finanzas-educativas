@@ -1,5 +1,5 @@
 import { db } from "@/libs/prismaDB";
-import { InformationSchema } from "@prisma/client";
+import { type InformationSchema } from "@prisma/client";
 import { type Metadata } from "next";
 import AboutSection from "./AboutSection";
 import Team from "./Team";

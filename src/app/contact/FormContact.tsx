@@ -4,6 +4,7 @@ import Input from "@/components/Input";
 import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
 import { tosty } from "@/libs/tosty";
+import { AxiosError } from "axios";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { VscFeedback as SendIcon } from "react-icons/vsc";
@@ -35,10 +36,12 @@ export default function FormContact() {
         tosty.success(response.data.message);
         reset();
       }
-    } catch (error: any) {
-      tosty.error(error.response.data.message);
-      console.log({ errorMessage: error.response.data.message });
-      console.log({ error });
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        tosty.error(error.response?.data.message);
+      }
+
+      console.error(error);
     } finally {
       setIsLoading(false);
     }
@@ -106,7 +109,7 @@ export default function FormContact() {
         </div>
         {errors.message !== undefined && (
           <p className="my-2 text-sm text-rose-500">
-            {errors.message.message as any}
+            {errors.message.message as string}
           </p>
         )}
       </div>

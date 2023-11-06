@@ -2,7 +2,7 @@ import { htmlForChangePsw } from "@/email_templates";
 import { db } from "@/libs/prismaDB";
 import { sendEmail } from "@/libs/sgMail";
 import { sendEmailSchema } from "@/schemas/security.schema";
-import { TPayload } from "@/types/TPayload";
+import { type TPayload } from "@/types/TPayload";
 import Jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
