@@ -12,7 +12,7 @@ export default function Overflow() {
           <img
             src={degradePng.src}
             alt=""
-            className="w-[71.75rem] flex-none max-w-none dark:hidden"
+            className="hidden sm:block w-[71.75rem] flex-none max-w-none dark:hidden"
             decoding="async"
           />
         </picture>
