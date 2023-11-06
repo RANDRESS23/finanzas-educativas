@@ -21,7 +21,7 @@ export default async function About(): Promise<React.ReactElement> {
 
   return (
     <>
-      <div id="quienesSomos" className="w-5 h-5 mt-[-70px]" />
+      <div className="w-5 h-5 mt-[-70px]" />
       <main className="px-8 md:px-16 py-40">
         <AboutSection
           svgName="ABOUT_US"
@@ -30,7 +30,6 @@ export default async function About(): Promise<React.ReactElement> {
           description={whoami}
           moreDescription={moreWhoami}
         />
-        <div id="mision" />
         <AboutSection
           svgName="MISION"
           svgInLeftPosition={false}
@@ -38,7 +37,6 @@ export default async function About(): Promise<React.ReactElement> {
           description={mision}
           moreDescription={moreMision}
         />
-        <div id="vision" />
         <AboutSection
           svgName="VISION"
           svgInLeftPosition
@@ -46,7 +44,6 @@ export default async function About(): Promise<React.ReactElement> {
           description={vision}
           moreDescription={moreVision}
         />
-        <div id="team" />
         <Team />
       </main>
     </>
