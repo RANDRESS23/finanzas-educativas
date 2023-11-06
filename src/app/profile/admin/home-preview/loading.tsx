@@ -8,7 +8,7 @@ export default function LoadingHomePreviewPage() {
               <div className="text-center">
                 <div className="flex items-center justify-start flex-1 text-green-500 text-base font-bold m-10">
                   <div role="status" className="max-w-sm animate-pulse">
-                    <div className="rounded-full p-14 bg-gray-200 dark:bg-gray-700" />
+                    <div className="rounded-full p-12 sm:p-[3.6rem] bg-gray-200 dark:bg-gray-700" />
                   </div>
                 </div>
               </div>

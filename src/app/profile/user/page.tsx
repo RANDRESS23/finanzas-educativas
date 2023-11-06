@@ -17,7 +17,7 @@ export default async function ProfileUserPage() {
       <div className="relative isolate px-6 pb-20 lg:py-0 lg:pl-36 lg:flex lg:justify-between lg:gap-10 lg:h-screen">
         <div className="max-w-xl h-screen lg:h-full flex flex-col justify-center items-center">
           <div className="flex mb-8 justify-center">
-            <div className="relative rounded-full px-5 py-1 text-sm leading-6 text-gray-600 dark:text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-zinc-200/10 dark:hover:ring-gray-200/20">
+            <div className="relative rounded-full px-5 py-1 text-sm leading-6 text-gray-600 dark:text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-zinc-200/10 dark:hover:ring-gray-200/20 text-center">
               Completar mi información personal.{" "}
               <Link
                 href="/profile/user/personal-information"

@@ -30,9 +30,7 @@ export default function NotFound() {
         />
       </div>
       <div className="w-full md:w-1/2 p-4 md:p-8 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">
-          404 No Encontrada
-        </h1>
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">404 Not Found</h1>
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8">
           {"Oops! La página que solicitaste no fue encontrada. 🙁"}
         </p>
