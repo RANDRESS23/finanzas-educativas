@@ -1,11 +1,11 @@
 import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
 import { tosty } from "@/libs/tosty";
+import { type META } from "@/types/TMeta";
 import { type InformationSchema } from "@prisma/client";
 import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
-import { type META } from "./MetaModal";
 
 export default function MetaForm({
   meta,

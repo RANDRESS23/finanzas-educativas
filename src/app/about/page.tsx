@@ -21,6 +21,7 @@ export default async function About(): Promise<React.ReactElement> {
       <main className="px-8 md:px-16 py-40">
         {metaKeys.map(({ svgName, title, key }) => (
           <AboutSection
+            key={key}
             svgName={svgName}
             svgInLeftPosition
             title={title}
