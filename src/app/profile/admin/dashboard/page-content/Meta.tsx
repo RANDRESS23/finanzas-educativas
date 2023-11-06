@@ -36,7 +36,7 @@ export default function Meta({ aboutInfo }: MetaProps) {
           <div className="ml-5 w-0 flex items-center justify-end flex-1 text-base font-bold">
             <button
               onClick={handleChange}
-              className="rounded-full p-5 bg-sushi-400 hover:bg-sushi-300 transition-colors duration-300"
+              className="rounded-full p-5 bg-sushi-400 hover:bg-sushi-300 transition-colors duration-300 enabled:active:bg-sushi-500"
             >
               <EditIcon />
             </button>
@@ -46,7 +46,7 @@ export default function Meta({ aboutInfo }: MetaProps) {
 
       <MetaModal
         meta={key}
-        description={description}
+        description={title}
         aboutInfo={aboutInfo}
         open={openMeta[key]}
         setOpen={handleChange}

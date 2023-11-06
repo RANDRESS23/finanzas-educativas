@@ -21,7 +21,7 @@ export default function LoadingUsersPage() {
                   </div>
                   <div className="flex-shrink-0">
                     <div role="status" className="max-w-sm animate-pulse">
-                      <button className="text-sm font-medium text-cyan-600 rounded-lg p-2">
+                      <button className="text-sm p-2">
                         <div className="h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full w-14" />
                       </button>
                     </div>

@@ -46,7 +46,7 @@ export default function Tosty({ icon, options, subject, text }: TostyProps) {
         <div className="flex border-l border-gray-300 dark:border-gray-700">
           <button
             onClick={() => toast.dismiss(t.id)}
-            className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-boston-blue-600 hover:text-boston-blue-700 focus:outline-none"
+            className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-boston-blue-600 hover:text-boston-blue-700 enabled:active:text-boston-blue-900"
           >
             Cerrar
           </button>

@@ -51,7 +51,7 @@ export default async function Signin() {
             ¿No estás registrado?{" "}
             <Link
               href="/signup"
-              className="font-semibold leading-6 text-boston-blue-600 hover:text-sushi-500"
+              className="font-semibold leading-6 text-boston-blue-600 hover:text-sushi-500 active:text-sushi-400"
             >
               Registrarme
             </Link>

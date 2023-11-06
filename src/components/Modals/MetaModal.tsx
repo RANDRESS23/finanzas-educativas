@@ -64,7 +64,7 @@ export default function MetaModal({
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg text-left shadow-xl dark:shadow-slate-700 transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div className="bg-white dark:bg-slate-800 px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-sushi-400 hover:bg-sushi-500/10 sm:mx-0 sm:h-10 sm:w-10 transition-colors duration-300">
+                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-sushi-400 hover:bg-sushi-500/90 sm:mx-0 sm:h-10 sm:w-10 transition-colors duration-300">
                       {meta === META.mision ? (
                         <MisionIcon />
                       ) : meta === META.whoami ? (
@@ -94,7 +94,7 @@ export default function MetaModal({
                 <div className="bg-gray-50 dark:bg-slate-900/70 px-4 py-7 sm:flex sm:flex-row-reverse sm:px-6">
                   <button
                     type="submit"
-                    className="inline-flex w-full justify-center rounded-md bg-sushi-500 px-3 py-2 text-sm font-semibold text-white shadow-sm disabled:opacity-50 hover:bg-sushi-600 sm:ml-3 sm:w-auto items-center gap-x-1 disabled:cursor-not-allowed"
+                    className="inline-flex w-full justify-center rounded-md bg-sushi-500 px-3 py-2 text-sm font-semibold text-white shadow-sm disabled:opacity-50 hover:bg-sushi-600 sm:ml-3 sm:w-auto items-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-sushi-400"
                     form="metaForm"
                     disabled={isLoadingForm}
                   >
@@ -103,7 +103,7 @@ export default function MetaModal({
                   </button>
                   <button
                     type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset disabled:opacity-50 ring-gray-300 hover:bg-gray-200 sm:mt-0 sm:w-auto items-center gap-x-1 disabled:cursor-not-allowed"
+                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset disabled:opacity-50 ring-gray-300 hover:bg-gray-200 sm:mt-0 sm:w-auto items-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-slate-300"
                     onClick={() => setOpen(false)}
                     ref={cancelButtonRef}
                     disabled={isLoadingForm}

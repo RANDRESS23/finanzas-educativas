@@ -24,7 +24,7 @@ export default function ItemListDropDown({
       <div className="flex-auto">
         <Link
           href={`/financial-education/${href}`}
-          className="block font-semibold text-gray-900 dark:text-zinc-50 hover:text-sushi-500"
+          className="block font-semibold text-gray-900 dark:text-zinc-50 hover:text-sushi-500 transition-all duration-150"
           onClick={handleResetMenus}
         >
           {title}

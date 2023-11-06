@@ -108,7 +108,7 @@ function NavBar(): React.ReactNode {
                 ? "/profile/admin/home-preview"
                 : "/"
             }
-            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center gap-x-1 justify-center"
+            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center gap-x-1 justify-center transition-all duration-150"
             onClick={handleResetMenus}
           >
             <HomeIcon className="text-xl" />
@@ -117,7 +117,7 @@ function NavBar(): React.ReactNode {
           <div className="relative">
             <button
               type="button"
-              className="flex items-center gap-x-1 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
+              className="flex items-center gap-x-1 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 transition-all duration-150"
               aria-expanded="false"
               onClick={handleMenuOpen}
             >
@@ -164,7 +164,7 @@ function NavBar(): React.ReactNode {
           </div>
           <Link
             href="/contact"
-            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
+            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1 transition-all duration-150"
             onClick={handleResetMenus}
           >
             <ContactIcon className="text-xl" />
@@ -172,7 +172,7 @@ function NavBar(): React.ReactNode {
           </Link>
           <Link
             href="/about"
-            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
+            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1 transition-all duration-150"
             onClick={handleResetMenus}
           >
             <UsIcon className="text-xl" />
@@ -190,7 +190,7 @@ function NavBar(): React.ReactNode {
             <>
               <Link
                 href="/signup"
-                className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
+                className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1 transition-all duration-150"
                 onClick={handleResetMenus}
               >
                 Registrarse
@@ -198,7 +198,7 @@ function NavBar(): React.ReactNode {
               </Link>
               <Link
                 href="/signin"
-                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
+                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 transition-all duration-150"
                 onClick={handleResetMenus}
               >
                 Ingresar
@@ -210,7 +210,7 @@ function NavBar(): React.ReactNode {
               {session?.user?.document === "0000000000" ? (
                 <Link
                   href="/profile/admin/dashboard"
-                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
+                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 transition-all duration-150"
                 >
                   Admin.
                   <AdminIcon />
@@ -218,14 +218,14 @@ function NavBar(): React.ReactNode {
               ) : (
                 <Link
                   href="/profile/user/personal-information"
-                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
+                  className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 transition-all duration-150"
                 >
                   Perfil
                   <UserIcon />
                 </Link>
               )}
               <button
-                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
+                className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 transition-all duration-150"
                 onClick={handleCloseSession}
               >
                 Cerrar Sesión

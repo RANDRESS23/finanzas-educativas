@@ -46,12 +46,12 @@ export default function AboutSection({
           {description}
         </p>
         {viewMoreInfoVision && (
-          <p className="text-gray-600 dark:text-gray-400 text-lg">
+          <p className="text-gray-600 dark:text-gray-400 text-lg animate-enter">
             {moreDescription}
           </p>
         )}
         <button
-          className="text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-x-2 bg-boston-blue-600 hover:bg-sushi-500"
+          className="text-white font-bold py-2 px-6 mt-4 rounded-2xl transition-colors duration-300 flex justify-center items-center gap-x-2 bg-boston-blue-600 hover:bg-sushi-500 enabled:active:bg-sushi-400"
           onClick={handleViewMoreInfoVision}
         >
           {viewMoreInfoVision

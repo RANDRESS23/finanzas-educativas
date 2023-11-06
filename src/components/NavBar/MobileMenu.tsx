@@ -11,7 +11,7 @@ import {
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 import { MdContactSupport as ContactIcon } from "react-icons/md";
 import { RiTeamFill as UsIcon } from "react-icons/ri";
-import AboutListMobile from "./AboutListMobile";
+import FinancialEducationListMobile from "./FinancialEducationListMobile";
 import AdminPanelMobile from "./AdminPanelMobile";
 import {
   AdminIcon,
@@ -95,7 +95,7 @@ export default function MobileMenu({
                     ? "/profile/admin/home-preview"
                     : "/"
                 }
-                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1 transition-all duration-150"
                 onClick={handleResetMenus}
               >
                 <HomeIcon className="text-xl" />
@@ -104,19 +104,21 @@ export default function MobileMenu({
               <div className="-mx-3">
                 <button
                   type="button"
-                  className="w-full flex justify-between items-center rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
+                  className="w-full flex justify-between items-center rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 transition-all duration-150"
                   aria-controls="disclosure-1"
                   aria-expanded="false"
                   onClick={handleSubMenuMobileOpen}
                 >
                   <span className="flex items-center justify-center gap-x-1">
-                  <EducationIcon className="text-xl" />
+                    <EducationIcon className="text-xl" />
                     Educación Financiera
                   </span>
                   {isSubMenuMobileOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
                 </button>
                 {isSubMenuMobileOpen && (
-                  <AboutListMobile handleResetMenus={handleResetMenus} />
+                  <FinancialEducationListMobile
+                    handleResetMenus={handleResetMenus}
+                  />
                 )}
               </div>
               {/* <Link
@@ -129,7 +131,7 @@ export default function MobileMenu({
               </Link> */}
               <Link
                 href="/contact"
-                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1 transition-all duration-150"
                 onClick={handleResetMenus}
               >
                 <ContactIcon className="text-xl" />
@@ -137,7 +139,7 @@ export default function MobileMenu({
               </Link>
               <Link
                 href="/about"
-                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1 transition-all duration-150"
                 onClick={handleResetMenus}
               >
                 <UsIcon className="text-xl" />
@@ -168,7 +170,7 @@ export default function MobileMenu({
                 <>
                   <Link
                     href="/signup"
-                    className="-mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
+                    className="-mx-3 rounded-lg px-3 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1 transition-all duration-150"
                     onClick={handleResetMenus}
                   >
                     Registrarse
@@ -176,7 +178,7 @@ export default function MobileMenu({
                   </Link>
                   <Link
                     href="/signin"
-                    className="-mx-3 rounded-lg px-3 flex items-center gap-2 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
+                    className="-mx-3 rounded-lg px-3 flex items-center gap-2 py-2.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 transition-all duration-150"
                     onClick={handleResetMenus}
                   >
                     Ingresar
@@ -197,7 +199,7 @@ export default function MobileMenu({
                     <div className="-mx-3">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 transition-all duration-150"
                         aria-controls="disclosure-1"
                         aria-expanded="false"
                         onClick={handleSubMenuAdminPanelOpen}
@@ -219,7 +221,7 @@ export default function MobileMenu({
                   ) : (
                     <Link
                       href="/profile/user/personal-information"
-                      className="-mx-3 flex items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
+                      className="-mx-3 flex items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 transition-all duration-150"
                       onClick={handleResetMenus}
                     >
                       Perfil
@@ -227,7 +229,7 @@ export default function MobileMenu({
                     </Link>
                   )}
                   <button
-                    className="-mx-3 flex w-[calc(100%+23px)] items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
+                    className="-mx-3 flex w-[calc(100%+23px)] items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 transition-all duration-150"
                     onClick={handleCloseSession}
                   >
                     Cerrar Sesión
