@@ -21,11 +21,10 @@ import {
   ArrowUpIcon,
   LogInIcon,
   MenuIcon,
-  MisionIcon,
-  QuestionIcon,
-  TeamIcon,
+  FinanceIcon,
+  AccountCashIcon,
   UserIcon,
-  VisionIcon,
+  PigIcon,
 } from "./icons";
 import ThemeTooltip from "../Tooltip/ThemeTooltip";
 
@@ -115,23 +114,6 @@ function NavBar(): React.ReactNode {
             <HomeIcon className="text-xl" />
             Inicio
           </Link>
-          <Link
-            href="/financial-education"
-            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
-            onClick={handleResetMenus}
-          >
-            <EducationIcon className="text-xl" />
-            Educación Financiera
-          </Link>
-          <Link
-            href="/contact"
-            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
-            onClick={handleResetMenus}
-          >
-            <ContactIcon className="text-xl" />
-            Contacto
-          </Link>
-
           <div className="relative">
             <button
               type="button"
@@ -139,8 +121,8 @@ function NavBar(): React.ReactNode {
               aria-expanded="false"
               onClick={handleMenuOpen}
             >
-              <UsIcon className="text-xl" />
-              Nosotros
+              <EducationIcon className="text-xl" />
+              Educación Financiera
               {isMenuOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
             </button>
 
@@ -155,31 +137,24 @@ function NavBar(): React.ReactNode {
                 <div className="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white/95 dark:bg-slate-800/95 shadow-xl dark:shadow-slate-950/30 ring-1 ring-gray-900/5">
                   <div className="p-4">
                     <ItemListDropDown
-                      title="¿Quienes somos?"
-                      description="Lorem ipsum dolor sit amet consectetur."
-                      Icon={QuestionIcon}
-                      idSection="quienesSomos"
+                      title="Conocimiento de las finanzas personales"
+                      description="Alfabetización financiera"
+                      Icon={AccountCashIcon}
+                      href="first-dimension"
                       handleResetMenus={handleResetMenus}
                     />
                     <ItemListDropDown
-                      title="Misión"
-                      description="Lorem ipsum dolor sit amet consectetur."
-                      Icon={MisionIcon}
-                      idSection="mision"
+                      title="Toma de decisiones financieras"
+                      description="Resolución de problemas financieros"
+                      Icon={FinanceIcon}
+                      href="second-dimension"
                       handleResetMenus={handleResetMenus}
                     />
                     <ItemListDropDown
-                      title="Visión"
-                      description="Lorem ipsum dolor sit amet consectetur."
-                      Icon={VisionIcon}
-                      idSection="vision"
-                      handleResetMenus={handleResetMenus}
-                    />
-                    <ItemListDropDown
-                      title="Nuestro Equipo"
-                      description="Lorem ipsum dolor sit amet consectetur."
-                      Icon={TeamIcon}
-                      idSection="team"
+                      title="Administración de sus propias finanzas"
+                      description="Aplicación de las finanzas personales"
+                      Icon={PigIcon}
+                      href="third-dimension"
                       handleResetMenus={handleResetMenus}
                     />
                   </div>
@@ -187,6 +162,22 @@ function NavBar(): React.ReactNode {
               )}
             </div>
           </div>
+          <Link
+            href="/contact"
+            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
+            onClick={handleResetMenus}
+          >
+            <ContactIcon className="text-xl" />
+            Contacto
+          </Link>
+          <Link
+            href="/about"
+            className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
+            onClick={handleResetMenus}
+          >
+            <UsIcon className="text-xl" />
+            Nosotros
+          </Link>
         </div>
         <div
           className={`hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12 ${

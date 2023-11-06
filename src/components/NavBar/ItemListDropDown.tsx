@@ -5,7 +5,7 @@ interface ItemListDropDownProps {
   title: string;
   description: string;
   Icon: React.FC;
-  idSection: string;
+  href: string;
   handleResetMenus: () => void;
 }
 
@@ -13,7 +13,7 @@ export default function ItemListDropDown({
   title,
   description,
   Icon,
-  idSection,
+  href,
   handleResetMenus,
 }: ItemListDropDownProps): React.ReactNode {
   return (
@@ -23,7 +23,7 @@ export default function ItemListDropDown({
       </div>
       <div className="flex-auto">
         <Link
-          href={`/about/#${idSection}`}
+          href={`/financial-education/${href}`}
           className="block font-semibold text-gray-900 dark:text-zinc-50 hover:text-sushi-500"
           onClick={handleResetMenus}
         >

@@ -24,7 +24,7 @@ export default async function Home() {
             <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-200/10 dark:hover:ring-gray-200/20">
               Aprender un poco sobre finanzas.{" "}
               <Link
-                href="/financial-education"
+                href="/financial-education/first-dimension"
                 className="font-semibold text-boston-blue-600"
               >
                 Leer más <span aria-hidden="true">&rarr;</span>

@@ -26,7 +26,7 @@ export default function Pill({
       <div className="p-6 pt-0">
         <Link
           className="font-medium text-blue-gray-900 transition-colors hover:text-boston-blue-600"
-          href="/financial-education"
+          href="/financial-education/first-dimension"
         >
           <button
             className="flex justify-center select-none items-center gap-2 rounded-lg py-1 px-4 text-center align-middle font-sans text-xs font-bold uppercase text-boston-blue-600 transition-all hover:bg-boston-blue-600/10 active:bg-boston-blue-600/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"

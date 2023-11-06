@@ -101,14 +101,32 @@ export default function MobileMenu({
                 <HomeIcon className="text-xl" />
                 Inicio
               </Link>
-              <Link
+              <div className="-mx-3">
+                <button
+                  type="button"
+                  className="w-full flex justify-between items-center rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
+                  aria-controls="disclosure-1"
+                  aria-expanded="false"
+                  onClick={handleSubMenuMobileOpen}
+                >
+                  <span className="flex items-center justify-center gap-x-1">
+                  <EducationIcon className="text-xl" />
+                    Educación Financiera
+                  </span>
+                  {isSubMenuMobileOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
+                </button>
+                {isSubMenuMobileOpen && (
+                  <AboutListMobile handleResetMenus={handleResetMenus} />
+                )}
+              </div>
+              {/* <Link
                 href="/financial-education"
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
                 <EducationIcon className="text-xl" />
                 Educación Financiera
-              </Link>
+              </Link> */}
               <Link
                 href="/contact"
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
@@ -117,8 +135,16 @@ export default function MobileMenu({
                 <ContactIcon className="text-xl" />
                 Contacto
               </Link>
+              <Link
+                href="/about"
+                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
+                onClick={handleResetMenus}
+              >
+                <UsIcon className="text-xl" />
+                Nosotros
+              </Link>
 
-              <div className="-mx-3">
+              {/* <div className="-mx-3">
                 <button
                   type="button"
                   className="w-full flex justify-between items-center rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
@@ -135,7 +161,7 @@ export default function MobileMenu({
                 {isSubMenuMobileOpen && (
                   <AboutListMobile handleResetMenus={handleResetMenus} />
                 )}
-              </div>
+              </div> */}
             </div>
             <div className="py-6">
               {status !== "authenticated" ? (

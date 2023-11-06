@@ -1,4 +1,4 @@
-import { FinanceIcon, PigMoneyIcon } from "@/app/financial-education/icons";
+import { FinanceIcon, PigMoneyIcon } from "@/app/financial-education/first-dimension/icons";
 
 const savingFeatures = [
   {

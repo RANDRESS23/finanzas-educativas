@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MisionIcon, QuestionIcon, TeamIcon, VisionIcon } from "./icons";
+import { FinanceIcon, AccountCashIcon, PigIcon } from "./icons";
 
 interface AboutListMobileProps {
   handleResetMenus: () => void;
@@ -11,36 +11,28 @@ export default function AboutListMobile({
   return (
     <div className="mt-2 space-y-2" id="disclosure-1">
       <Link
-        href="/about/#quienesSomos"
+        href="/financial-education/first-dimension"
         className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >
-        ¿Quienes somos?
-        <QuestionIcon />
+        Conocimiento de las finanzas personales
+        <AccountCashIcon />
       </Link>
       <Link
-        href="/about/#mision"
+        href="/financial-education/second-dimension"
         className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >
-        Misión
-        <MisionIcon />
+        Toma de decisiones financieras
+        <FinanceIcon />
       </Link>
       <Link
-        href="/about/#vision"
+        href="/financial-education/third-dimension"
         className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >
-        Visión
-        <VisionIcon />
-      </Link>
-      <Link
-        href="/about/#team"
-        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
-        onClick={handleResetMenus}
-      >
-        Nuestro Equipo
-        <TeamIcon />
+        Administración de sus propias finanzas
+        <PigIcon />
       </Link>
     </div>
   );
