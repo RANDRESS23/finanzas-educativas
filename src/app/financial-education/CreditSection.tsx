@@ -4,11 +4,11 @@ import creditFeatures from "@/meta/creditSectionFeatures";
 
 export default function CreditSection() {
   return (
-    <div className="mx-auto max-w-2xl items-center gap-x-8 gap-y-16 px-4 py-20 sm:px-6 lg:max-w-7xl lg:px-8">
+    <div className="mx-auto max-w-2xl items-center gap-x-8 gap-y-16 px-4 py-20 sm:px-6 lg:max-w-7xl lg:px-8 lg:text-center">
       <h2 className="text-4xl font-semibold leading-7 text-sushi-500 mb-8">
         Crédito
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 lg:w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 lg:w-full items-center">
         <div>
           <h2 className="text-3xl font-bold tracking-tight">
             ¿Qué es un crédito?
@@ -21,11 +21,11 @@ export default function CreditSection() {
             a quien presta, por todo el tiempo que no tuvo ese dinero.
           </p>
         </div>
-        <div className="hidden md:block">
+        <div className="hidden md:block text-center items-center justify-self-center justify-items-center justify-center">
           <Credit />
         </div>
       </div>
-      <div className="grid grid-cols-1 gap-10 place-items-start lg:grid-cols-2 mt-16 md:mt-5">
+      <div className="grid grid-cols-1 gap-10 place-items-start lg:grid-cols-2 mt-16 md:mt-5 items-center justify-items-center">
         <div>
           <p className="text-2xl font-bold tracking-tigh sm:text-3xl">
             Tipos de crédito
@@ -41,7 +41,7 @@ export default function CreditSection() {
             ))}
           </dl>
         </div>
-        <div className="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 grid-rows-1 sm:grid-cols-2 sm:grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
           {creditFeatures.map((feature, index) => (
             <div
               key={index}
@@ -51,7 +51,8 @@ export default function CreditSection() {
                 src={feature.imageSrc}
                 alt={feature.name}
                 className="absolute inset-0 w-full h-full object-cover transform hover:scale-110 hover:brightness-105 transition-all duration-300 cursor-pointer"
-                layout="fill"
+                width={600}
+                height={600}
               />
             </div>
           ))}

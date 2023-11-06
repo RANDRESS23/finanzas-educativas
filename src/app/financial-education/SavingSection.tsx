@@ -28,7 +28,7 @@ export default function SavingSection() {
               </p>
             </div>
           </div>
-          <p className="mt-16 text-2xl font-bold tracking-tight sm:text-3xl">
+          <p className="mt-40 text-2xl font-bold tracking-tight sm:text-3xl">
             Formas de ahorro
           </p>
         </div>
