@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { BsFillPatchCheckFill as CompleteIcon } from "react-icons/bs";
+import { FiEdit2 as EditIcon } from "react-icons/fi";
 
 export default function FormPersonalInformation() {
   const [isLoadingDataUser, setIsLoadingDataUser] = useState(true);
@@ -456,16 +457,26 @@ export default function FormPersonalInformation() {
 
       <button
         type="submit"
-        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full col-span-2 flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
+        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full col-span-2 flex items-center justify-center gap-x-2 disabled:cursor-not-allowed"
         disabled={isLoading}
         onClick={() => (editInfo ? setEditInfo(false) : setEditInfo(true))}
       >
-        <CompleteIcon />
-        {isLoading
-          ? "CARGANDO..."
-          : editInfo
-          ? "EDITAR PERFIL"
-          : "COMPLETAR PERFIL"}
+        {isLoading ? (
+          <>
+            <CompleteIcon />
+            CARGANDO...
+          </>
+        ) : editInfo ? (
+          <>
+            <EditIcon />
+            EDITAR PERFIL
+          </>
+        ) : (
+          <>
+            <CompleteIcon />
+            COMPLETAR PERFIL
+          </>
+        )}
       </button>
     </form>
   );

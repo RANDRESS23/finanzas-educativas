@@ -1,3 +1,5 @@
+import NotFoundSpaceGifDark from "@/assets/NotFoundSpace-dark.gif";
+import NotFoundSpaceGif from "@/assets/NotFounfSpace.gif";
 import { type Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,15 +15,22 @@ export default function NotFound() {
     <div className="min-h-screen flex items-center justify-center w-10/12 m-auto">
       <div className="hidden md:flex md:w-2/5 p-8">
         <Image
-          width={450}
-          height={450}
-          src="/gatico2.png"
+          width={500}
+          height={500}
+          src={NotFoundSpaceGif}
           alt="Placeholder Image"
-          className="rounded-xl"
+          className="rounded-xl dark:hidden"
+        />
+        <Image
+          width={500}
+          height={500}
+          src={NotFoundSpaceGifDark}
+          alt="Placeholder Image"
+          className="rounded-xl hidden dark:block"
         />
       </div>
-      <div className="w-full md:w-3/5 p-4 md:p-8">
-        <h1 className="text-4xl md:text-6xl font-bold mb-4">Página no encontrada!</h1>
+      <div className="w-full md:w-1/2 p-4 md:p-8 text-center">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">404 Not Found</h1>
         <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-8">
           {"Oops! La página a la que solicitaste no fue encontrada. 🙁"}
         </p>

@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import Overflow from "@/components/Overflow";
 import SessionProviderContext from "@/providers/SessionProvider";
+import ThemeProvider from "@/providers/ThemeProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
 import { type Metadata } from "next";
 import { Oswald } from "next/font/google";
@@ -29,16 +30,19 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="es" className={oswald.className}>
-      <body className="antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 transition-colors">
-        <SessionProviderContext>
+      <body>
+        <ThemeProvider>
           <Overflow />
-          <NavBar />
-          <ToasterProvider />
 
-          <div>{children}</div>
+          <SessionProviderContext>
+            <NavBar />
+            <ToasterProvider />
 
-          <Footer />
-        </SessionProviderContext>
+            <main>{children}</main>
+
+            <Footer />
+          </SessionProviderContext>
+        </ThemeProvider>
       </body>
     </html>
   );

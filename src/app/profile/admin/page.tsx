@@ -15,7 +15,7 @@ export default async function ProfileAdminPage() {
   return (
     <div className="mb-20">
       <div className="relative isolate px-6 pb-20 lg:py-0 lg:pl-36 lg:flex lg:justify-between lg:gap-10 lg:h-screen">
-        <div className="max-w-xl h-screen lg:h-full flex flex-col justify-center items-start">
+        <div className="max-w-xl h-screen lg:h-full flex flex-col justify-center items-center">
           <div className="flex mb-8 justify-center">
             <div className="relative rounded-full px-5 py-1 text-sm leading-6 text-gray-600 dark:text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-zinc-200/10 dark:hover:ring-gray-200/20">
               Completar mi información personal.{" "}
@@ -28,18 +28,18 @@ export default async function ProfileAdminPage() {
               </Link>
             </div>
           </div>
-          <div className="relative">
+          <div className="relative text-center">
             <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight sm:text-6xl">
-              Bienvenido a{" "}
-              <span className="text-sushi-500">¡Finanzas Educativas!</span>{" "}
-              <Title text="¡Finanzas Educativas!" isTextStatic={false} />
+              <span className="block w-full">¡Bienvenido a </span>
+              <span className="text-sushi-500">Finanzas Educativas!</span>{" "}
+              <Title />
             </h1>
-            <p className="text-lg leading-8 text-gray-600 text-left">
+            <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
               Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
               lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
               fugiat aliqua.
             </p>
-            <div className="mt-10 flex items-center justify-start gap-x-6">
+            <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link
                 href="/profile/admin/dashboard"
                 className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-2"
@@ -50,13 +50,13 @@ export default async function ProfileAdminPage() {
             </div>
           </div>
         </div>
-        <div className="relative">
+        <div className="sm:w-3/4 relative rounded-lg overflow-hidden">
           <Image
             width={500}
             height={400}
             src="https://images.pexels.com/photos/4195342/pexels-photo-4195342.jpeg?auto=compress&cs=tinysrgb&w=600"
-            alt=""
-            className="object-cover lg:h-full w-[180%] h-auto aspect-square rounded-xl hover:opacity-90 transition-opacity"
+            alt="photo"
+            className="object-cover lg:h-full w-[180%] h-auto aspect-square transform hover:scale-105 hover:brightness-105 transition-all duration-300 cursor-pointer"
           />
         </div>
       </div>
