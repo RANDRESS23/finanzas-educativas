@@ -119,7 +119,7 @@ export default function Footer(): React.ReactNode {
         </ul>
       </div>
       <div>
-        <p className="text-sm text-gray-400">
+        <p className="text-sm text-gray-400 text-center">
           © {new Date().getFullYear()} Finanzas Educativas. Todos los derechos
           reservados.
         </p>
