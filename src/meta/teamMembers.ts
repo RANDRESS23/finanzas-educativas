@@ -18,19 +18,25 @@ const teamMembers = [
       "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
   },
   {
-    name: "Dany Bailey",
+    name: "Diomedes Diaz",
     role: "Software Engineer",
     imageSrc:
       "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
   },
   {
-    name: "Lucy Carter",
+    name: "Mayra Sánchez",
     role: "Graphic Designer",
     imageSrc:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
   },
   {
-    name: "Jade Bradley",
+    name: "EL MARAVILLOSO GORDO DE LAS MIL VOCES",
+    role: "Libero",
+    imageSrc:
+      "https://images.unsplash.com/flagged/photo-1570612861542-284f4c12e75f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80",
+  },
+  {
+    name: "Dian Salazar",
     role: "Dev Ops",
     imageSrc:
       "https://images.unsplash.com/photo-1499952127939-9bbf5af6c51c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1176&q=80",

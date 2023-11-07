@@ -60,10 +60,13 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="mb-20">
+      <div className="mb-48">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-xl font-semibold leading-8 text-sushi-500 sm:text-3xl sm:leading-9 mb-10">
-            <p>Pildoras de Conocimiento</p>
+          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-10">
+            <p>
+              Pildoras de <span className="text-sushi-500">Conocimiento</span>
+            </p>
+            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">El objetivo de estas pildoras de conocimiento es aumentar la inteligencia financiera de nuestros visitantes, ayudándoles a tomar el control de sus finanzas y alcanzar sus metas económicas con confianza.</p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
             {KNOWLEDGE_PILLS.map(({ title, description }, index) => (
@@ -75,8 +78,11 @@ export default async function Home() {
 
       <div className="py-7 pb-24 sm:pb-32">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-xl font-semibold leading-8 text-sushi-500 sm:text-2xl sm:leading-9 mb-5">
-            <p>Videos Interactivos</p>
+          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-8">
+            <p>
+              Videos Informativos <span className="text-sushi-500">Educativos</span>
+            </p>
+            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">El objetivo de estos videos informativos educativos es proporcionar información valiosa y educativa de manera visual y atractiva para que los espectadores aprendan de manera efectiva sobre temas específicos.</p>
           </blockquote>
           <dl className="flex text-center items-center justify-between">
             <div

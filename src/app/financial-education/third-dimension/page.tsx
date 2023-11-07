@@ -16,7 +16,7 @@ export default function ThirdDimension() {
           <p>
             Manejo de <span className="text-sushi-500">Finanzas</span> Adecuadamente
           </p>
-          <p className="text-lg font-normal mt-3">Para reducir el margen de endeudamiento en nuestra finanza se recomienda implementar las siguientes estrategias:</p>
+          <p className="text-lg font-normal mt-5 text-gray-600 dark:text-gray-400">Para reducir el margen de endeudamiento en nuestra finanza se recomienda implementar las siguientes estrategias:</p>
         </blockquote>
         <div className="flex justify-center items-center gap-y-9 gap-x-20 flex-wrap">
         {

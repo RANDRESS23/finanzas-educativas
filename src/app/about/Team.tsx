@@ -3,42 +3,34 @@ import teamMembers from "@/meta/teamMembers";
 
 export default function Team() {
   return (
-    <div className="w-full mt-10">
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
-        <div className="text-center pb-12">
-          <h1 className="font-bold text-3xl md:text-4xl lg:text-5xl font-heading text-dark">
-            Mira Nuestro equipo
-          </h1>
+    <div className="bg-white py-24 sm:py-32 dark:bg-slate-900">
+      <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+        <div className="max-w-2xl">
+          <h2 className="text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-4xl">Nuestro <span className="text-sushi-600">Equipo</span></h2>
+          <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
+            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae elementum enim vitae ullamcorper
+            suspendisse.
+          </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className="w-full bg-gray-900 dark:bg-slate-800 hover:bg-gray-900/95 dark:hover:bg-slate-800/80 rounded-lg shadow-lg shadow-slate-950/40 p-12 relative overflow-hidden transition-colors duration-300"
-            >
-              <div className="flex flex-col justify-center items-center transform hover:scale-110 hover:brightness-105 transition-all duration-300 cursor-pointer">
-                <div className="mb-8">
-                  <Image
-                    className="object-center object-cover rounded-full"
-                    width={100}
-                    height={76}
-                    src={member.imageSrc}
-                    alt="photo"
-                  />
-                </div>
-                <div className="text-center">
-                  <p className="text-xl text-white font-bold mb-2">
-                    {member.name}
-                  </p>
-                  <p className="text-base text-gray-400 font-normal">
-                    {member.role}
-                  </p>
+        <ul role="list" className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+          {teamMembers.map(({ name, role, imageSrc }) => (
+            <li key={name}>
+              <div className="flex items-center gap-x-6">
+                <Image 
+                  src={imageSrc} 
+                  alt="" 
+                  width={64} 
+                  height={64}
+                  className="h-16 w-16 object-center object-cover rounded-full" />
+                <div>
+                  <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900 dark:text-white">{name}</h3>
+                  <p className="text-sm font-semibold leading-6 text-sushi-600">{role}</p>
                 </div>
               </div>
-            </div>
+            </li>
           ))}
-        </div>
-      </section>
+        </ul>
+      </div>
     </div>
   );
 }
