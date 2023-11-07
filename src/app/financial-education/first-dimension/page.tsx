@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Finanzas Educativas | Educación Financiera",
 };
 
-export default function FinancialEducation() {
+export default function FirstDimension() {
   return (
     <div className="py-20">
       <SavingSection />

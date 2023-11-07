@@ -7,7 +7,7 @@ const PigIcon: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
       strokeLinejoin="round"
       strokeWidth={2}
       viewBox="0 0 24 24"
-      className="h-6 w-6 text-gray-600 group-hover:text-sushi-500"
+      className="h-6 w-6 text-gray-600 dark:text-zinc-50 group-hover:text-sushi-500"
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" />
