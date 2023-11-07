@@ -32,7 +32,7 @@ export default function ThirdDimension() {
                 <div className="px-6 pt-6 pb-3">
                   <div
                     key={index}
-                    className="relative rounded-xl overflow-hidden"
+                    className="w-full h-56 relative rounded-xl overflow-hidden mb-4"
                   >
                     <Image
                       src={url}
