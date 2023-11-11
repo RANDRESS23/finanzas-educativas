@@ -111,7 +111,7 @@ export default function FormPersonalInformation({
     if (session?.user) {
       getMoreInfoUser();
     }
-  }, [session?.user]);
+  }, [session?.user, setEditInfo, reset]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (editInfo) {

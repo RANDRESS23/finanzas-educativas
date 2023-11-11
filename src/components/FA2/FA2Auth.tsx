@@ -20,7 +20,7 @@ export default function FA2Auth({
         start2FAAuth();
       }
     })();
-  }, [session, verifying]);
+  }, [session, verifying, start2FAAuth]);
 
   return [isLoadingAuth];
 }
