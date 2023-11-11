@@ -77,7 +77,7 @@ export default function FormPersonalInformation({
         email,
       }));
     }
-  }, [session?.user]);
+  }, [session?.user, reset]);
 
   useEffect(() => {
     const getMoreInfoUser = async () => {
