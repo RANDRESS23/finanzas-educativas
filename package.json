@@ -33,10 +33,10 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@prisma/client": "^5.5.2",
-    "@sendgrid/mail": "^7.7.0",
+    "@sendgrid/mail": "^6.5.5",
     "@simplewebauthn/browser": "^8.3.4",
     "@simplewebauthn/server": "^8.3.5",
-    "axios": "^1.6.0",
+    "axios": "^1.6.1",
     "bcryptjs": "^2.4.3",
     "clsx": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
