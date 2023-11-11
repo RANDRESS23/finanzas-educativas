@@ -5,24 +5,24 @@ import {
   QuestionIcon,
   VisionIcon,
 } from "@/components/NavBar/icons";
+import { META } from "@/types/TMeta";
 import { Dialog, Transition } from "@headlessui/react";
-import { type InformationSchema } from "@prisma/client";
+import { type Meta } from "@prisma/client";
 import { Fragment, useRef, useState } from "react";
 import { FcCancel as CancelIcon } from "react-icons/fc";
 import { FiEdit2 as EditIcon } from "react-icons/fi";
 import MetaForm from "./MetaForm";
-import { META } from "@/types/TMeta";
 
 export default function MetaModal({
   meta,
   description,
-  aboutInfo,
+  metaInfo,
   open,
   setOpen,
 }: {
   meta: META;
   description: string;
-  aboutInfo: Partial<InformationSchema>;
+  metaInfo: Partial<Meta>;
   open: boolean;
   setOpen: (st: boolean) => void;
 }) {
@@ -83,7 +83,7 @@ export default function MetaModal({
                       <div className="mt-2">
                         <MetaForm
                           meta={META[meta]}
-                          aboutInfo={aboutInfo}
+                          metaInfo={metaInfo}
                           closeMetaModal={() => setOpen(false)}
                           setIsLoadingForm={setIsLoadingForm}
                         />

@@ -34,24 +34,28 @@ export const tosty: Tosty = {
     Tosty({
       ...options,
       text,
+      subject: "Operación exitosa!",
       icon: { ReactIcon: SuccessIcon, color: "green" },
     }),
   warn: (text, options) =>
     Tosty({
       ...options,
       text,
+      subject: "Advertencia:",
       icon: { ReactIcon: WarnIcon, color: "yellow" },
     }),
   error: (text, options) =>
     Tosty({
       ...options,
       text,
+      subject: "Algo salió mal...",
       icon: { ReactIcon: ErrorIcon, color: "red" },
     }),
   info: (text, options) =>
     Tosty({
       ...options,
       text,
+      subject: "Información:",
       icon: { ReactIcon: InfoIcon, color: "blue" },
     }),
 };

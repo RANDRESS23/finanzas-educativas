@@ -5,7 +5,7 @@ import degradePng from "@/assets/degrade@tinypng.png";
 
 export default function Overflow() {
   return (
-    <div className="absolute -z-50 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none">
+    <div className="absolute dark:fixed -z-40 top-0 inset-x-0 flex justify-center overflow-hidden pointer-events-none">
       <div className="w-[108rem] flex-none flex justify-end">
         <picture>
           <source srcSet={degradeAvif.src} type="image/avif" />

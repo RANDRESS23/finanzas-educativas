@@ -20,7 +20,7 @@ export async function GET(
 
     return NextResponse.json(userMoreInfo[0]);
   } catch (error) {
-    console.log({ error });
+    console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
@@ -33,8 +33,9 @@ export async function PUT(
   request: Request,
   { params }: { params: UserMoreInfoForm }
 ) {
+  const body = await request.json();
+
   try {
-    const body = await request.json();
     const diferentDocuments = body.documentSession !== body.document;
     const diferentEmails = body.emailSession !== body.email;
 
@@ -95,7 +96,7 @@ export async function PUT(
       { status: 201 }
     );
   } catch (error) {
-    console.log({ error });
+    console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },

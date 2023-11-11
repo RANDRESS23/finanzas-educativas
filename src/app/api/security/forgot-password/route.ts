@@ -1,13 +1,14 @@
 import { encryptPassword } from "@/libs/bcrypt";
 import { db } from "@/libs/prismaDB";
 import { userPasswordsSchema } from "@/schemas/user.schema";
+import { type TPayload } from "@/types/TPayload";
 import Jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
 export async function PATCH(request: Request) {
-  try {
-    const body = await request.json();
+  const body = await request.json();
 
+  try {
     const { password, confirmPassword } = userPasswordsSchema.parse({
       password: body.password,
       confirmPassword: body.confirmPassword,
@@ -22,12 +23,11 @@ export async function PATCH(request: Request) {
 
     const payload = Jwt.verify(
       body.jwtToken,
-      process.env.secret ?? "secretkey"
-    ) as any;
+      process.env.NEXTAUTH_SECRET!
+    ) as TPayload;
     const userFound = await db.user.findUnique({
-      where: {
-        email: payload.email,
-      },
+      where: { email: payload.email },
+      select: { id: true },
     });
 
     if (userFound === null) {
@@ -47,10 +47,7 @@ export async function PATCH(request: Request) {
     });
 
     if (updatedUser === null) {
-      return NextResponse.json(
-        { message: "No se pudo actualizar la contraseña." },
-        { status: 500 }
-      );
+      throw new Error();
     }
 
     return NextResponse.json({ message: "ok" }, { status: 201 });

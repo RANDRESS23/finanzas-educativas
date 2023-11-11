@@ -1,12 +1,13 @@
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { AdminIcon } from "@/components/NavBar/icons";
+import Title from "@/components/Title";
 import { getServerSession } from "next-auth/next";
 import Image from "next/image";
-import Title from "@/components/Title";
-import { AdminIcon } from "@/components/NavBar/icons";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 export default async function ProfileAdminPage() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (session?.user?.email !== "admin@gmail.com") {
     return redirect("/profile/user");
@@ -24,7 +25,7 @@ export default async function ProfileAdminPage() {
                 className="font-semibold text-boston-blue-600"
               >
                 <span className="absolute inset-0" aria-hidden="true" />
-                Completar Perfil <span aria-hidden="true">&rarr;</span>
+                Completar Perfíl <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </div>

@@ -19,14 +19,14 @@ export default function NotFound() {
           height={500}
           src={NotFoundSpaceGif}
           alt="Placeholder Image"
-          className="rounded-xl dark:hidden"
+          className="rounded-xl dark:hidden -z-50"
         />
         <Image
           width={500}
           height={500}
           src={NotFoundSpaceGifDark}
           alt="Placeholder Image"
-          className="rounded-xl hidden dark:block"
+          className="rounded-xl hidden dark:block -z-50"
         />
       </div>
       <div className="w-full md:w-1/2 p-4 md:p-8 text-center">

@@ -6,39 +6,37 @@ import { type TPayload } from "@/types/TPayload";
 import Jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  _request: Request,
-  { params }: { params: { email: string } }
-) {
-  const { to } = sendEmailSchema.parse(params);
+interface ExpectedParams {
+  params: { email: string };
+}
 
-  const userFound = await db.user.findUnique({
-    where: {
-      email: to,
-    },
-  });
-
-  if (userFound === null) {
-    return NextResponse.json(
-      { message: "El email no se encuentra registrado." },
-      { status: 404 }
-    );
-  }
-
-  const payload: TPayload = {
-    document: userFound.document,
-    email: userFound.email,
-  };
-
-  const tokenRecoverPsw = Jwt.sign(
-    payload,
-    process.env.secret ?? "secretkey",
-    { expiresIn: 10 * 60 } // 10 minutos
-  );
-
-  const resetPasswordLink = `${process.env.NEXTAUTH_URL}/forgot-password/${tokenRecoverPsw}`;
-
+export async function GET(_: Request, { params }: ExpectedParams) {
   try {
+    const { to } = sendEmailSchema.parse({ email: params.email });
+
+    const userFound = await db.user.findUnique({
+      where: { email: to },
+      select: { document: true, email: true },
+    });
+
+    if (userFound === null) {
+      return NextResponse.json(
+        { message: "El email no se encuentra registrado." },
+        { status: 404 }
+      );
+    }
+
+    const payload: TPayload = {
+      document: userFound.document,
+      email: userFound.email,
+    };
+
+    const tokenRecoverPsw = Jwt.sign(payload, process.env.NEXTAUTH_SECRET!, {
+      expiresIn: 10 * 60, // 10 minutos
+    });
+
+    const resetPasswordLink = `${process.env.NEXTAUTH_URL}/forgot-password/${tokenRecoverPsw}`;
+
     const msgSended = await sendEmail(
       to,
       "Solicitud de cambio de contraseña",
@@ -56,7 +54,8 @@ export async function GET(
       { status: 201 }
     );
   } catch (error) {
-    console.error(error);
+    console.error({ error });
+
     return NextResponse.json(
       { message: "Something went wrong.", error },
       { status: 500 }

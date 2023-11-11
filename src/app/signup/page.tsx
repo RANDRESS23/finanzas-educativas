@@ -1,18 +1,19 @@
-import Image from "next/image";
-import SignUpGif from "./gifs/signUp.gif";
-import SignUpGifDark from "./gifs/signUp-dark.gif";
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth/next";
 import Title from "@/components/Title";
-import FormSignUp from "./FormSignUp";
 import { type Metadata } from "next";
+import { getServerSession } from "next-auth/next";
+import Image from "next/image";
+import { redirect } from "next/navigation";
+import { authOptions } from "../api/auth/[...nextauth]/route";
+import FormSignUp from "./FormSignUp";
+import SignUpGifDark from "./gifs/signUp-dark.gif";
+import SignUpGif from "./gifs/signUp.gif";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Registrarse",
 };
 
 async function Signup() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (session !== null && session?.user?.email !== "admin@gmail.com") {
     return redirect("/profile/user");
@@ -33,14 +34,14 @@ async function Signup() {
           <div className="hidden md:block">
             <div>
               <Image
-                className="dark:hidden rounded-xl"
+                className="dark:hidden rounded-xl -z-50"
                 width={500}
                 height={500}
                 src={SignUpGif}
                 alt=""
               />
               <Image
-                className="hidden dark:block rounded-xl"
+                className="hidden dark:block rounded-xl -z-50"
                 width={500}
                 height={500}
                 src={SignUpGifDark}

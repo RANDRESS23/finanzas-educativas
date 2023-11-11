@@ -15,7 +15,7 @@ export default async function PasswordChanger({
   try {
     const payload = Jwt.verify(
       jwtToken,
-      process.env.secret || "secretkey"
+      process.env.NEXTAUTH_SECRET!
     ) as TPayload;
 
     return (
@@ -29,14 +29,14 @@ export default async function PasswordChanger({
         <div className="flex justify-center items-center gap-16 mt-5">
           <div className="lg:flex lg:justify-center lg:items-center hidden">
             <Image
-              className="dark:hidden rounded-xl"
+              className="dark:hidden rounded-xl -z-50"
               width={400}
               height={400}
               src={ChangePasswordGif}
               alt=""
             />
             <Image
-              className="hidden dark:block rounded-xl"
+              className="hidden dark:block rounded-xl -z-50"
               width={400}
               height={400}
               src={ChangePasswordGifDark}

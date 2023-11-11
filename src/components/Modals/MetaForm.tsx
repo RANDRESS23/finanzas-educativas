@@ -2,19 +2,19 @@ import api from "@/libs/api";
 import clsxe from "@/libs/clsxe";
 import { tosty } from "@/libs/tosty";
 import { type META } from "@/types/TMeta";
-import { type InformationSchema } from "@prisma/client";
-import { AxiosError } from "axios";
+import { type Meta } from "@prisma/client";
+import { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 
 export default function MetaForm({
   meta,
-  aboutInfo,
+  metaInfo,
   closeMetaModal,
   setIsLoadingForm,
 }: {
   meta: META;
-  aboutInfo: Partial<InformationSchema>;
+  metaInfo: Partial<Meta>;
   closeMetaModal: () => void;
   setIsLoadingForm: (st: boolean) => void;
 }) {
@@ -27,8 +27,8 @@ export default function MetaForm({
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      [meta]: aboutInfo[meta]![0],
-      [`more${meta}`]: aboutInfo[meta]![1],
+      [meta]: metaInfo[meta]![0],
+      [`more${meta}`]: metaInfo[meta]![1],
     },
   });
 
@@ -37,7 +37,7 @@ export default function MetaForm({
 
     try {
       const response = await api.patch(`/admin/meta/${meta}`, {
-        id: aboutInfo.id,
+        id: metaInfo.id,
         [meta]: Object.values(data),
       });
 
@@ -48,11 +48,11 @@ export default function MetaForm({
         router.refresh();
       }
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (isAxiosError(error)) {
         tosty.error(error.response?.data.message);
-        console.log({ errorMessage: error.response?.data.message });
-        console.log({ error });
       }
+
+      console.error({ error });
     } finally {
       setIsLoadingForm(false);
     }

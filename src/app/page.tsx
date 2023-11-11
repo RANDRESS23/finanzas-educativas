@@ -1,14 +1,16 @@
 import { LogInIcon } from "@/components/NavBar/icons";
 import Pill from "@/components/Pill";
 import Title from "@/components/Title";
+import KNOWLEDGE_PILLS from "@/meta/knownledgePills";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
-import KNOWLEDGE_PILLS from "@/meta/knownledgePills";
+import { MdVideoFile as VideoIcon } from "react-icons/md";
+import { authOptions } from "./api/auth/[...nextauth]/route";
 
 export default async function Home() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (session !== null && session?.user?.email !== "admin@gmail.com") {
     return redirect("profile/user");
@@ -66,7 +68,12 @@ export default async function Home() {
             <p>
               Pildoras de <span className="text-sushi-500">Conocimiento</span>
             </p>
-            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">El objetivo de estas pildoras de conocimiento es aumentar la inteligencia financiera de nuestros visitantes, ayudándoles a tomar el control de sus finanzas y alcanzar sus metas económicas con confianza.</p>
+            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">
+              El objetivo de estas pildoras de conocimiento es aumentar la
+              inteligencia financiera de nuestros visitantes, ayudándoles a
+              tomar el control de sus finanzas y alcanzar sus metas económicas
+              con confianza.
+            </p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
             {KNOWLEDGE_PILLS.map(({ title, description }, index) => (
@@ -80,60 +87,28 @@ export default async function Home() {
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-8">
             <p>
-              Videos Informativos <span className="text-sushi-500">Educativos</span>
+              Videos Informativos{" "}
+              <span className="text-sushi-500">Educativos</span>
             </p>
-            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">El objetivo de estos videos informativos educativos es proporcionar información valiosa y educativa de manera visual y atractiva para que los espectadores aprendan de manera efectiva sobre temas específicos.</p>
+            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">
+              El objetivo de estos videos informativos educativos es
+              proporcionar información valiosa y educativa de manera visual y
+              atractiva para que los espectadores aprendan de manera efectiva
+              sobre temas específicos.
+            </p>
           </blockquote>
-          <dl className="flex text-center items-center justify-between">
-            <div
-              role="status"
-              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-11/12"
-            >
-              <svg
-                className="w-10 h-10 text-gray-200 dark:text-gray-600"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 16 20"
+          <div className="flex justify-center items-center gap-9 flex-wrap">
+            {Array.from({ length: 3 }, (_, index) => (
+              <div
+                key={index}
+                role="status"
+                className="z-20 flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-80 h-56"
               >
-                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-              </svg>
-              <span className="sr-only">Loading...</span>
-            </div>
-            <div
-              role="status"
-              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-11/12"
-            >
-              <svg
-                className="w-10 h-10 text-gray-200 dark:text-gray-600"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 16 20"
-              >
-                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-              </svg>
-              <span className="sr-only">Loading...</span>
-            </div>
-            <div
-              role="status"
-              className="flex items-center justify-center h-56 max-w-sm bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-11/12"
-            >
-              <svg
-                className="w-10 h-10 text-gray-200 dark:text-gray-600"
-                aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
-                fill="currentColor"
-                viewBox="0 0 16 20"
-              >
-                <path d="M5 5V.13a2.96 2.96 0 0 0-1.293.749L.879 3.707A2.98 2.98 0 0 0 .13 5H5Z" />
-                <path d="M14.066 0H7v5a2 2 0 0 1-2 2H0v11a1.97 1.97 0 0 0 1.934 2h12.132A1.97 1.97 0 0 0 16 18V2a1.97 1.97 0 0 0-1.934-2ZM9 13a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-2a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2Zm4 .382a1 1 0 0 1-1.447.894L10 13v-2l1.553-1.276a1 1 0 0 1 1.447.894v2.764Z" />
-              </svg>
-              <span className="sr-only">Loading...</span>
-            </div>
-          </dl>
+                <VideoIcon className="w-10 h-10 text-gray-200 dark:text-gray-600" />
+                <span className="sr-only">Loading...</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </>

@@ -1,6 +1,8 @@
-import { type User } from "@prisma/client";
+import { db } from "@/libs/prismaDB";
 
-function RowUsers({ users }: { users: User[] }) {
+async function RowUsers() {
+  const users = await db.user.findMany();
+
   return users.map((u) => (
     <tr key={u.id}>
       <td className="p-4 whitespace-nowrap text-sm font-normal">

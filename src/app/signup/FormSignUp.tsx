@@ -37,9 +37,9 @@ export default function FormSignUp(): React.ReactNode {
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    try {
-      setIsLoading(true);
+    setIsLoading(true);
 
+    try {
       const response = await api.post("/user", data);
 
       if (response.status === 201) {
@@ -57,10 +57,12 @@ export default function FormSignUp(): React.ReactNode {
 
         if (response?.ok) {
           router.refresh();
-          router.push("/profile/user");
           reset();
+          return router.push("/profile/user");
         }
-      } else tosty.error("Error al registrarse!");
+      }
+
+      tosty.error("Error al registrarse!");
     } catch (error: any) {
       if (error.response.data !== undefined) {
         const errorsMessages = Object.values(error.response.data);
@@ -70,12 +72,12 @@ export default function FormSignUp(): React.ReactNode {
           errorsMessagesString += `🔸 ${message} ${"\n"}`;
         });
 
-        tosty.error(errorsMessagesString, {
+        return tosty.error(errorsMessagesString, {
           options: { className: "text-center" },
         });
-      } else {
-        console.log({ error });
       }
+
+      console.error({ error });
     } finally {
       setIsLoading(false);
     }

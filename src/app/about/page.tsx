@@ -1,9 +1,8 @@
 import { db } from "@/libs/prismaDB";
-import { type InformationSchema } from "@prisma/client";
+import metaKeys from "@/meta/metaKeys";
 import { type Metadata } from "next";
 import AboutSection from "./AboutSection";
 import Team from "./Team";
-import metaKeys from "@/meta/metaKeys";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Nosotros",
@@ -12,8 +11,7 @@ export const metadata: Metadata = {
 export const dynamic = "force-dynamic";
 
 export default async function About(): Promise<React.ReactElement> {
-  const [aboutInfo] =
-    (await db.informationSchema.findRaw()) as unknown as InformationSchema[];
+  const [metaInfo] = await db.meta.findMany();
 
   return (
     <>
@@ -25,8 +23,8 @@ export default async function About(): Promise<React.ReactElement> {
             svgName={svgName}
             svgInLeftPosition
             title={title}
-            description={aboutInfo[key][0]}
-            moreDescription={aboutInfo[key][1]}
+            description={metaInfo[key][0]}
+            moreDescription={metaInfo[key][1]}
           />
         ))}
 

@@ -4,16 +4,17 @@ import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 import FormSignIn from "./FormSignIn";
-import SignInGif from "./gifs/signIn.gif";
 import SignInGifDark from "./gifs/signIn-dark.gif";
+import SignInGif from "./gifs/signIn.gif";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Iniciar Sesión",
 };
 
 export default async function Signin() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (session !== null && session?.user?.email !== "admin@gmail.com") {
     return redirect("/profile/user");
@@ -31,14 +32,14 @@ export default async function Signin() {
       <div className="flex justify-center items-center gap-16 mt-4">
         <div className="lg:flex lg:justify-center lg:items-center hidden">
           <Image
-            className="dark:hidden rounded-xl"
+            className="dark:hidden rounded-xl -z-50"
             width={400}
             height={400}
             src={SignInGif}
             alt=""
           />
           <Image
-            className="hidden dark:block rounded-xl"
+            className="hidden dark:block rounded-xl -z-50"
             width={400}
             height={400}
             src={SignInGifDark}

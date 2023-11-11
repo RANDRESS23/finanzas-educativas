@@ -3,7 +3,7 @@
 import Input from "@/components/Input";
 import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
-import { AxiosError } from "axios";
+import { isAxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
@@ -22,9 +22,9 @@ const FormSendEmail: React.FC = () => {
   } = useForm<FieldValues>({ defaultValues: { email: "" } });
 
   const onSubmit: SubmitHandler<FieldValues> = async ({ email }) => {
-    try {
-      setIsLoading(true);
+    setIsLoading(true);
 
+    try {
       const response = await api(`/security/forgot-password/${email}`);
 
       if (response.status !== 201) {
@@ -37,10 +37,11 @@ const FormSendEmail: React.FC = () => {
       );
       reset();
     } catch (error) {
-      if (error instanceof AxiosError) {
+      if (isAxiosError(error)) {
         tosty.error(error.response?.data.message);
-        console.log({ errorMessage: error.response?.data.message });
       }
+
+      console.error({ error });
     } finally {
       setIsLoading(false);
     }

@@ -13,19 +13,33 @@ enum Role {
 }
 
 model User {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
-  documentType   String
-  document       String   @unique
-  firstName      String
-  lastName       String
-  phoneNumber    String
-  email          String   @unique
-  hashedPassword String
-  role           Role     @default(USER)
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
+  id               String          @id @default(auto()) @map("_id") @db.ObjectId
+  documentType     String
+  document         String          @unique
+  firstName        String
+  lastName         String
+  phoneNumber      String
+  email            String          @unique
+  hashedPassword   String
+  role             Role            @default(USER)
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  currentChallenge String?
+  is2FAEnabled     Boolean         @default(false)
+  moreInfo         UserMoreInfo[]
+  authenticators   Authenticator[]
+}
 
-  moreInfo UserMoreInfo[]
+model Authenticator {
+  id                   String   @id @default(auto()) @map("_id") @db.ObjectId
+  credentialID         Bytes    @unique
+  credentialPublicKey  Bytes
+  counter              Int
+  credentialDeviceType String
+  credentialBackedUp   Boolean
+  transports           String[]
+  userId               String   @db.ObjectId
+  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model UserMoreInfo {
@@ -61,7 +75,7 @@ model Contact {
   updatedAt   DateTime @updatedAt
 }
 
-model InformationSchema {
+model Meta {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   mision    String[]
   vision    String[]

@@ -4,15 +4,24 @@
 
 @layer {
   body {
-    @apply antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:text-slate-950 selection:bg-slate-950/10 dark:selection:text-slate-200 dark:selection:bg-slate-50/10 select-none;
+    @apply antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:text-slate-950 selection:bg-slate-950/10 dark:selection:text-slate-200 dark:selection:bg-slate-50/10;
+  }
+
+  h1,
+  h2,
+  h3,
+  img {
+    @apply pointer-events-none;
   }
 }
 
-html::-webkit-scrollbar, p::-webkit-scrollbar {
-  width: .7rem;
+html::-webkit-scrollbar,
+p::-webkit-scrollbar {
+  width: 0.7rem;
 }
 
-html::-webkit-scrollbar-thumb, p::-webkit-scrollbar-thumb {
+html::-webkit-scrollbar-thumb,
+p::-webkit-scrollbar-thumb {
   @apply bg-boston-blue-600;
   border-radius: 5rem;
 }

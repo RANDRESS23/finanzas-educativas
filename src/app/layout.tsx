@@ -8,6 +8,7 @@ import ToasterProvider from "@/providers/ToasterProvider";
 import { type Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
+import FA2Container from "@/components/FA2/FA2Container";
 
 const oswald = Oswald({
   subsets: ["latin"],
@@ -33,6 +34,8 @@ export default async function RootLayout({
       <body>
         <ThemeProvider>
           <Overflow />
+
+          <FA2Container />
 
           <SessionProviderContext>
             <NavBar />

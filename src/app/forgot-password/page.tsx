@@ -16,14 +16,14 @@ export default function EmailSender(): React.ReactNode {
       <div className="flex justify-center items-center gap-16">
         <div className="lg:flex lg:justify-center lg:items-center hidden">
           <Image
-            className="dark:hidden rounded-xl"
+            className="dark:hidden rounded-xl -z-50"
             width={400}
             height={400}
             src={ForgotPasswordGif}
             alt=""
           />
           <Image
-            className="hidden dark:block rounded-xl"
+            className="hidden dark:block rounded-xl -z-50"
             width={400}
             height={400}
             src={ForgotPasswordGifDark}

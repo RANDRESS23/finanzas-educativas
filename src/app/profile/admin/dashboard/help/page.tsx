@@ -1,8 +1,9 @@
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 
 export default async function HelpAdminPage() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (session?.user?.email !== "admin@gmail.com") {
     return redirect("/profile/user");

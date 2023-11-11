@@ -2,35 +2,41 @@
 
 import InputShowPsw from "@/components/ChkbxPsw";
 import Input from "@/components/Input";
+import useStart2FAAuth from "@/hooks/userStart2FAAuth";
 import { tosty } from "@/libs/tosty";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
+import { LiaFingerprintSolid as FingerPrintIcon } from "react-icons/lia";
 import { PiSignIn as SignInIcon } from "react-icons/pi";
 
 export default function FormSignIn() {
   const [isLoading, setIsLoading] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const router = useRouter();
 
+  const router = useRouter();
+  const { isLoadingAuth, start2FAAuth } = useStart2FAAuth();
+
+  const defaultValues = {
+    document: "",
+    password: "",
+  };
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FieldValues>({
-    defaultValues: {
-      document: "",
-      password: "",
-    },
-  });
+    watch,
+  } = useForm<FieldValues>({ defaultValues });
+
+  const formValues = watch() as typeof defaultValues;
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    try {
-      setIsLoading(true);
+    setIsLoading(true);
 
+    try {
       const response = await signIn("credentials", {
         document: data.document,
         password: data.password,
@@ -54,10 +60,11 @@ export default function FormSignIn() {
           reset();
         }
       }
-    } catch (error: any) {
-      tosty.error(error.response.data.message);
-      console.log({ errorMessage: error.response.data.message });
-      console.log({ error });
+    } catch (error) {
+      if (error instanceof Error) {
+        tosty.error(error.message);
+        console.error({ error });
+      }
     } finally {
       setIsLoading(false);
     }
@@ -109,11 +116,20 @@ export default function FormSignIn() {
       </p>
       <button
         type="submit"
-        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-sushi-400"
+        className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-sushi-400 mb-2"
         disabled={isLoading}
       >
-        <SignInIcon />
+        <SignInIcon className="text-2xl" />
         {isLoading ? "CARGANDO..." : "INGRESAR"}
+      </button>
+      <button
+        type="button"
+        className="rounded-md px-10 py-2 font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-zinc-100 dark:text-slate-900 hover:bg-slate-700 dark:ring-1 dark:ring-slate-100/30 dark:hover:text-white hover:text-white disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
+        onClick={() => start2FAAuth(formValues.document)}
+        disabled={isLoadingAuth || !formValues.document}
+      >
+        <FingerPrintIcon className="text-2xl" />
+        {isLoadingAuth ? "CARGANDO..." : "WEBAUTHN"}
       </button>
     </form>
   );

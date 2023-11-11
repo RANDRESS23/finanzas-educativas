@@ -1,9 +1,6 @@
-import { db } from "@/libs/prismaDB";
 import RowUsers from "./RowUsers";
 
-async function TableUsers() {
-  const users = await db.user.findMany();
-
+function TableUsers() {
   return (
     <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800/20">
       <thead className="bg-gray-50 dark:bg-slate-800/50">
@@ -35,7 +32,7 @@ async function TableUsers() {
         </tr>
       </thead>
       <tbody>
-        <RowUsers users={users} />
+        <RowUsers />
       </tbody>
     </table>
   );

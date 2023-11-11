@@ -6,23 +6,22 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const users = await db.user.findMany();
-    console.log({ users });
 
     return NextResponse.json(users);
   } catch (error) {
-    console.log({ error });
+    console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }
 
 export async function POST(request: Request) {
-  try {
-    const body = await request.json();
+  const body = await request.json();
 
+  try {
     const {
       documentType,
       document,
@@ -40,7 +39,7 @@ export async function POST(request: Request) {
     if (existingUserByDocument !== null) {
       return NextResponse.json(
         { messsage: "Document already exists" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -51,7 +50,7 @@ export async function POST(request: Request) {
     if (existingUserByEmail !== null) {
       return NextResponse.json(
         { messsage: "Email already exists" },
-        { status: 400 },
+        { status: 400 }
       );
     }
 
@@ -71,14 +70,11 @@ export async function POST(request: Request) {
     const { hashedPassword: _, ...user } = newUser;
 
     return NextResponse.json(
-      {
-        user,
-        message: "User created successfully",
-      },
-      { status: 201 },
+      { user, message: "User created successfully" },
+      { status: 201 }
     );
   } catch (error: any) {
-    console.log({ error });
+    console.error({ error });
 
     if (error?.errors !== null) {
       const errorsMessages: Record<string, string> = {};
@@ -89,7 +85,7 @@ export async function POST(request: Request) {
           if (!Object.values(errorsMessages).includes(message)) {
             errorsMessages[path.join("")] = message;
           }
-        },
+        }
       );
 
       return NextResponse.json(errorsMessages, { status: 500 });
@@ -97,7 +93,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 },
+      { status: 500 }
     );
   }
 }

@@ -4,10 +4,10 @@ import {
 } from "@/app/profile/admin/dashboard/page-content/Meta";
 import { shorttxt } from "@/libs/shorttxt";
 import metaKeys from "@/meta/metaKeys";
-import { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 
 export const getMetaActions = (
-  aboutInfo: MetaProps["aboutInfo"],
+  aboutInfo: MetaProps["metaInfo"],
   setOpenMeta: Dispatch<SetStateAction<typeof initialState>>
 ) => {
   const metaActions = metaKeys.map((keyItem) => ({

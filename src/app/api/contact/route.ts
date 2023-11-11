@@ -6,23 +6,17 @@ import { type Contact } from "@prisma/client";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  try {
-    const body = await request.json();
+  const body = await request.json();
 
+  try {
     const contactData = contactSchema.parse(body) as Contact;
 
     const newContactRegister = await db.contact.create({
-      data: contactData,
+      data: { ...contactData },
     });
 
     if (newContactRegister === null) {
-      return NextResponse.json(
-        {
-          message:
-            "No se pudo guardar el nuevo registro de contacto, por favor intente más tarde.",
-        },
-        { status: 500 }
-      );
+      throw new Error();
     }
 
     const subject = "Nuevo Contacto Finanzas Educativas";
@@ -56,7 +50,7 @@ export async function POST(request: Request) {
       { status: 201 }
     );
   } catch (error) {
-    console.log({ error });
+    console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },

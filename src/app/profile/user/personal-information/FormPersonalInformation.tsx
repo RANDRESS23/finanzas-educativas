@@ -6,18 +6,22 @@ import InputRadio from "@/components/InputRadio";
 import InputSelect from "@/components/InputSelect";
 import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
-import { AxiosError } from "axios";
+import { isAxiosError } from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { BsFillPatchCheckFill as CompleteIcon } from "react-icons/bs";
 import { FiEdit2 as EditIcon } from "react-icons/fi";
 
-export default function FormPersonalInformation() {
+export default function FormPersonalInformation({
+  editInfoState,
+}: {
+  editInfoState: [boolean, Dispatch<SetStateAction<boolean>>];
+}) {
+  const [editInfo, setEditInfo] = editInfoState;
   const [isLoadingDataUser, setIsLoadingDataUser] = useState(true);
   const [isExistUserData, setIsExistUserData] = useState(true);
-  const [editInfo, setEditInfo] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const { data: session } = useSession();
   const router = useRouter();
@@ -73,7 +77,7 @@ export default function FormPersonalInformation() {
         email,
       }));
     }
-  }, [session?.user, reset]);
+  }, [session?.user]);
 
   useEffect(() => {
     const getMoreInfoUser = async () => {
@@ -85,7 +89,7 @@ export default function FormPersonalInformation() {
         if (response.status === 404) {
           setIsExistUserData(false);
           setEditInfo(false);
-          return console.log("No hay datos del usuario");
+          return console.error({ error: "No hay datos del usuario" });
         }
 
         reset((formValues) => ({
@@ -94,9 +98,11 @@ export default function FormPersonalInformation() {
           isInAPensionFund: response.data.isInAPensionFund ? "Si" : "No",
         }));
       } catch (error) {
-        if (error instanceof AxiosError) {
+        if (isAxiosError(error)) {
           tosty.warn(error.response?.data.message);
         }
+
+        console.error({ error });
       } finally {
         setIsLoadingDataUser(false);
       }
@@ -105,14 +111,14 @@ export default function FormPersonalInformation() {
     if (session?.user) {
       getMoreInfoUser();
     }
-  }, [session?.user, reset]);
+  }, [session?.user]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (editInfo) {
-      try {
-        setIsLoading(true);
-        let response;
+      setIsLoading(true);
+      let response;
 
+      try {
         if (isExistUserData) {
           response = await api.put(`/user/userMoreInfo/${session?.user?.id}`, {
             ...data,
@@ -134,12 +140,16 @@ export default function FormPersonalInformation() {
         if (response.status === 201) {
           tosty.success("¡Datos completados exitosamente!");
           router.refresh();
-          router.push("/profile/user");
-        } else tosty.error("Error al completar datos!");
-      } catch (error: any) {
-        tosty.error(error.response.data.message);
-        console.log({ errorMessage: error.response.data.message });
-        console.log({ error });
+          return router.push("/profile/user");
+        }
+
+        tosty.error("Error al completar datos!");
+      } catch (error) {
+        if (isAxiosError(error)) {
+          tosty.error(error.response?.data.message);
+        }
+
+        console.error({ error });
       } finally {
         setIsLoading(false);
       }
@@ -459,7 +469,7 @@ export default function FormPersonalInformation() {
         type="submit"
         className="rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full col-span-2 flex items-center justify-center gap-x-2 disabled:cursor-not-allowed enabled:active:bg-sushi-400"
         disabled={isLoading}
-        onClick={() => (editInfo ? setEditInfo(false) : setEditInfo(true))}
+        onClick={() => setEditInfo(!editInfo)}
       >
         {isLoading ? (
           <>
@@ -469,12 +479,12 @@ export default function FormPersonalInformation() {
         ) : editInfo ? (
           <>
             <EditIcon />
-            EDITAR PERFIL
+            EDITAR PERFÍL
           </>
         ) : (
           <>
             <CompleteIcon />
-            COMPLETAR PERFIL
+            COMPLETAR PERFÍL
           </>
         )}
       </button>

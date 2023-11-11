@@ -1,7 +1,8 @@
 "use client";
 
 import ThemeToggle from "@/components/Theme/ThemeToggle";
-import { signOut, useSession } from "next-auth/react";
+import { useCloseSession } from "@/hooks/useCloseSession";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -11,8 +12,8 @@ import {
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 import { MdContactSupport as ContactIcon } from "react-icons/md";
 import { RiTeamFill as UsIcon } from "react-icons/ri";
-import FinancialEducationListMobile from "./FinancialEducationListMobile";
 import AdminPanelMobile from "./AdminPanelMobile";
+import FinancialEducationListMobile from "./FinancialEducationListMobile";
 import {
   AdminIcon,
   ArrowDownIcon,
@@ -40,10 +41,7 @@ export default function MobileMenu({
   handleResetMenus,
 }: MobileMenuProps): React.ReactNode {
   const { data: session, status } = useSession();
-
-  const handleCloseSession = (): void => {
-    signOut();
-  };
+  const { closeSession } = useCloseSession();
 
   return (
     <div className="lg:hidden" role="dialog" aria-modal="true">
@@ -98,7 +96,7 @@ export default function MobileMenu({
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
-                <HomeIcon className="text-xl" />
+                <HomeIcon className="text-2xl" />
                 Inicio
               </Link>
               <div className="-mx-3">
@@ -110,7 +108,7 @@ export default function MobileMenu({
                   onClick={handleSubMenuMobileOpen}
                 >
                   <span className="flex items-center justify-center gap-x-1">
-                    <EducationIcon className="text-xl" />
+                    <EducationIcon className="text-2xl" />
                     Educación Financiera
                   </span>
                   {isSubMenuMobileOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
@@ -121,20 +119,12 @@ export default function MobileMenu({
                   />
                 )}
               </div>
-              {/* <Link
-                href="/financial-education"
-                className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
-                onClick={handleResetMenus}
-              >
-                <EducationIcon className="text-xl" />
-                Educación Financiera
-              </Link> */}
               <Link
                 href="/contact"
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
-                <ContactIcon className="text-xl" />
+                <ContactIcon className="text-2xl" />
                 Contacto
               </Link>
               <Link
@@ -142,28 +132,9 @@ export default function MobileMenu({
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"
                 onClick={handleResetMenus}
               >
-                <UsIcon className="text-xl" />
+                <UsIcon className="text-2xl" />
                 Nosotros
               </Link>
-
-              {/* <div className="-mx-3">
-                <button
-                  type="button"
-                  className="w-full flex justify-between items-center rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
-                  aria-controls="disclosure-1"
-                  aria-expanded="false"
-                  onClick={handleSubMenuMobileOpen}
-                >
-                  <span className="flex items-center justify-center gap-x-1">
-                    <UsIcon className="text-xl" />
-                    Nosotros
-                  </span>
-                  {isSubMenuMobileOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
-                </button>
-                {isSubMenuMobileOpen && (
-                  <AboutListMobile handleResetMenus={handleResetMenus} />
-                )}
-              </div> */}
             </div>
             <div className="py-6">
               {status !== "authenticated" ? (
@@ -224,13 +195,13 @@ export default function MobileMenu({
                       className="-mx-3 flex items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
                       onClick={handleResetMenus}
                     >
-                      Perfil
+                      Perfíl
                       <UserIcon />
                     </Link>
                   )}
                   <button
                     className="-mx-3 flex w-[calc(100%+23px)] items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
-                    onClick={handleCloseSession}
+                    onClick={() => closeSession}
                   >
                     Cerrar Sesión
                     <LogInIcon />

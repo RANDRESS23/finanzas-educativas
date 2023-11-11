@@ -2,12 +2,12 @@
 
 import MetaModal from "@/components/Modals/MetaModal";
 import { getMetaActions } from "@/helpers/meta.helper";
-import { type InformationSchema } from "@prisma/client";
+import { type Meta } from "@prisma/client";
 import { Fragment, useState } from "react";
 import { LiaEdit as EditIcon } from "react-icons/lia";
 
 export interface MetaProps {
-  aboutInfo: Partial<InformationSchema>;
+  metaInfo: Partial<Meta>;
 }
 
 export const initialState = {
@@ -16,10 +16,10 @@ export const initialState = {
   vision: false,
 };
 
-export default function Meta({ aboutInfo }: MetaProps) {
+export default function Meta({ metaInfo }: MetaProps) {
   const [openMeta, setOpenMeta] = useState(initialState);
 
-  const metaFeatures = getMetaActions(aboutInfo, setOpenMeta);
+  const metaFeatures = getMetaActions(metaInfo, setOpenMeta);
 
   return metaFeatures.map(({ key, title, description, handleChange }) => (
     <Fragment key={key}>
@@ -47,7 +47,7 @@ export default function Meta({ aboutInfo }: MetaProps) {
       <MetaModal
         meta={key}
         description={title}
-        aboutInfo={aboutInfo}
+        metaInfo={metaInfo}
         open={openMeta[key]}
         setOpen={handleChange}
       />

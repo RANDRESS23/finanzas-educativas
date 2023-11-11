@@ -33,9 +33,9 @@ const FormChangePsw: React.FC<{ jwtToken: string; payload: TPayload }> = ({
   });
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    try {
-      setIsLoading(true);
+    setIsLoading(true);
 
+    try {
       const response = await api.patch("/security/forgot-password", {
         password: data.password,
         confirmPassword: data.confirmPassword,
@@ -62,10 +62,10 @@ const FormChangePsw: React.FC<{ jwtToken: string; payload: TPayload }> = ({
           errorsMessagesString += `🔸 ${message} ${"\n"}`;
         });
 
-        tosty.error(errorsMessagesString);
-      } else {
-        console.log({ error });
+        return tosty.error(errorsMessagesString);
       }
+
+      console.error({ error });
     } finally {
       setIsLoading(false);
     }

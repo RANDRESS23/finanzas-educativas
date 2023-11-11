@@ -1,12 +1,13 @@
-import Link from "next/link";
-import Image from "next/image";
-import { redirect } from "next/navigation";
-import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Title from "@/components/Title";
+import { getServerSession } from "next-auth/next";
+import Image from "next/image";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 import { TbBrandSpeedtest as TestIcon } from "react-icons/tb";
 
 export default async function ProfileUserPage() {
-  const session = await getServerSession();
+  const session = await getServerSession(authOptions);
 
   if (session?.user?.email === "admin@gmail.com") {
     return redirect("/profile/admin");
@@ -24,7 +25,7 @@ export default async function ProfileUserPage() {
                 className="font-semibold text-boston-blue-600"
               >
                 <span className="absolute inset-0" aria-hidden="true" />
-                Completar Perfil <span aria-hidden="true">&rarr;</span>
+                Completar Perfíl <span aria-hidden="true">&rarr;</span>
               </Link>
             </div>
           </div>

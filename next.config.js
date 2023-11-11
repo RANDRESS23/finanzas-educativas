@@ -2,14 +2,43 @@
 const nextConfig = {
   images: {
     dangerouslyAllowSVG: true,
-    domains: [
-      "images.unsplash.com",
-      "tailwindui.com",
-      "images.pexels.com",
-      "guia.itfip.edu.co",
-      "imagenes.20minutos.es",
-      "demo.themesberg.com",
-      "reqres.in",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "tailwindui.com",
+        port: "",
+        pathname: "/img/logos/**",
+      },
+      {
+        protocol: "https",
+        hostname: "imagenes.20minutos.es",
+        port: "",
+        pathname: "/files/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+        port: "",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "images.pexels.com",
+        port: "",
+        pathname: "/photos/**",
+      },
+      {
+        protocol: "https",
+        hostname: "reqres.in",
+        port: "",
+        pathname: "/img/**",
+      },
+      {
+        protocol: "https",
+        hostname: "demo.themesberg.com",
+        port: "",
+        pathname: "/windster/images/users/**",
+      },
     ],
   },
 };

@@ -1,8 +1,9 @@
 "use client";
 
 import ThemeToggle from "@/components/Theme/ThemeToggle";
+import { useCloseSession } from "@/hooks/useCloseSession";
 import clsx from "clsx";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -13,20 +14,20 @@ import {
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 import { MdContactSupport as ContactIcon } from "react-icons/md";
 import { RiTeamFill as UsIcon } from "react-icons/ri";
+import ThemeTooltip from "../Tooltip/ThemeTooltip";
 import ItemListDropDown from "./ItemListDropDown";
 import MobileMenu from "./MobileMenu";
 import {
+  AccountCashIcon,
   AdminIcon,
   ArrowDownIcon,
   ArrowUpIcon,
+  FinanceIcon,
   LogInIcon,
   MenuIcon,
-  FinanceIcon,
-  AccountCashIcon,
-  UserIcon,
   PigIcon,
+  UserIcon,
 } from "./icons";
-import ThemeTooltip from "../Tooltip/ThemeTooltip";
 
 function NavBar(): React.ReactNode {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,6 +35,7 @@ function NavBar(): React.ReactNode {
   const [isSubMenuAdminPanelOpen, setIsSubMenuAdminPanelOpen] = useState(false);
   const [isSubMenuMobileOpen, setIsSubMenuMobileOpen] = useState(false);
   const { data: session, status } = useSession();
+  const { closeSession } = useCloseSession();
 
   const handleMenuOpen = (): void => {
     setIsMenuOpen(!isMenuOpen);
@@ -58,10 +60,6 @@ function NavBar(): React.ReactNode {
     setIsSubMenuAdminPanelOpen(false);
   };
 
-  const handleCloseSession = (): void => {
-    signOut();
-  };
-
   return (
     <header
       className={clsx(
@@ -72,7 +70,7 @@ function NavBar(): React.ReactNode {
         }
       )}
     >
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between py-5 px-6 lg:px-8">
         <div className="flex lg:flex-1">
           <Link
             href={
@@ -97,7 +95,7 @@ function NavBar(): React.ReactNode {
             />
           </Link>
         </div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-10">
           <Link
             href={
               status === "authenticated" &&
@@ -111,7 +109,7 @@ function NavBar(): React.ReactNode {
             className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center gap-x-1 justify-center"
             onClick={handleResetMenus}
           >
-            <HomeIcon className="text-xl" />
+            <HomeIcon className="text-2xl" />
             Inicio
           </Link>
           <div className="relative">
@@ -121,7 +119,7 @@ function NavBar(): React.ReactNode {
               aria-expanded="false"
               onClick={handleMenuOpen}
             >
-              <EducationIcon className="text-xl" />
+              <EducationIcon className="text-2xl" />
               Educación Financiera
               {isMenuOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
             </button>
@@ -167,7 +165,7 @@ function NavBar(): React.ReactNode {
             className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
             onClick={handleResetMenus}
           >
-            <ContactIcon className="text-xl" />
+            <ContactIcon className="text-2xl" />
             Contacto
           </Link>
           <Link
@@ -175,17 +173,11 @@ function NavBar(): React.ReactNode {
             className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center justify-center gap-x-1"
             onClick={handleResetMenus}
           >
-            <UsIcon className="text-xl" />
+            <UsIcon className="text-2xl" />
             Nosotros
           </Link>
         </div>
-        <div
-          className={`hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-12 ${
-            status === "authenticated" &&
-            session?.user?.document === "0000000000" &&
-            "lg:w-40 lg:ml-20"
-          }`}
-        >
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-10">
           {status !== "authenticated" ? (
             <>
               <Link
@@ -194,7 +186,7 @@ function NavBar(): React.ReactNode {
                 onClick={handleResetMenus}
               >
                 Registrarse
-                <SignupIcon className="-mb-1 text-2xl" />
+                <SignupIcon className="text-2xl" />
               </Link>
               <Link
                 href="/signin"
@@ -220,13 +212,13 @@ function NavBar(): React.ReactNode {
                   href="/profile/user/personal-information"
                   className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
                 >
-                  Perfil
+                  Perfíl
                   <UserIcon />
                 </Link>
               )}
               <button
                 className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
-                onClick={handleCloseSession}
+                onClick={() => closeSession()}
               >
                 Cerrar Sesión
                 <LogInIcon />

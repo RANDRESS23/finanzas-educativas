@@ -1,23 +1,16 @@
 "use client";
 
+import { useCloseSession } from "@/hooks/useCloseSession";
+import contactIcons from "@/meta/footerContactIcons";
 import clsx from "clsx";
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  FaFacebook as FaceIcon,
-  FaInstagramSquare as InstaIcon,
-  FaTwitter as TweetIcon,
-  FaYoutube as YtIcon,
-} from "react-icons/fa";
 
 export default function Footer(): React.ReactNode {
   const { data: session, status } = useSession();
   const pathname = usePathname();
-
-  const handleCloseSession = (): void => {
-    signOut();
-  };
+  const { closeSession } = useCloseSession();
 
   return (
     <footer
@@ -87,7 +80,7 @@ export default function Footer(): React.ReactNode {
           ) : (
             <button
               className="hover:text-sushi-500 transition-all col-span-2"
-              onClick={handleCloseSession}
+              onClick={() => closeSession()}
             >
               Cerrar Sesión
             </button>
@@ -96,26 +89,13 @@ export default function Footer(): React.ReactNode {
       </div>
       <div>
         <ul className="flex justify-center items-center gap-5 sm:gap-12">
-          <li>
-            <Link href="#" className="flex justify-center items-center">
-              <FaceIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-6 h-6" />
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="flex justify-center items-center">
-              <InstaIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-6 h-6" />
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="flex justify-center items-center">
-              <TweetIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-6 h-6" />
-            </Link>
-          </li>
-          <li>
-            <Link href="#" className="flex justify-center items-center">
-              <YtIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-7 h-6" />
-            </Link>
-          </li>
+          {contactIcons.map(({ ReactIcon, href, name }) => (
+            <li key={name}>
+              <Link href={href} className="flex justify-center items-center">
+                <ReactIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-6 h-6" />
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div>
