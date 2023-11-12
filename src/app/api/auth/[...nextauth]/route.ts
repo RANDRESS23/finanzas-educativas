@@ -11,7 +11,7 @@ import type { AuthenticationResponseJSON } from "@simplewebauthn/typescript-type
 import NextAuth, { getServerSession, type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   debug: process.env.NODE_ENV !== "production",
   providers: [
     CredentialsProvider({
