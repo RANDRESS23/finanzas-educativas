@@ -4,7 +4,6 @@ import Input from "@/components/Input";
 import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
 import { isAxiosError } from "axios";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
@@ -73,22 +72,13 @@ export default function FormSendEmail() {
         {isLoading ? "ENVIANDO..." : "ENVIAR"}
       </button>
 
-      <div className="flex items-center justify-between">
-        <button
-          type="button"
-          onClick={() => router.back()}
-          className="my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500 active:text-sushi-400"
-        >
-          Volver atrás
-        </button>
-
-        <Link
-          href="/forgot-password/sms"
-          className="my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500 active:text-sushi-400"
-        >
-          Enviar SMS
-        </Link>
-      </div>
+      <button
+        type="button"
+        onClick={() => router.back()}
+        className="my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500 active:text-sushi-400"
+      >
+        Volver atrás
+      </button>
     </form>
   );
 }
