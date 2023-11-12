@@ -7,7 +7,7 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function Footer(): React.ReactNode {
+export default function Footer() {
   const { data: session, status } = useSession();
   const pathname = usePathname();
   const { closeSession } = useCloseSession();

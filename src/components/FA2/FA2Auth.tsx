@@ -20,7 +20,8 @@ export default function FA2Auth({
         start2FAAuth();
       }
     })();
-  }, [session, verifying, start2FAAuth]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session, verifying]);
 
   return [isLoadingAuth];
 }

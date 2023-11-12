@@ -1,7 +1,12 @@
 import { db } from "@/libs/prismaDB";
+import { notFound } from "next/navigation";
 
 async function RowUsers() {
   const users = await db.user.findMany();
+
+  if (!users) {
+    notFound();
+  }
 
   return users.map((u) => (
     <tr key={u.id}>

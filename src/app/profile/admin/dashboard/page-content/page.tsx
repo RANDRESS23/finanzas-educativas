@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { db } from "@/libs/prismaDB";
 import { getServerSession } from "next-auth/next";
-import { redirect } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import Meta from "./Meta";
 
 export const dynamic = "force-dynamic";
@@ -10,10 +10,16 @@ export default async function PageContent() {
   const session = await getServerSession(authOptions);
 
   if (session?.user?.email !== "admin@gmail.com") {
-    return redirect("/profile/user");
+    redirect("/profile/user");
   }
 
-  const [{ id, mision, vision, whoami }] = await db.meta.findMany();
+  const [metaInfo] = await db.meta.findMany();
+
+  if (!metaInfo) {
+    notFound();
+  }
+
+  const { id, whoami, mision, vision } = metaInfo;
 
   return (
     <div>

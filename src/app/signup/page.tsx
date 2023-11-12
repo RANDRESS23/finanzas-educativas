@@ -16,9 +16,9 @@ async function Signup() {
   const session = await getServerSession(authOptions);
 
   if (session !== null && session?.user?.email !== "admin@gmail.com") {
-    return redirect("/profile/user");
+    redirect("/profile/user");
   } else if (session !== null && session?.user?.email === "admin@gmail.com") {
-    return redirect("/profile/admin");
+    redirect("/profile/admin");
   }
 
   return (

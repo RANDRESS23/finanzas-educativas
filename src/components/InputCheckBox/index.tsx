@@ -16,7 +16,7 @@ export default function InputCheckBox({
   errors,
   options,
   disabled,
-}: InputCheckBoxProps): React.ReactNode {
+}: InputCheckBoxProps) {
   return (
     <div>
       <span className="block font-medium leading-6">{label}</span>

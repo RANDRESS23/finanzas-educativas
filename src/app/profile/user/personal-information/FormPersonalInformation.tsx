@@ -77,7 +77,8 @@ export default function FormPersonalInformation({
         email,
       }));
     }
-  }, [session?.user, reset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session?.user]);
 
   useEffect(() => {
     const getMoreInfoUser = async () => {
@@ -111,7 +112,8 @@ export default function FormPersonalInformation({
     if (session?.user) {
       getMoreInfoUser();
     }
-  }, [session?.user, setEditInfo, reset]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [session?.user]);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (editInfo) {

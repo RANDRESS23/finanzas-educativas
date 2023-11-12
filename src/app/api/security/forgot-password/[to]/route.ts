@@ -6,13 +6,13 @@ import { type TPayload } from "@/types/TPayload";
 import Jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
-interface ExpectedParams {
-  params: { email: string };
+export interface ExpectedParamsSend {
+  params: { to: string };
 }
 
-export async function GET(_: Request, { params }: ExpectedParams) {
+export async function GET(_: Request, { params }: ExpectedParamsSend) {
   try {
-    const { to } = sendEmailSchema.parse({ email: params.email });
+    const { to } = sendEmailSchema.parse({ to: params.to });
 
     const userFound = await db.user.findUnique({
       where: { email: to },

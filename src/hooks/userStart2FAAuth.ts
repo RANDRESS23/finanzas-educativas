@@ -3,7 +3,7 @@ import {
   browserSupportsWebAuthn,
   startAuthentication,
 } from "@simplewebauthn/browser";
-import { PublicKeyCredentialRequestOptionsJSON } from "@simplewebauthn/typescript-types";
+import type { PublicKeyCredentialRequestOptionsJSON } from "@simplewebauthn/typescript-types";
 import { isAxiosError } from "axios";
 import { signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";

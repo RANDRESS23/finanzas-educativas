@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 
-export default function FormSignUp(): React.ReactNode {
+export default function FormSignUp() {
   const [termsAccepted, setTermsAccepted] = useState(false);
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);

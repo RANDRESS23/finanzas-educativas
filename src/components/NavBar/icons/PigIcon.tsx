@@ -1,4 +1,4 @@
-const PigIcon: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
+const PigIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       fill="none"

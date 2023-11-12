@@ -18,7 +18,7 @@ model User {
   document         String          @unique
   firstName        String
   lastName         String
-  phoneNumber      String
+  phoneNumber      String          @unique
   email            String          @unique
   hashedPassword   String
   role             Role            @default(USER)

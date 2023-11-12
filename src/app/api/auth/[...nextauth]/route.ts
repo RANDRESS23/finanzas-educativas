@@ -1,5 +1,5 @@
 import { expectedOrigin, rpID } from "@/constants";
-import { Authenticator } from "@/interfaces/Authenticator";
+import type { Authenticator } from "@/interfaces/Authenticator";
 import { verifyPassword } from "@/libs/bcrypt";
 import { db } from "@/libs/prismaDB";
 import { getAuthenticatorByCredentialId } from "@/libs/webauthn";

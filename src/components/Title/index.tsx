@@ -10,10 +10,7 @@ interface TitleProps {
   isTextStatic?: boolean;
 }
 
-export default function Title({
-  text,
-  isTextStatic,
-}: TitleProps): React.ReactNode {
+export default function Title({ text, isTextStatic }: TitleProps) {
   const { data: session, status } = useSession();
 
   const elSt = status === "authenticated" && !isTextStatic;

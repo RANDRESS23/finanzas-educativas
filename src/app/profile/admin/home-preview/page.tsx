@@ -7,7 +7,7 @@ export default async function HomePreviewPage() {
   const session = await getServerSession(authOptions);
 
   if (session?.user?.email !== "admin@gmail.com") {
-    return redirect("/profile/user");
+    redirect("/profile/user");
   }
 
   return (

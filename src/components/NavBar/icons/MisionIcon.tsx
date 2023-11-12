@@ -1,4 +1,4 @@
-const MisionIcon: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
+const MisionIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       viewBox="0 0 512 512"

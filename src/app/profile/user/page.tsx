@@ -10,7 +10,7 @@ export default async function ProfileUserPage() {
   const session = await getServerSession(authOptions);
 
   if (session?.user?.email === "admin@gmail.com") {
-    return redirect("/profile/admin");
+    redirect("/profile/admin");
   }
 
   return (

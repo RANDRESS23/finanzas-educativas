@@ -15,7 +15,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { LiaFingerprintSolid as FingerPrintIcon } from "react-icons/lia";
 
-export default function FA2Register(): React.ReactNode {
+export default function FA2Register() {
   const [isLoading, setIsLoading] = useState(false);
 
   const { data: session } = useSession();

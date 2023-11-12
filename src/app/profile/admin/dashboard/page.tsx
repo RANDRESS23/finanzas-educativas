@@ -7,7 +7,7 @@ export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
 
   if (session?.user?.email !== "admin@gmail.com") {
-    return redirect("/profile/user");
+    redirect("/profile/user");
   }
 
   return (

@@ -1,5 +1,5 @@
 import NextAuth from "next-auth"; // eslint-disable-line
-import { type User as UserModel } from "@prisma/client";
+import type { User as UserModel } from "@prisma/client";
 
 declare module "next-auth" {
   interface Session {

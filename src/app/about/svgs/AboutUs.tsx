@@ -1,4 +1,4 @@
-const AboutUs: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
+const AboutUs: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7,6 +7,7 @@ const AboutUs: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
       height="400"
       viewBox="0 0 936.13137 505.29587"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
     >
       <path
         d="M191.22942,619.35948l-2.92,14.65c-.22,1.12-.45,2.26-.7,3.39a14.28772,14.28772,0,0,0-7.34.41,68.511,68.511,0,0,1,5.04,8.43c-1.84,5.67-4.54,10.91-9.06,14.7a22.71964,22.71964,0,0,1-21.95,3.86l.13-.58c-4.86-9.43-2.22-21.32,3.82-30.03a58.3846,58.3846,0,0,1,10.85-11.47c4.07995-3.4,8.49-6.45,12.86-9.46A5.99007,5.99007,0,0,1,191.22942,619.35948Z"

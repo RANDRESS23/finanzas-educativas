@@ -11,10 +11,12 @@ import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { MdOutlineChangeCircle as ChangeIcon } from "react-icons/md";
 
-const FormChangePsw: React.FC<{ jwtToken: string; payload: TPayload }> = ({
-  jwtToken,
-  payload,
-}) => {
+interface IParams {
+  jwtToken: string;
+  payload: TPayload;
+}
+
+export default function FormChangePsw({ jwtToken, payload }: IParams) {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -137,6 +139,4 @@ const FormChangePsw: React.FC<{ jwtToken: string; payload: TPayload }> = ({
       </Link>
     </form>
   );
-};
-
-export default FormChangePsw;
+}

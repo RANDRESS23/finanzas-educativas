@@ -4,7 +4,7 @@ import Title from "@/components/Title";
 import Image from "next/image";
 import FormSendEmail from "./FormSendEmail";
 
-export default function EmailSender(): React.ReactNode {
+export default function EmailSender() {
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mb-10 py-20">
       <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">

@@ -13,9 +13,9 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
 
   if (session !== null && session?.user?.email !== "admin@gmail.com") {
-    return redirect("profile/user");
+    redirect("profile/user");
   } else if (session !== null && session?.user?.email === "admin@gmail.com") {
-    return redirect("profile/admin/home-preview");
+    redirect("profile/admin/home-preview");
   }
 
   return (

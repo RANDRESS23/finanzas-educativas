@@ -39,7 +39,7 @@ export default function MobileMenu({
   handleSubMenuMobileOpen,
   handleSubMenuAdminPanelOpen,
   handleResetMenus,
-}: MobileMenuProps): React.ReactNode {
+}: MobileMenuProps) {
   const { data: session, status } = useSession();
   const { closeSession } = useCloseSession();
 

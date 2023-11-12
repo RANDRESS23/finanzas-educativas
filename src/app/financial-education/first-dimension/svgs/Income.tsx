@@ -1,4 +1,4 @@
-const Income: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
+const Income: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +6,7 @@ const Income: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
       height="300"
       viewBox="0 0 362.52377 438.18799"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
     >
       <g>
         <path

@@ -1,21 +1,15 @@
 "use client";
 
-import { useState } from "react";
-import { AboutUs, Mision, Vision } from "./svgs";
+import { SVGS_IMAGES, type TSvgName } from "@/meta/aboutSection";
 import clsx from "clsx";
+import { useState } from "react";
 import {
-  HiArrowNarrowUp as ArrowUpIcon,
   HiArrowNarrowDown as ArrowDownIcon,
+  HiArrowNarrowUp as ArrowUpIcon,
 } from "react-icons/hi";
 
-const SVGS_IMAGES: Record<string, () => JSX.Element> = {
-  ABOUT_US: () => <AboutUs />,
-  MISION: () => <Mision />,
-  VISION: () => <Vision />,
-};
-
 interface AboutSectionProps {
-  svgName: string;
+  svgName: TSvgName;
   svgInLeftPosition: boolean;
   title: string;
   description: string;
@@ -28,17 +22,21 @@ export default function AboutSection({
   title,
   description,
   moreDescription,
-}: AboutSectionProps): React.ReactNode {
+}: AboutSectionProps) {
   const [viewMoreInfoVision, setViewMoreInfoVision] = useState(false);
 
   const handleViewMoreInfoVision = () => {
     setViewMoreInfoVision(!viewMoreInfoVision);
   };
 
+  const SvgIcon = SVGS_IMAGES[svgName];
+
   return (
     <section className="w-full md:flex md:justify-center md:items-center md:gap-16 mb-16">
       {svgInLeftPosition && (
-        <div className="hidden md:block lg:w-96">{SVGS_IMAGES[svgName]()}</div>
+        <div className="hidden md:block lg:w-96">
+          <SvgIcon />
+        </div>
       )}
       <div className="flex flex-col gap-3 w-full md:w-5/12">
         <h1 className="font-bold text-4xl text-sushi-500">{title}</h1>
@@ -67,7 +65,9 @@ export default function AboutSection({
         </button>
       </div>
       {!svgInLeftPosition && (
-        <div className="hidden md:block lg:w-96">{SVGS_IMAGES[svgName]()}</div>
+        <div className="hidden md:block lg:w-96">
+          <SvgIcon />
+        </div>
       )}
     </section>
   );

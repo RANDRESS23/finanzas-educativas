@@ -6,7 +6,7 @@ interface ItemListProps {
   title: string;
 }
 
-const ItemList: React.FC<ItemListProps> = ({ href, Icon, title }) => {
+export default function ItemList({ href, Icon, title }: ItemListProps) {
   return (
     <Link
       href={href}
@@ -16,6 +16,4 @@ const ItemList: React.FC<ItemListProps> = ({ href, Icon, title }) => {
       <span className="ml-3 flex-1 whitespace-nowrap">{title}</span>
     </Link>
   );
-};
-
-export default ItemList;
+}

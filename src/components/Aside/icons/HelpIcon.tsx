@@ -1,4 +1,4 @@
-const HelpIcon: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
+const HelpIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       viewBox="0 0 920 1000"

@@ -1,17 +1,19 @@
-import ChangePasswordGif from "@/app/forgot-password/gifs/ChangePassword.gif";
 import ChangePasswordGifDark from "@/app/forgot-password/gifs/ChangePassword-dark.gif";
-import NotFound from "@/app/not-found";
+import ChangePasswordGif from "@/app/forgot-password/gifs/ChangePassword.gif";
 import Title from "@/components/Title";
+import { type TPayload } from "@/types/TPayload";
 import Jwt from "jsonwebtoken";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import FormChangePsw from "./FormChangePsw";
-import { type TPayload } from "@/types/TPayload";
+
+interface IParams {
+  params: { jwtToken: string };
+}
 
 export default async function PasswordChanger({
   params: { jwtToken },
-}: {
-  params: { jwtToken: string };
-}): Promise<React.ReactElement> {
+}: IParams) {
   try {
     const payload = Jwt.verify(
       jwtToken,
@@ -50,6 +52,6 @@ export default async function PasswordChanger({
       </div>
     );
   } catch (error) {
-    return <NotFound />;
+    notFound();
   }
 }

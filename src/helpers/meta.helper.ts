@@ -1,10 +1,10 @@
 import {
-  MetaProps,
+  type MetaProps,
   initialState,
 } from "@/app/profile/admin/dashboard/page-content/Meta";
 import { shorttxt } from "@/libs/shorttxt";
 import metaKeys from "@/meta/metaKeys";
-import { type Dispatch, type SetStateAction } from "react";
+import type { Dispatch, SetStateAction } from "react";
 
 export const getMetaActions = (
   aboutInfo: MetaProps["metaInfo"],

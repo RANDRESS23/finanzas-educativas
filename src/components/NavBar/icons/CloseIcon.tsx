@@ -1,4 +1,4 @@
-const CloseIcon: React.FC = (props: React.SVGProps<SVGSVGElement>) => {
+const CloseIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       viewBox="0 0 1024 1024"

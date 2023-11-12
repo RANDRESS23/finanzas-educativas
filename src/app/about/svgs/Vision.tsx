@@ -1,4 +1,4 @@
-const Vision: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
+const Vision: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +6,7 @@ const Vision: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
       height="400"
       viewBox="0 0 863.6556 506.4464"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
     >
       <g>
         <path

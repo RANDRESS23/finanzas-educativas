@@ -8,6 +8,6 @@ export default function RecoveryPasswordLayout({
   children,
 }: {
   children: React.ReactNode;
-}): React.ReactNode {
+}) {
   return <>{children}</>;
 }

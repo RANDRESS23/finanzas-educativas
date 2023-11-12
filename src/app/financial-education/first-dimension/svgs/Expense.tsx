@@ -1,4 +1,4 @@
-const Expense: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
+const Expense: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -6,6 +6,7 @@ const Expense: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
       height="300"
       viewBox="0 0 866.80518 325.71637"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
     >
       <polygon
         points="235.06938 78.21322 268.85303 63.99549 283.34349 93.70094 247.84185 108.19141 235.06938 78.21322"

@@ -7,7 +7,7 @@ interface AboutListMobileProps {
 
 export default function FinancialEducationListMobile({
   handleResetMenus,
-}: AboutListMobileProps): React.ReactNode {
+}: AboutListMobileProps) {
   return (
     <div className="mt-2 space-y-2 animate-enter" id="disclosure-1">
       <Link

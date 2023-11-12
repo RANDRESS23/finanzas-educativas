@@ -14,7 +14,7 @@ export default function InputRadio({
   register,
   options,
   disabled,
-}: InputRadioProps): React.ReactNode {
+}: InputRadioProps) {
   return (
     <div>
       <span className="block font-medium leading-6">{label}</span>

@@ -1,6 +1,7 @@
 import { db } from "@/libs/prismaDB";
 import metaKeys from "@/meta/metaKeys";
 import { type Metadata } from "next";
+import { notFound } from "next/navigation";
 import AboutSection from "./AboutSection";
 import Team from "./Team";
 
@@ -10,8 +11,12 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic";
 
-export default async function About(): Promise<React.ReactElement> {
+export default async function About() {
   const [metaInfo] = await db.meta.findMany();
+
+  if (!metaInfo) {
+    notFound();
+  }
 
   return (
     <>

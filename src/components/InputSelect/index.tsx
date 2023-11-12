@@ -21,7 +21,7 @@ export default function InputSelect({
   register,
   options,
   selectProps,
-}: InputSelectProps): React.ReactNode {
+}: InputSelectProps) {
   return (
     <div>
       <label htmlFor={selectProps.id} className="block font-medium leading-6">

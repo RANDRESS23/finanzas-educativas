@@ -4,13 +4,14 @@ import Input from "@/components/Input";
 import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
 import { isAxiosError } from "axios";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { SiMinutemailer as SendIcon } from "react-icons/si";
 
-const FormSendEmail: React.FC = () => {
-  const goBack = useRouter().back;
+export default function FormSendEmail() {
+  const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -72,15 +73,22 @@ const FormSendEmail: React.FC = () => {
         {isLoading ? "ENVIANDO..." : "ENVIAR"}
       </button>
 
-      <button
-        type="button"
-        onClick={goBack}
-        className="my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500 active:text-sushi-400"
-      >
-        Volver atrás
-      </button>
+      <div className="flex items-center justify-between">
+        <button
+          type="button"
+          onClick={() => router.back()}
+          className="my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500 active:text-sushi-400"
+        >
+          Volver atrás
+        </button>
+
+        <Link
+          href="/forgot-password/sms"
+          className="my-3 text-sm leading-6 text-boston-blue-600 hover:text-sushi-500 active:text-sushi-400"
+        >
+          Enviar SMS
+        </Link>
+      </div>
     </form>
   );
-};
-
-export default FormSendEmail;
+}

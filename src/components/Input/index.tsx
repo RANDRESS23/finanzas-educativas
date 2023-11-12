@@ -19,7 +19,7 @@ export default function Input({
   label,
   register,
   inputProps,
-}: InputProps): React.ReactNode {
+}: InputProps) {
   return (
     <div>
       <label htmlFor={inputProps.id} className="block font-medium leading-6">

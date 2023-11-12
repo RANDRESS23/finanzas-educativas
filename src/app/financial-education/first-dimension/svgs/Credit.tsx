@@ -1,4 +1,4 @@
-const Credit: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
+const Credit: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -7,6 +7,7 @@ const Credit: React.FC = (_props: React.SVGProps<SVGSVGElement>) => {
       height="300"
       viewBox="0 0 763.05693 458"
       xmlnsXlink="http://www.w3.org/1999/xlink"
+      {...props}
     >
       <path
         d="M266.47153,317a48,48,0,1,1,48-48A48.05437,48.05437,0,0,1,266.47153,317Zm0-94a46,46,0,1,0,46,46A46.05223,46.05223,0,0,0,266.47153,223Z"

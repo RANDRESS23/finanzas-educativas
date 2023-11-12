@@ -29,7 +29,7 @@ import {
   UserIcon,
 } from "./icons";
 
-function NavBar(): React.ReactNode {
+export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isMenuMobileOpen, setIsMenuMobileOpen] = useState(false);
   const [isSubMenuAdminPanelOpen, setIsSubMenuAdminPanelOpen] = useState(false);
@@ -251,5 +251,3 @@ function NavBar(): React.ReactNode {
     </header>
   );
 }
-
-export default NavBar;

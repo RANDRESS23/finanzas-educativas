@@ -7,7 +7,7 @@ interface AdminPanelMobileProps {
 
 export default function AdminPanelMobile({
   handleResetMenus,
-}: AdminPanelMobileProps): React.ReactNode {
+}: AdminPanelMobileProps) {
   return (
     <div className="my-2 space-y-2 animate-enter" id="disclosure-1">
       <Link
