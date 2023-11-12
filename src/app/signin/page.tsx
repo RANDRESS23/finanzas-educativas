@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "@/libs/authOptions"; 
 import FormSignIn from "./FormSignIn";
 import SignInGifDark from "./gifs/signIn-dark.gif";
 import SignInGif from "./gifs/signIn.gif";
