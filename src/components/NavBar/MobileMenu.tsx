@@ -201,7 +201,7 @@ export default function MobileMenu({
                   )}
                   <button
                     className="-mx-3 flex w-[calc(100%+23px)] items-center justify-between rounded-lg py-2 px-3 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500"
-                    onClick={() => closeSession}
+                    onClick={() => closeSession()}
                   >
                     Cerrar Sesión
                     <LogInIcon />
