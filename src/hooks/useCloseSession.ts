@@ -9,8 +9,8 @@ export const useCloseSession = () => {
   const router = useRouter();
 
   return {
-    async closeSession() {
-      await signOut({ redirect: false });
+    closeSession() {
+      signOut({ redirect: false });
       router.refresh();
       router.push("/signin");
     },
