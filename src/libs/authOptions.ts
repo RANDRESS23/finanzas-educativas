@@ -1,11 +1,11 @@
 import { expectedOrigin, rpID } from "@/constants";
-import { Authenticator } from "@/interfaces/Authenticator";
+import type { Authenticator } from "@/interfaces/Authenticator";
 import { verifyPassword } from "@/libs/bcrypt";
 import { db } from "@/libs/prismaDB";
 import { getAuthenticatorByCredentialId } from "@/libs/webauthn";
 import {
-  type VerifiedAuthenticationResponse,
   verifyAuthenticationResponse,
+  type VerifiedAuthenticationResponse,
 } from "@simplewebauthn/server";
 import type { AuthenticationResponseJSON } from "@simplewebauthn/typescript-types";
 import { getServerSession, type NextAuthOptions } from "next-auth";
