@@ -12,6 +12,30 @@ enum Role {
   USER
 }
 
+type WelcomeContent {
+  subtitle String
+}
+
+type KnowledgePill {
+  title String
+  description String
+}
+
+type KnowledgePills {
+  subtitle String
+  knowledgePills KnowledgePill[]
+}
+
+type InformativeVideo {
+  title String
+  url String
+}
+
+type InformativeVideos {
+  subtitle String
+  informativeVideos InformativeVideo[]
+}
+
 model User {
   id               String          @id @default(auto()) @map("_id") @db.ObjectId
   documentType     String
@@ -73,6 +97,15 @@ model Contact {
   message     String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+}
+
+model HomeContent {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  welcomeContent     WelcomeContent
+  knowledgePillsContent  KnowledgePills
+  informativeVideosContent  InformativeVideos
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Meta {

@@ -88,9 +88,6 @@ export default function MobileMenu({
                   status === "authenticated" &&
                   session?.user?.document !== "0000000000"
                     ? "/profile/user"
-                    : status === "authenticated" &&
-                      session?.user?.document === "0000000000"
-                    ? "/profile/admin/home-preview"
                     : "/"
                 }
                 className="-mx-3 rounded-lg px-3 py-2 text-base font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-900 hover:text-sushi-500 flex items-center gap-x-1"

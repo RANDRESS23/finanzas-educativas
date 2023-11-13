@@ -1,21 +1,34 @@
 import { LogInIcon } from "@/components/NavBar/icons";
 import Pill from "@/components/Pill";
 import Title from "@/components/Title";
-import KNOWLEDGE_PILLS from "@/meta/knownledgePills";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 import { MdVideoFile as VideoIcon } from "react-icons/md";
-import { authOptions } from "@/libs/authOptions"; 
+import { authOptions } from "@/libs/authOptions";
+import { HomeContent } from "@/types/home-content";
+
+const getHomeContent = async () => {
+  try {
+    const homeContent = await fetch(`${process.env.NEXTAUTH_URL}/api/admin/home-content`);
+    const data = await homeContent.json();
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+  const {
+    welcomeContent,
+    knowledgePillsContent,
+    informativeVideosContent,
+  }: HomeContent = await getHomeContent();
 
   if (session !== null && session?.user?.email !== "admin@gmail.com") {
     redirect("profile/user");
-  } else if (session !== null && session?.user?.email === "admin@gmail.com") {
-    redirect("profile/admin/home-preview");
   }
 
   return (
@@ -38,25 +51,47 @@ export default async function Home() {
               Bienvenido a <Title text="¡Finanzas Educativas!" isTextStatic />
             </h1>
             <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
+              {welcomeContent.subtitle}
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link
-                href="/signup"
-                className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1"
-              >
-                Registrarse
-                <SignupIcon className="text-xl" />
-              </Link>
-              <Link
-                href="/signin"
-                className="text-sm font-semibold leading-6 bg-zinc-50 dark:text-slate-900 hover:bg-boston-blue-600 transition-colors duration-300 rounded-md px-3.5 py-2 dark:hover:text-white hover:text-white shadow-md flex items-center justify-center gap-x-1"
-              >
-                Ingresar
-                <LogInIcon />
-              </Link>
+              {
+                (session !== null &&
+                session?.user?.email === "admin@gmail.com") ? (
+                  <>
+                    <button
+                      className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled
+                    >
+                      Registrarse
+                      <SignupIcon className="text-xl" />
+                    </button>
+                    <button
+                      className="text-sm font-semibold leading-6 bg-zinc-50 dark:text-slate-900 hover:bg-boston-blue-600 transition-colors duration-300 rounded-md px-3.5 py-2 dark:hover:text-white hover:text-white shadow-md flex items-center justify-center gap-x-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                      disabled
+                    >
+                      Ingresar
+                      <LogInIcon />
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      href="/signup"
+                      className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-1"
+                    >
+                      Registrarse
+                      <SignupIcon className="text-xl" />
+                    </Link>
+                    <Link
+                      href="/signin"
+                      className="text-sm font-semibold leading-6 bg-zinc-50 dark:text-slate-900 hover:bg-boston-blue-600 transition-colors duration-300 rounded-md px-3.5 py-2 dark:hover:text-white hover:text-white shadow-md flex items-center justify-center gap-x-1"
+                    >
+                      Ingresar
+                      <LogInIcon />
+                    </Link>
+                  </>
+                )
+              }
             </div>
           </div>
         </div>
@@ -69,14 +104,11 @@ export default async function Home() {
               Pildoras de <span className="text-sushi-500">Conocimiento</span>
             </p>
             <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">
-              El objetivo de estas pildoras de conocimiento es aumentar la
-              inteligencia financiera de nuestros visitantes, ayudándoles a
-              tomar el control de sus finanzas y alcanzar sus metas económicas
-              con confianza.
+              {knowledgePillsContent.subtitle}
             </p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
-            {KNOWLEDGE_PILLS.map(({ title, description }, index) => (
+            {knowledgePillsContent.knowledgePills.map(({ title, description }, index) => (
               <Pill key={index} title={title} description={description} />
             ))}
           </div>
@@ -91,10 +123,7 @@ export default async function Home() {
               <span className="text-sushi-500">Educativos</span>
             </p>
             <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">
-              El objetivo de estos videos informativos educativos es
-              proporcionar información valiosa y educativa de manera visual y
-              atractiva para que los espectadores aprendan de manera efectiva
-              sobre temas específicos.
+              {informativeVideosContent.subtitle}
             </p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">

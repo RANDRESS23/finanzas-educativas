@@ -101,9 +101,6 @@ export default function NavBar() {
               status === "authenticated" &&
               session?.user?.document !== "0000000000"
                 ? "/profile/user"
-                : status === "authenticated" &&
-                  session?.user?.document === "0000000000"
-                ? "/profile/admin/home-preview"
                 : "/"
             }
             className="text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500 flex items-center gap-x-1 justify-center"

@@ -28,9 +28,6 @@ export default function Footer() {
                 status === "authenticated" &&
                 session?.user?.document !== "0000000000"
                   ? "/profile/user"
-                  : status === "authenticated" &&
-                    session?.user?.document === "0000000000"
-                  ? "/profile/admin/home-preview"
                   : "/"
               }
             >
