@@ -37,7 +37,7 @@ export default function Footer() {
           <li className="flex justify-center items-center">
             <Link
               className="hover:text-sushi-500 transition-all"
-              href="/financial-education"
+              href="/financial-education/first-dimension"
             >
               Educación Financiera
             </Link>

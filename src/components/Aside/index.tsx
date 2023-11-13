@@ -1,3 +1,5 @@
+"use client";
+
 import { UserIcon, DashboardIcon, HelpIcon } from "./icons";
 import ItemList from "./ItemList";
 

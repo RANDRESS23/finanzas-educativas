@@ -8,7 +8,7 @@ export default function CreditSection() {
       <h2 className="text-4xl font-semibold leading-7 text-sushi-500 mb-8">
         Crédito
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 lg:w-full items-center">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-20 lg:w-full items-center md:mb-10">
         <div>
           <h2 className="text-3xl font-bold tracking-tight">
             ¿Qué es un crédito?
