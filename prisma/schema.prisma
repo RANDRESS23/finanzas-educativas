@@ -17,6 +17,7 @@ type WelcomeContent {
 }
 
 type KnowledgePill {
+  id String
   title String
   description String
 }
@@ -27,6 +28,7 @@ type KnowledgePills {
 }
 
 type InformativeVideo {
+  id String
   title String
   url String
 }
@@ -100,12 +102,12 @@ model Contact {
 }
 
 model HomeContent {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
-  welcomeContent     WelcomeContent
-  knowledgePillsContent  KnowledgePills
-  informativeVideosContent  InformativeVideos
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id                       String             @id @default(auto()) @map("_id") @db.ObjectId
+  welcomeContent           WelcomeContent
+  knowledgePillsContent    KnowledgePills
+  informativeVideosContent InformativeVideos
+  createdAt                DateTime           @default(now())
+  updatedAt                DateTime           @updatedAt
 }
 
 model Meta {

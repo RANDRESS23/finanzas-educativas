@@ -3,6 +3,7 @@ export interface WelcomeContent {
 }
 
 export interface KnowledgePill {
+  id: string;
   title: string;
   description: string;
 }
@@ -13,6 +14,7 @@ export interface KnowledgePills {
 }
 
 export interface InformativeVideo {
+  id: string;
   title: string;
   url: string;
 }

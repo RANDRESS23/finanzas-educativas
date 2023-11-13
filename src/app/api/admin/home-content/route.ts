@@ -3,9 +3,9 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const welcomeInfo = await db.homeContent.findMany();
+    const homeContentInfo = await db.homeContent.findMany();
 
-    return NextResponse.json(welcomeInfo[0], { status: 200 });
+    return NextResponse.json(homeContentInfo[0], { status: 200 });
   } catch (error) {
     console.error({ error });
 
@@ -29,6 +29,24 @@ export async function POST(request: Request) {
       );
     }
 
+    const knowledgePills = body.knowledgePillsContent.
+      knowledgePills.map(({ title, description }: { title: string, description: string }) => (
+        {
+          id: crypto.randomUUID(),
+          title,
+          description,
+        }
+      ))
+    
+    const informativeVideos = body.informativeVideosContent.
+      informativeVideos.map(({ title, url }: { title: string, url: string }) => (
+        {
+          id: crypto.randomUUID(),
+          title,
+          url,
+        }
+      ))
+
     const homeContentInfo = await db.homeContent.create({
       data: {
         welcomeContent: {
@@ -36,11 +54,11 @@ export async function POST(request: Request) {
         },
         knowledgePillsContent: {
           subtitle: body.knowledgePillsContent.subtitle,
-          knowledgePills: body.knowledgePillsContent.knowledgePills,
+          knowledgePills,
         },
         informativeVideosContent: {
           subtitle: body.informativeVideosContent.subtitle,
-          informativeVideos: body.informativeVideosContent.informativeVideos,
+          informativeVideos,
         },
       },
     });
