@@ -124,7 +124,7 @@ export default function FormSignIn() {
       </button>
       <button
         type="button"
-        className="rounded-md px-10 py-2 font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-zinc-100 dark:text-slate-900 hover:bg-slate-700 dark:ring-1 dark:ring-slate-100/30 dark:hover:text-white hover:text-white disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
+        className="rounded-md px-10 py-2 font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-zinc-300 dark:bg-zinc-400 dark:text-slate-900 enabled:hover:bg-sushi-500 dark:enabled:hover:text-white enabled:hover:text-white disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
         onClick={() => start2FAAuth(formValues.document)}
         disabled={isLoadingAuth || !formValues.document}
       >

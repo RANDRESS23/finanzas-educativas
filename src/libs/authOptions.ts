@@ -90,17 +90,17 @@ export const authOptions: NextAuthOptions = {
         }
 
         if (!userId) return null;
-        const userFound = await db.user.findUnique({
+        const existingUser = await db.user.findUnique({
           where: { id: userId },
           include: { authenticators: true },
         });
 
-        if (!userFound) {
+        if (!existingUser) {
           return null;
         }
 
-        const expectedChallenge = userFound.currentChallenge;
-        const currentUserAuthenticators = userFound.authenticators;
+        const expectedChallenge = existingUser.currentChallenge;
+        const currentUserAuthenticators = existingUser.authenticators;
         if (!currentUserAuthenticators.length) {
           return null;
         }
@@ -119,7 +119,7 @@ export const authOptions: NextAuthOptions = {
           !expectedChallenge
         ) {
           throw new Error(
-            `No se encontró el autenticador para el usuario ${userFound.email}`
+            `No se encontró el autenticador para el usuario ${existingUser.email}`
           );
         }
 
@@ -146,14 +146,20 @@ export const authOptions: NextAuthOptions = {
             where: { id: authenticatorFound.id },
             data: { counter: newCounter },
           });
-          const updatedUserResult = await db.user.update({
-            where: { id: userId },
-            data: { currentChallenge: "" },
-          });
 
-          if (updatedUserResult && updatedUserResult instanceof Object)
-            return updatedUserResult;
-          return null;
+          return {
+            id: `${existingUser.id}`,
+            documentType: existingUser.documentType,
+            document: existingUser.document,
+            firstName: existingUser.firstName,
+            lastName: existingUser.lastName,
+            phoneNumber: existingUser.phoneNumber,
+            email: existingUser.email,
+            createdAt: existingUser.createdAt,
+            updatedAt: existingUser.updatedAt,
+            is2FAEnabled: existingUser.is2FAEnabled,
+            currentChallenge: existingUser.currentChallenge,
+          };
         }
         return null;
       },
@@ -174,7 +180,7 @@ export const authOptions: NextAuthOptions = {
       if (user) {
         token.user = user;
         token.is2FAEnabled = user.is2FAEnabled;
-        token.is2FAVerified = user.is2FAEnabled && !user.currentChallenge;
+        token.is2FAVerified = user.is2FAEnabled && user.currentChallenge;
       }
       return token;
     },
