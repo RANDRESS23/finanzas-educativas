@@ -7,7 +7,7 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 import { MdVideoFile as VideoIcon } from "react-icons/md";
-import { authOptions } from "./api/auth/[...nextauth]/route";
+import { authOptions } from "@/libs/authOptions"; 
 
 export default async function Home() {
   const session = await getServerSession(authOptions);

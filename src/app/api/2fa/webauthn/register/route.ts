@@ -1,4 +1,4 @@
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/libs/authOptions";
 import { expectedOrigin, rpID, rpName } from "@/constants";
 import { db } from "@/libs/prismaDB";
 import { getPublicKeyCredentialDescriptor } from "@/libs/webauthn";
