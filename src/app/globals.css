@@ -9,8 +9,7 @@
 
   h1,
   h2,
-  h3,
-  img {
+  h3 {
     @apply pointer-events-none;
   }
 }
