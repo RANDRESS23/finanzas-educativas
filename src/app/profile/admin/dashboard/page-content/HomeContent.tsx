@@ -1,18 +1,28 @@
-import { db } from "@/libs/prismaDB";
-import { notFound } from "next/navigation";
 import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
-import Meta from "./Meta";
+import CardContent from "./CardContent";
+import { HomeContent } from "@/types/home-content";
 
 export const dynamic = "force-dynamic";
 
-export default async function HomeContent() {
-  const [metaInfo] = await db.meta.findMany();
-
-  if (!metaInfo) {
-    notFound();
+const getHomeContent = async () => {
+  try {
+    const homeContent = await fetch(`${process.env.NEXTAUTH_URL}/api/admin/home-content`);
+    const data = await homeContent.json();
+    return data;
+  } catch (error) {
+    console.log(error);
   }
+}
 
-  const { id, whoami, mision, vision } = metaInfo;
+export default async function HomeContent() {
+  const {
+    welcomeContent,
+    knowledgePillsContent,
+    informativeVideosContent,
+  }: HomeContent = await getHomeContent();
+  const welcomeDescription = welcomeContent.subtitle.slice(0, 30)
+  const knowledgePillsDescription = knowledgePillsContent.subtitle.slice(0, 30)
+  const informativeVideosDescription = informativeVideosContent.subtitle.slice(0, 30)
 
   return (
     <div className="flex">
@@ -22,14 +32,25 @@ export default async function HomeContent() {
       >
         <main>
           <div className="pt-6 px-7">
-            <blockquote className="w-full flex items-center gap-3 text-2xl font-semibold leading-8 sm:text-3xl sm:leading-9 mb-10">
-              <HomeIcon className="text-6xl md:text-4xl" />
+            <blockquote className="w-full flex items-center gap-3 text-2xl font-semibold leading-8 sm:leading-9 mb-10">
+              <HomeIcon className="text-3xl" />
               <p className="">
                 Editar información de <span className="text-sushi-500">Inicio</span>
               </p>
             </blockquote>
             <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              <Meta metaInfo={{ id, mision, vision, whoami }} />
+              <CardContent 
+                title="Bienvenida"
+                description={`${welcomeDescription}...`}
+              />
+              <CardContent 
+                title="Pildoras de Conocimiento"
+                description={`${knowledgePillsDescription}...`}
+              />
+              <CardContent 
+                title="Videos Informativos Educativos"
+                description={`${informativeVideosDescription}...`}
+              />
             </div>
           </div>
         </main>

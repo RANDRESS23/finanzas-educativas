@@ -16,12 +16,14 @@
 }
 
 html::-webkit-scrollbar,
-p::-webkit-scrollbar {
+p::-webkit-scrollbar,
+textarea::-webkit-scrollbar {
   width: 0.7rem;
 }
 
 html::-webkit-scrollbar-thumb,
-p::-webkit-scrollbar-thumb {
+p::-webkit-scrollbar-thumb,
+textarea::-webkit-scrollbar-thumb {
   @apply bg-boston-blue-600;
   border-radius: 5rem;
 }

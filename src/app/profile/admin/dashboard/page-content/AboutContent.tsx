@@ -22,8 +22,8 @@ export default async function AboutContent() {
       >
         <main>
           <div className="pt-6 px-7">
-            <blockquote className="w-full flex items-center gap-3 text-2xl font-semibold leading-8 sm:text-3xl sm:leading-9 mb-10">
-              <UsIcon className="text-6xl md:text-4xl" />
+            <blockquote className="w-full flex items-center gap-3 text-2xl font-semibold leading-8 sm:leading-9 mb-10">
+              <UsIcon className="text-3xl" />
               <p className="">
                 Editar información de <span className="text-sushi-500">Nosotros</span>
               </p>

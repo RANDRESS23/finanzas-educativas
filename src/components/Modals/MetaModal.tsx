@@ -34,7 +34,7 @@ export default function MetaModal({
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
-        className="relative z-10"
+        className="relative z-[60]"
         initialFocus={cancelButtonRef}
         onClose={setOpen}
       >
