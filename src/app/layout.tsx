@@ -31,6 +31,9 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="es" className={oswald.className}>
+      <head>
+        <link rel="shortcut icon" href="/icono_finanzas_educativas.ico" type="image/x-icon" />
+      </head>
       <body>
         <ThemeProvider>
           <Overflow />

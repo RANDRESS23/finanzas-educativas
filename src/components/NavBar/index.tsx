@@ -28,6 +28,7 @@ import {
   PigIcon,
   UserIcon,
 } from "./icons";
+import IconoFinanzasEducativas from '@/assets/icono_finanzas_educativas.png'
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -82,17 +83,20 @@ export default function NavBar() {
                 ? "/profile/admin"
                 : "/"
             }
-            className="-m-1.5 p-1.5"
+            className="-m-1.5 p-1.5 flex justify-center items-center gap-x-1"
             onClick={handleResetMenus}
           >
             <Image
-              width={32}
-              height={32}
-              className="w-8 h-8"
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+              width={40}
+              height={40}
+              className=""
+              src={IconoFinanzasEducativas}
               priority
               alt=""
             />
+            <div className="flex justify-center items-center text-2xl font-bold">
+              Finanzas Educativas
+            </div>
           </Link>
         </div>
         <div className="hidden lg:flex lg:gap-x-10">
