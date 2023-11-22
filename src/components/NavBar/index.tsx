@@ -225,7 +225,10 @@ export default function NavBar() {
             </>
           )}
 
-          <ThemeTooltip message="Alternar tema">
+          <ThemeTooltip
+            message="Alternar tema"
+            cl={clsx("origin-top-right w-20 top-5 right-3")}
+          >
             <ThemeToggle id="themeToggler" />
           </ThemeTooltip>
         </div>
