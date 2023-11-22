@@ -11,7 +11,7 @@ export async function GET() {
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -25,27 +25,26 @@ export async function POST(request: Request) {
     if (existingHomeContent.length > 0) {
       return NextResponse.json(
         { messsage: "El contenido del home ya se encuentra insertado" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
-    const knowledgePills = body.knowledgePillsContent.
-      knowledgePills.map(({ title, description }: { title: string, description: string }) => (
-        {
-          id: crypto.randomUUID(),
-          title,
-          description,
-        }
-      ))
-    
-    const informativeVideos = body.informativeVideosContent.
-      informativeVideos.map(({ title, url }: { title: string, url: string }) => (
-        {
+    const knowledgePills = body.knowledgePillsContent.knowledgePills.map(
+      ({ title, description }: { title: string; description: string }) => ({
+        id: crypto.randomUUID(),
+        title,
+        description,
+      }),
+    );
+
+    const informativeVideos =
+      body.informativeVideosContent.informativeVideos.map(
+        ({ title, url }: { title: string; url: string }) => ({
           id: crypto.randomUUID(),
           title,
           url,
-        }
-      ))
+        }),
+      );
 
     const homeContentInfo = await db.homeContent.create({
       data: {
@@ -68,14 +67,14 @@ export async function POST(request: Request) {
         homeContentInfo,
         message: "Información del home registrada correctamente",
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error: any) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

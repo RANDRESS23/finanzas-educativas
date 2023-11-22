@@ -1,4 +1,4 @@
-const PigMoneyIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => {
+const PigMoneyIcon: React.FC<React.SVGProps<SVGSVGElement>> = props => {
   return (
     <svg
       viewBox="0 0 24 24"

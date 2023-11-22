@@ -2,7 +2,7 @@ import { htmlForChangePsw } from "@/email_templates";
 import { db } from "@/libs/prismaDB";
 import { sendEmail } from "@/libs/sgMail";
 import { sendEmailSchema } from "@/schemas/security.schema";
-import { type TPayload } from "@/types/TPayload";
+import type { TPayload } from "@/types/TPayload";
 import Jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
@@ -22,7 +22,7 @@ export async function GET(_: Request, { params }: ExpectedParamsSend) {
     if (userFound === null) {
       return NextResponse.json(
         { message: "El email no se encuentra registrado." },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -40,25 +40,25 @@ export async function GET(_: Request, { params }: ExpectedParamsSend) {
     const msgSended = await sendEmail(
       to,
       "Solicitud de cambio de contraseña",
-      htmlForChangePsw(resetPasswordLink)
+      htmlForChangePsw(resetPasswordLink),
     );
     if (!msgSended?.response) {
       return NextResponse.json(
         { message: `Error sending email to ${to}` },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     return NextResponse.json(
       { message: `Email sended to ${to}` },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

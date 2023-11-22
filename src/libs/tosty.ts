@@ -20,7 +20,7 @@ export type TostyProps = {
 
 type fnTosty = (
   text: TostyProps["text"],
-  options?: Omit<TostyProps, "text">
+  options?: Omit<TostyProps, "text">,
 ) => string;
 interface Tosty {
   success: fnTosty;

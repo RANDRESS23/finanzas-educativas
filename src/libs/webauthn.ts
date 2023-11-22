@@ -11,12 +11,12 @@ import type { PublicKeyCredentialDescriptor } from "@simplewebauthn/typescript-t
  */
 export const getAuthenticatorByCredentialId = (
   userAuthenticators: Authenticator[],
-  autheticatorCredentialIdB64URL: string
+  autheticatorCredentialIdB64URL: string,
 ) => {
   return userAuthenticators.find(
-    (authenticator) =>
+    authenticator =>
       Buffer.from(authenticator.credentialID).toString("base64url") ===
-      autheticatorCredentialIdB64URL
+      autheticatorCredentialIdB64URL,
   );
 };
 /**
@@ -26,9 +26,9 @@ export const getAuthenticatorByCredentialId = (
  * @returns The PublicKeyCredentialDescriptor.
  */
 export const getPublicKeyCredentialDescriptor = (
-  userAuthenticators: Authenticator[]
+  userAuthenticators: Authenticator[],
 ) => {
-  return userAuthenticators.map((authenticator) => ({
+  return userAuthenticators.map(authenticator => ({
     id: new Uint8Array(authenticator.credentialID),
     type: "public-key",
     transports: authenticator.transports ?? [],

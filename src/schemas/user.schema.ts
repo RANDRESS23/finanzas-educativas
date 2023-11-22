@@ -30,7 +30,7 @@ export const userPasswordsSchema = baseUserSchema
       message: "La contraseña debe tener al menos 8 caracteres.",
     }),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine(data => data.password === data.confirmPassword, {
     message: "Las contraseñas no coinciden.",
     path: ["confirmPassword"],
   });
@@ -80,7 +80,7 @@ export const signUpSchema = baseUserSchema
         message: "El número de teléfono debe tener un máximo de 12 caracteres.",
       }),
   })
-  .refine((data) => data.password === data.confirmPassword, {
+  .refine(data => data.password === data.confirmPassword, {
     message: "Las contraseñas no coinciden.",
     path: ["confirm_password"],
   });
@@ -124,23 +124,21 @@ export const userMoreInfoSchema = z.object({
       message: "El número de teléfono debe tener un máximo de 12 caracteres.",
     }),
 
-  email: z
-    .string()
-    .email({
-      message: "El correo electrónico debe ser válido.",
-    }),
+  email: z.string().email({
+    message: "El correo electrónico debe ser válido.",
+  }),
 
-    // age: [0, 0],
-    // civilStatus: "",
-    // educationLevel: "",
-    // residenceArea: "",
-    // typeOfHousing: "",
-    // houseServices: [],
-    // socioeconomicLevel: 0,
-    // numberPeopleContributing: 0,
-    // incomeComeFrom: "",
-    // isInAPensionFund: false,
-    // healthSystemAffiliation: "",
-    // numberPeopleDependFinancially: 0,
-    // financialProducts: [],
-})
+  // age: [0, 0],
+  // civilStatus: "",
+  // educationLevel: "",
+  // residenceArea: "",
+  // typeOfHousing: "",
+  // houseServices: [],
+  // socioeconomicLevel: 0,
+  // numberPeopleContributing: 0,
+  // incomeComeFrom: "",
+  // isInAPensionFund: false,
+  // healthSystemAffiliation: "",
+  // numberPeopleDependFinancially: 0,
+  // financialProducts: [],
+});

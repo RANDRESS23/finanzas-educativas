@@ -7,14 +7,14 @@ export default function Tosty({ icon, options, subject, text }: TostyProps) {
   const { ReactIcon, color } = icon!;
 
   return toast.custom(
-    (t) => (
+    t => (
       <div
         className={clsx(
           "max-w-md w-full shadow-lg dark:shadow-slate-950/30 rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5 bg-white/60 dark:bg-slate-900/80 backdrop-blur supports-backdrop-blur:bg-white/60",
           {
             "animate-enter": t.visible,
             "animate-leave": !t.visible,
-          }
+          },
         )}
       >
         <div className="flex-1 w-0 p-4">
@@ -53,6 +53,6 @@ export default function Tosty({ icon, options, subject, text }: TostyProps) {
         </div>
       </div>
     ),
-    { ...options }
+    { ...options },
   );
 }

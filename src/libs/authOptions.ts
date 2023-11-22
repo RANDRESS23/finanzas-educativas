@@ -42,7 +42,7 @@ export const authOptions: NextAuthOptions = {
 
         const passwordMatch = await verifyPassword(
           credentials!.password,
-          existingUser.hashedPassword
+          existingUser.hashedPassword,
         );
 
         if (!passwordMatch) return null;
@@ -106,12 +106,12 @@ export const authOptions: NextAuthOptions = {
         }
 
         const authenticationResponse: AuthenticationResponseJSON = JSON.parse(
-          request.body?.verification
+          request.body?.verification,
         );
 
         const authenticatorFound = getAuthenticatorByCredentialId(
           currentUserAuthenticators,
-          authenticationResponse.rawId
+          authenticationResponse.rawId,
         ) as Authenticator;
         if (
           !authenticatorFound ||
@@ -119,7 +119,7 @@ export const authOptions: NextAuthOptions = {
           !expectedChallenge
         ) {
           throw new Error(
-            `No se encontró el autenticador para el usuario ${existingUser.email}`
+            `No se encontró el autenticador para el usuario ${existingUser.email}`,
           );
         }
 

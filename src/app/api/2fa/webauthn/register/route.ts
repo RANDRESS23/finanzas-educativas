@@ -77,7 +77,7 @@ export async function GET() {
 
       return NextResponse.json(
         { message: message ? message : "Unauthorized." },
-        { status: 401 }
+        { status: 401 },
       );
     }
   }
@@ -164,7 +164,7 @@ export async function POST(request: Request) {
 
       return NextResponse.json(
         { message: message ? message : "Unauthorized." },
-        { status: 401 }
+        { status: 401 },
       );
     }
   }

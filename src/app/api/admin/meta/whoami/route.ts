@@ -13,7 +13,7 @@ export async function GET() {
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -41,7 +41,7 @@ export async function PATCH(request: Request) {
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

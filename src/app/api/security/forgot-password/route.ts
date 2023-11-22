@@ -1,7 +1,7 @@
 import { encryptPassword } from "@/libs/bcrypt";
 import { db } from "@/libs/prismaDB";
 import { userPasswordsSchema } from "@/schemas/user.schema";
-import { type TPayload } from "@/types/TPayload";
+import type { TPayload } from "@/types/TPayload";
 import Jwt from "jsonwebtoken";
 import { NextResponse } from "next/server";
 
@@ -17,13 +17,13 @@ export async function PATCH(request: Request) {
     if (password !== confirmPassword) {
       return NextResponse.json(
         { message: "Las contraseñas no coinciden." },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const payload = Jwt.verify(
       body.jwtToken,
-      process.env.NEXTAUTH_SECRET!
+      process.env.NEXTAUTH_SECRET!,
     ) as TPayload;
     const userFound = await db.user.findUnique({
       where: { email: payload.email },
@@ -33,7 +33,7 @@ export async function PATCH(request: Request) {
     if (userFound === null) {
       return NextResponse.json(
         { message: "El email no se encuentra registrado." },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -61,7 +61,7 @@ export async function PATCH(request: Request) {
           if (!Object.values(errorsMessages).includes(message)) {
             errorsMessages[path.join("")] = message;
           }
-        }
+        },
       );
 
       return NextResponse.json(errorsMessages, { status: 500 });
@@ -69,7 +69,7 @@ export async function PATCH(request: Request) {
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

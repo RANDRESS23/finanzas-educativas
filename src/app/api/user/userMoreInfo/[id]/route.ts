@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 
 export async function GET(
   _: Request,
-  { params }: { params: UserMoreInfoForm }
+  { params }: { params: UserMoreInfoForm },
 ) {
   try {
     const userMoreInfo = await db.userMoreInfo.findMany({
@@ -14,7 +14,7 @@ export async function GET(
     if (userMoreInfo.length === 0) {
       return NextResponse.json(
         { message: "No se encontró información adicional del usuario" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -24,14 +24,14 @@ export async function GET(
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
 export async function PUT(
   request: Request,
-  { params }: { params: UserMoreInfoForm }
+  { params }: { params: UserMoreInfoForm },
 ) {
   const body = await request.json();
 
@@ -47,7 +47,7 @@ export async function PUT(
       if (existingUserByDocument !== null) {
         return NextResponse.json(
           { messsage: "El número de documento ya está en uso" },
-          { status: 400 }
+          { status: 400 },
         );
       }
     }
@@ -60,7 +60,7 @@ export async function PUT(
       if (existingUserByEmail !== null) {
         return NextResponse.json(
           { messsage: "El correo electrónico ya se encuentra en uso" },
-          { status: 400 }
+          { status: 400 },
         );
       }
     }
@@ -82,7 +82,7 @@ export async function PUT(
         isInAPensionFund: Boolean(body.isInAPensionFund),
         healthSystemAffiliation: body.healthSystemAffiliation,
         numberPeopleDependFinancially: Number(
-          body.numberPeopleDependFinancially
+          body.numberPeopleDependFinancially,
         ),
         financialProducts: body.financialProducts,
       },
@@ -93,14 +93,14 @@ export async function PUT(
         userExtraInfo,
         message: "Información adicional registrada correctamente",
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -35,7 +35,7 @@ export default function InputSelect({
           })}
           className={clsxe(
             errors[selectProps.id!],
-            "cursor-pointer " + selectProps.className
+            "cursor-pointer " + selectProps.className,
           )}
           disabled={selectProps.disabled}
           {...selectProps}

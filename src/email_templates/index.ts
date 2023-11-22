@@ -2,7 +2,8 @@ import pkg from "@/../package.json";
 import { type Contact } from "@prisma/client";
 import { recoveryPassword } from "./recoveryPassword";
 
-const htmlForChangePsw = (resetPasswordLink: string) => recoveryPassword({ resetPasswordLink });
+const htmlForChangePsw = (resetPasswordLink: string) =>
+  recoveryPassword({ resetPasswordLink });
 
 const htmlForUserContact = () => `
 <p>Gracias por contactar al equipo de <strong>Finanzas Educativas</strong>.</p>

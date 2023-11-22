@@ -1,5 +1,5 @@
 export interface WelcomeContent {
-  subtitle: string
+  subtitle: string;
 }
 
 export interface KnowledgePill {

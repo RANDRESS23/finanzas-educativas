@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       });
       if (!userFound) {
         throw new Error(
-          `No se encontró el usuario con No. documento ${body.document}.`
+          `No se encontró el usuario con No. documento ${body.document}.`,
         );
       }
 
@@ -81,7 +81,7 @@ export async function POST(request: Request) {
 
       return NextResponse.json(
         { message: message ? message : "Unauthorized." },
-        { status: 401 }
+        { status: 401 },
       );
     }
   }

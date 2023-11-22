@@ -5,21 +5,21 @@ export async function GET() {
   try {
     const homeContentInfo = await db.homeContent.findMany();
 
-    return NextResponse.json(homeContentInfo[0].knowledgePillsContent, { status: 200 });
+    return NextResponse.json(homeContentInfo[0].knowledgePillsContent, {
+      status: 200,
+    });
   } catch (error) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
-export async function POST(
-  request: Request,
-) {
-  const body: { title: string, description: string } = await request.json();
+export async function POST(request: Request) {
+  const body: { title: string; description: string } = await request.json();
 
   try {
     const [homeContentInfo] = await db.homeContent.findMany();
@@ -36,7 +36,7 @@ export async function POST(
               id: crypto.randomUUID(),
               title: body.title,
               description: body.description,
-            }
+            },
           ],
         },
       },
@@ -47,22 +47,19 @@ export async function POST(
         knowledgePillsInfoUpdated,
         message: "Información actualizada correctamente",
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
 
-
-export async function PUT(
-  request: Request,
-) {
+export async function PUT(request: Request) {
   const body: { subtitle: string } = await request.json();
 
   try {
@@ -84,14 +81,14 @@ export async function PUT(
         knowledgePillsInfoUpdated,
         message: "Información actualizada correctamente",
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

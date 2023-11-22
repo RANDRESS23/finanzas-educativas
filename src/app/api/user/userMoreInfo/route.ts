@@ -16,7 +16,7 @@ export async function POST(request: Request) {
       if (existingUserByDocument !== null) {
         return NextResponse.json(
           { messsage: "El número de documento ya está en uso" },
-          { status: 400 }
+          { status: 400 },
         );
       }
     }
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       if (existingUserByEmail !== null) {
         return NextResponse.json(
           { messsage: "El correo electrónico ya se encuentra en uso" },
-          { status: 400 }
+          { status: 400 },
         );
       }
     }
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
         isInAPensionFund: Boolean(body.isInAPensionFund),
         healthSystemAffiliation: body.healthSystemAffiliation,
         numberPeopleDependFinancially: Number(
-          body.numberPeopleDependFinancially
+          body.numberPeopleDependFinancially,
         ),
         financialProducts: body.financialProducts,
       },
@@ -61,14 +61,14 @@ export async function POST(request: Request) {
         userExtraInfo,
         message: "Información adicional registrada correctamente",
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error: any) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

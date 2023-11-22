@@ -17,7 +17,7 @@ export default async function PasswordChanger({
   try {
     const payload = Jwt.verify(
       jwtToken,
-      process.env.NEXTAUTH_SECRET!
+      process.env.NEXTAUTH_SECRET!,
     ) as TPayload;
 
     return (

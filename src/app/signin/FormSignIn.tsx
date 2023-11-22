@@ -33,7 +33,7 @@ export default function FormSignIn() {
 
   const formValues = watch() as typeof defaultValues;
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoading(true);
 
     try {

@@ -1,4 +1,5 @@
 import pkg from "@/../package.json";
+import FA2Container from "@/components/FA2/FA2Container";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import Overflow from "@/components/Overflow";
@@ -8,17 +9,17 @@ import ToasterProvider from "@/providers/ToasterProvider";
 import { type Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
-import FA2Container from "@/components/FA2/FA2Container";
 
 const oswald = Oswald({
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
+  applicationName: pkg.description,
   title: "Finanzas Educativas | Bienvenidos",
   generator: "Next JS",
-  creator: "ITFIP Development Team",
-  publisher: "ITFIP Development Team",
+  creator: pkg.publisher,
+  publisher: pkg.publisher,
   description: pkg.description,
   keywords: pkg.keywords,
   authors: pkg.contributors,
@@ -32,7 +33,11 @@ export default async function RootLayout({
   return (
     <html lang="es" className={oswald.className}>
       <head>
-        <link rel="shortcut icon" href="/icono_finanzas_educativas.ico" type="image/x-icon" />
+        <link
+          rel="shortcut icon"
+          href="/icono_finanzas_educativas.ico"
+          type="image/x-icon"
+        />
       </head>
       <body>
         <ThemeProvider>

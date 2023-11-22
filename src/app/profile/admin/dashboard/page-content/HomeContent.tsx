@@ -6,13 +6,15 @@ export const dynamic = "force-dynamic";
 
 const getHomeContent = async () => {
   try {
-    const homeContent = await fetch(`${process.env.NEXTAUTH_URL}/api/admin/home-content`);
+    const homeContent = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/admin/home-content`,
+    );
     const data = await homeContent.json();
     return data;
   } catch (error) {
     console.log(error);
   }
-}
+};
 
 export default async function HomeContent() {
   const {
@@ -20,9 +22,12 @@ export default async function HomeContent() {
     knowledgePillsContent,
     informativeVideosContent,
   }: HomeContent = await getHomeContent();
-  const welcomeDescription = welcomeContent.subtitle.slice(0, 30)
-  const knowledgePillsDescription = knowledgePillsContent.subtitle.slice(0, 30)
-  const informativeVideosDescription = informativeVideosContent.subtitle.slice(0, 30)
+  const welcomeDescription = welcomeContent.subtitle.slice(0, 30);
+  const knowledgePillsDescription = knowledgePillsContent.subtitle.slice(0, 30);
+  const informativeVideosDescription = informativeVideosContent.subtitle.slice(
+    0,
+    30,
+  );
 
   return (
     <div className="flex">
@@ -35,19 +40,20 @@ export default async function HomeContent() {
             <blockquote className="w-full flex items-center gap-3 text-2xl font-semibold leading-8 sm:leading-9 mb-10">
               <HomeIcon className="text-3xl" />
               <p className="">
-                Editar información de <span className="text-sushi-500">Inicio</span>
+                Editar información de{" "}
+                <span className="text-sushi-500">Inicio</span>
               </p>
             </blockquote>
             <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-              <CardContent 
+              <CardContent
                 title="Bienvenida"
                 description={`${welcomeDescription}...`}
               />
-              <CardContent 
+              <CardContent
                 title="Pildoras de Conocimiento"
                 description={`${knowledgePillsDescription}...`}
               />
-              <CardContent 
+              <CardContent
                 title="Videos Informativos Educativos"
                 description={`${informativeVideosDescription}...`}
               />

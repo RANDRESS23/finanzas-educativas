@@ -1,4 +1,4 @@
-import { authOptions } from "@/libs/authOptions"; 
+import { authOptions } from "@/libs/authOptions";
 import { AdminIcon } from "@/components/NavBar/icons";
 import Title from "@/components/Title";
 import { getServerSession } from "next-auth/next";

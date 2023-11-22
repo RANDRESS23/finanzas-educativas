@@ -1,4 +1,4 @@
-import { authOptions } from "@/libs/authOptions"; 
+import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth";
 import FA2Auth from "./FA2Auth";
 

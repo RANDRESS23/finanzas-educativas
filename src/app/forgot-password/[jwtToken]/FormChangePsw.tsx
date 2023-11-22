@@ -34,7 +34,7 @@ export default function FormChangePsw({ jwtToken, payload }: IParams) {
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoading(true);
 
     try {
@@ -46,7 +46,7 @@ export default function FormChangePsw({ jwtToken, payload }: IParams) {
 
       if (response.status !== 201) {
         tosty.error(
-          "Ha ocurrido un error al cambiar la contraseña, intente nuevamente más tarde."
+          "Ha ocurrido un error al cambiar la contraseña, intente nuevamente más tarde.",
         );
         return;
       }

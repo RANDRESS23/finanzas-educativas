@@ -1,8 +1,8 @@
 "use client";
 
-import React, { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
-import ModalFormWelcome from './ModalFormWelcome';
+import React, { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+import ModalFormWelcome from "./ModalFormWelcome";
 import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
 
 interface ModalProps {
@@ -12,10 +12,20 @@ interface ModalProps {
   title: string;
 }
 
-export default function ModalContent({ open, setOpen, cancelButtonRef, title }: ModalProps) {
+export default function ModalContent({
+  open,
+  setOpen,
+  cancelButtonRef,
+  title,
+}: ModalProps) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-[60]" initialFocus={cancelButtonRef} onClose={setOpen}>
+      <Dialog
+        as="div"
+        className="relative z-[60]"
+        initialFocus={cancelButtonRef}
+        onClose={setOpen}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -46,8 +56,11 @@ export default function ModalContent({ open, setOpen, cancelButtonRef, title }: 
                       <HomeIcon className="text-6xl md:text-4xl text-white" />
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
-                      <Dialog.Title as="h3" className="text-xl font-semibold leading-6 text-gray-900 dark:text-gray-300">
-                        Editar <span className='text-sushi-500'>{title}</span>
+                      <Dialog.Title
+                        as="h3"
+                        className="text-xl font-semibold leading-6 text-gray-900 dark:text-gray-300"
+                      >
+                        Editar <span className="text-sushi-500">{title}</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
                         <ModalFormWelcome setOpen={setOpen} />
@@ -61,5 +74,5 @@ export default function ModalContent({ open, setOpen, cancelButtonRef, title }: 
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }
