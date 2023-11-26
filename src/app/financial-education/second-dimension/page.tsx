@@ -1,8 +1,4 @@
 import { type Metadata } from "next";
-import LIST_OF_FINANCE_MANAGEMENT from "@/meta/financeManagement";
-import Link from "next/link";
-import { GiReceiveMoney } from "react-icons/gi";
-import Image from "next/image";
 import goodDecisions from "@/meta/goodDecisions";
 
 export const metadata: Metadata = {
