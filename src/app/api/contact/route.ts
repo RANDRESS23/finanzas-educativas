@@ -24,37 +24,37 @@ export async function POST(request: Request) {
     const msgSendedToUser = await sendEmail(
       contactData.email,
       subject,
-      htmlForUserContact()
+      htmlForUserContact(),
     );
     if (!msgSendedToUser?.response) {
       return NextResponse.json(
         { message: `Error sending email to ${contactData.email}` },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     const msgSendedToAdmin = await sendEmail(
       process.env.EMAIL_CONTACTS!,
       subject,
-      htmlForAdminContact(contactData)
+      htmlForAdminContact(contactData),
     );
     if (!msgSendedToAdmin?.response) {
       return NextResponse.json(
         { message: `Error sending email to ${process.env.EMAIL_CONTACTS}` },
-        { status: 500 }
+        { status: 500 },
       );
     }
 
     return NextResponse.json(
       { message: "Gracias por contactar con el equipo de Finanzas Educativas" },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

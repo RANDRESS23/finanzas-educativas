@@ -3,6 +3,7 @@
   "description": "Finanzas Educativas",
   "version": "0.1.0",
   "private": true,
+  "publisher": "ITFIP Development Team",
   "contributors": [
     {
       "name": "Ricardo Rojas",
@@ -18,17 +19,22 @@
     }
   ],
   "keywords": [
-    "Educacion",
+    "educación",
     "finanzas",
     "enseñanzas",
-    "ahorro"
+    "ahorro",
+    "éxito",
+    "soluciones",
+    "créditos"
   ],
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && npm run generate-sitemap",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate"
+    "format": "prettier -w ./src",
+    "postinstall": "prisma generate",
+    "generate-sitemap": "ts-node ./src/scripts/generate-sitemap.ts"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -49,7 +55,6 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "sharp": "^0.32.6",
-    "twilio": "^4.19.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -64,8 +69,12 @@
     "eslint": "^8.53.0",
     "eslint-config-next": "^14.0.1",
     "postcss": "^8.4.31",
+    "prettier": "^3.1.0",
     "prisma": "^5.5.2",
+    "sitemap": "^7.1.1",
     "tailwindcss": "^3.3.5",
-    "typescript": "^5.2.2"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2",
+    "zlib": "^1.0.5"
   }
 }

@@ -13,7 +13,7 @@ export async function GET() {
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     if (existingUserByDocument !== null) {
       return NextResponse.json(
         { messsage: "Document already exists" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     if (existingUserByEmail !== null) {
       return NextResponse.json(
         { messsage: "Email already exists" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -71,7 +71,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       { user, message: "User created successfully" },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error: any) {
     console.error({ error });
@@ -85,7 +85,7 @@ export async function POST(request: Request) {
           if (!Object.values(errorsMessages).includes(message)) {
             errorsMessages[path.join("")] = message;
           }
-        }
+        },
       );
 
       return NextResponse.json(errorsMessages, { status: 500 });
@@ -93,7 +93,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

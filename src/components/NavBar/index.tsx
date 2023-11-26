@@ -28,7 +28,7 @@ import {
   PigIcon,
   UserIcon,
 } from "./icons";
-import IconoFinanzasEducativas from '@/assets/icono_finanzas_educativas.png'
+import IconoFinanzasEducativas from "@/assets/icono_finanzas_educativas.png";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -68,7 +68,7 @@ export default function NavBar() {
         {
           "backdrop-blur supports-backdrop-blur:bg-white/60 dark:bg-transparent":
             !isMenuMobileOpen,
-        }
+        },
       )}
     >
       <nav className="mx-auto flex max-w-7xl items-center justify-between py-5 px-6 lg:px-8">
@@ -79,20 +79,18 @@ export default function NavBar() {
               session?.user?.document !== "0000000000"
                 ? "/profile/user"
                 : status === "authenticated" &&
-                  session?.user?.document === "0000000000"
-                ? "/profile/admin"
-                : "/"
+                    session?.user?.document === "0000000000"
+                  ? "/profile/admin"
+                  : "/"
             }
-            className="-m-1.5 p-1.5 flex justify-center items-center gap-x-1"
+            className="-m-1.5 p-1.5 flex justify-center items-center gap-x-2"
             onClick={handleResetMenus}
           >
             <Image
               width={40}
-              height={40}
-              className=""
               src={IconoFinanzasEducativas}
               priority
-              alt=""
+              alt="Finanzas Educativas"
             />
             <div className="flex justify-center items-center text-2xl font-bold">
               Finanzas Educativas
@@ -227,7 +225,10 @@ export default function NavBar() {
             </>
           )}
 
-          <ThemeTooltip message="Alternar tema">
+          <ThemeTooltip
+            message="Alternar tema"
+            cl={clsx("origin-top-right w-20 top-5 right-3")}
+          >
             <ThemeToggle id="themeToggler" />
           </ThemeTooltip>
         </div>

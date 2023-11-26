@@ -11,7 +11,7 @@ export const informationSchema = z
         message: "El campo es demasiado corto.",
       }),
       stringInformationSchema.optional(),
-    ])
+    ]),
   )
   .min(1)
   .max(2, {

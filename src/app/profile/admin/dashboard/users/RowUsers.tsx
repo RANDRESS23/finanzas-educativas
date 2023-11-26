@@ -8,7 +8,7 @@ async function RowUsers() {
     notFound();
   }
 
-  return users.map((u) => (
+  return users.map(u => (
     <tr key={u.id}>
       <td className="p-4 whitespace-nowrap text-sm font-normal">
         {`${u.firstName} ${u.lastName}`.toUpperCase()}

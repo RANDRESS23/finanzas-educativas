@@ -25,7 +25,7 @@ export default function FA2Register() {
     if (!session) return;
     if (!browserSupportsWebAuthn()) {
       return tosty.error(
-        "Tu navegador no soporta autenticación mediante webauthn. :("
+        "Tu navegador no soporta autenticación mediante webauthn. :(",
       );
     }
 
@@ -35,7 +35,7 @@ export default function FA2Register() {
       // @simplewebauthn/server -> generateRegistrationOptions()
       const { data: registrationOpts } =
         await api<PublicKeyCredentialCreationOptionsJSON>(
-          "/2fa/webauthn/register"
+          "/2fa/webauthn/register",
         );
       // Pass the options to the authenticator and wait for a response
       const attResp = await startRegistration(registrationOpts);
@@ -48,10 +48,10 @@ export default function FA2Register() {
       if (verificationResponse && verificationResponse.verified) {
         // We sign out the user to force a new login with 2FA
         tosty.success(
-          "Registrado exitosamente! Por favor inicia sesión nuevamente."
+          "Registrado exitosamente! Por favor inicia sesión nuevamente.",
         );
         // Await 3 seconds before signin for show message to the user
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await new Promise(resolve => setTimeout(resolve, 3000));
         closeSession();
       }
     } catch (error) {
@@ -62,7 +62,7 @@ export default function FA2Register() {
       if (error instanceof Error) {
         if (error.name === "InvalidStateError") {
           tosty.error(
-            "Error: El autenticador probablemente ya ha sido registrado por el usuario."
+            "Error: El autenticador probablemente ya ha sido registrado por el usuario.",
           );
         }
 

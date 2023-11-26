@@ -3,7 +3,7 @@ import { type Metadata } from "next";
 import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/libs/authOptions"; 
+import { authOptions } from "@/libs/authOptions";
 import FormSignUp from "./FormSignUp";
 import SignUpGifDark from "./gifs/signUp-dark.gif";
 import SignUpGif from "./gifs/signUp.gif";

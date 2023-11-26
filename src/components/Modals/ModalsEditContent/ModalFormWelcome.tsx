@@ -27,22 +27,21 @@ export default function ModalFormWelcome({ setOpen }: ModalFormWelcomeProps) {
     formState: { errors },
   } = useForm<FieldValues>({ defaultValues });
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoading(true);
 
     try {
       const response = await api.put("/admin/home-content/welcome", {
-        subtitle: data.subtitle
+        subtitle: data.subtitle,
       });
 
       if (response.status === 201) {
         tosty.success("¡Datos actualizados exitosamente!");
         router.refresh();
-        setOpen(false)
+        setOpen(false);
       } else {
         tosty.error("Error al actualizar datos!");
       }
-
     } catch (error: any) {
       if (isAxiosError(error)) {
         tosty.error(error.response?.data.message);
@@ -57,29 +56,31 @@ export default function ModalFormWelcome({ setOpen }: ModalFormWelcomeProps) {
   useEffect(() => {
     const getSubtitle = async () => {
       try {
-        setIsLoadingSubtitle(true)
+        setIsLoadingSubtitle(true);
 
         const subtitle = await fetch(`/api/admin/home-content/welcome`);
         const response = await subtitle.json();
-  
-        reset((formValues) => ({
+
+        reset(formValues => ({
           ...formValues,
           subtitle: response.subtitle,
         }));
       } catch (error) {
-        console.log({error});
+        console.log({ error });
       } finally {
-        setIsLoadingSubtitle(false)
+        setIsLoadingSubtitle(false);
       }
-    }
+    };
 
-    getSubtitle()
-  }, [reset])
+    getSubtitle();
+  }, [reset]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="subtitle">Subtitulo de la Página de Inicio</label>
+        <label className="text-gray-700 dark:text-gray-300" htmlFor="subtitle">
+          Subtitulo de la Página de Inicio
+        </label>
         <textarea
           id="subtitle"
           rows={4}

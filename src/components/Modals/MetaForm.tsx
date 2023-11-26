@@ -32,7 +32,7 @@ export default function MetaForm({
     },
   });
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoadingForm(true);
 
     try {

@@ -4,7 +4,7 @@ export const rpName = "Finanzas Educativas";
 export const rpID = new URL(
   process.env.NODE_ENV === "production"
     ? process.env.NEXTAUTH_ON_PRODUCTION_URL!
-    : process.env.NEXTAUTH_URL!
+    : process.env.NEXTAUTH_URL!,
 ).hostname;
 // The URL at which registrations and authentications should occur
 export const origin =

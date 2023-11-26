@@ -2,8 +2,10 @@
 
 import InputShowPsw from "@/components/ChkbxPsw";
 import Input from "@/components/Input";
+import ThemeTooltip from "@/components/Tooltip/ThemeTooltip";
 import useStart2FAAuth from "@/hooks/userStart2FAAuth";
 import { tosty } from "@/libs/tosty";
+import clsx from "clsx";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -33,7 +35,7 @@ export default function FormSignIn() {
 
   const formValues = watch() as typeof defaultValues;
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoading(true);
 
     try {
@@ -122,15 +124,20 @@ export default function FormSignIn() {
         <SignInIcon className="text-2xl" />
         {isLoading ? "CARGANDO..." : "INGRESAR"}
       </button>
-      <button
-        type="button"
-        className="rounded-md px-10 py-2 font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-zinc-300 dark:bg-zinc-400 dark:text-slate-900 enabled:hover:bg-sushi-500 dark:enabled:hover:text-white enabled:hover:text-white disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
-        onClick={() => start2FAAuth(formValues.document)}
-        disabled={isLoadingAuth || !formValues.document}
+      <ThemeTooltip
+        message="Complete su número de identificacíon e inicie sesión por este medio solo si ha registrado un autenticador previamente en su perfíl."
+        cl={clsx("bottom-12 right-0 origin-bottom w-full")}
       >
-        <FingerPrintIcon className="text-2xl" />
-        {isLoadingAuth ? "CARGANDO..." : "WEBAUTHN"}
-      </button>
+        <button
+          type="button"
+          className="rounded-md px-10 py-2 font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-zinc-300 dark:bg-zinc-400 dark:text-slate-900 enabled:hover:bg-sushi-500 dark:enabled:hover:text-white enabled:hover:text-white disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed"
+          onClick={() => start2FAAuth(formValues.document)}
+          disabled={isLoadingAuth || !formValues.document}
+        >
+          <FingerPrintIcon className="text-2xl" />
+          {isLoadingAuth ? "CARGANDO..." : "WEBAUTHN"}
+        </button>
+      </ThemeTooltip>
     </form>
   );
 }

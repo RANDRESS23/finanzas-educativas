@@ -33,7 +33,7 @@ export default function FormSendEmail() {
       }
 
       tosty.success(
-        `Hemos enviado a ${email} un link para recuperar tu contraseña.`
+        `Hemos enviado a ${email} un link para recuperar tu contraseña.`,
       );
       reset();
     } catch (error) {

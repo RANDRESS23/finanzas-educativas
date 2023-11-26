@@ -16,7 +16,7 @@ export default function Footer() {
     <footer
       className={clsx(
         "flex flex-col justify-center items-center gap-10 py-10 border-t border-slate-900/10",
-        { "lg:ml-64": pathname.includes("/profile/admin") }
+        { "lg:ml-64": pathname.includes("/profile/admin") },
       )}
     >
       <div>

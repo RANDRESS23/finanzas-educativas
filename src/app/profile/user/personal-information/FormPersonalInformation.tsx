@@ -67,7 +67,7 @@ export default function FormPersonalInformation({
         email,
       } = session.user;
 
-      reset((formValues) => ({
+      reset(formValues => ({
         ...formValues,
         documentType,
         document,
@@ -84,7 +84,7 @@ export default function FormPersonalInformation({
     const getMoreInfoUser = async () => {
       try {
         const response = await api.get(
-          `/user/userMoreInfo/${session?.user?.id}`
+          `/user/userMoreInfo/${session?.user?.id}`,
         );
 
         if (response.status === 404) {
@@ -93,7 +93,7 @@ export default function FormPersonalInformation({
           return console.error({ error: "No hay datos del usuario" });
         }
 
-        reset((formValues) => ({
+        reset(formValues => ({
           ...formValues,
           ...response.data,
           isInAPensionFund: response.data.isInAPensionFund ? "Si" : "No",
@@ -115,7 +115,7 @@ export default function FormPersonalInformation({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [session?.user]);
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     if (editInfo) {
       setIsLoading(true);
       let response;

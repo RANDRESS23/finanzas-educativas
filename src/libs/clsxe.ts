@@ -9,7 +9,7 @@ const clsxe = (inputErrors: any, cl?: string) =>
         inputErrors !== undefined,
       " ring-gray-300 dark:ring-slate-700 focus:ring-boston-blue-600 dark:focus:ring-boston-blue-600 hover:ring-gray-400/75 dark:hover:ring-slate-500 focus:hover:shadow-boston-blue-600/40 dark:focus:hover:shadow-boston-blue-600/40 hover:shadow-gray-200 dark:hover:shadow-gray-700/40":
         inputErrors === undefined,
-    }
+    },
   );
 
 export default clsxe;

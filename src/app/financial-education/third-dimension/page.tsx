@@ -70,7 +70,7 @@ export default function ThirdDimension() {
                   </Link>
                 </div>
               </div>
-            )
+            ),
           )}
         </div>
       </div>
