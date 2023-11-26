@@ -2,18 +2,18 @@
 
 import React, { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import ModalFormWelcome from './ModalFormWelcome';
 import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
-import ModalPill from './ModalPill';
+import ModalFormPill from './ModalFormPill';
 
 interface ModalProps {
   open: boolean;
   setOpen: (value: boolean) => void;
+  setOpen2: (value: boolean) => void;
   cancelButtonRef: any;
-  title: string;
+  idPill: string;
 }
 
-export default function ModalContent({ open, setOpen, cancelButtonRef, title }: ModalProps) {
+export default function ModalPillContent({ open, setOpen, setOpen2, cancelButtonRef, idPill }: ModalProps) {
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-[60]" initialFocus={cancelButtonRef} onClose={setOpen}>
@@ -48,16 +48,14 @@ export default function ModalContent({ open, setOpen, cancelButtonRef, title }: 
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
                       <Dialog.Title as="h3" className="text-xl font-semibold leading-6 text-gray-900 dark:text-gray-300">
-                        Editar <span className='text-sushi-500'>{title}</span>
+                        Editar <span className='text-sushi-500'>Pildora de Conocimiento</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          title === "Bienvenida" ? (
-                            <ModalFormWelcome setOpen={setOpen} />
-                          ) : (
-                            <ModalPill setOpen={setOpen} />
-                          )
-                        }
+                        <ModalFormPill 
+                          setOpen={setOpen} 
+                          setOpen2={setOpen2} 
+                          idPill={idPill} 
+                        />
                       </div>
                     </div>
                   </div>
