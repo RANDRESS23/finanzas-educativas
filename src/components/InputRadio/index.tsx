@@ -18,7 +18,7 @@ export default function InputRadio({
   return (
     <div>
       <span className="block font-medium leading-6">{label}</span>
-      <div className="mt-4 flex gap-5">
+      <div className="mt-4 flex flex-wrap gap-5">
         {options.map(({ value, label }) => (
           <div key={label} className="relative flex gap-x-3">
             <div className="flex h-6 items-center">
