@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { TbBrandSpeedtest as TestIcon } from "react-icons/tb";
+import ButtonRedirectTest from "@/components/ButtonRedirectTest";
 
 export default async function ProfileUserPage() {
   const session = await getServerSession(authOptions);
@@ -41,23 +41,17 @@ export default async function ProfileUserPage() {
               fugiat aliqua.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <Link
-                href="/signup"
-                className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-2"
-              >
-                REALIZAR TEST DE CONOCIMIENTO
-                <TestIcon />
-              </Link>
+              <ButtonRedirectTest idUser={session?.user.id} />
             </div>
           </div>
         </div>
-        <div className="sm:w-3/4 relative rounded-lg overflow-hidden">
+        <div className="lg:w-1/2 relative rounded-lg overflow-hidden flex justify-center items-center">
           <Image
             width={500}
             height={400}
             src="https://images.unsplash.com/photo-1498758536662-35b82cd15e29?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2102&q=80"
             alt="photo"
-            className="object-cover lg:h-full w-[180%] h-auto aspect-square transform hover:scale-105 hover:brightness-105 transition-all duration-300 cursor-pointer"
+            className="object-cover aspect-square transform hover:scale-105 hover:brightness-105 transition-all duration-300 cursor-pointer rounded-lg"
           />
         </div>
       </div>
