@@ -2,7 +2,7 @@ import { authOptions } from "@/libs/authOptions";
 import Title from "@/components/Title";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-import FormPreTestD1 from "./FormPreTestD1";
+import FormPreTest from "./FormPreTest";
 
 export default async function PreTestPage() {
   const session = await getServerSession(authOptions);
@@ -33,7 +33,7 @@ export default async function PreTestPage() {
               A continuación, indique que tan probable es que conozca o realice las siguientes actividades:
             </p>
           </div>
-          <FormPreTestD1 />
+          <FormPreTest />
         </div>
       </div>
     </div>

@@ -41,8 +41,7 @@ type InformativeVideos {
 type Question {
   id String
   question String
-  answers String[]
-  correctAnswer String?
+  answer String
 }
 
 model User {
