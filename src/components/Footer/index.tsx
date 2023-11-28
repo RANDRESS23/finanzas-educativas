@@ -1,7 +1,7 @@
 "use client";
 
 import { useCloseSession } from "@/hooks/useCloseSession";
-import contactIcons from "@/meta/footerContactIcons";
+import footerContactIcons from "@/meta/footerContactIcons";
 import clsx from "clsx";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
@@ -86,7 +86,7 @@ export default function Footer() {
       </div>
       <div>
         <ul className="flex justify-center items-center gap-5 sm:gap-12">
-          {contactIcons.map(({ ReactIcon, href, name }) => (
+          {footerContactIcons.map(({ ReactIcon, href, name }) => (
             <li key={name}>
               <Link href={href} className="flex justify-center items-center">
                 <ReactIcon className="text-gray-400 hover:text-boston-blue-600 transition-colors w-6 h-6" />

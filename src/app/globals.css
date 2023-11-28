@@ -4,7 +4,7 @@
 
 @layer {
   body {
-    @apply antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:text-slate-950 selection:bg-slate-950/10 dark:selection:text-slate-200 dark:selection:bg-slate-50/10 select-none;
+    @apply antialiased text-slate-900 dark:text-slate-100 bg-white dark:bg-slate-900 selection:text-slate-950 selection:bg-slate-950/10 dark:selection:text-slate-200 dark:selection:bg-slate-50/10;
   }
 
   h1,
@@ -12,6 +12,29 @@
   h3 {
     @apply pointer-events-none;
   }
+}
+
+@keyframes show {
+  from {
+    opacity: 0;
+    scale: 25%;
+  }
+
+  to {
+    opacity: 1;
+    scale: 100%;
+  }
+}
+
+img {
+  view-timeline-name: --image;
+  view-timeline-axis: block;
+
+  animation-timeline: --image;
+  animation-name: show;
+
+  animation-range: entry 25% cover 30%;
+  animation-fill-mode: both;
 }
 
 html::-webkit-scrollbar,

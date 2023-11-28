@@ -1,37 +1,37 @@
 import {
-  FaFacebook as FaceIcon,
-  FaInstagramSquare as InstaIcon,
-  FaTwitter as TweetIcon,
-  FaYoutube as YtIcon,
-  FaWhatsapp as WhIcon,
-} from "react-icons/fa";
+  FaFacebook as FacebookIcon,
+  FaInstagram as InstagramIcon,
+  FaXTwitter as TwittertIcon,
+  FaYoutube as YoutubeIcon,
+  FaWhatsapp as WhatsAppIcon,
+} from "react-icons/fa6";
 
-const contactIcons = [
+const footerContactIcons = [
   {
     name: "Facebook",
-    ReactIcon: FaceIcon,
+    ReactIcon: FacebookIcon,
     href: "#",
   },
   {
     name: "Instagram",
-    ReactIcon: InstaIcon,
+    ReactIcon: InstagramIcon,
     href: "#",
   },
   {
     name: "Twitter",
-    ReactIcon: TweetIcon,
+    ReactIcon: TwittertIcon,
     href: "#",
   },
   {
     name: "Youtube",
-    ReactIcon: YtIcon,
+    ReactIcon: YoutubeIcon,
     href: "#",
   },
   {
     name: "WhatsApp",
-    ReactIcon: WhIcon,
+    ReactIcon: WhatsAppIcon,
     href: "#",
   },
 ];
 
-export default contactIcons;
+export default footerContactIcons;
