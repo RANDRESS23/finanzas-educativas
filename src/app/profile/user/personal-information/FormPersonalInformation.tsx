@@ -90,6 +90,8 @@ export default function FormPersonalInformation({
         if (response.status === 404) {
           setIsExistUserData(false);
           setEditInfo(false);
+          console.log('XDDDDDDDDDD');
+          
           return console.error({ error: "No hay datos del usuario" });
         }
 
@@ -100,7 +102,9 @@ export default function FormPersonalInformation({
         }));
       } catch (error) {
         if (isAxiosError(error)) {
-          tosty.warn(error.response?.data.message);
+          setIsExistUserData(false);
+          setEditInfo(false);
+          return tosty.warn(error.response?.data.message);
         }
 
         console.error({ error });
@@ -438,6 +442,7 @@ export default function FormPersonalInformation({
           { value: 2, label: "2 personas" },
           { value: 3, label: "3 personas" },
           { value: 4, label: "4 o más personas" },
+          { value: 0, label: "Ninguna" },
         ]}
       />
 

@@ -32,7 +32,7 @@ export default function ButtonRedirectTest({ idUser }: ButtonRedirectTestProps) 
       onClick={handleRedirect}
       className="rounded-md bg-boston-blue-600 hover:bg-sushi-500 px-7 py-3 text-sm font-semibold text-white shadow-sm transition-colors duration-300 flex items-center justify-center gap-x-2"
     >
-      REALIZAR TEST DE CONOCIMIENTO
+      REALIZAR PRE-TEST DE CONOCIMIENTO
       <TestIcon />
     </button>
   )

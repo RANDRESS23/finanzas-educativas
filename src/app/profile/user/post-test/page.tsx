@@ -2,7 +2,7 @@ import { authOptions } from "@/libs/authOptions";
 import Title from "@/components/Title";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-import FormPreTest from "./FormPreTest";
+import FormPostTest from "./FormPostTest";
 
 const isUserAnwseredPreTest = async (idUser: string) => {
   try {
@@ -26,7 +26,7 @@ const isUserAnwseredPostTest = async (idUser: string) => {
   }
 }
 
-export default async function PreTestPage() {
+export default async function PostTestPage() {
   const session = await getServerSession(authOptions);
   const isUserAnwseredPreTestInApp = await isUserAnwseredPreTest(session?.user.id);
   const isUserAnwseredPostTestInApp = await isUserAnwseredPostTest(session?.user.id);
@@ -35,10 +35,10 @@ export default async function PreTestPage() {
     return redirect("/profile/admin");
   }
 
-  if (isUserAnwseredPreTestInApp !== isUserAnwseredPostTestInApp) {
-    return redirect("/profile/user/post-test");
+  if (!isUserAnwseredPreTestInApp) {
+    return redirect("/profile/user/pre-test");
   }
-  
+
   if (isUserAnwseredPostTestInApp) {
     return redirect("/profile/user");
   }
@@ -47,7 +47,7 @@ export default async function PreTestPage() {
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mb-10 py-20">
       <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
         <h2 className="mt-5 text-center text-3xl font-bold leading-9 tracking-tight">
-          Completa tu pre-test en{" "}
+          Completa tu post-test en{" "}
           <Title text="¡Finanzas Educativas!" isTextStatic />
         </h2>
       </div>
@@ -65,7 +65,7 @@ export default async function PreTestPage() {
               A continuación, indique que tan probable es que conozca o realice las siguientes actividades:
             </p>
           </div>
-          <FormPreTest />
+          <FormPostTest />
         </div>
       </div>
     </div>

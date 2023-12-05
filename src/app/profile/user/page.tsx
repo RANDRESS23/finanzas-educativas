@@ -5,10 +5,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import ButtonRedirectTest from "@/components/ButtonRedirectTest";
+import ButtonRedirectTest2 from "@/components/ButtonRedirectTest2";
+
+const isUserAnwseredPreTest = async (idUser: string) => {
+  try {
+    const existUserPreTestInfo = await fetch(`${process.env.NEXTAUTH_URL}/api/user/pre-test/${idUser}`);
+    const data = await existUserPreTestInfo.json();
+  
+    return data.id ? true : false;
+  } catch (error) {
+    console.log({error});
+  }
+}
+
+const isUserAnwseredPostTest = async (idUser: string) => {
+  try {
+    const existUserPostTestInfo = await fetch(`${process.env.NEXTAUTH_URL}/api/user/post-test/${idUser}`);
+    const data = await existUserPostTestInfo.json();
+  
+    return data.id ? true : false;
+  } catch (error) {
+    console.log({error});
+  }
+}
 
 export default async function ProfileUserPage() {
   const session = await getServerSession(authOptions);
-
+  const isUserAnwseredPreTestInApp = await isUserAnwseredPreTest(session?.user.id);
+  const isUserAnwseredPostTestInApp = await isUserAnwseredPostTest(session?.user.id);
+  
   if (session?.user?.email === "admin@gmail.com") {
     redirect("/profile/admin");
   }
@@ -41,7 +66,13 @@ export default async function ProfileUserPage() {
               fugiat aliqua.
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <ButtonRedirectTest idUser={session?.user.id} />
+              {
+                isUserAnwseredPreTestInApp && isUserAnwseredPostTestInApp
+                  ? <></>
+                  : isUserAnwseredPreTestInApp
+                    ? <ButtonRedirectTest2 />
+                    : <ButtonRedirectTest idUser={session?.user.id} />
+              }
             </div>
           </div>
         </div>
