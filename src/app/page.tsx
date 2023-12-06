@@ -100,7 +100,7 @@ export default async function Home() {
 
       <div className="mb-48">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-10">
+          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-10 flow-finanzas-xd">
             <p>
               Pildoras de <span className="text-sushi-500">Conocimiento</span>
             </p>

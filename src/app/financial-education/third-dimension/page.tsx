@@ -27,7 +27,7 @@ export default function ThirdDimension() {
             ({ title, description, url }, index) => (
               <div
                 key={index}
-                className="relative flex w-[400px] flex-col rounded-xl bg-white dark:bg-slate-950/40 bg-clip-border text-gray-700 shadow-2xl shadow-slate-500/20 dark:shadow-slate-950/60 hover:bg-slate-100 dark:hover:bg-slate-900 hover:ring-1 hover:ring-gray-200/40 dark:hover:ring-slate-700/20 transition-colors duration-300"
+                className="relative flex w-[400px] flex-col rounded-xl bg-white dark:bg-slate-950/40 bg-clip-border text-gray-700 shadow-2xl shadow-slate-500/20 dark:shadow-slate-950/60 hover:bg-slate-100 dark:hover:bg-slate-900 hover:ring-1 hover:ring-gray-200/40 dark:hover:ring-slate-700/20 transition-colors duration-300 flow-finanzas-xd"
               >
                 <div className="px-6 pt-6 pb-3">
                   <div

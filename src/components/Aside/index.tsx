@@ -36,13 +36,13 @@ export default function Aside() {
                 />
               </li>
             </ul>
-            <div className="space-y-2 pt-2">
+            {/* <div className="space-y-2 pt-2">
               <ItemList
                 href="/profile/admin/dashboard/help"
                 Icon={HelpIcon}
                 title="Ayuda"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
