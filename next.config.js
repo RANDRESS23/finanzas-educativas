@@ -39,6 +39,12 @@ const nextConfig = {
         port: "",
         pathname: "/windster/images/users/**",
       },
+      {
+        protocol: "https",
+        hostname: "guia.itfip.edu.co",
+        port: "",
+        pathname: "/sgacampus/images/dynamic/**",
+      },
     ],
   },
 };

@@ -5,7 +5,7 @@ import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
 import { isAxiosError } from "axios";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { BsFillPatchCheckFill as CompleteIcon } from "react-icons/bs";

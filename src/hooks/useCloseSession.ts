@@ -1,5 +1,5 @@
 import { signOut } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 
 /**
  * Custom hook to do SignOut.

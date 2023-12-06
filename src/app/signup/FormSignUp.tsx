@@ -7,7 +7,7 @@ import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";

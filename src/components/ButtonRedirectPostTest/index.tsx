@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { TbBrandSpeedtest as TestIcon } from "react-icons/tb";
 
 export default function ButtonRedirectPostTest() {

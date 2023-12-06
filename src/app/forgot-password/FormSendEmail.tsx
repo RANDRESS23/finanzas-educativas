@@ -4,7 +4,7 @@ import Input from "@/components/Input";
 import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
 import { isAxiosError } from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { SiMinutemailer as SendIcon } from "react-icons/si";

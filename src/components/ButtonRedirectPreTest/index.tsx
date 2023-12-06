@@ -1,7 +1,7 @@
 "use client";
 
 import { tosty } from "@/libs/tosty";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { TbBrandSpeedtest as TestIcon } from "react-icons/tb";
 
 interface ButtonRedirectTestProps {

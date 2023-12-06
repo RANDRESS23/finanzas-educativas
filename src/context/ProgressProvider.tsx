@@ -15,6 +15,7 @@ export default function ProgressProvider({
         options={{
           showSpinner: false,
         }}
+        shallowRouting
       />
       {children}
     </>

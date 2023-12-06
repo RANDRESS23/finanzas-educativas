@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { tosty } from "@/libs/tosty";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import clsxe from "@/libs/clsxe";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import api from "@/libs/api";
