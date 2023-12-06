@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
 import { useRouter } from "next/navigation";
 import { TbBrandSpeedtest as TestIcon } from "react-icons/tb";
 
-export default function ButtonRedirectTest2() {
+export default function ButtonRedirectPostTest() {
   const router = useRouter();
 
   const handleRedirect = async () => {
     return router.push("/profile/user/post-test");
-  }
+  };
 
   return (
     <button
@@ -18,5 +18,5 @@ export default function ButtonRedirectTest2() {
       REALIZAR POST-TEST DE CONOCIMIENTO
       <TestIcon />
     </button>
-  )
+  );
 }

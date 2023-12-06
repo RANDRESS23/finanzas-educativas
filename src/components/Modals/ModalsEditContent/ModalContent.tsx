@@ -4,7 +4,7 @@ import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import ModalFormWelcome from "./ModalFormWelcome";
 import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
-import ModalPill from './ModalPill';
+import ModalPill from "./ModalPill";
 
 interface ModalProps {
   open: boolean;
@@ -64,13 +64,11 @@ export default function ModalContent({
                         Editar <span className="text-sushi-500">{title}</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          title === "Bienvenida" ? (
-                            <ModalFormWelcome setOpen={setOpen} />
-                          ) : (
-                            <ModalPill setOpen={setOpen} />
-                          )
-                        }
+                        {title === "Bienvenida" ? (
+                          <ModalFormWelcome setOpen={setOpen} />
+                        ) : (
+                          <ModalPill setOpen={setOpen} />
+                        )}
                       </div>
                     </div>
                   </div>

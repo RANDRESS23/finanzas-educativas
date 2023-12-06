@@ -1,9 +1,9 @@
 "use client";
 
-import React, { Fragment } from 'react'
-import { Dialog, Transition } from '@headlessui/react'
+import React, { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
-import ModalFormPill from './ModalFormPill';
+import ModalFormPill from "./ModalFormPill";
 
 interface ModalProps {
   open: boolean;
@@ -13,10 +13,21 @@ interface ModalProps {
   idPill: string;
 }
 
-export default function ModalPillContent({ open, setOpen, setOpen2, cancelButtonRef, idPill }: ModalProps) {
+export default function ModalPillContent({
+  open,
+  setOpen,
+  setOpen2,
+  cancelButtonRef,
+  idPill,
+}: ModalProps) {
   return (
     <Transition.Root show={open} as={Fragment}>
-      <Dialog as="div" className="relative z-[60]" initialFocus={cancelButtonRef} onClose={setOpen}>
+      <Dialog
+        as="div"
+        className="relative z-[60]"
+        initialFocus={cancelButtonRef}
+        onClose={setOpen}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -47,14 +58,20 @@ export default function ModalPillContent({ open, setOpen, setOpen2, cancelButton
                       <HomeIcon className="text-6xl md:text-4xl text-white" />
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left w-full">
-                      <Dialog.Title as="h3" className="text-xl font-semibold leading-6 text-gray-900 dark:text-gray-300">
-                        Editar <span className='text-sushi-500'>Pildora de Conocimiento</span>
+                      <Dialog.Title
+                        as="h3"
+                        className="text-xl font-semibold leading-6 text-gray-900 dark:text-gray-300"
+                      >
+                        Editar{" "}
+                        <span className="text-sushi-500">
+                          Pildora de Conocimiento
+                        </span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        <ModalFormPill 
-                          setOpen={setOpen} 
-                          setOpen2={setOpen2} 
-                          idPill={idPill} 
+                        <ModalFormPill
+                          setOpen={setOpen}
+                          setOpen2={setOpen2}
+                          idPill={idPill}
                         />
                       </div>
                     </div>
@@ -66,5 +83,5 @@ export default function ModalPillContent({ open, setOpen, setOpen2, cancelButton
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 }

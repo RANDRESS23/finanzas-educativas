@@ -90,8 +90,8 @@ export default function FormPersonalInformation({
         if (response.status === 404) {
           setIsExistUserData(false);
           setEditInfo(false);
-          console.log('XDDDDDDDDDD');
-          
+          console.log("XDDDDDDDDDD");
+
           return console.error({ error: "No hay datos del usuario" });
         }
 

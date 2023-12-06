@@ -2,20 +2,22 @@ import { db } from "@/libs/prismaDB";
 import type { KnowledgePill } from "@/types/home-content";
 import { NextResponse } from "next/server";
 
-export async function GET(
-  _: Request,
-  { params }: { params: { id: string } }
-) {
+export async function GET(_: Request, { params }: { params: { id: string } }) {
   try {
     const homeContentInfo = await db.homeContent.findMany();
 
-    return NextResponse.json(homeContentInfo[0].knowledgePillsContent.knowledgePills.find(({id}) => id === params.id), { status: 200 });
+    return NextResponse.json(
+      homeContentInfo[0].knowledgePillsContent.knowledgePills.find(
+        ({ id }) => id === params.id,
+      ),
+      { status: 200 },
+    );
   } catch (error) {
     console.error({ error });
 
     return NextResponse.json(
       { message: "Something went wrong.", error },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

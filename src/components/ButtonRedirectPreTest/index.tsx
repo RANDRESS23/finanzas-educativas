@@ -1,14 +1,16 @@
-"use client"
+"use client";
 
+import { tosty } from "@/libs/tosty";
 import { useRouter } from "next/navigation";
 import { TbBrandSpeedtest as TestIcon } from "react-icons/tb";
-import { tosty } from "@/libs/tosty";
 
 interface ButtonRedirectTestProps {
-  idUser: string
+  idUser: string;
 }
 
-export default function ButtonRedirectTest({ idUser }: ButtonRedirectTestProps) {
+export default function ButtonRedirectPreTest({
+  idUser,
+}: ButtonRedirectTestProps) {
   const router = useRouter();
 
   const handleRedirect = async () => {
@@ -19,13 +21,14 @@ export default function ButtonRedirectTest({ idUser }: ButtonRedirectTestProps) 
       if (data.id) {
         return router.push("/profile/user/pre-test");
       }
-      
-      return tosty.error("Debes completar tu información personal para poder realizar el pre-test de conocimiento.");
+
+      return tosty.error(
+        "Debes completar tu información personal para poder realizar el pre-test de conocimiento.",
+      );
     } catch (error) {
-      console.log({error});
-      
+      console.log({ error });
     }
-  }
+  };
 
   return (
     <button
@@ -35,5 +38,5 @@ export default function ButtonRedirectTest({ idUser }: ButtonRedirectTestProps) 
       REALIZAR PRE-TEST DE CONOCIMIENTO
       <TestIcon />
     </button>
-  )
+  );
 }

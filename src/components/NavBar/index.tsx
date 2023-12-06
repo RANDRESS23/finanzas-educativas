@@ -1,5 +1,6 @@
 "use client";
 
+import IconoFinanzasEducativas from "@/assets/icono_finanzas_educativas.png";
 import ThemeToggle from "@/components/Theme/ThemeToggle";
 import { useCloseSession } from "@/hooks/useCloseSession";
 import clsx from "clsx";
@@ -14,12 +15,12 @@ import {
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 import { MdContactSupport as ContactIcon } from "react-icons/md";
 import { RiTeamFill as UsIcon } from "react-icons/ri";
+import { SiSoundcharts as AdminIcon } from "react-icons/si";
 import ThemeTooltip from "../Tooltip/ThemeTooltip";
 import ItemListDropDown from "./ItemListDropDown";
 import MobileMenu from "./MobileMenu";
 import {
   AccountCashIcon,
-  AdminIcon,
   ArrowDownIcon,
   ArrowUpIcon,
   FinanceIcon,
@@ -28,7 +29,6 @@ import {
   PigIcon,
   UserIcon,
 } from "./icons";
-import IconoFinanzasEducativas from "@/assets/icono_finanzas_educativas.png";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -204,7 +204,7 @@ export default function NavBar() {
                   className="flex justify-center items-center gap-2 text-base font-bold leading-6 text-gray-900 dark:text-zinc-50 hover:text-sushi-500 dark:hover:text-sushi-500"
                 >
                   Admin.
-                  <AdminIcon />
+                  <AdminIcon className="text-2xl" />
                 </Link>
               ) : (
                 <Link

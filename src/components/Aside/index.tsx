@@ -16,6 +16,13 @@ export default function Aside() {
             <ul className="space-y-2 pb-2">
               <li>
                 <ItemList
+                  href="/profile/admin/dashboard"
+                  Icon={DashboardIcon}
+                  title="Estadísticas"
+                />
+              </li>
+              <li>
+                <ItemList
                   href="/profile/admin/dashboard/page-content"
                   Icon={DashboardIcon}
                   title="Contenido"

@@ -11,8 +11,8 @@ export async function POST(request: Request) {
         questionsFirstDimension: body.questionsFirstDimension,
         questionsSecondDimension: body.questionsSecondDimension,
         questionsThirdDimension: body.questionsThirdDimension,
-      }
-    })
+      },
+    });
 
     return NextResponse.json(
       {
