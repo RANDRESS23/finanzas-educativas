@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { DashboardIcon, HelpIcon, UserIcon } from "../Aside/icons";
 import { SiSoundcharts as AdminIcon } from "react-icons/si";
+import { DashboardIcon, UserIcon } from "../Aside/icons";
 
 interface AdminPanelMobileProps {
   handleResetMenus: () => void;
