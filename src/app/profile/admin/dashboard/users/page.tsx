@@ -2,6 +2,7 @@ import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import TableUsers from "./TableUsers";
+import pkg from '@/../package.json'
 
 export default async function UsersPreviewPage() {
   const session = await getServerSession(authOptions);
@@ -27,17 +28,16 @@ export default async function UsersPreviewPage() {
                         Nuestros usuarios registrados
                       </h3>
                       <span className="text-base font-normal text-gray-500 dark:text-gray-300">
-                        Esta es una lista de todos los usuarios activos bajo
-                        tenencia!
+                        Usuarios registrados en {pkg.description}
                       </span>
                     </div>
                     <div className="flex-shrink-0">
-                      <a
+                      {/* <a
                         href="#"
                         className="text-sm font-medium text-cyan-600 hover:bg-gray-100 dark:hover:bg-slate-800 rounded-lg p-2"
                       >
                         Ver todos
-                      </a>
+                      </a> */}
                     </div>
                   </div>
                   <div className="flex flex-col mt-8">

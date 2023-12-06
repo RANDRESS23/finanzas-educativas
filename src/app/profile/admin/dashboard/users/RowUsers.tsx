@@ -19,9 +19,6 @@ async function RowUsers() {
       <td className="p-4 whitespace-nowrap text-sm font-semibold">
         {new Date(u.createdAt).toLocaleString()}
       </td>
-      <td className="p-4 whitespace-nowrap text-sm font-semibold">
-        ${Math.floor(Math.random() * 10000)} USD
-      </td>
     </tr>
   ));
 }

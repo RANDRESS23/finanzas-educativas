@@ -3,6 +3,7 @@ import FA2Container from "@/components/FA2/FA2Container";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import Overflow from "@/components/Overflow";
+import ProgressProvider from "@/context/ProgressProvider";
 import SessionProviderContext from "@/providers/SessionProvider";
 import ThemeProvider from "@/providers/ThemeProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
@@ -40,20 +41,22 @@ export default async function RootLayout({
         />
       </head>
       <body>
-        <ThemeProvider>
-          <Overflow />
+        <ProgressProvider>
+          <ThemeProvider>
+            <Overflow />
 
-          <FA2Container />
+            <FA2Container />
 
-          <SessionProviderContext>
-            <NavBar />
-            <ToasterProvider />
+            <SessionProviderContext>
+              <NavBar />
+              <ToasterProvider />
 
-            <main>{children}</main>
+              <main>{children}</main>
 
-            <Footer />
-          </SessionProviderContext>
-        </ThemeProvider>
+              <Footer />
+            </SessionProviderContext>
+          </ThemeProvider>
+        </ProgressProvider>
       </body>
     </html>
   );
