@@ -5,14 +5,14 @@ export default function ExpensesAndIncomes() {
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
       <div className="mx-auto mt-5 flex flex-col max-w-3xl lg:text-center">
         <div className="mt-4 flex justify-center items-center gap-14 sm:text-4xl">
-          <div className="hidden lg:block">
+          <div className="hidden lg:block flow-finanzas-xd">
             <Expense />
           </div>
           <div>
             <p className="text-3xl text-left font-bold tracking-tight">
               ¿Qué son ingresos?
             </p>
-            <p className="mt-6 text-lg text-left leading-8 text-gray-600 dark:text-gray-400">
+            <p className="mt-6 text-lg text-left leading-8 text-gray-600 dark:text-gray-400 flow-finanzas-xd">
               Los ingresos son la cantidad de dinero recaudada o ganada como
               resultado de trabajar o participar en acciones socioeconómicas.
               Los ingresos se pueden clasificar como rentas, salarios
@@ -27,7 +27,7 @@ export default function ExpensesAndIncomes() {
             <p className="text-3xl text-left font-bold tracking-tight">
               ¿Qué son gastos?
             </p>
-            <div className="mt-6 text-lg text-left leading-8 text-gray-600 dark:text-gray-400">
+            <div className="mt-6 text-lg text-left leading-8 text-gray-600 dark:text-gray-400 flow-finanzas-xd">
               Por definición, son los cargos monetarios en que una persona
               incurre en el desarrollo normal de su vida o actividad económica.
               Es decir, son las salidas de dinero (egresos) que realiza para
@@ -46,7 +46,7 @@ export default function ExpensesAndIncomes() {
               </ul>
             </div>
           </div>
-          <div className="hidden lg:block">
+          <div className="hidden lg:block flow-finanzas-xd">
             <Income />
           </div>
         </div>

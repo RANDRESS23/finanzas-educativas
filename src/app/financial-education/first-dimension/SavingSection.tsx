@@ -35,7 +35,7 @@ export default function SavingSection() {
         <div className="mx-auto mt-12 max-w-2xl sm:mt-14 lg:mt-16 lg:max-w-4xl">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
             {savingFeatures.map(({ name, description, Icon }) => (
-              <div key={name} className="relative pl-16">
+              <div key={name} className="relative pl-16 flow-finanzas-xd">
                 <dt className="text-base font-bold leading-7 text-sushi-500">
                   <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-boston-blue-600">
                     <Icon />

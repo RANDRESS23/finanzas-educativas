@@ -43,7 +43,7 @@ export default function SecondDimension() {
         <div className="mx-auto mt-12 max-w-2xl sm:mt-14 lg:mt-16 lg:max-w-4xl">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
             {goodDecisions.map(({ name, description, Icon }) => (
-              <div key={name} className="relative pl-16">
+              <div key={name} className="relative pl-16 flow-finanzas-xd">
                 <dt className="text-base font-bold leading-7 text-sushi-500">
                   <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-boston-blue-600">
                     <Icon />
@@ -62,7 +62,7 @@ export default function SecondDimension() {
             ¿Que hay que tener en cuenta para tomar una{" "}
             <span className="text-sushi-500">Buena Decisión</span>?{" "}
           </p>
-          <p className="text-lg font-normal mt-5 text-gray-600 dark:text-gray-400 lg:w-3/4 lg:mx-auto">
+          <p className="text-lg font-normal mt-5 text-gray-600 dark:text-gray-400 lg:w-3/4 lg:mx-auto flow-finanzas-xd">
             Tomar una buena decisión implica considerar varios factores clave,
             Antes de tomar una decisión, asegúrese de entender completamente el
             problema o la situación que está abordando. La claridad en la
