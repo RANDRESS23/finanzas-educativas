@@ -12,7 +12,7 @@ export default function AdminPanelMobile({
   return (
     <div className="my-2 space-y-2 animate-enter" id="disclosure-1">
       <Link
-        href="/profile/admin/dashboard/page-content"
+        href="/profile/admin/dashboard"
         className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >

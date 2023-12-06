@@ -1,13 +1,13 @@
 import { LogInIcon } from "@/components/NavBar/icons";
 import Pill from "@/components/Pill";
 import Title from "@/components/Title";
+import VideoComponent from "@/components/Video";
+import { authOptions } from "@/libs/authOptions";
+import type { HomeContent } from "@/types/home-content";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
-import { MdVideoFile as VideoIcon } from "react-icons/md";
-import { authOptions } from "@/libs/authOptions";
-import type { HomeContent } from "@/types/home-content";
 
 const getHomeContent = async () => {
   try {
@@ -130,14 +130,7 @@ export default async function Home() {
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
             {Array.from({ length: 3 }, (_, index) => (
-              <div
-                key={index}
-                role="status"
-                className="z-20 flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-80 h-56"
-              >
-                <VideoIcon className="w-10 h-10 text-gray-200 dark:text-gray-600" />
-                <span className="sr-only">Loading...</span>
-              </div>
+              <VideoComponent key={index} />
             ))}
           </div>
         </div>
