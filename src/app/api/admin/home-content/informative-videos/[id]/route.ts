@@ -6,7 +6,7 @@ export async function GET(_: Request, { params }: { params: { id: string } }) {
     const homeContentInfo = await db.homeContent.findMany();
 
     return NextResponse.json(
-      homeContentInfo[0].knowledgePillsContent.knowledgePills.find(
+      homeContentInfo[0].informativeVideosContent.informativeVideos.find(
         ({ id }) => id === params.id,
       ),
       { status: 200 },
@@ -25,41 +25,41 @@ export async function PUT(
   request: Request,
   { params }: { params: { id: string } },
 ) {
-  const body: { title: string; description: string } = await request.json();
+  const body: { title: string; url: string } = await request.json();
 
   try {
     const [homeContentInfo] = await db.homeContent.findMany();
 
-    const knowledgePillsUpdated =
-      homeContentInfo.knowledgePillsContent.knowledgePills.map(
-        ({ id, title, description }) => {
+    const informativeVideosUpdated =
+      homeContentInfo.informativeVideosContent.informativeVideos.map(
+        ({ id, title, url }) => {
           if (id === params.id) {
             return {
               id,
               title: body.title,
-              description: body.description,
+              url: body.url,
             };
           }
 
-          return { id, title, description };
+          return { id, title, url };
         },
       );
 
-    const knowledgePillsInfoUpdated = await db.homeContent.update({
+    const informativeVideosInfoUpdated = await db.homeContent.update({
       where: {
         id: homeContentInfo.id,
       },
       data: {
-        knowledgePillsContent: {
-          subtitle: homeContentInfo.knowledgePillsContent.subtitle,
-          knowledgePills: knowledgePillsUpdated,
+        informativeVideosContent: {
+          subtitle: homeContentInfo.informativeVideosContent.subtitle,
+          informativeVideos: informativeVideosUpdated,
         },
       },
     });
 
     return NextResponse.json(
       {
-        knowledgePillsInfoUpdated,
+        informativeVideosInfoUpdated,
         message: "Información actualizada correctamente",
       },
       { status: 201 },

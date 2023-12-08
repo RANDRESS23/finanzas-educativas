@@ -32,11 +32,6 @@ export default function FormPreTest() {
       question13: "",
       question14: "",
       question15: "",
-      question16: "",
-      question17: "",
-      question18: "",
-      question19: "",
-      question20: "",
     },
   });
 
@@ -47,7 +42,7 @@ export default function FormPreTest() {
       const questions = Object.entries(data);
 
       const questionsFirstDimension = questions
-        .slice(0, 9)
+        .slice(0, 7)
         .map(([question, answer]) => {
           const id = question.replace("question", "");
 
@@ -55,7 +50,7 @@ export default function FormPreTest() {
         });
 
       const questionsSecondDimension = questions
-        .slice(9, 15)
+        .slice(7, 11)
         .map(([question, answer]) => {
           const id = question.replace("question", "");
 
@@ -63,7 +58,7 @@ export default function FormPreTest() {
         });
 
       const questionsThirdDimension = questions
-        .slice(9, 15)
+        .slice(11, 15)
         .map(([question, answer]) => {
           const id = question.replace("question", "");
 
@@ -103,7 +98,7 @@ export default function FormPreTest() {
     >
       <InputRadio
         name="question1"
-        label="1°- ¿Sabe perfectamente con cuánto dinero cuenta para sus gastos mensuales?"
+        label="1°- ¿La cantidad de ingresos que obtiene de sus actividades económicas le permite realizar ahorros?"
         register={register}
         options={[
           { value: "Siempre", label: "Siempre" },
@@ -117,7 +112,7 @@ export default function FormPreTest() {
 
       <InputRadio
         name="question2"
-        label="2°- ¿Es organizado con sus gastos de acuerdo con lo que recibe o gana?"
+        label="2°- ¿La cantidad de ingresos que recibe de sus actividades económicas le permite pagar todos sus gastos?"
         register={register}
         options={[
           { value: "Siempre", label: "Siempre" },
@@ -131,7 +126,7 @@ export default function FormPreTest() {
 
       <InputRadio
         name="question3"
-        label="3°- ¿En su puesto de trabajo o su negocio: lleva un control de lo que va a comprar y de lo que vende?"
+        label="3°- ¿Sabe perfectamente con cuánto dinero cuenta para sus gastos mensuales?"
         register={register}
         options={[
           { value: "Siempre", label: "Siempre" },
@@ -145,7 +140,7 @@ export default function FormPreTest() {
 
       <InputRadio
         name="question4"
-        label="4°- ¿Con lo que gana en su puesto de trabajo o su negocio, puede ahorrar?"
+        label="4°- ¿Organiza sus gastos conforme a lo que recibe o gana?"
         register={register}
         options={[
           { value: "Siempre", label: "Siempre" },
@@ -159,7 +154,7 @@ export default function FormPreTest() {
 
       <InputRadio
         name="question5"
-        label="5°- ¿Con lo que recibe por las ventas en su puesto de trabajo o su negocio, puede pagar sus deudas?"
+        label="5°- ¿Lleva un control de lo que va a comprar y de lo que vende?"
         register={register}
         options={[
           { value: "Siempre", label: "Siempre" },
@@ -170,60 +165,31 @@ export default function FormPreTest() {
         ]}
         disabled={false}
       />
-
-      <p className="text-lg font-normal mx-auto mt-6 -mb-5 w-full col-span-2">
-        Indique en cada una de las siguientes acciones, si corresponde a un
-        gasto, un ingreso, un ahorro o una inversión:
-      </p>
-
+      
       <InputRadio
         name="question6"
-        label="6°- Una de las actividades cotidianas que usted suele hacer es el pago de la renta (arriendo) y de servicios públicos. Dichos pagos usted los considera:"
+        label="6°- ¿Con lo que gana en su puesto de trabajo o su negocio, puede ahorrar?"
         register={register}
         options={[
-          { value: "Un gasto", label: "Un gasto" },
-          { value: "Un ingreso", label: "Un ingreso" },
-          { value: "Un ahorro", label: "Un ahorro" },
-          { value: "Una inversion", label: "Una inversión" },
+          { value: "Siempre", label: "Siempre" },
+          { value: "Casi siempre", label: "Casi siempre" },
+          { value: "A veces", label: "A veces" },
+          { value: "Casi Nunca", label: "Casi nunca" },
+          { value: "Nunca", label: "Nunca" },
         ]}
         disabled={false}
       />
-
+      
       <InputRadio
         name="question7"
-        label="7°- Algunas personas como usted, deben pagar la universidad suya o de sus hijos. Este pago se le puede considerar:"
+        label="7°- ¿Con lo que gana en su puesto de trabajo o su negocio, puede pagar todas sus deudas?"
         register={register}
         options={[
-          { value: "Un gasto", label: "Un gasto" },
-          { value: "Un ingreso", label: "Un ingreso" },
-          { value: "Un ahorro", label: "Un ahorro" },
-          { value: "Una inversion", label: "Una inversión" },
-        ]}
-        disabled={false}
-      />
-
-      <InputRadio
-        name="question8"
-        label="8°- Cuando usted recibe el pago de su salario o ganancias de su trabajo, a esto se le considera:"
-        register={register}
-        options={[
-          { value: "Un gasto", label: "Un gasto" },
-          { value: "Un ingreso", label: "Un ingreso" },
-          { value: "Un ahorro", label: "Un ahorro" },
-          { value: "Una inversion", label: "Una inversión" },
-        ]}
-        disabled={false}
-      />
-
-      <InputRadio
-        name="question9"
-        label="9°- Cuando usted guarda o reserva parte del dinero que recibe de su salario para el futuro, dicho dinero se le considera:"
-        register={register}
-        options={[
-          { value: "Un gasto", label: "Un gasto" },
-          { value: "Un ingreso", label: "Un ingreso" },
-          { value: "Un ahorro", label: "Un ahorro" },
-          { value: "Una inversion", label: "Una inversión" },
+          { value: "Siempre", label: "Siempre" },
+          { value: "Casi siempre", label: "Casi siempre" },
+          { value: "A veces", label: "A veces" },
+          { value: "Casi Nunca", label: "Casi nunca" },
+          { value: "Nunca", label: "Nunca" },
         ]}
         disabled={false}
       />
@@ -244,45 +210,47 @@ export default function FormPreTest() {
       </p>
 
       <InputRadio
+        name="question8"
+        label="8°- ¿Consideraría la posibilidad de invertir sus ahorros o parte de sus ahorros en productos financieros como CDT, fondos de inversión, acciones, bonos, entre otros?"
+        register={register}
+        options={[
+          { value: "Totalmente de acuerdo", label: "Totalmente de acuerdo" },
+          { value: "De acuerdo", label: "De acuerdo" },
+          { value: "Indeciso", label: "Indeciso" },
+          { value: "En desacuerdo", label: "En desacuerdo" },
+          {
+            value: "Totalmente en desacuerdo",
+            label: "Totalmente en desacuerdo",
+          },
+        ]}
+        disabled={false}
+      />
+
+      <InputRadio
+        name="question9"
+        label="9°- ¿Consideraría la posibilidad de adquirir un crédito o préstamo en una entidad financiera, para su negocio, vivienda, educación o libre inversión?"
+        register={register}
+        options={[
+          { value: "Totalmente de acuerdo", label: "Totalmente de acuerdo" },
+          { value: "De acuerdo", label: "De acuerdo" },
+          { value: "Indeciso", label: "Indeciso" },
+          { value: "En desacuerdo", label: "En desacuerdo" },
+          {
+            value: "Totalmente en desacuerdo",
+            label: "Totalmente en desacuerdo",
+          },
+        ]}
+        disabled={false}
+      />
+
+      <InputRadio
         name="question10"
-        label="10°- ¿Consideraría la posibilidad de invertir sus ahorros o parte de sus ahorros en productos financieros como CDT, fondos de inversión, acciones, bonos, entre otros?"
-        register={register}
-        options={[
-          { value: "Totalmente de acuerdo", label: "Totalmente de acuerdo" },
-          { value: "De acuerdo", label: "De acuerdo" },
-          { value: "En desacuerdo", label: "En desacuerdo" },
-          {
-            value: "Totalmente en desacuerdo",
-            label: "Totalmente en desacuerdo",
-          },
-        ]}
-        disabled={false}
-      />
-
-      <InputRadio
-        name="question11"
-        label="11°- ¿Consideraría la posibilidad de adquirir un crédito o préstamo en una entidad financiera, para su negocio, vivienda, educación o libre inversión?"
-        register={register}
-        options={[
-          { value: "Totalmente de acuerdo", label: "Totalmente de acuerdo" },
-          { value: "De acuerdo", label: "De acuerdo" },
-          { value: "En desacuerdo", label: "En desacuerdo" },
-          {
-            value: "Totalmente en desacuerdo",
-            label: "Totalmente en desacuerdo",
-          },
-        ]}
-        disabled={false}
-      />
-
-      <InputRadio
-        name="question12"
-        label="12°- Cuando necesita adquirir un préstamo de dinero, usted acude  preferiblemente a:"
+        label="10°- Cuando necesita adquirir un préstamo de dinero, usted acude preferiblemente a:"
         register={register}
         options={[
           {
-            value: "Una Entidad financiera ( como Bancos, Fintech u otro)",
-            label: "Una Entidad financiera ( como Bancos, Fintech u otro)",
+            value: "Una Entidad financiera",
+            label: "Una Entidad financiera",
           },
           { value: "Un Familiar", label: "Un Familiar" },
           { value: "Un amigo", label: "Un amigo" },
@@ -301,66 +269,12 @@ export default function FormPreTest() {
       />
 
       <InputRadio
-        name="question13"
-        label="13°- ¿Cuál de las siguientes opciones elegiría como forma efectiva para reducir sus gastos mensuales?"
+        name="question11"
+        label="11°- Cuenta con un fondo de emergencias para contar con suficiente dinero en caso de un imprevisto o calamidad"
         register={register}
         options={[
-          {
-            value: "Adquirir o conseguir nuevas tarjetas de crédito",
-            label: "Adquirir o conseguir nuevas tarjetas de crédito",
-          },
-          {
-            value: "Comprar solamente lo necesario",
-            label: "Comprar solamente lo necesario",
-          },
-          {
-            value: "Cancelar alguno de los servicios públicos",
-            label: "Cancelar alguno de los servicios públicos",
-          },
-          {
-            value: "Hacer rifas o participar en sorteos (apuestas)",
-            label: "Hacer rifas o participar en sorteos (apuestas)",
-          },
-        ]}
-        disabled={false}
-      />
-
-      <InputRadio
-        name="question14"
-        label="14°- ¿Qué se debe tener en cuenta para tener una tarjeta de crédito?
-        "
-        register={register}
-        options={[
-          {
-            value: "La cantidad de efectivo que puedes retirar",
-            label: "La cantidad de efectivo que puedes retirar",
-          },
-          {
-            value: "El banco o establecimiento",
-            label: "El banco o establecimiento",
-          },
-          { value: "La tasa de interés", label: "La tasa de interés" },
-          { value: "No lo sabe", label: "No lo sabe" },
-        ]}
-        disabled={false}
-      />
-
-      <InputRadio
-        name="question15"
-        label="15°- ¿Cómo puede asegurarse de tener suficiente dinero para emergencias inesperadas?
-        "
-        register={register}
-        options={[
-          {
-            value: "Manteniendo un fondo de emergencia",
-            label: "Manteniendo un fondo de emergencia",
-          },
-          {
-            value: "Pedir dinero prestado cuando surjan emergencias",
-            label: "Pedir dinero prestado cuando surjan emergencias",
-          },
-          { value: "Vender los bienes", label: "Vender los bienes" },
-          { value: "No sabe qué hacer", label: "No sabe qué hacer" },
+          { value: "Sí", label: "Sí", },
+          { value: "No", label: "No", },
         ]}
         disabled={false}
       />
@@ -377,9 +291,8 @@ export default function FormPreTest() {
       </p>
 
       <InputRadio
-        name="question16"
-        label="16°- ¿Cuál de las siguientes opciones es recomendable, pensando para cuando deje de trabajar (jubilación)?
-        "
+        name="question12"
+        label="12°- Opción que consideraría más conveniente pensando en su jubilación:"
         register={register}
         options={[
           {
@@ -404,8 +317,8 @@ export default function FormPreTest() {
       />
 
       <InputRadio
-        name="question17"
-        label="17°- ¿Cuál de los siguientes factores es más importante al considerar la inversión a largo plazo?
+        name="question13"
+        label="13°- ¿Cuál de los siguientes factores es más importante al considerar la inversión a largo plazo?
         "
         register={register}
         options={[
@@ -427,9 +340,8 @@ export default function FormPreTest() {
       />
 
       <InputRadio
-        name="question18"
-        label="18°- En la organización de sus gastos (presupuesto personal), ¿Qué respuesta o afirmación es verdadera?
-        "
+        name="question14"
+        label="14°- En la organización de sus gastos (presupuesto personal), ¿Qué respuesta o afirmación es verdadera?"
         register={register}
         options={[
           {
@@ -457,38 +369,13 @@ export default function FormPreTest() {
       />
 
       <InputRadio
-        name="question19"
-        label="19°- ¿Cuál es una forma efectiva de reducir las deudas?"
+        name="question15"
+        label="15°- ¿Qué tipo de cuenta suele utilizarse para el ahorro a corto plazo y gastos diarios?"
         register={register}
         options={[
-          {
-            value: "Hacer pagos mínimos cada mes",
-            label: "Hacer pagos mínimos cada mes",
-          },
-          {
-            value: "Priorizar las deudas de mayor interés y pagarlas primero",
-            label: "Priorizar las deudas de mayor interés y pagarlas primero",
-          },
-          {
-            value: "Consolidar todas las deudas en una sola tarjeta de crédito",
-            label: "Consolidar todas las deudas en una sola tarjeta de crédito",
-          },
-          { value: "No lo sabe", label: "No lo sabe" },
-        ]}
-        disabled={false}
-      />
-
-      <InputRadio
-        name="question20"
-        label="20°- ¿Qué tipo de cuenta suele utilizarse para el ahorro a corto plazo y gastos diarios?"
-        register={register}
-        options={[
-          { value: "Cuenta de ahorros", label: "Cuenta de ahorros" },
-          { value: "Cuenta corriente", label: "Cuenta corriente" },
-          {
-            value: "Certificado de depósito",
-            label: "Certificado de depósito",
-          },
+          { value: "Cuenta de ahorros", label: "Cuenta de ahorros", },
+          { value: "Cuenta corriente", label: "Cuenta corriente", },
+          { value: "Certificado de depósito", label: "Certificado de depósito", },
           { value: "No lo sabe", label: "No lo sabe" },
         ]}
         disabled={false}

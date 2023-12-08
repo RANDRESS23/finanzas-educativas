@@ -393,12 +393,13 @@ export default function FormPersonalInformation({
         options={[
           { value: "ventas informales", label: "Ventas informales" },
           {
-            value: "vinculacion laboral con una empresa",
-            label: "Vinculación laboral con una empresa",
+            value: "negocio propio e informalidad",
+            label: "Negocio propio e informalidad",
           },
-          { value: "subsidios del gobierno", label: "Subsidios del gobierno" },
-          { value: "emprendimiento propio", label: "Emprendimiento propio" },
-          { value: "no-income", label: "No percibo ningún tipo de ingresos" },
+          {
+            value: "trabajar en una empresa e informalidad",
+            label: "Trabajar en una empresa e informalidad",
+          },
         ]}
       />
 
@@ -433,7 +434,7 @@ export default function FormPersonalInformation({
           id: "numberPeopleDependFinancially",
           disabled: editInfo,
         }}
-        label="Número de personas que dependen económicamente de usted"
+        label="Número de personas que dependen económicamente de sus ingresos"
         register={register}
         errors={errors}
         options={[
@@ -441,7 +442,6 @@ export default function FormPersonalInformation({
           { value: 2, label: "2 personas" },
           { value: 3, label: "3 personas" },
           { value: 4, label: "4 o más personas" },
-          { value: 0, label: "Ninguna" },
         ]}
       />
 

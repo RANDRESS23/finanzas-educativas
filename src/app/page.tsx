@@ -3,7 +3,6 @@ import Pill from "@/components/Pill";
 import Title from "@/components/Title";
 import VideoComponent from "@/components/Video";
 import { authOptions } from "@/libs/authOptions";
-import home_url_videos from "@/json/home_url_videos.json";
 import type { HomeContent } from "@/types/home-content";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
@@ -130,8 +129,8 @@ export default async function Home() {
             </p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
-            {home_url_videos.map((url, index) => (
-              <VideoComponent video_url={url} key={index} />
+            {informativeVideosContent.informativeVideos.map(({ id, url }) => (
+              <VideoComponent video_url={url} key={id} />
             ))}
           </div>
         </div>

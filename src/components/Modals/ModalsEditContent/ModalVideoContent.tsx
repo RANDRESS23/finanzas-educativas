@@ -2,23 +2,23 @@
 
 import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import ModalFormWelcome from "./ModalFormWelcome";
 import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
-import ModalPill from "./ModalPill";
-import ModalVideo from "./ModalVideo";
+import ModalFormVideo from "./ModalFormVideo";
 
 interface ModalProps {
   open: boolean;
   setOpen: (value: boolean) => void;
+  setOpen2: (value: boolean) => void;
   cancelButtonRef: any;
-  title: string;
+  idVideo: string;
 }
 
-export default function ModalContent({
+export default function ModalVideoContent({
   open,
   setOpen,
+  setOpen2,
   cancelButtonRef,
-  title,
+  idVideo,
 }: ModalProps) {
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -62,22 +62,17 @@ export default function ModalContent({
                         as="h3"
                         className="text-xl font-semibold leading-6 text-gray-900 dark:text-gray-300"
                       >
-                        Editar <span className="text-sushi-500">{title}</span>
+                        Editar{" "}
+                        <span className="text-sushi-500">
+                          Video Informativo Educativo
+                        </span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          title === "Bienvenida" 
-                            ? (
-                                <ModalFormWelcome setOpen={setOpen} />
-                              ) 
-                            : title === "Pildoras de Conocimiento"
-                              ? (
-                                  <ModalPill setOpen={setOpen} />
-                                )
-                              : (
-                                  <ModalVideo setOpen={setOpen} />
-                                )
-                        }
+                        <ModalFormVideo
+                          setOpen={setOpen}
+                          setOpen2={setOpen2}
+                          idVideo={idVideo}
+                        />
                       </div>
                     </div>
                   </div>
