@@ -2,7 +2,9 @@ import { db } from "@/libs/prismaDB";
 import Image from "next/image";
 
 export default async function Team() {
-  const teamMembers = await db.teamMembers.findMany();
+  const teamMembers = await db.teamMember.findMany({
+    include: { team: { select: { teamName: true } } },
+  });
 
   return (
     <div className="bg-white py-24 sm:py-32 dark:bg-slate-900">
@@ -21,7 +23,7 @@ export default async function Team() {
           role="list"
           className="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2"
         >
-          {teamMembers.map(({ cc, fullName, teamRole }) => (
+          {teamMembers.map(({ cc, fullName, team }) => (
             <li key={cc}>
               <div className="flex items-center gap-x-6">
                 <Image
@@ -36,7 +38,7 @@ export default async function Team() {
                     {fullName}
                   </h3>
                   <p className="text-sm font-semibold leading-6 text-sushi-600">
-                    {teamRole}
+                    {team.teamName}
                   </p>
                 </div>
               </div>

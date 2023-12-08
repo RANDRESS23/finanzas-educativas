@@ -18,10 +18,14 @@ function Submit() {
   );
 }
 
-export default function FormDeleteMemberTeam({ cc }: { cc: string }) {
+export default function FormDeleteMemberTeam({
+  memberId,
+}: {
+  memberId: string;
+}) {
   return (
     <form action={deleteMember}>
-      <input type="hidden" name="cc" id="cc" value={cc} />
+      <input type="hidden" name="memberId" id="memberId" value={memberId} />
       <Submit />
     </form>
   );

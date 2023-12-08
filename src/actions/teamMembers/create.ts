@@ -5,14 +5,14 @@ import { teamMemberSchema } from "@/schemas/teamMember.schema";
 import { revalidatePath } from "next/cache";
 import pkg from "@/../package.json";
 
-export async function addMember(
+export async function createMember(
   _prevState: any,
   formData: FormData,
 ): Promise<any> {
   const parse = teamMemberSchema.safeParse({
     cc: formData.get("cc"),
     fullName: formData.get("fullName"),
-    teamRole: formData.get("teamRole"),
+    teamId: formData.get("teamId"),
   });
 
   if (!parse.success) {
@@ -22,15 +22,13 @@ export async function addMember(
   const data = parse.data;
 
   try {
-    const existingMember = await db.teamMembers.findFirst({
+    const existingMember = await db.teamMember.findFirst({
       where: { cc: data.cc },
     });
     if (existingMember) {
-      return {
-        message: "El miembro del equipo ya existe.",
-      };
+      return { message: "El miembro del equipo ya existe." };
     }
-    await db.teamMembers.create({ data });
+    await db.teamMember.create({ data });
     revalidatePath("/profile/admin/dashboard/teamMembers");
 
     return {

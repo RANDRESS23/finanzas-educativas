@@ -36,6 +36,7 @@ export default function CounterUserIntruments({
 
   useEffect(() => {
     getData(statistic);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

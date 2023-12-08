@@ -1,18 +1,28 @@
 import { db } from "@/libs/prismaDB";
 import Image from "next/image";
 import FormDeleteMemberTeam from "./FormDeleteMemberTeam";
+import pkg from "@/../package.json";
 
 export default async function MembersList() {
-  const teamMembers = await db.teamMembers.findMany();
+  const teamMembers = await db.teamMember.findMany({
+    include: { team: { select: { teamName: true } } },
+  });
 
   if (teamMembers.length === 0) {
-    return <div className="text-center text-9xl font-bold">0</div>;
+    return (
+      <article className="text-center">
+        <div className="text-9xl font-bold">0</div>
+        <span className="font-normal text-sm">
+          Miembros en {pkg.description}
+        </span>
+      </article>
+    );
   }
 
   return (
     <ul role="list" className="divide-y divide-gray-200">
-      {teamMembers.map(({ cc, fullName, teamRole }, i) => (
-        <li key={i} className="py-3 sm:py-4">
+      {teamMembers.map(({ cc, fullName, team, id }) => (
+        <li key={id} className="py-3 sm:py-4">
           <div className="flex items-center space-x-4">
             <div className="flex-shrink-0">
               <Image
@@ -27,10 +37,10 @@ export default async function MembersList() {
               <p className="text-sm font-medium text-gray-600 dark:text-gray-400 truncate">
                 {fullName}
               </p>
-              <p className="text-sm text-gray-500 truncate">{teamRole}</p>
+              <p className="text-sm text-gray-500 truncate">{team.teamName}</p>
             </div>
             <div className="inline-flex items-center text-base font-semibold text-gray-600 dark:text-gray-400">
-              <FormDeleteMemberTeam cc={cc} />
+              <FormDeleteMemberTeam memberId={id} />
             </div>
           </div>
         </li>

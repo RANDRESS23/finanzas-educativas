@@ -49,6 +49,7 @@ export default function Pie({
 
   useEffect(() => {
     constructData(statistic);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

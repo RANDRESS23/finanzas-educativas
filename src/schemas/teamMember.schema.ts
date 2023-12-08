@@ -17,5 +17,5 @@ export const teamMemberSchema = z.object({
     .max(100, {
       message: "Los nombres deben tener un máximo de 100 caracteres.",
     }),
-  teamRole: z.string(),
+  teamId: z.string(),
 });

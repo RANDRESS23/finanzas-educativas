@@ -1,9 +1,11 @@
 "use client";
 
-import { addMember } from "@/actions/teamMembers/add";
+import { createMember } from "@/actions/teamMembers/create";
 import Input from "@/components/Input";
 import InputSelect from "@/components/InputSelect";
-import { useEffect, useRef } from "react";
+import api from "@/libs/api";
+import { Team } from "@prisma/client";
+import { useEffect, useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { IoMdAddCircleOutline as AddIcon } from "react-icons/io";
 
@@ -28,12 +30,24 @@ function Submit() {
 }
 
 export default function FormCreateMemberTeam() {
-  const [state, formAction] = useFormState(addMember, initialState);
+  const [state, formAction] = useFormState(createMember, initialState);
   const ref = useRef<HTMLFormElement>(null);
+  const [teams, setTeams] = useState<{ value: string; label: string }[]>([]);
 
   useEffect(() => {
     state.ok && ref.current?.reset();
   }, [state.ok]);
+
+  useEffect(() => {
+    (async () => {
+      const { data: teams } = await api<Team[]>("/team");
+      const teamOpts = teams.map(({ id: value, teamName: label }) => ({
+        value,
+        label,
+      }));
+      setTeams(teamOpts);
+    })();
+  }, []);
 
   return (
     <form ref={ref} action={formAction}>
@@ -68,31 +82,14 @@ export default function FormCreateMemberTeam() {
       <div className="mb-4">
         <InputSelect
           selectProps={{
-            id: "teamRole",
-            name: "teamRole",
+            id: "teamId",
+            name: "teamId",
             placeholder: "Seleccione un rol",
             autoComplete: "off",
             required: true,
           }}
           label="Rol Equipo"
-          options={[
-            {
-              value: "",
-              label: "Seleccione",
-            },
-            {
-              value: "Equipo de Desarrollo",
-              label: "Equipo de Desarrollo",
-            },
-            {
-              value: "Equipo de Diseño",
-              label: "Equipo de Diseño",
-            },
-            {
-              value: "Equipo de Contenido",
-              label: "Equipo de Contenido",
-            },
-          ]}
+          options={[{ label: "Seleccione un equipo", value: "" }, ...teams]}
         />
       </div>
 
