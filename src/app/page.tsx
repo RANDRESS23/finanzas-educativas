@@ -1,13 +1,14 @@
 import { LogInIcon } from "@/components/NavBar/icons";
 import Pill from "@/components/Pill";
 import Title from "@/components/Title";
+import VideoComponent from "@/components/Video";
+import { authOptions } from "@/libs/authOptions";
+import home_url_videos from "@/json/home_url_videos.json";
+import type { HomeContent } from "@/types/home-content";
 import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
-import { MdVideoFile as VideoIcon } from "react-icons/md";
-import { authOptions } from "@/libs/authOptions";
-import type { HomeContent } from "@/types/home-content";
 
 const getHomeContent = async () => {
   try {
@@ -17,7 +18,7 @@ const getHomeContent = async () => {
     const data = await homeContent.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error({ error });
   }
 };
 
@@ -99,7 +100,7 @@ export default async function Home() {
 
       <div className="mb-48">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-10">
+          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-10 flow-finanzas-xd">
             <p>
               Pildoras de <span className="text-sushi-500">Conocimiento</span>
             </p>
@@ -129,15 +130,8 @@ export default async function Home() {
             </p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
-            {Array.from({ length: 3 }, (_, index) => (
-              <div
-                key={index}
-                role="status"
-                className="z-20 flex items-center justify-center bg-gray-300 rounded-lg animate-pulse dark:bg-gray-700 w-80 h-56"
-              >
-                <VideoIcon className="w-10 h-10 text-gray-200 dark:text-gray-600" />
-                <span className="sr-only">Loading...</span>
-              </div>
+            {home_url_videos.map((url, index) => (
+              <VideoComponent video_url={url} key={index} />
             ))}
           </div>
         </div>

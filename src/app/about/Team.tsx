@@ -10,8 +10,9 @@ export default function Team() {
             Nuestro <span className="text-sushi-600">Equipo</span>
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-400">
-            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae
-            elementum enim vitae ullamcorper suspendisse.
+            Somos un equipo comprometido, fusionando conocimiento y entusiasmo.
+            Descubre quiénes somos y cómo trabajamos juntos para impulsar tu
+            éxito financiero.
           </p>
         </div>
         <ul

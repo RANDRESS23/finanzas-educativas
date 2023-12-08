@@ -8,7 +8,7 @@ import { tosty } from "@/libs/tosty";
 import clsx from "clsx";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { LiaFingerprintSolid as FingerPrintIcon } from "react-icons/lia";

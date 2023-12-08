@@ -32,7 +32,7 @@ export default function AboutSection({
   const SvgIcon = SVGS_IMAGES[svgName];
 
   return (
-    <section className="w-full md:flex md:justify-center md:items-center md:gap-16 mb-16">
+    <section className="w-full md:flex md:justify-center md:items-center md:gap-16 mb-16 flow-finanzas-xd">
       {svgInLeftPosition && (
         <div className="hidden md:block lg:w-96">
           <SvgIcon />

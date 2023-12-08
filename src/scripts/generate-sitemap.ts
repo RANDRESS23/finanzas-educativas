@@ -69,7 +69,7 @@ const generateSitemap = async () => {
   const sm = await streamToPromise(gzipStream);
   await fs.writeFile("./public/sitemap.xml.gz", sm);
 
-  console.log("Sitemap generated successfully.");
+  console.info("Sitemap generated successfully.");
 };
 
 // Execute the main function to generate the sitemap

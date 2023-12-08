@@ -1,6 +1,7 @@
-"use client";
-
-import { UserIcon, DashboardIcon, HelpIcon } from "./icons";
+import { BiSolidBookContent as DashboardIcon } from "react-icons/bi";
+import { FaUsersRectangle as MemebersIcon } from "react-icons/fa6";
+import { PiUsersFourFill as UsersIcon } from "react-icons/pi";
+import { SiSoundcharts as AdminIcon } from "react-icons/si";
 import ItemList from "./ItemList";
 
 export default function Aside() {
@@ -16,26 +17,48 @@ export default function Aside() {
             <ul className="space-y-2 pb-2">
               <li>
                 <ItemList
+                  href="/profile/admin/dashboard"
+                  icon={
+                    <AdminIcon className="text-2xl dark:text-gray-400 text-gray-600" />
+                  }
+                  title="Estadísticas"
+                />
+              </li>
+              <li>
+                <ItemList
                   href="/profile/admin/dashboard/page-content"
-                  Icon={DashboardIcon}
+                  icon={
+                    <DashboardIcon className="text-2xl dark:text-gray-400 text-gray-600" />
+                  }
                   title="Contenido"
                 />
               </li>
               <li>
                 <ItemList
                   href="/profile/admin/dashboard/users"
-                  Icon={UserIcon}
+                  icon={
+                    <UsersIcon className="text-2xl dark:text-gray-400 text-gray-600" />
+                  }
                   title="Usuarios"
                 />
               </li>
+              <li>
+                <ItemList
+                  href="/profile/admin/dashboard/teamMembers"
+                  icon={
+                    <MemebersIcon className="text-2xl dark:text-gray-400 text-gray-600" />
+                  }
+                  title="Miembros Equipo"
+                />
+              </li>
             </ul>
-            <div className="space-y-2 pt-2">
+            {/* <div className="space-y-2 pt-2">
               <ItemList
                 href="/profile/admin/dashboard/help"
                 Icon={HelpIcon}
                 title="Ayuda"
               />
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

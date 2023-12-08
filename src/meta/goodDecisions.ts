@@ -42,26 +42,22 @@ const goodDecisions = [
   },
   {
     name: "Evalúa tus valores y principios",
-    description:
-      "",
+    description: "",
     Icon: PigMoneyIcon,
   },
   {
     name: "Ten en cuenta el factor tiempo ",
-    description:
-      "",
+    description: "",
     Icon: PigMoneyIcon,
   },
   {
     name: "Visualiza las consecuencias a largo plazo",
-    description:
-      "",
+    description: "",
     Icon: PigMoneyIcon,
   },
   {
     name: "Confía en tu intuición",
-    description:
-      "",
+    description: "",
     Icon: PigMoneyIcon,
   },
   {
@@ -72,8 +68,7 @@ const goodDecisions = [
   },
   {
     name: "Aprende de la experiencia",
-    description:
-      "",
+    description: "",
     Icon: PigMoneyIcon,
   },
 ];

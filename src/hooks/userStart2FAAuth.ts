@@ -6,7 +6,7 @@ import {
 import type { PublicKeyCredentialRequestOptionsJSON } from "@simplewebauthn/typescript-types";
 import { isAxiosError } from "axios";
 import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import api from "../libs/api";
 import { tosty } from "../libs/tosty";

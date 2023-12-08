@@ -4,7 +4,7 @@ import { tosty } from "@/libs/tosty";
 import { type META } from "@/types/TMeta";
 import { type Meta } from "@prisma/client";
 import { isAxiosError } from "axios";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 
 export default function MetaForm({

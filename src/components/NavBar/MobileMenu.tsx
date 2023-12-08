@@ -1,5 +1,6 @@
 "use client";
 
+import IconoFinanzasEducativas from "@/assets/icono_finanzas_educativas.png";
 import ThemeToggle from "@/components/Theme/ThemeToggle";
 import { useCloseSession } from "@/hooks/useCloseSession";
 import { useSession } from "next-auth/react";
@@ -12,17 +13,16 @@ import {
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
 import { MdContactSupport as ContactIcon } from "react-icons/md";
 import { RiTeamFill as UsIcon } from "react-icons/ri";
+import { SiSoundcharts as AdminIcon } from "react-icons/si";
 import AdminPanelMobile from "./AdminPanelMobile";
 import FinancialEducationListMobile from "./FinancialEducationListMobile";
 import {
-  AdminIcon,
   ArrowDownIcon,
   ArrowUpIcon,
   CloseIcon,
   LogInIcon,
   UserIcon,
 } from "./icons";
-import IconoFinanzasEducativas from "@/assets/icono_finanzas_educativas.png";
 
 interface MobileMenuProps {
   isSubMenuMobileOpen: boolean;
@@ -172,7 +172,7 @@ export default function MobileMenu({
                         onClick={handleSubMenuAdminPanelOpen}
                       >
                         <div className="flex justify-center items-center gap-2">
-                          <AdminIcon />
+                          <AdminIcon className="text-2xl" />
                           Admin.
                         </div>
                         {isSubMenuAdminPanelOpen ? (

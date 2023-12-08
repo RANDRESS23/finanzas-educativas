@@ -6,7 +6,7 @@ import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
 import { type TPayload } from "@/types/TPayload";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { MdOutlineChangeCircle as ChangeIcon } from "react-icons/md";

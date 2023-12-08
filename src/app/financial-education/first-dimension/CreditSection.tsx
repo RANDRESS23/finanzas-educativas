@@ -32,7 +32,10 @@ export default function CreditSection() {
           </p>
           <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
             {creditFeatures.map(({ name, description }) => (
-              <div key={name} className="border-t border-gray-300 pt-4">
+              <div
+                key={name}
+                className="border-t border-gray-300 pt-4 flow-finanzas-xd"
+              >
                 <dt className="font-semibold text-sushi-500">{name}</dt>
                 <dd className="mt-2 text-base text-gray-600 dark:text-gray-400">
                   {description}
@@ -45,7 +48,7 @@ export default function CreditSection() {
           {creditFeatures.map((feature, index) => (
             <div
               key={index}
-              className="w-72 h-72 relative rounded-lg overflow-hidden"
+              className="w-72 h-72 relative rounded-lg overflow-hidden flow-finanzas-xd"
             >
               <Image
                 src={feature.imageSrc}

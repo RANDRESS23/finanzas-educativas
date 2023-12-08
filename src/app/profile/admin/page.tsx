@@ -36,9 +36,9 @@ export default async function ProfileAdminPage() {
               <Title />
             </h1>
             <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
+              ❝Empodérate Financieramente: Tu Futuro, Tu Control. Tu futuro
+              financiero está en tus manos. ¡Únete a nosotros y haz que cada
+              decisión cuente!❞
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
               <Link

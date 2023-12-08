@@ -8,7 +8,7 @@ import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
 import { isAxiosError } from "axios";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import { useEffect, useState, type Dispatch, type SetStateAction } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { BsFillPatchCheckFill as CompleteIcon } from "react-icons/bs";
@@ -90,6 +90,7 @@ export default function FormPersonalInformation({
         if (response.status === 404) {
           setIsExistUserData(false);
           setEditInfo(false);
+
           return console.error({ error: "No hay datos del usuario" });
         }
 
@@ -100,7 +101,9 @@ export default function FormPersonalInformation({
         }));
       } catch (error) {
         if (isAxiosError(error)) {
-          tosty.warn(error.response?.data.message);
+          setIsExistUserData(false);
+          setEditInfo(false);
+          return tosty.warn(error.response?.data.message);
         }
 
         console.error({ error });
@@ -438,6 +441,7 @@ export default function FormPersonalInformation({
           { value: 2, label: "2 personas" },
           { value: 3, label: "3 personas" },
           { value: 4, label: "4 o más personas" },
+          { value: 0, label: "Ninguna" },
         ]}
       />
 

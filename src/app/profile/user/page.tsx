@@ -4,10 +4,43 @@ import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import ButtonRedirectTest from "@/components/ButtonRedirectTest";
+import ButtonRedirectPreTest from "@/components/ButtonRedirectPreTest";
+import ButtonRedirectPostTest from "@/components/ButtonRedirectPostTest";
+
+const isUserAnwseredPreTest = async (idUser: string) => {
+  try {
+    const existUserPreTestInfo = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/user/pre-test/${idUser}`,
+    );
+    const data = await existUserPreTestInfo.json();
+
+    return data.id ? true : false;
+  } catch (error) {
+    console.error({ error });
+  }
+};
+
+const isUserAnwseredPostTest = async (idUser: string) => {
+  try {
+    const existUserPostTestInfo = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/user/post-test/${idUser}`,
+    );
+    const data = await existUserPostTestInfo.json();
+
+    return data.id ? true : false;
+  } catch (error) {
+    console.error({ error });
+  }
+};
 
 export default async function ProfileUserPage() {
   const session = await getServerSession(authOptions);
+  const isUserAnwseredPreTestInApp = await isUserAnwseredPreTest(
+    session?.user.id,
+  );
+  const isUserAnwseredPostTestInApp = await isUserAnwseredPostTest(
+    session?.user.id,
+  );
 
   if (session?.user?.email === "admin@gmail.com") {
     redirect("/profile/admin");
@@ -36,12 +69,18 @@ export default async function ProfileUserPage() {
               <Title />
             </h1>
             <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
-              Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui
-              lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat
-              fugiat aliqua.
+              ❝Empodérate Financieramente: Tu Futuro, Tu Control. Tu futuro
+              financiero está en tus manos. ¡Únete a nosotros y haz que cada
+              decisión cuente!❞
             </p>
             <div className="mt-10 flex items-center justify-center gap-x-6">
-              <ButtonRedirectTest idUser={session?.user.id} />
+              {isUserAnwseredPreTestInApp && isUserAnwseredPostTestInApp ? (
+                <></>
+              ) : isUserAnwseredPreTestInApp ? (
+                <ButtonRedirectPostTest />
+              ) : (
+                <ButtonRedirectPreTest idUser={session?.user.id} />
+              )}
             </div>
           </div>
         </div>

@@ -1,13 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface ItemListProps {
   href: string;
-  Icon: React.FC<React.SVGProps<SVGSVGElement>>;
+  icon: React.ReactElement;
   title: string;
 }
 
-export default function ItemList({ href, Icon, title }: ItemListProps) {
+export default function ItemList({ href, icon, title }: ItemListProps) {
   const pathname = usePathname();
 
   return (
@@ -17,7 +19,7 @@ export default function ItemList({ href, Icon, title }: ItemListProps) {
         pathname === href ? "bg-gray-100 dark:bg-slate-800" : ""
       }`}
     >
-      <Icon href={href} />
+      {icon}
       <span
         className={`ml-3 flex-1 whitespace-nowrap ${
           pathname === href ? "text-sushi-500" : ""

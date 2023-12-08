@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { tosty } from "@/libs/tosty";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next-nprogress-bar";
 import clsxe from "@/libs/clsxe";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import api from "@/libs/api";
@@ -14,7 +14,11 @@ interface ModalFormWelcomeProps {
   idPill: string;
 }
 
-export default function ModalFormPill({ setOpen, setOpen2, idPill }: ModalFormWelcomeProps) {
+export default function ModalFormPill({
+  setOpen,
+  setOpen2,
+  idPill,
+}: ModalFormWelcomeProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingPill, setIsLoadingPill] = useState(false);
   const router = useRouter();
@@ -30,24 +34,26 @@ export default function ModalFormPill({ setOpen, setOpen2, idPill }: ModalFormWe
     formState: { errors },
   } = useForm<FieldValues>({ defaultValues });
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+  const onSubmit: SubmitHandler<FieldValues> = async data => {
     setIsLoading(true);
 
     try {
-      const response = await api.put(`/admin/home-content/knowledge-pills/${idPill}`, {
-        title: data.title,
-        description: data.description
-      });
+      const response = await api.put(
+        `/admin/home-content/knowledge-pills/${idPill}`,
+        {
+          title: data.title,
+          description: data.description,
+        },
+      );
 
       if (response.status === 201) {
         tosty.success("¡Datos actualizados exitosamente!");
         router.refresh();
-        setOpen(false)
-        setOpen2(false)
+        setOpen(false);
+        setOpen2(false);
       } else {
         tosty.error("Error al actualizar datos!");
       }
-
     } catch (error: any) {
       if (isAxiosError(error)) {
         tosty.error(error.response?.data.message);
@@ -62,31 +68,35 @@ export default function ModalFormPill({ setOpen, setOpen2, idPill }: ModalFormWe
   useEffect(() => {
     const getPillInfo = async () => {
       try {
-        setIsLoadingPill(true)
+        setIsLoadingPill(true);
 
-        const pill = await fetch(`/api/admin/home-content/knowledge-pills/${idPill}`);
+        const pill = await fetch(
+          `/api/admin/home-content/knowledge-pills/${idPill}`,
+        );
         const response = await pill.json();
-  
-        reset((formValues) => ({
+
+        reset(formValues => ({
           ...formValues,
           title: response.title,
           description: response.description,
         }));
       } catch (error) {
-        console.log({error});
+        console.error({ error });
       } finally {
-        setIsLoadingPill(false)
+        setIsLoadingPill(false);
       }
-    }
+    };
 
-    getPillInfo()
-  }, [reset, idPill])
+    getPillInfo();
+  }, [reset, idPill]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="title">Titulo de la Pildora de Conocimiento</label>
-        <input 
+        <label className="text-gray-700 dark:text-gray-300" htmlFor="title">
+          Titulo de la Pildora de Conocimiento
+        </label>
+        <input
           id="title"
           type="text"
           {...register("title", {
@@ -97,9 +107,14 @@ export default function ModalFormPill({ setOpen, setOpen2, idPill }: ModalFormWe
           disabled={isLoading || isLoadingPill}
         />
       </div>
-      
+
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="description">Descripción de la Pildora de Conocimiento</label>
+        <label
+          className="text-gray-700 dark:text-gray-300"
+          htmlFor="description"
+        >
+          Descripción de la Pildora de Conocimiento
+        </label>
         <textarea
           id="description"
           rows={4}

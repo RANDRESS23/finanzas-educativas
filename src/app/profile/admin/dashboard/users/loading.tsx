@@ -1,3 +1,5 @@
+import pkg from "@/../package.json";
+
 export default function LoadingUsersPage() {
   return (
     <div className="flex overflow-hidden">
@@ -15,8 +17,7 @@ export default function LoadingUsersPage() {
                       Nuestros usuarios registrados
                     </h3>
                     <span className="text-base font-normal text-gray-500 dark:text-gray-300">
-                      Esta es una lista de todos los usuarios activos bajo
-                      tenencia!
+                      Usuarios registrados en {pkg.description}
                     </span>
                   </div>
                   <div className="flex-shrink-0">
