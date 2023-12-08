@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import FormCreateMemberTeam from "./FormCreateMemberTeam";
 import MembersList from "./MembersList";
 
+export const dynamic = "force-dynamic";
+
 export default async function TeamMembersPage() {
   const session = await getServerSession(authOptions);
 
