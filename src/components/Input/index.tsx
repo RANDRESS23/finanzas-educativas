@@ -9,8 +9,8 @@ type InputAttributes = React.JSX.IntrinsicElements["input"];
 
 type InputProps = {
   label: string;
-  register: UseFormRegister<FieldValues>;
-  errors: FieldErrors<FieldValues>;
+  register?: UseFormRegister<FieldValues>;
+  errors?: FieldErrors<FieldValues>;
   inputProps: InputAttributes;
 };
 
@@ -29,16 +29,20 @@ export default function Input({
         <input
           type={inputProps.type}
           id={inputProps.id}
-          {...register(inputProps.id!, {
-            required: "Este es un campo obligatorio!",
-          })}
-          className={clsxe(errors[inputProps.id!], inputProps.className)}
+          {...(register &&
+            register(inputProps.id!, {
+              required: "Este es un campo obligatorio!",
+            }))}
+          className={clsxe(
+            errors && errors[inputProps.id!],
+            inputProps.className,
+          )}
           disabled={inputProps.disabled}
           spellCheck="false"
           {...inputProps}
         />
       </div>
-      {errors[inputProps.id!] !== undefined && (
+      {errors && errors[inputProps.id!] !== undefined && (
         <p className="mt-2 text-sm text-rose-500">
           {errors[inputProps.id!]?.message as string}
         </p>

@@ -13,7 +13,7 @@ const isUserAnwseredPreTest = async (idUser: string) => {
 
     return data.id ? true : false;
   } catch (error) {
-    console.log({ error });
+    console.error({ error });
   }
 };
 
@@ -26,7 +26,7 @@ const isUserAnwseredPostTest = async (idUser: string) => {
 
     return data.id ? true : false;
   } catch (error) {
-    console.log({ error });
+    console.error({ error });
   }
 };
 

@@ -81,7 +81,7 @@ export default function ModalFormPill({
           description: response.description,
         }));
       } catch (error) {
-        console.log({ error });
+        console.error({ error });
       } finally {
         setIsLoadingPill(false);
       }

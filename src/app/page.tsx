@@ -18,7 +18,7 @@ const getHomeContent = async () => {
     const data = await homeContent.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error({ error });
   }
 };
 

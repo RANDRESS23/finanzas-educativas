@@ -31,7 +31,7 @@ export default function ModalPill({ setOpen }: ModalFormWelcomeProps) {
 
         setPills(response);
       } catch (error) {
-        console.log({ error });
+        console.error({ error });
       } finally {
         setIsLoadingPills(false);
       }

@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { BiSolidBookContent as DashboardIcon } from "react-icons/bi";
+import { FaUsersRectangle as MemebersIcon } from "react-icons/fa6";
+import { PiUsersFourFill as UsersIcon } from "react-icons/pi";
 import { SiSoundcharts as AdminIcon } from "react-icons/si";
-import { DashboardIcon, UserIcon } from "../Aside/icons";
 
 interface AdminPanelMobileProps {
   handleResetMenus: () => void;
@@ -25,7 +27,7 @@ export default function AdminPanelMobile({
         onClick={handleResetMenus}
       >
         Contenido
-        <DashboardIcon />
+        <DashboardIcon className="text-2xl text-gray-600" />
       </Link>
       <Link
         href="/profile/admin/dashboard/users"
@@ -33,8 +35,17 @@ export default function AdminPanelMobile({
         onClick={handleResetMenus}
       >
         Usuarios
-        <UserIcon />
+        <UsersIcon className="text-2xl text-gray-600" />
       </Link>
+      <Link
+        href="/profile/admin/dashboard/teamMembers"
+        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+        onClick={handleResetMenus}
+      >
+        Miembros Equipo
+        <MemebersIcon className="text-2xl text-gray-600" />
+      </Link>
+
       {/* <Link
         href="/profile/admin/dashboard/help"
         className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"

@@ -235,7 +235,7 @@ var generateSitemap = function () {
           return [4 /*yield*/, fs.writeFile("./public/sitemap.xml.gz", sm)];
         case 3:
           _a.sent();
-          console.log("Sitemap generated successfully.");
+          console.info("Sitemap generated successfully.");
           return [2 /*return*/];
       }
     });

@@ -66,7 +66,7 @@ export default function ModalFormWelcome({ setOpen }: ModalFormWelcomeProps) {
           subtitle: response.subtitle,
         }));
       } catch (error) {
-        console.log({ error });
+        console.error({ error });
       } finally {
         setIsLoadingSubtitle(false);
       }

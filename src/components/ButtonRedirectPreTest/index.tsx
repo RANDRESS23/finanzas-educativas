@@ -26,7 +26,7 @@ export default function ButtonRedirectPreTest({
         "Debes completar tu información personal para poder realizar el pre-test de conocimiento.",
       );
     } catch (error) {
-      console.log({ error });
+      console.error({ error });
     }
   };
 

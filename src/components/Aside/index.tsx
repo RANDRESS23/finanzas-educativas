@@ -1,6 +1,7 @@
-"use client";
-
-import { DashboardIcon, UserIcon } from "./icons";
+import { BiSolidBookContent as DashboardIcon } from "react-icons/bi";
+import { FaUsersRectangle as MemebersIcon } from "react-icons/fa6";
+import { PiUsersFourFill as UsersIcon } from "react-icons/pi";
+import { SiSoundcharts as AdminIcon } from "react-icons/si";
 import ItemList from "./ItemList";
 
 export default function Aside() {
@@ -17,22 +18,37 @@ export default function Aside() {
               <li>
                 <ItemList
                   href="/profile/admin/dashboard"
-                  Icon={DashboardIcon}
+                  icon={
+                    <AdminIcon className="text-2xl dark:text-gray-400 text-gray-600" />
+                  }
                   title="Estadísticas"
                 />
               </li>
               <li>
                 <ItemList
                   href="/profile/admin/dashboard/page-content"
-                  Icon={DashboardIcon}
+                  icon={
+                    <DashboardIcon className="text-2xl dark:text-gray-400 text-gray-600" />
+                  }
                   title="Contenido"
                 />
               </li>
               <li>
                 <ItemList
                   href="/profile/admin/dashboard/users"
-                  Icon={UserIcon}
+                  icon={
+                    <UsersIcon className="text-2xl dark:text-gray-400 text-gray-600" />
+                  }
                   title="Usuarios"
+                />
+              </li>
+              <li>
+                <ItemList
+                  href="/profile/admin/dashboard/teamMembers"
+                  icon={
+                    <MemebersIcon className="text-2xl dark:text-gray-400 text-gray-600" />
+                  }
+                  title="Miembros Equipo"
                 />
               </li>
             </ul>
