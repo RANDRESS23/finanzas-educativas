@@ -1,9 +1,9 @@
 import { type Metadata } from "next";
-import {
-  FinanceIcon,
-  PigMoneyIcon,
-} from "@/app/financial-education/first-dimension/icons";
-import type { SecondDimensionContent } from "@/types/second-dimension-content";
+// import {
+//   FinanceIcon,
+//   PigMoneyIcon,
+// } from "@/app/financial-education/first-dimension/icons";
+// import type { SecondDimensionContent } from "@/types/second-dimension-content";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Educación Financiera",
@@ -23,17 +23,15 @@ const getSecondDimensionContent = async () => {
 };
 
 export default async function SecondDimension() {
-  const {
-    aGoodDecisionContent,
-    stepsOfAGoodDecisionContent,
-    takeIntoAccountAGoodDecisionContent,
-  }: SecondDimensionContent = await getSecondDimensionContent();
-
-  console.log({ aGoodDecisionContent, stepsOfAGoodDecisionContent, takeIntoAccountAGoodDecisionContent });
+  // const {
+  //   aGoodDecisionContent,
+  //   stepsOfAGoodDecisionContent,
+  //   takeIntoAccountAGoodDecisionContent,
+  // }: SecondDimensionContent = await getSecondDimensionContent();
 
   return (
     <div className="py-36">
-      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+      {/* <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <blockquote className="text-justify text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-10">
           <p className="text-center">
             Una <span className="text-sushi-500">Buena Toma</span> de Decisión
@@ -84,7 +82,7 @@ export default async function SecondDimension() {
             {takeIntoAccountAGoodDecisionContent[1]}
           </p>
         </blockquote>
-      </div>
+      </div> */}
     </div>
   );
 }
