@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import AboutContent from "./AboutContent";
 import HomeContent from "./HomeContent";
 import FirstDimensionContent from "./FirstDimensionContent";
+import SecondDimensionContent from "./SecondDimensionContent";
 
 export const dynamic = "force-dynamic";
 
@@ -18,6 +19,7 @@ export default async function PageContent() {
     <div className="mb-28">
       <HomeContent />
       <FirstDimensionContent />
+      <SecondDimensionContent />
       <AboutContent />
     </div>
   );
