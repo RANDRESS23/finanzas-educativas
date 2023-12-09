@@ -29,6 +29,8 @@ export default async function SecondDimension() {
     takeIntoAccountAGoodDecisionContent,
   }: SecondDimensionContent = await getSecondDimensionContent();
 
+  console.log({ aGoodDecisionContent, stepsOfAGoodDecisionContent, takeIntoAccountAGoodDecisionContent });
+
   return (
     <div className="py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
