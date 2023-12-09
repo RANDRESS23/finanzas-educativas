@@ -1,6 +1,6 @@
 import { type Metadata } from "next";
-// import CreditSection from "./CreditSection";
-// import ExpensesAndIncomes from "./ExpensesAndIncomes";
+import CreditSection from "./CreditSection";
+import ExpensesAndIncomes from "./ExpensesAndIncomes";
 import SavingSection from "./SavingSection";
 import type { FirstDimensionContent } from "@/types/first-dimension-content";
 
@@ -34,8 +34,8 @@ export default async function FirstDimension() {
   return (
     <div className="py-20">
       <SavingSection savingContent={savingContent} />
-      {/* <CreditSection creditContent={creditContent} /> */}
-      {/* <ExpensesAndIncomes expenseAndIncomeContent={expenseAndIncomeContent} /> */}
+      <CreditSection creditContent={creditContent} />
+      <ExpensesAndIncomes expenseAndIncomeContent={expenseAndIncomeContent} />
     </div>
   );
 }
