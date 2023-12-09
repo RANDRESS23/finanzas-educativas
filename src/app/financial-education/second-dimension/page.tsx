@@ -23,7 +23,13 @@ const getSecondDimensionContent = async () => {
 };
 
 export default async function SecondDimension() {
-  const secondDimensionContent: SecondDimensionContent = await getSecondDimensionContent();
+  const {
+    aGoodDecisionContent,
+    stepsOfAGoodDecisionContent,
+    takeIntoAccountAGoodDecisionContent,
+  }: SecondDimensionContent = await getSecondDimensionContent();
+
+  console.log({ aGoodDecisionContent, stepsOfAGoodDecisionContent, takeIntoAccountAGoodDecisionContent });
 
   return (
     <div className="py-36">
@@ -33,8 +39,8 @@ export default async function SecondDimension() {
             Una <span className="text-sushi-500">Buena Toma</span> de Decisión
           </p>
           <p className="text-lg font-normal mt-5 text-gray-600 dark:text-gray-400 lg:w-3/4 lg:mx-auto lg:px-36">
-            {secondDimensionContent.aGoodDecisionContent[0]}{" "}<br /><br />
-            {secondDimensionContent.aGoodDecisionContent[1]}
+            {aGoodDecisionContent[0]}{" "}<br /><br />
+            {aGoodDecisionContent[1]}
           </p>
         </blockquote>
         <blockquote className="text-center text-2xl font-semibold leading-8 sm:text-3xl sm:leading-9 mb-10 mt-20">
@@ -49,7 +55,7 @@ export default async function SecondDimension() {
         </blockquote>
         <div className="mx-auto mt-12 max-w-2xl sm:mt-14 lg:mt-16 lg:max-w-4xl">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-            {secondDimensionContent.stepsOfAGoodDecisionContent.map(({ title, description }, index) => (
+            {stepsOfAGoodDecisionContent.map(({ title, description }, index) => (
               <div key={`${title}${index}`} className="relative pl-16 flow-finanzas-xd">
                 <dt className="text-base font-bold leading-7 text-sushi-500">
                   <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-boston-blue-600">
@@ -74,8 +80,8 @@ export default async function SecondDimension() {
             <span className="text-sushi-500">Buena Decisión</span>?{" "}
           </p>
           <p className="text-justify text-lg font-normal mt-5 text-gray-600 dark:text-gray-400 lg:w-3/4 lg:mx-auto flow-finanzas-xd lg:px-36">
-            {secondDimensionContent.takeIntoAccountAGoodDecisionContent[0]}<br /><br />
-            {secondDimensionContent.takeIntoAccountAGoodDecisionContent[1]}
+            {takeIntoAccountAGoodDecisionContent[0]}<br /><br />
+            {takeIntoAccountAGoodDecisionContent[1]}
           </p>
         </blockquote>
       </div>
