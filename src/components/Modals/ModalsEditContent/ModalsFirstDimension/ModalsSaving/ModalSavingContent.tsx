@@ -4,6 +4,7 @@ import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
 import ModalFormSavingFeature from "./ModalFormSavingFeature";
+import ModalFormSavingMeaning from "./ModalFormSavingMeaning";
 
 interface ModalProps {
   open: boolean;
@@ -11,6 +12,7 @@ interface ModalProps {
   setOpen2: (value: boolean) => void;
   cancelButtonRef: any;
   idSavingFeature: string;
+  isSavingMeaningEdit: boolean;
 }
 
 export default function ModalSavingContent({
@@ -19,6 +21,7 @@ export default function ModalSavingContent({
   setOpen2,
   cancelButtonRef,
   idSavingFeature,
+  isSavingMeaningEdit,
 }: ModalProps) {
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -68,11 +71,22 @@ export default function ModalSavingContent({
                         </span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        <ModalFormSavingFeature
-                          setOpen={setOpen}
-                          setOpen2={setOpen2}
-                          idSavingFeature={idSavingFeature}
-                        />
+                        {
+                          isSavingMeaningEdit
+                            ? (
+                                <ModalFormSavingMeaning 
+                                  setOpen={setOpen}
+                                  setOpen2={setOpen2}
+                                />
+                              )
+                            : (
+                                <ModalFormSavingFeature
+                                  setOpen={setOpen}
+                                  setOpen2={setOpen2}
+                                  idSavingFeature={idSavingFeature}
+                                />
+                              )
+                        }
                       </div>
                     </div>
                   </div>

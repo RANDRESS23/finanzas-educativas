@@ -11,10 +11,16 @@ interface ModalFormSavingProps {
 export default function ModalCredit({ setOpen }: ModalFormSavingProps) {
   const [isLoadingCredit, setIsLoadingCredit] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [isCreditMeaningEdit, setIsCreditMeaningEdit] = useState(false);
   const [credit, setCredit] = useState({ creditMeaning: "", creditTypes: [] });
   const [idCreditTypeFocus, setIdCreditTypeFocus] = useState("");
 
   const cancelButtonRef = useRef(null);
+
+  const handleChangeSavingMeaning = () => {
+    setIsCreditMeaningEdit(true);
+    setOpen2(true);
+  }
 
   const handleChange = ({ id }: { id: string }) => {
     setIdCreditTypeFocus(id);
@@ -40,10 +46,32 @@ export default function ModalCredit({ setOpen }: ModalFormSavingProps) {
     getCredit();
   }, []);
 
-  if (isLoadingCredit) return <p>Cargando la sección de crédito</p>;
+  if (isLoadingCredit) return <p>Cargando la sección de crédito...</p>;
 
   return (
     <div>
+      <p className="font-semibold text-lg">Edita el concepto de <span className="text-sushi-500">Crédito: </span></p>
+      <div
+        className="mb-4 w-full flex justify-between items-center gap-3"
+      >
+        <div>
+          <p className="text-gray-700 dark:text-gray-300 font-semibold">
+            Definición de Crédito
+          </p>
+          <p className="text-gray-500 dark:text-gray-300 text-sm whitespace-nowrap overflow-hidden animate-typing">
+            {credit.creditMeaning.slice(0, 30)}...
+          </p>
+        </div>
+        <div className="flex items-center text-base font-bold">
+          <button
+            onClick={handleChangeSavingMeaning}
+            className="rounded-full p-3 bg-sushi-400 hover:bg-sushi-300 transition-colors duration-300 enabled:active:bg-sushi-500"
+          >
+            <EditIcon className="text-xl" />
+          </button>
+        </div>
+      </div>
+      <p className="font-semibold text-lg mt-2">Edita los tipos de <span className="text-sushi-500">Crédito: </span></p>
       {credit.creditTypes.map(
         ({
           id,
@@ -97,6 +125,7 @@ export default function ModalCredit({ setOpen }: ModalFormSavingProps) {
         setOpen2={setOpen}
         cancelButtonRef={cancelButtonRef}
         idCreditType={idCreditTypeFocus}
+        isCreditMeaningEdit={isCreditMeaningEdit}
       />
     </div>
   );

@@ -29,7 +29,6 @@ export default async function FirstDimension() {
   }: FirstDimensionContent = await getFirstDimensionContent();
 
   console.log({ savingContent, creditContent, expenseAndIncomeContent });
-  
 
   return (
     <div className="py-20">

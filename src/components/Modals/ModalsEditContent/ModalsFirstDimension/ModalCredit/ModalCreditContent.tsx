@@ -4,6 +4,7 @@ import React, { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
 import ModalFormCreditType from "./ModalFormCreditType";
+import ModalFormCreditMeaning from "./ModalFormCreditMeaning";
 
 interface ModalProps {
   open: boolean;
@@ -11,6 +12,7 @@ interface ModalProps {
   setOpen2: (value: boolean) => void;
   cancelButtonRef: any;
   idCreditType: string;
+  isCreditMeaningEdit: boolean;
 }
 
 export default function ModalCreditContent({
@@ -19,6 +21,7 @@ export default function ModalCreditContent({
   setOpen2,
   cancelButtonRef,
   idCreditType,
+  isCreditMeaningEdit,
 }: ModalProps) {
   return (
     <Transition.Root show={open} as={Fragment}>
@@ -68,11 +71,22 @@ export default function ModalCreditContent({
                         </span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        <ModalFormCreditType
-                          setOpen={setOpen}
-                          setOpen2={setOpen2}
-                          idCreditType={idCreditType}
-                        />
+                        {
+                          isCreditMeaningEdit
+                            ? (
+                                <ModalFormCreditMeaning
+                                  setOpen={setOpen}
+                                  setOpen2={setOpen2}
+                                />
+                              )
+                            : (
+                                <ModalFormCreditType
+                                  setOpen={setOpen}
+                                  setOpen2={setOpen2}
+                                  idCreditType={idCreditType}
+                                />
+                              )
+                        }
                       </div>
                     </div>
                   </div>

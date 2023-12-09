@@ -11,10 +11,16 @@ interface ModalFormSavingProps {
 export default function ModalSaving({ setOpen }: ModalFormSavingProps) {
   const [isLoadingSaving, setIsLoadingSaving] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [isSavingMeaningEdit, setIsSavingMeaningEdit] = useState(false);
   const [saving, setSaving] = useState({ savingMeaning: "", savingFeatures: [] });
   const [idSavingFeatureFocus, setIdSavingFeatureFocus] = useState("");
 
   const cancelButtonRef = useRef(null);
+
+  const handleChangeSavingMeaning = () => {
+    setIsSavingMeaningEdit(true);
+    setOpen2(true);
+  }
 
   const handleChange = ({ id }: { id: string }) => {
     setIdSavingFeatureFocus(id);
@@ -40,10 +46,32 @@ export default function ModalSaving({ setOpen }: ModalFormSavingProps) {
     getSaving();
   }, []);
 
-  if (isLoadingSaving) return <p>Cargando la sección de ahorro</p>;
+  if (isLoadingSaving) return <p>Cargando la sección de ahorro...</p>;
 
   return (
     <div>
+      <p className="font-semibold text-lg">Edita el concepto de <span className="text-sushi-500">Ahorro: </span></p>
+      <div
+        className="mb-4 w-full flex justify-between items-center gap-3"
+      >
+        <div>
+          <p className="text-gray-700 dark:text-gray-300 font-semibold">
+            Definición de Ahorro
+          </p>
+          <p className="text-gray-500 dark:text-gray-300 text-sm whitespace-nowrap overflow-hidden animate-typing">
+            {saving.savingMeaning.slice(0, 30)}...
+          </p>
+        </div>
+        <div className="flex items-center text-base font-bold">
+          <button
+            onClick={handleChangeSavingMeaning}
+            className="rounded-full p-3 bg-sushi-400 hover:bg-sushi-300 transition-colors duration-300 enabled:active:bg-sushi-500"
+          >
+            <EditIcon className="text-xl" />
+          </button>
+        </div>
+      </div>
+      <p className="font-semibold text-lg mt-2">Edita las formas de <span className="text-sushi-500">Ahorro: </span></p>
       {saving.savingFeatures.map(
         ({
           id,
@@ -97,6 +125,7 @@ export default function ModalSaving({ setOpen }: ModalFormSavingProps) {
         setOpen2={setOpen}
         cancelButtonRef={cancelButtonRef}
         idSavingFeature={idSavingFeatureFocus}
+        isSavingMeaningEdit={isSavingMeaningEdit}
       />
     </div>
   );
