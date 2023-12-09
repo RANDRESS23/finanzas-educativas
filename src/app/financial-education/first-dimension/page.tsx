@@ -2,7 +2,7 @@ import { type Metadata } from "next";
 // import CreditSection from "./CreditSection";
 // import ExpensesAndIncomes from "./ExpensesAndIncomes";
 // import SavingSection from "./SavingSection";
-// import type { FirstDimensionContent } from "@/types/first-dimension-content";
+import type { FirstDimensionContent } from "@/types/first-dimension-content";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Educación Financiera",
@@ -22,13 +22,13 @@ const getFirstDimensionContent = async () => {
 };
 
 export default async function FirstDimension() {
-  // const {
-  //   savingContent,
-  //   creditContent,
-  //   expenseAndIncomeContent,
-  // }: FirstDimensionContent = await getFirstDimensionContent();
-  const aa = await getFirstDimensionContent();
-  console.log({aa});
+  const {
+    savingContent,
+    creditContent,
+    expenseAndIncomeContent,
+  }: FirstDimensionContent = await getFirstDimensionContent();
+
+  console.log({ savingContent, creditContent, expenseAndIncomeContent });
   
 
   return (
