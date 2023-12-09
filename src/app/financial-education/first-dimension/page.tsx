@@ -1,8 +1,8 @@
 import { type Metadata } from "next";
-import CreditSection from "./CreditSection";
-import ExpensesAndIncomes from "./ExpensesAndIncomes";
-import SavingSection from "./SavingSection";
-import type { FirstDimensionContent } from "@/types/first-dimension-content";
+// import CreditSection from "./CreditSection";
+// import ExpensesAndIncomes from "./ExpensesAndIncomes";
+// import SavingSection from "./SavingSection";
+// import type { FirstDimensionContent } from "@/types/first-dimension-content";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Educación Financiera",
