@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   title: "Finanzas Educativas | Educación Financiera",
 };
 
-const getSecondDimensionContent = async () => {
-  try {
-    const secondDimensionContent = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/admin/second-dimension`,
-    );
-    const data = await secondDimensionContent.json();
+// const getSecondDimensionContent = async () => {
+//   try {
+//     const secondDimensionContent = await fetch(
+//       `${process.env.NEXTAUTH_URL}/api/admin/second-dimension`,
+//     );
+//     const data = await secondDimensionContent.json();
     
-    return data;
-  } catch (error) {
-    console.error({ error });
-  }
-};
+//     return data;
+//   } catch (error) {
+//     console.error({ error });
+//   }
+// };
 
 export default async function SecondDimension() {
   // const {
