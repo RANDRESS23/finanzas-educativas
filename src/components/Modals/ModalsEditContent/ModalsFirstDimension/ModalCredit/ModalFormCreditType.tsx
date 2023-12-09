@@ -8,19 +8,19 @@ import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import api from "@/libs/api";
 import { isAxiosError } from "axios";
 
-interface ModalFormWelcomeProps {
+interface ModalFormCreditTypeProps {
   setOpen: (st: boolean) => void;
   setOpen2: (st: boolean) => void;
-  idPill: string;
+  idCreditType: string;
 }
 
-export default function ModalFormPill({
+export default function ModalFormCreditType({
   setOpen,
   setOpen2,
-  idPill,
-}: ModalFormWelcomeProps) {
+  idCreditType,
+}: ModalFormCreditTypeProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingPill, setIsLoadingPill] = useState(false);
+  const [isLoadingCreditType, setIsLoadingCreditType] = useState(false);
   const router = useRouter();
 
   const defaultValues = {
@@ -39,7 +39,7 @@ export default function ModalFormPill({
 
     try {
       const response = await api.put(
-        `/admin/home-content/knowledge-pills/${idPill}`,
+        `/admin/first-dimension/credit/${idCreditType}`,
         {
           title: data.title,
           description: data.description,
@@ -66,14 +66,14 @@ export default function ModalFormPill({
   };
 
   useEffect(() => {
-    const getPillInfo = async () => {
+    const getCreditTypeInfo = async () => {
       try {
-        setIsLoadingPill(true);
+        setIsLoadingCreditType(true);
 
-        const pill = await fetch(
-          `/api/admin/home-content/knowledge-pills/${idPill}`,
+        const creditType = await fetch(
+          `/api/admin/first-dimension/credit/${idCreditType}`,
         );
-        const response = await pill.json();
+        const response = await creditType.json();
 
         reset(formValues => ({
           ...formValues,
@@ -83,18 +83,18 @@ export default function ModalFormPill({
       } catch (error) {
         console.error({ error });
       } finally {
-        setIsLoadingPill(false);
+        setIsLoadingCreditType(false);
       }
     };
 
-    getPillInfo();
-  }, [reset, idPill]);
+    getCreditTypeInfo();
+  }, [reset, idCreditType]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 w-full">
         <label className="text-gray-700 dark:text-gray-300" htmlFor="title">
-          Titulo de la Pildora de Conocimiento
+          Titulo del Tipo de Crédito
         </label>
         <input
           id="title"
@@ -103,8 +103,8 @@ export default function ModalFormPill({
             required: "El titulo es un campo obligatorio!",
           })}
           className={clsxe(errors.title, "resize-none w-full mt-2")}
-          placeholder="Por favor deja el titulo de la pildora aquí..."
-          disabled={isLoading || isLoadingPill}
+          placeholder="Por favor deja el titulo del tipo de crédito aquí..."
+          disabled={isLoading || isLoadingCreditType}
         />
       </div>
 
@@ -113,7 +113,7 @@ export default function ModalFormPill({
           className="text-gray-700 dark:text-gray-300"
           htmlFor="description"
         >
-          Descripción de la Pildora de Conocimiento
+          Descripción del Tipo de Crédito
         </label>
         <textarea
           id="description"
@@ -123,8 +123,8 @@ export default function ModalFormPill({
           })}
           className={clsxe(errors.description, "resize-none w-full mt-2")}
           spellCheck="false"
-          placeholder="Por favor deja la descripción de la pildora aquí..."
-          disabled={isLoading || isLoadingPill}
+          placeholder="Por favor deja la descripción del Tipo de Crédito aquí..."
+          disabled={isLoading || isLoadingCreditType}
         />
       </div>
 
@@ -132,9 +132,9 @@ export default function ModalFormPill({
         <button
           type="submit"
           className="text-sm rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-sushi-400 mb-2"
-          disabled={isLoading || isLoadingPill}
+          disabled={isLoading || isLoadingCreditType}
         >
-          {isLoading || isLoadingPill ? "CARGANDO..." : "ACTUALIZAR"}
+          {isLoading || isLoadingCreditType ? "CARGANDO..." : "ACTUALIZAR"}
         </button>
         <button
           type="button"

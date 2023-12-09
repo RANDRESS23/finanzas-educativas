@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import AboutContent from "./AboutContent";
 import HomeContent from "./HomeContent";
+import FirstDimensionContent from "./FirstDimensionContent";
 
 export const dynamic = "force-dynamic";
 
@@ -16,6 +17,7 @@ export default async function PageContent() {
   return (
     <div className="mb-28">
       <HomeContent />
+      <FirstDimensionContent />
       <AboutContent />
     </div>
   );

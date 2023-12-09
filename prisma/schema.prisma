@@ -27,6 +27,34 @@ type KnowledgePills {
   knowledgePills KnowledgePill[]
 }
 
+type SavingFeature {
+  id          String
+  title       String
+  description String
+}
+
+type SavingContent {
+  savingMeaning   String
+  savingFeatures  SavingFeature[]
+}
+
+type CreditType {
+  id          String
+  title       String
+  description String
+}
+
+type CreditContent {
+  creditMeaning String
+  creditTypes   CreditType[]
+}
+
+type ExpenseAndIncomeContent {
+  id              String
+  expenseMeaning  String
+  incomeMeaning   String
+}
+
 type InformativeVideo {
   id    String
   title String
@@ -118,6 +146,15 @@ model HomeContent {
   informativeVideosContent InformativeVideos
   createdAt                DateTime          @default(now())
   updatedAt                DateTime          @updatedAt
+}
+
+model FirstDimensionContent {
+  id                       String                   @id @default(auto()) @map("_id") @db.ObjectId
+  savingContent            SavingContent
+  creditContent            CreditContent
+  expenseAndIncomeContent  ExpenseAndIncomeContent
+  createdAt                DateTime                 @default(now())
+  updatedAt                DateTime                 @updatedAt
 }
 
 model Meta {

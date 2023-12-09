@@ -1,7 +1,17 @@
-import savingFeatures from "@/meta/savingSectionFeatures";
+import {
+  FinanceIcon,
+  PigMoneyIcon,
+} from "@/app/financial-education/first-dimension/icons";
 import { Saving } from "./svgs";
+import { type SavingContent } from "@/types/first-dimension-content";
 
-export default function SavingSection() {
+interface SavingSectionProps {
+  savingContent: SavingContent;
+}
+
+export default function SavingSection({ savingContent }: SavingSectionProps) {
+  const { savingMeaning, savingFeatures } = savingContent;
+
   return (
     <div className="py-16">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -18,13 +28,7 @@ export default function SavingSection() {
                 ¿Qué es el ahorro?
               </p>
               <p className="mt-6 text-lg text-left leading-8 text-gray-600 dark:text-gray-400">
-                El ahorro es guardar una parte de nuestro dinero (ingresos) para
-                ser usado en un futuro, ya sea para un imprevisto, una
-                emergencia o una inversión en crecimiento. El ahorro se refiere
-                a la parte del dinero que nosotros asignamos a otros usos a
-                parte del consumo. Hay muchas formas de ahorrar y también muchas
-                herramientas financieras disponibles que se pueden utilizar para
-                aumentar la cantidad de ahorros que se pretende realizar.
+                {savingMeaning}
               </p>
             </div>
           </div>
@@ -34,13 +38,17 @@ export default function SavingSection() {
         </div>
         <div className="mx-auto mt-12 max-w-2xl sm:mt-14 lg:mt-16 lg:max-w-4xl">
           <dl className="grid max-w-xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none lg:grid-cols-2 lg:gap-y-16">
-            {savingFeatures.map(({ name, description, Icon }) => (
-              <div key={name} className="relative pl-16 flow-finanzas-xd">
+            {savingFeatures.map(({ title, description }, index) => (
+              <div key={title} className="relative pl-16 flow-finanzas-xd">
                 <dt className="text-base font-bold leading-7 text-sushi-500">
                   <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-boston-blue-600">
-                    <Icon />
+                    {
+                      index % 2 === 0
+                        ? <FinanceIcon />
+                        : <PigMoneyIcon />
+                    }
                   </div>
-                  {name}
+                  {title}
                 </dt>
                 <dd className="mt-2 text-base leading-7 text-gray-600 dark:text-gray-400">
                   {description}

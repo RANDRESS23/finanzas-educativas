@@ -1,6 +1,13 @@
+import { type ExpenseAndIncomeContent } from "@/types/first-dimension-content";
 import { Income, Expense } from "./svgs";
 
-export default function ExpensesAndIncomes() {
+interface ExpenseAndIncomeProps {
+  expenseAndIncomeContent: ExpenseAndIncomeContent
+}
+
+export default function ExpensesAndIncomes({ expenseAndIncomeContent }: ExpenseAndIncomeProps) {
+  const { expenseMeaning, incomeMeaning } = expenseAndIncomeContent;
+
   return (
     <div className="mx-auto max-w-7xl px-6 lg:px-8">
       <div className="mx-auto mt-5 flex flex-col max-w-3xl lg:text-center">
@@ -13,12 +20,7 @@ export default function ExpensesAndIncomes() {
               ¿Qué son ingresos?
             </p>
             <p className="mt-6 text-lg text-left leading-8 text-gray-600 dark:text-gray-400 flow-finanzas-xd">
-              Los ingresos son la cantidad de dinero recaudada o ganada como
-              resultado de trabajar o participar en acciones socioeconómicas.
-              Los ingresos se pueden clasificar como rentas, salarios
-              monetarios, beneficios, intereses, dividendos, alquileres entre
-              otros; los ingresos pueden ser usados para financiar gastos,
-              inversiones, ahorros.
+              {incomeMeaning}
             </p>
           </div>
         </div>
@@ -28,10 +30,7 @@ export default function ExpensesAndIncomes() {
               ¿Qué son gastos?
             </p>
             <div className="mt-6 text-lg text-left leading-8 text-gray-600 dark:text-gray-400 flow-finanzas-xd">
-              Por definición, son los cargos monetarios en que una persona
-              incurre en el desarrollo normal de su vida o actividad económica.
-              Es decir, son las salidas de dinero (egresos) que realiza para
-              poder vivir de la manera que vive. <br />
+              {expenseMeaning} <br />
               <br />
               <span className="text-gray-800 dark:text-zinc-200 font-bold">
                 Ejemplos:

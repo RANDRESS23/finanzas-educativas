@@ -3,13 +3,15 @@
 import { useRef, useState } from "react";
 import { LiaEdit as EditIcon } from "react-icons/lia";
 import ModalContent from "@/components/Modals/ModalsEditContent/ModalContent";
+import ModalContentFirstDimension from "@/components/Modals/ModalsEditContent/ModalsFirstDimension/ModalContentFirstDimension";
 
 interface CardContentProps {
   title: string;
   description: string;
+  section: string;
 }
 
-export default function CardContent({ title, description }: CardContentProps) {
+export default function CardContent({ title, description, section }: CardContentProps) {
   const [open, setOpen] = useState(false);
 
   const cancelButtonRef = useRef(null);
@@ -38,12 +40,43 @@ export default function CardContent({ title, description }: CardContentProps) {
           </div>
         </div>
       </div>
-      <ModalContent
-        open={open}
-        setOpen={setOpen}
-        cancelButtonRef={cancelButtonRef}
-        title={title}
-      />
+      {
+        section === "home" 
+          ? (
+              <ModalContent
+              open={open}
+              setOpen={setOpen}
+              cancelButtonRef={cancelButtonRef}
+              title={title}
+              />
+            )
+          : section === "first-dimension"
+            ? (
+                <ModalContentFirstDimension 
+                  open={open}
+                  setOpen={setOpen}
+                  cancelButtonRef={cancelButtonRef}
+                  title={title}
+                />
+              )
+            : section === "second-dimension"
+              ? (
+                  <ModalContentFirstDimension 
+                    open={open}
+                    setOpen={setOpen}
+                    cancelButtonRef={cancelButtonRef}
+                    title={title}
+                  />
+                )
+              : (
+                  <ModalContentFirstDimension 
+                    open={open}
+                    setOpen={setOpen}
+                    cancelButtonRef={cancelButtonRef}
+                    title={title}
+                  />
+                )
+      }
     </>
   );
 }

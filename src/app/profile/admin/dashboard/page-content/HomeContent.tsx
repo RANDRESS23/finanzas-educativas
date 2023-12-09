@@ -48,14 +48,17 @@ export default async function HomeContent() {
               <CardContent
                 title="Bienvenida"
                 description={`${welcomeDescription}...`}
+                section="home"
               />
               <CardContent
                 title="Pildoras de Conocimiento"
                 description={`${knowledgePillsDescription}...`}
+                section="home"
               />
               <CardContent
                 title="Videos Informativos Educativos"
                 description={`${informativeVideosDescription}...`}
+                section="home"
               />
             </div>
           </div>

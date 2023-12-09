@@ -8,24 +8,18 @@ import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import api from "@/libs/api";
 import { isAxiosError } from "axios";
 
-interface ModalFormWelcomeProps {
+interface ModalFormExpenseAndIncomeProps {
   setOpen: (st: boolean) => void;
-  setOpen2: (st: boolean) => void;
-  idPill: string;
 }
 
-export default function ModalFormPill({
-  setOpen,
-  setOpen2,
-  idPill,
-}: ModalFormWelcomeProps) {
+export default function ModalFormExpenseAndIncome({ setOpen }: ModalFormExpenseAndIncomeProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingPill, setIsLoadingPill] = useState(false);
+  const [isLoadingExpenseAndIncome, setIsLoadingExpenseAndIncome] = useState(false);
   const router = useRouter();
 
   const defaultValues = {
-    title: "",
-    description: "",
+    expenseMeaning: "",
+    incomeMeaning: "",
   };
   const {
     register,
@@ -38,19 +32,15 @@ export default function ModalFormPill({
     setIsLoading(true);
 
     try {
-      const response = await api.put(
-        `/admin/home-content/knowledge-pills/${idPill}`,
-        {
-          title: data.title,
-          description: data.description,
-        },
-      );
+      const response = await api.put("/admin/first-dimension/expense-and-income", {
+        expenseMeaning: data.expenseMeaning,
+        incomeMeaning: data.incomeMeaning,
+      });
 
       if (response.status === 201) {
         tosty.success("¡Datos actualizados exitosamente!");
         router.refresh();
         setOpen(false);
-        setOpen2(false);
       } else {
         tosty.error("Error al actualizar datos!");
       }
@@ -66,65 +56,61 @@ export default function ModalFormPill({
   };
 
   useEffect(() => {
-    const getPillInfo = async () => {
+    const getExpenseAndIncome = async () => {
       try {
-        setIsLoadingPill(true);
+        setIsLoadingExpenseAndIncome(true);
 
-        const pill = await fetch(
-          `/api/admin/home-content/knowledge-pills/${idPill}`,
-        );
-        const response = await pill.json();
+        const expenseAndIncome = await fetch(`/api/admin/first-dimension/expense-and-income`);
+        const response = await expenseAndIncome.json();
 
         reset(formValues => ({
           ...formValues,
-          title: response.title,
-          description: response.description,
+          expenseMeaning: response.expenseMeaning,
+          incomeMeaning: response.incomeMeaning,
         }));
       } catch (error) {
         console.error({ error });
       } finally {
-        setIsLoadingPill(false);
+        setIsLoadingExpenseAndIncome(false);
       }
     };
 
-    getPillInfo();
-  }, [reset, idPill]);
+    getExpenseAndIncome();
+  }, [reset]);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="title">
-          Titulo de la Pildora de Conocimiento
-        </label>
-        <input
-          id="title"
-          type="text"
-          {...register("title", {
-            required: "El titulo es un campo obligatorio!",
-          })}
-          className={clsxe(errors.title, "resize-none w-full mt-2")}
-          placeholder="Por favor deja el titulo de la pildora aquí..."
-          disabled={isLoading || isLoadingPill}
-        />
-      </div>
-
-      <div className="mb-4 w-full">
-        <label
-          className="text-gray-700 dark:text-gray-300"
-          htmlFor="description"
-        >
-          Descripción de la Pildora de Conocimiento
+        <label className="text-gray-700 dark:text-gray-300" htmlFor="incomeMeaning">
+          Concepto de Ingresos
         </label>
         <textarea
-          id="description"
+          id="incomeMeaning"
           rows={4}
-          {...register("description", {
-            required: "La descripción es un campo obligatorio!",
+          {...register("incomeMeaning", {
+            required: "El concepto de ingresos es un campo obligatorio!",
           })}
-          className={clsxe(errors.description, "resize-none w-full mt-2")}
+          className={clsxe(errors.incomeMeaning, "resize-none w-full mt-2")}
           spellCheck="false"
-          placeholder="Por favor deja la descripción de la pildora aquí..."
-          disabled={isLoading || isLoadingPill}
+          placeholder="Por favor deja el concepto de ingresos aquí..."
+          disabled={isLoading || isLoadingExpenseAndIncome}
+        />
+      </div>
+      
+      <div className="mb-4 w-full">
+        <label className="text-gray-700 dark:text-gray-300" htmlFor="expenseMeaning">
+          Concepto de Gastos
+        </label>
+        <textarea
+          id="expenseMeaning"
+          rows={4}
+          {...register("expenseMeaning", {
+            required: "El concepto de gastos es un campo obligatorio!",
+          })}
+          className={clsxe(errors.expenseMeaning, "resize-none w-full mt-2")}
+          spellCheck="false"
+          placeholder="Por favor deja el concepto de gastos aquí..."
+          disabled={isLoading || isLoadingExpenseAndIncome}
         />
       </div>
 
@@ -132,9 +118,9 @@ export default function ModalFormPill({
         <button
           type="submit"
           className="text-sm rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-sushi-400 mb-2"
-          disabled={isLoading || isLoadingPill}
+          disabled={isLoading || isLoadingExpenseAndIncome}
         >
-          {isLoading || isLoadingPill ? "CARGANDO..." : "ACTUALIZAR"}
+          {isLoading || isLoadingExpenseAndIncome ? "CARGANDO..." : "ACTUALIZAR"}
         </button>
         <button
           type="button"
