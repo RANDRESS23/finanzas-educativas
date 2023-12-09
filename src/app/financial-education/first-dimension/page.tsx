@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
 // import CreditSection from "./CreditSection";
 // import ExpensesAndIncomes from "./ExpensesAndIncomes";
-// import SavingSection from "./SavingSection";
+import SavingSection from "./SavingSection";
 import type { FirstDimensionContent } from "@/types/first-dimension-content";
 
 export const metadata: Metadata = {
@@ -33,7 +33,7 @@ export default async function FirstDimension() {
 
   return (
     <div className="py-20">
-      {/* <SavingSection savingContent={savingContent} /> */}
+      <SavingSection savingContent={savingContent} />
       {/* <CreditSection creditContent={creditContent} /> */}
       {/* <ExpensesAndIncomes expenseAndIncomeContent={expenseAndIncomeContent} /> */}
     </div>
