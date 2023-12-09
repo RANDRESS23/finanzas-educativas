@@ -1,6 +1,6 @@
 import { GiCash as CashIcon } from "react-icons/gi";
 import CardContent from "./CardContent";
-import { type FirstDimensionContent } from "@/types/first-dimension-content";
+import type { FirstDimensionContent } from "@/types/first-dimension-content";
 
 export const dynamic = "force-dynamic";
 

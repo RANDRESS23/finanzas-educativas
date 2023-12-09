@@ -15,6 +15,7 @@ const getHomeContent = async () => {
       `${process.env.NEXTAUTH_URL}/api/admin/home-content`,
     );
     const data = await homeContent.json();
+    
     return data;
   } catch (error) {
     console.error({ error });
