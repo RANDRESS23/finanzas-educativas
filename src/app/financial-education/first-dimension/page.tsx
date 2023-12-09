@@ -22,17 +22,20 @@ const getFirstDimensionContent = async () => {
 };
 
 export default async function FirstDimension() {
-  const {
-    savingContent,
-    creditContent,
-    expenseAndIncomeContent,
-  }: FirstDimensionContent = await getFirstDimensionContent();
+  // const {
+  //   savingContent,
+  //   creditContent,
+  //   expenseAndIncomeContent,
+  // }: FirstDimensionContent = await getFirstDimensionContent();
+  const aa = await getFirstDimensionContent();
+  console.log({aa});
+  
 
   return (
     <div className="py-20">
-      <SavingSection savingContent={savingContent} />
-      <CreditSection creditContent={creditContent} />
-      <ExpensesAndIncomes expenseAndIncomeContent={expenseAndIncomeContent} />
+      {/* <SavingSection savingContent={savingContent} /> */}
+      {/* <CreditSection creditContent={creditContent} /> */}
+      {/* <ExpensesAndIncomes expenseAndIncomeContent={expenseAndIncomeContent} /> */}
     </div>
   );
 }
