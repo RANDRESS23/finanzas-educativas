@@ -25,10 +25,12 @@ export async function PUT(
   request: Request,
   { params }: { params: { id: string } },
 ) {
-  const body: { title: string; description: string; imageUrl: string } = await request.json();
+  const body: { title: string; description: string; imageUrl: string } =
+    await request.json();
 
   try {
-    const [thirdDimensionContentInfo] = await db.thirdDimensionContent.findMany();
+    const [thirdDimensionContentInfo] =
+      await db.thirdDimensionContent.findMany();
 
     const financeManagementUpdated =
       thirdDimensionContentInfo.financeManagement.map(

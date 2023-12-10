@@ -59,6 +59,7 @@ export const authOptions: NextAuthOptions = {
           updatedAt: existingUser.updatedAt,
           is2FAEnabled: existingUser.is2FAEnabled,
           currentChallenge: existingUser.currentChallenge,
+          disabled: existingUser.disabled,
         };
       },
     }),
@@ -159,6 +160,7 @@ export const authOptions: NextAuthOptions = {
             updatedAt: existingUser.updatedAt,
             is2FAEnabled: existingUser.is2FAEnabled,
             currentChallenge: existingUser.currentChallenge,
+            disabled: existingUser.disabled,
           };
         }
         return null;

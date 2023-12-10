@@ -46,7 +46,6 @@ export default function CardContent({
           </div>
         </div>
       </div>
-<<<<<<< HEAD
       {section === "home" ? (
         <ModalContent
           open={open}
@@ -69,52 +68,13 @@ export default function CardContent({
           title={title}
         />
       ) : (
-        <ModalContentFirstDimension
+        <ModalContentThirdDimension
           open={open}
           setOpen={setOpen}
           cancelButtonRef={cancelButtonRef}
           title={title}
         />
       )}
-=======
-      {
-        section === "home" 
-          ? (
-              <ModalContent
-              open={open}
-              setOpen={setOpen}
-              cancelButtonRef={cancelButtonRef}
-              title={title}
-              />
-            )
-          : section === "first-dimension"
-            ? (
-                <ModalContentFirstDimension 
-                  open={open}
-                  setOpen={setOpen}
-                  cancelButtonRef={cancelButtonRef}
-                  title={title}
-                />
-              )
-            : section === "second-dimension"
-              ? (
-                  <ModalContentSecondDimension
-                    open={open}
-                    setOpen={setOpen}
-                    cancelButtonRef={cancelButtonRef}
-                    title={title}
-                  />
-                )
-              : (
-                  <ModalContentThirdDimension 
-                    open={open}
-                    setOpen={setOpen}
-                    cancelButtonRef={cancelButtonRef}
-                    title={title}
-                  />
-                )
-      }
->>>>>>> d6dcb1436cbab0570c232ee72d0cb11dad990ba5
     </>
   );
 }

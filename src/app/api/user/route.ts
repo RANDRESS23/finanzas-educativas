@@ -109,9 +109,9 @@ export async function PATCH(request: Request) {
     });
 
     if (!userDeleted) {
-      return {
+      return NextResponse.json({
         message: "No se pudo deshabilitar el usuario. Intente más tarde.",
-      };
+      });
     }
 
     return NextResponse.json(
