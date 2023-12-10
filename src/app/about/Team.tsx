@@ -1,6 +1,6 @@
 import { db } from "@/libs/prismaDB";
 import Image from "next/image";
-import AtroposProvider from "./AtroposProvider";
+import AtroposContainer from "../../containers/AtroposContainer";
 
 export default async function Team() {
   const teamMembers = await db.teamMember.findMany({
@@ -9,7 +9,12 @@ export default async function Team() {
 
   return (
     <article className="flex justify-center">
-      <AtroposProvider>
+      <AtroposContainer
+        atroposOpts={{
+          rotateXMax: 2,
+          rotateYMax: 2,
+        }}
+      >
         <div className="bg-white py-24 sm:py-32 dark:bg-slate-900 p-4 sm:p-6 h-full">
           <div className="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
             <div className="max-w-2xl">
@@ -50,7 +55,7 @@ export default async function Team() {
             </ul>
           </div>
         </div>
-      </AtroposProvider>
+      </AtroposContainer>
     </article>
   );
 }

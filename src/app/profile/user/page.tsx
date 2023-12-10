@@ -2,11 +2,13 @@ import pkg from "@/../package.json";
 import ButtonRedirectPostTest from "@/components/ButtonRedirectPostTest";
 import ButtonRedirectPreTest from "@/components/ButtonRedirectPreTest";
 import Title from "@/components/Title";
+import VideoComponent from "@/components/Video";
 import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import videosAfterLogged from "@/json/videosAfterLogged.json";
 
 const isUserAnwseredPreTest = async (idUser: string) => {
   try {
@@ -93,6 +95,22 @@ export default async function ProfileUserPage() {
             alt="photo"
             className="object-cover aspect-square transform hover:scale-105 hover:brightness-105 transition-all duration-300 cursor-pointer rounded-lg"
           />
+        </div>
+      </div>
+
+      <div className="py-7 pb-24 sm:pb-32">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-16">
+            <p>
+              Aprende más sobre como{" "}
+              <span className="text-sushi-500">Administrar Tus Finanzas</span>
+            </p>
+          </blockquote>
+          <div className="flex justify-center items-center gap-9 flex-wrap">
+            {videosAfterLogged.map((video_url, i) => (
+              <VideoComponent video_url={video_url} key={i} />
+            ))}
+          </div>
         </div>
       </div>
     </div>

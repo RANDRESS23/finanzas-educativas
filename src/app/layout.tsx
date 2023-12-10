@@ -7,6 +7,7 @@ import ProgressProvider from "@/context/ProgressProvider";
 import SessionProviderContext from "@/providers/SessionProvider";
 import ThemeProvider from "@/providers/ThemeProvider";
 import ToasterProvider from "@/providers/ToasterProvider";
+import "atropos/css";
 import { type Metadata } from "next";
 import { Oswald } from "next/font/google";
 import "./globals.css";
