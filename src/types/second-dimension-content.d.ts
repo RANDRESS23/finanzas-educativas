@@ -6,9 +6,9 @@ export interface StepOfAGoodDecision {
 
 export interface SecondDimensionContent {
   id: string;
-  aGoodDecisionContent: string;
+  aGoodDecisionContent: string[];
   stepsOfAGoodDecisionContent: StepOfAGoodDecision[];
-  takeIntoAccountAGoodDecisionContent: string;
+  takeIntoAccountAGoodDecisionContent: string[];
   createdAt: Date;
   updatedAt: Date;
 }

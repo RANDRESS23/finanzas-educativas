@@ -1,9 +1,36 @@
+<<<<<<< HEAD
 import LIST_OF_FINANCE_MANAGEMENT from "@/meta/financeManagement";
 import Image from "next/image";
 import Link from "next/link";
 import { GiReceiveMoney } from "react-icons/gi";
+=======
+import { type Metadata } from "next";
+import Link from "next/link";
+import { GiReceiveMoney } from "react-icons/gi";
+import Image from "next/image";
+import type { ThirdDimensionContent } from "@/types/third-dimension-content";
 
-export default function ThirdDimension() {
+export const metadata: Metadata = {
+  title: "Finanzas Educativas | Educación Financiera",
+};
+>>>>>>> d6dcb1436cbab0570c232ee72d0cb11dad990ba5
+
+const getThirdDimensionContent = async () => {
+  try {
+    const thirdDimensionContent = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/admin/third-dimension`,
+    );
+    const data = await thirdDimensionContent.json();
+    
+    return data;
+  } catch (error) {
+    console.error({ error });
+  }
+};
+
+export default async function ThirdDimension() {
+  const { financeManagement }: ThirdDimensionContent = await getThirdDimensionContent();
+
   return (
     <div className="py-36">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -18,19 +45,19 @@ export default function ThirdDimension() {
           </p>
         </blockquote>
         <div className="flex justify-center items-center gap-y-9 gap-x-20 flex-wrap">
-          {LIST_OF_FINANCE_MANAGEMENT.map(
-            ({ title, description, url }, index) => (
+          {financeManagement.map(
+            ({ id, title, description, imageUrl }) => (
               <div
-                key={index}
+                key={id}
                 className="relative flex w-[400px] flex-col rounded-xl bg-white dark:bg-slate-950/40 bg-clip-border text-gray-700 shadow-2xl shadow-slate-500/20 dark:shadow-slate-950/60 hover:bg-slate-100 dark:hover:bg-slate-900 hover:ring-1 hover:ring-gray-200/40 dark:hover:ring-slate-700/20 transition-colors duration-300 flow-finanzas-xd"
               >
                 <div className="px-6 pt-6 pb-3">
                   <div
-                    key={index}
+                    key={id}
                     className="w-full h-56 relative rounded-xl overflow-hidden mb-4"
                   >
                     <Image
-                      src={url}
+                      src={imageUrl}
                       alt=""
                       width={600}
                       height={400}
