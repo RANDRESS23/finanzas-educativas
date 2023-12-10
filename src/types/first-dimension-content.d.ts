@@ -32,5 +32,5 @@ export interface FirstDimensionContent {
   creditContent: CreditContent;
   expenseAndIncomeContent: ExpenseAndIncomeContent;
   createdAt: Date;
-  updatedAt: Date;                
+  updatedAt: Date;
 }

@@ -8,6 +8,8 @@ import ReactECharts from "echarts-for-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 
+export type StatisticData = { name: string; value: number }[];
+
 export default function Pie({
   statistic,
   title,
@@ -15,7 +17,7 @@ export default function Pie({
   statistic: string;
   title: TitleComponentOption;
 }) {
-  const [constructedData, setConstructedData] = useState<any>();
+  const [constructedData, setConstructedData] = useState<StatisticData>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const getData = async (uri: string) => {
@@ -40,7 +42,7 @@ export default function Pie({
     const transformedData = Object.entries(inputData).map(([name, value]) => ({
       name,
       value,
-    }));
+    })) as typeof constructedData;
 
     setConstructedData(transformedData);
   };

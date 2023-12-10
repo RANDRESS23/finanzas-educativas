@@ -22,7 +22,8 @@ export async function POST(request: Request) {
   const body: { title: string; description: string } = await request.json();
 
   try {
-    const [firstDimensionContentInfo] = await db.firstDimensionContent.findMany();
+    const [firstDimensionContentInfo] =
+      await db.firstDimensionContent.findMany();
     const savingFeaturesInfoUpdated = await db.firstDimensionContent.update({
       where: {
         id: firstDimensionContentInfo.id,
@@ -63,7 +64,8 @@ export async function PUT(request: Request) {
   const body: { savingMeaning: string } = await request.json();
 
   try {
-    const [firstDimensionContentInfo] = await db.firstDimensionContent.findMany();
+    const [firstDimensionContentInfo] =
+      await db.firstDimensionContent.findMany();
     const savingFeaturesInfoUpdated = await db.firstDimensionContent.update({
       where: {
         id: firstDimensionContentInfo.id,
@@ -71,7 +73,8 @@ export async function PUT(request: Request) {
       data: {
         savingContent: {
           savingMeaning: body.savingMeaning,
-          savingFeatures: firstDimensionContentInfo.savingContent.savingFeatures,
+          savingFeatures:
+            firstDimensionContentInfo.savingContent.savingFeatures,
         },
       },
     });

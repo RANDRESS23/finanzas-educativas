@@ -42,11 +42,7 @@ export default function SavingSection({ savingContent }: SavingSectionProps) {
               <div key={title} className="relative pl-16 flow-finanzas-xd">
                 <dt className="text-base font-bold leading-7 text-sushi-500">
                   <div className="absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-lg bg-boston-blue-600">
-                    {
-                      index % 2 === 0
-                        ? <FinanceIcon />
-                        : <PigMoneyIcon />
-                    }
+                    {index % 2 === 0 ? <FinanceIcon /> : <PigMoneyIcon />}
                   </div>
                   {title}
                 </dt>

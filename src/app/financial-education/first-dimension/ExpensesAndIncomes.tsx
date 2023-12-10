@@ -2,10 +2,12 @@ import { type ExpenseAndIncomeContent } from "@/types/first-dimension-content";
 import { Income, Expense } from "./svgs";
 
 interface ExpenseAndIncomeProps {
-  expenseAndIncomeContent: ExpenseAndIncomeContent
+  expenseAndIncomeContent: ExpenseAndIncomeContent;
 }
 
-export default function ExpensesAndIncomes({ expenseAndIncomeContent }: ExpenseAndIncomeProps) {
+export default function ExpensesAndIncomes({
+  expenseAndIncomeContent,
+}: ExpenseAndIncomeProps) {
   const { expenseMeaning, incomeMeaning } = expenseAndIncomeContent;
 
   return (

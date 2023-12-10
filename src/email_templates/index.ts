@@ -6,7 +6,7 @@ const htmlForChangePsw = (resetPasswordLink: string) =>
   recoveryPassword({ resetPasswordLink });
 
 const htmlForUserContact = () => `
-<p>Gracias por contactar al equipo de <strong>Finanzas Educativas</strong>.</p>
+<p>Gracias por contactar al equipo de <strong>${pkg.description}</strong>.</p>
 
 <p>Revisaremos tu mensaje lo más pronto posible.</p>
 
@@ -20,7 +20,7 @@ const htmlForAdminContact = ({
   email,
   message,
 }: Contact) => `
-<p>Nuevo contacto equipo de <strong>Finanzas Educativas</strong>.</p>
+<p>Nuevo contacto equipo de <strong>${pkg.description}</strong>.</p>
 
 <p><strong>Nombre:</strong> ${name}</p>
 <p><strong>Número de Teléfono:</strong> ${phoneNumber}</p>

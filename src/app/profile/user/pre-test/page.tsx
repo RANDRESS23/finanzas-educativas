@@ -1,5 +1,6 @@
-import { authOptions } from "@/libs/authOptions";
+import pkg from "@/../package.json";
 import Title from "@/components/Title";
+import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import FormPreTest from "./FormPreTest";
@@ -40,15 +41,15 @@ export default async function PreTestPage() {
   );
 
   if (session?.user?.email === "admin@gmail.com") {
-    return redirect("/profile/admin");
+    redirect("/profile/admin");
   }
 
   if (isUserAnwseredPreTestInApp !== isUserAnwseredPostTestInApp) {
-    return redirect("/profile/user/post-test");
+    redirect("/profile/user/post-test");
   }
 
   if (isUserAnwseredPostTestInApp) {
-    return redirect("/profile/user");
+    redirect("/profile/user");
   }
 
   return (
@@ -56,7 +57,7 @@ export default async function PreTestPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
         <h2 className="mt-5 text-center text-3xl font-bold leading-9 tracking-tight">
           Completa tu pre-test en{" "}
-          <Title text="¡Finanzas Educativas!" isTextStatic />
+          <Title text={`¡${pkg.description}!`} isTextStatic />
         </h2>
       </div>
       <div className="flex justify-center items-center gap-16 mt-7">

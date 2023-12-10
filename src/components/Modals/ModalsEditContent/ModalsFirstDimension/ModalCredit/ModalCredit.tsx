@@ -20,7 +20,7 @@ export default function ModalCredit({ setOpen }: ModalFormSavingProps) {
   const handleChangeSavingMeaning = () => {
     setIsCreditMeaningEdit(true);
     setOpen2(true);
-  }
+  };
 
   const handleChange = ({ id }: { id: string }) => {
     setIdCreditTypeFocus(id);
@@ -50,10 +50,10 @@ export default function ModalCredit({ setOpen }: ModalFormSavingProps) {
 
   return (
     <div>
-      <p className="font-semibold text-lg">Edita el concepto de <span className="text-sushi-500">Crédito: </span></p>
-      <div
-        className="mb-4 w-full flex justify-between items-center gap-3"
-      >
+      <p className="font-semibold text-lg">
+        Edita el concepto de <span className="text-sushi-500">Crédito: </span>
+      </p>
+      <div className="mb-4 w-full flex justify-between items-center gap-3">
         <div>
           <p className="text-gray-700 dark:text-gray-300 font-semibold">
             Definición de Crédito
@@ -71,7 +71,9 @@ export default function ModalCredit({ setOpen }: ModalFormSavingProps) {
           </button>
         </div>
       </div>
-      <p className="font-semibold text-lg mt-2">Edita los tipos de <span className="text-sushi-500">Crédito: </span></p>
+      <p className="font-semibold text-lg mt-2">
+        Edita los tipos de <span className="text-sushi-500">Crédito: </span>
+      </p>
       {credit.creditTypes.map(
         ({
           id,

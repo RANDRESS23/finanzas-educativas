@@ -1,12 +1,7 @@
-import { type Metadata } from "next";
+import type { FirstDimensionContent } from "@/types/first-dimension-content";
 import CreditSection from "./CreditSection";
 import ExpensesAndIncomes from "./ExpensesAndIncomes";
 import SavingSection from "./SavingSection";
-import type { FirstDimensionContent } from "@/types/first-dimension-content";
-
-export const metadata: Metadata = {
-  title: "Finanzas Educativas | Educación Financiera",
-};
 
 const getFirstDimensionContent = async () => {
   try {
@@ -14,7 +9,7 @@ const getFirstDimensionContent = async () => {
       `${process.env.NEXTAUTH_URL}/api/admin/first-dimension`,
     );
     const data = await firstDimensionContent.json();
-    
+
     return data;
   } catch (error) {
     console.error({ error });
@@ -27,8 +22,6 @@ export default async function FirstDimension() {
     creditContent,
     expenseAndIncomeContent,
   }: FirstDimensionContent = await getFirstDimensionContent();
-
-  console.log({ savingContent, creditContent, expenseAndIncomeContent });
 
   return (
     <div className="py-20">

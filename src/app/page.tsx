@@ -8,6 +8,7 @@ import { getServerSession } from "next-auth/next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
+import pkg from "@/../package.json";
 
 const getHomeContent = async () => {
   try {
@@ -15,7 +16,7 @@ const getHomeContent = async () => {
       `${process.env.NEXTAUTH_URL}/api/admin/home-content`,
     );
     const data = await homeContent.json();
-    
+
     return data;
   } catch (error) {
     console.error({ error });
@@ -51,7 +52,7 @@ export default async function Home() {
           </div>
           <div className="text-center">
             <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight sm:text-6xl">
-              Bienvenido a <Title text="¡Finanzas Educativas!" isTextStatic />
+              Bienvenido a <Title text={`¡${pkg.description}!`} isTextStatic />
             </h1>
             <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
               {welcomeContent.subtitle}

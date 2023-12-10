@@ -22,7 +22,8 @@ export async function POST(request: Request) {
   const body: { title: string; description: string } = await request.json();
 
   try {
-    const [firstDimensionContentInfo] = await db.firstDimensionContent.findMany();
+    const [firstDimensionContentInfo] =
+      await db.firstDimensionContent.findMany();
     const creditTypesInfoUpdated = await db.firstDimensionContent.update({
       where: {
         id: firstDimensionContentInfo.id,
@@ -63,7 +64,8 @@ export async function PUT(request: Request) {
   const body: { creditMeaning: string } = await request.json();
 
   try {
-    const [firstDimensionContentInfo] = await db.firstDimensionContent.findMany();
+    const [firstDimensionContentInfo] =
+      await db.firstDimensionContent.findMany();
     const creditTypesInfoUpdated = await db.firstDimensionContent.update({
       where: {
         id: firstDimensionContentInfo.id,

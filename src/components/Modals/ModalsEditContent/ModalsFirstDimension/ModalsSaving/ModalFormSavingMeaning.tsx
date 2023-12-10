@@ -13,7 +13,10 @@ interface ModalFormSavingMeaningProps {
   setOpen2: (st: boolean) => void;
 }
 
-export default function ModalFormSavingMeaning({ setOpen, setOpen2 }: ModalFormSavingMeaningProps) {
+export default function ModalFormSavingMeaning({
+  setOpen,
+  setOpen2,
+}: ModalFormSavingMeaningProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingSavingMeaning, setIsLoadingSavingMeaning] = useState(false);
   const router = useRouter();
@@ -80,7 +83,10 @@ export default function ModalFormSavingMeaning({ setOpen, setOpen2 }: ModalFormS
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="savingMeaning">
+        <label
+          className="text-gray-700 dark:text-gray-300"
+          htmlFor="savingMeaning"
+        >
           Concepto de Ahorro
         </label>
         <textarea

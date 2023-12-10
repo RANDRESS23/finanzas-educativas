@@ -1,15 +1,16 @@
+import pkg from "@/../package.json";
 import Title from "@/components/Title";
+import { authOptions } from "@/libs/authOptions";
 import { type Metadata } from "next";
 import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { authOptions } from "@/libs/authOptions";
 import FormSignUp from "./FormSignUp";
 import SignUpGifDark from "./gifs/signUp-dark.gif";
 import SignUpGif from "./gifs/signUp.gif";
 
 export const metadata: Metadata = {
-  title: "Finanzas Educativas | Registrarse",
+  title: `${pkg.description} | Registrarse`,
 };
 
 async function Signup() {
@@ -26,7 +27,7 @@ async function Signup() {
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 pb-12 lg:px-8 mb-10 py-20">
         <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
           <h2 className="mt-3 text-center text-4xl md:text-3xl font-bold leading-9 tracking-tight">
-            Registrarse en <Title text="¡Finanzas Educativas!" isTextStatic />
+            Registrarse en <Title text={`¡${pkg.description}!`} isTextStatic />
           </h2>
         </div>
 

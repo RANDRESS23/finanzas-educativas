@@ -71,7 +71,8 @@ export async function PUT(request: Request) {
       data: {
         informativeVideosContent: {
           subtitle: body.subtitle,
-          informativeVideos: homeContentInfo.informativeVideosContent.informativeVideos
+          informativeVideos:
+            homeContentInfo.informativeVideosContent.informativeVideos,
         },
       },
     });

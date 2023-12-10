@@ -65,19 +65,13 @@ export default function ModalContentFirstDimension({
                         Editar <span className="text-sushi-500">{title}</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          title === "Ahorro" 
-                            ? (
-                                <ModalSaving setOpen={setOpen} />
-                              ) 
-                            : title === "Ingresos y Gastos"
-                              ? (
-                                  <ModalFormExpenseAndIncome setOpen={setOpen} />
-                                )
-                              : (
-                                  <ModalCredit setOpen={setOpen} />
-                                )
-                        }
+                        {title === "Ahorro" ? (
+                          <ModalSaving setOpen={setOpen} />
+                        ) : title === "Ingresos y Gastos" ? (
+                          <ModalFormExpenseAndIncome setOpen={setOpen} />
+                        ) : (
+                          <ModalCredit setOpen={setOpen} />
+                        )}
                       </div>
                     </div>
                   </div>

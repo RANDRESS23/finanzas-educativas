@@ -3,11 +3,15 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const secondDimensionContentInfo = await db.secondDimensionContent.findMany();
+    const secondDimensionContentInfo =
+      await db.secondDimensionContent.findMany();
 
-    return NextResponse.json(secondDimensionContentInfo[0].stepsOfAGoodDecisionContent, {
-      status: 200,
-    });
+    return NextResponse.json(
+      secondDimensionContentInfo[0].stepsOfAGoodDecisionContent,
+      {
+        status: 200,
+      },
+    );
   } catch (error) {
     console.error({ error });
 

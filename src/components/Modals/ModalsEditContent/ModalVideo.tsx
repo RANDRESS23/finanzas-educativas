@@ -26,7 +26,9 @@ export default function ModalVideo({ setOpen }: ModalFormWelcomeProps) {
       try {
         setIsLoadingVideos(true);
 
-        const videos = await fetch(`/api/admin/home-content/informative-videos`);
+        const videos = await fetch(
+          `/api/admin/home-content/informative-videos`,
+        );
         const response = await videos.json();
 
         setVideos(response);
@@ -45,15 +47,7 @@ export default function ModalVideo({ setOpen }: ModalFormWelcomeProps) {
   return (
     <div>
       {videos.informativeVideos.map(
-        ({
-          id,
-          title,
-          url,
-        }: {
-          id: string;
-          title: string;
-          url: string;
-        }) => {
+        ({ id, title, url }: { id: string; title: string; url: string }) => {
           const urlSliced = url.slice(0, 30);
 
           return (

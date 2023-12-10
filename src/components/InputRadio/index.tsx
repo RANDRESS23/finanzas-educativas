@@ -4,7 +4,7 @@ interface InputRadioProps {
   name: string;
   label: string;
   register: any;
-  options: { value: string | boolean; label: string }[];
+  options: { value: string | boolean; label: string; checked?: boolean }[];
   disabled: boolean;
 }
 
@@ -19,7 +19,7 @@ export default function InputRadio({
     <div>
       <span className="block font-medium leading-6">{label}</span>
       <div className="mt-4 flex flex-wrap gap-5">
-        {options.map(({ value, label }) => (
+        {options.map(({ value, label, checked }) => (
           <div key={label} className="relative flex gap-x-3">
             <div className="flex h-6 items-center">
               <input
@@ -29,6 +29,7 @@ export default function InputRadio({
                 value={value}
                 className="h-4 w-4 bg-white dark:bg-slate-900 border-gray-300 dark:border-gray-400 text-boston-blue-600 dark:text-boston-blue-600 focus:ring-boston-blue-600 dark:focus:ring-boston-blue-600 cursor-pointer disabled:bg-slate-200 dark:disabled:bg-slate-800 disabled:checked:bg-boston-blue-600/60 dark:disabled:checked:bg-boston-blue-600/60 checked:bg-boston-blue-600 dark:checked:bg-boston-blue-600 dark:disabled:opacity-70 hover:border-gray-400 dark:hover:border-gray-300 disabled:cursor-not-allowed"
                 disabled={disabled}
+                checked={checked}
                 required
               />
             </div>

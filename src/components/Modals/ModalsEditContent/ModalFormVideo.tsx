@@ -109,10 +109,7 @@ export default function ModalFormVideo({
       </div>
 
       <div className="mb-4 w-full">
-        <label
-          className="text-gray-700 dark:text-gray-300"
-          htmlFor="url"
-        >
+        <label className="text-gray-700 dark:text-gray-300" htmlFor="url">
           Url del Video Informativo Educativo
         </label>
         <textarea

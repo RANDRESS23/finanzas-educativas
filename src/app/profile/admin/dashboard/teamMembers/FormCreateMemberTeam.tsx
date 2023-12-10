@@ -4,7 +4,7 @@ import { createMember } from "@/actions/teamMembers/create";
 import Input from "@/components/Input";
 import InputSelect from "@/components/InputSelect";
 import api from "@/libs/api";
-import { Team } from "@prisma/client";
+import { type Team } from "@prisma/client";
 import { useEffect, useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 import { IoMdAddCircleOutline as AddIcon } from "react-icons/io";
@@ -29,10 +29,12 @@ function Submit() {
   );
 }
 
+export type SelectData = { value: string; label: string }[];
+
 export default function FormCreateMemberTeam() {
   const [state, formAction] = useFormState(createMember, initialState);
   const ref = useRef<HTMLFormElement>(null);
-  const [teams, setTeams] = useState<{ value: string; label: string }[]>([]);
+  const [teams, setTeams] = useState<SelectData>([]);
 
   useEffect(() => {
     state.ok && ref.current?.reset();

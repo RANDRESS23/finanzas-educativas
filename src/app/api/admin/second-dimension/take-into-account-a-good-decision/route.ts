@@ -3,11 +3,15 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const secondDimensionContentInfo = await db.secondDimensionContent.findMany();
+    const secondDimensionContentInfo =
+      await db.secondDimensionContent.findMany();
 
-    return NextResponse.json(secondDimensionContentInfo[0].takeIntoAccountAGoodDecisionContent, {
-      status: 200,
-    });
+    return NextResponse.json(
+      secondDimensionContentInfo[0].takeIntoAccountAGoodDecisionContent,
+      {
+        status: 200,
+      },
+    );
   } catch (error) {
     console.error({ error });
 
@@ -19,21 +23,24 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
-  const body: { firstParagraph: string; secondParagraph: string } = await request.json();
+  const body: { firstParagraph: string; secondParagraph: string } =
+    await request.json();
 
   try {
-    const [secondDimensionContentInfo] = await db.secondDimensionContent.findMany();
-    const takeIntoAccountAGoodDecisionInfoUpdated = await db.secondDimensionContent.update({
-      where: {
-        id: secondDimensionContentInfo.id,
-      },
-      data: {
-        takeIntoAccountAGoodDecisionContent: [
-          body.firstParagraph,
-          body.secondParagraph,
-        ],
-      },
-    });
+    const [secondDimensionContentInfo] =
+      await db.secondDimensionContent.findMany();
+    const takeIntoAccountAGoodDecisionInfoUpdated =
+      await db.secondDimensionContent.update({
+        where: {
+          id: secondDimensionContentInfo.id,
+        },
+        data: {
+          takeIntoAccountAGoodDecisionContent: [
+            body.firstParagraph,
+            body.secondParagraph,
+          ],
+        },
+      });
 
     return NextResponse.json(
       {

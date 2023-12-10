@@ -1,3 +1,4 @@
+import pkg from "@/../package.json";
 import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
@@ -34,7 +35,7 @@ export default async function TeamMembersPage() {
               <div className="shadow dark:shadow-slate-700 mb-4 p-4 sm:p-6 h-full">
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-xl font-bold leading-none">
-                    Miembros de Finanzas Educativas
+                    Miembros de {pkg.description}
                   </h3>
                 </div>
                 <div className="flow-root">

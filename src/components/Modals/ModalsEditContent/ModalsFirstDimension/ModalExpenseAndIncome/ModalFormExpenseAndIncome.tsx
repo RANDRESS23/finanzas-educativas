@@ -12,9 +12,12 @@ interface ModalFormExpenseAndIncomeProps {
   setOpen: (st: boolean) => void;
 }
 
-export default function ModalFormExpenseAndIncome({ setOpen }: ModalFormExpenseAndIncomeProps) {
+export default function ModalFormExpenseAndIncome({
+  setOpen,
+}: ModalFormExpenseAndIncomeProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingExpenseAndIncome, setIsLoadingExpenseAndIncome] = useState(false);
+  const [isLoadingExpenseAndIncome, setIsLoadingExpenseAndIncome] =
+    useState(false);
   const router = useRouter();
 
   const defaultValues = {
@@ -32,10 +35,13 @@ export default function ModalFormExpenseAndIncome({ setOpen }: ModalFormExpenseA
     setIsLoading(true);
 
     try {
-      const response = await api.put("/admin/first-dimension/expense-and-income", {
-        expenseMeaning: data.expenseMeaning,
-        incomeMeaning: data.incomeMeaning,
-      });
+      const response = await api.put(
+        "/admin/first-dimension/expense-and-income",
+        {
+          expenseMeaning: data.expenseMeaning,
+          incomeMeaning: data.incomeMeaning,
+        },
+      );
 
       if (response.status === 201) {
         tosty.success("¡Datos actualizados exitosamente!");
@@ -60,7 +66,9 @@ export default function ModalFormExpenseAndIncome({ setOpen }: ModalFormExpenseA
       try {
         setIsLoadingExpenseAndIncome(true);
 
-        const expenseAndIncome = await fetch(`/api/admin/first-dimension/expense-and-income`);
+        const expenseAndIncome = await fetch(
+          `/api/admin/first-dimension/expense-and-income`,
+        );
         const response = await expenseAndIncome.json();
 
         reset(formValues => ({
@@ -81,7 +89,10 @@ export default function ModalFormExpenseAndIncome({ setOpen }: ModalFormExpenseA
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="incomeMeaning">
+        <label
+          className="text-gray-700 dark:text-gray-300"
+          htmlFor="incomeMeaning"
+        >
           Concepto de Ingresos
         </label>
         <textarea
@@ -96,9 +107,12 @@ export default function ModalFormExpenseAndIncome({ setOpen }: ModalFormExpenseA
           disabled={isLoading || isLoadingExpenseAndIncome}
         />
       </div>
-      
+
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="expenseMeaning">
+        <label
+          className="text-gray-700 dark:text-gray-300"
+          htmlFor="expenseMeaning"
+        >
           Concepto de Gastos
         </label>
         <textarea
@@ -120,7 +134,9 @@ export default function ModalFormExpenseAndIncome({ setOpen }: ModalFormExpenseA
           className="text-sm rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-sushi-400 mb-2"
           disabled={isLoading || isLoadingExpenseAndIncome}
         >
-          {isLoading || isLoadingExpenseAndIncome ? "CARGANDO..." : "ACTUALIZAR"}
+          {isLoading || isLoadingExpenseAndIncome
+            ? "CARGANDO..."
+            : "ACTUALIZAR"}
         </button>
         <button
           type="button"

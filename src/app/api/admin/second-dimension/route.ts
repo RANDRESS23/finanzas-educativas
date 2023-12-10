@@ -3,7 +3,8 @@ import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
-    const secondDimensionContentInfo = await db.secondDimensionContent.findMany();
+    const secondDimensionContentInfo =
+      await db.secondDimensionContent.findMany();
 
     return NextResponse.json(secondDimensionContentInfo[0], { status: 200 });
   } catch (error) {
@@ -20,11 +21,15 @@ export async function POST(request: Request) {
   const body = await request.json();
 
   try {
-    const existingSecondDimensionContent = await db.secondDimensionContent.findMany();
+    const existingSecondDimensionContent =
+      await db.secondDimensionContent.findMany();
 
     if (existingSecondDimensionContent.length > 0) {
       return NextResponse.json(
-        { messsage: "El contenido de la segunda dimension ya se encuentra insertado" },
+        {
+          messsage:
+            "El contenido de la segunda dimension ya se encuentra insertado",
+        },
         { status: 400 },
       );
     }
@@ -41,7 +46,8 @@ export async function POST(request: Request) {
       data: {
         aGoodDecisionContent: body.aGoodDecisionContent,
         stepsOfAGoodDecisionContent: stepsOfAGoodDecision,
-        takeIntoAccountAGoodDecisionContent: body.takeIntoAccountAGoodDecisionContent,
+        takeIntoAccountAGoodDecisionContent:
+          body.takeIntoAccountAGoodDecisionContent,
       },
     });
 

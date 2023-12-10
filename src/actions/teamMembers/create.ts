@@ -1,9 +1,9 @@
 "use server";
 
+import pkg from "@/../package.json";
 import { db } from "@/libs/prismaDB";
 import { teamMemberSchema } from "@/schemas/teamMember.schema";
 import { revalidatePath } from "next/cache";
-import pkg from "@/../package.json";
 
 export async function createMember(
   _prevState: any,

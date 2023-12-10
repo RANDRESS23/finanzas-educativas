@@ -1,6 +1,7 @@
-import { authOptions } from "@/libs/authOptions";
+import pkg from "@/../package.json";
 import { AdminIcon } from "@/components/NavBar/icons";
 import Title from "@/components/Title";
+import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth/next";
 import Image from "next/image";
 import Link from "next/link";
@@ -32,7 +33,7 @@ export default async function ProfileAdminPage() {
           <div className="relative text-center">
             <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight sm:text-6xl">
               <span className="block w-full">¡Bienvenido a </span>
-              <span className="text-sushi-500">Finanzas Educativas!</span>{" "}
+              <span className="text-sushi-500">{`¡${pkg.description}!`}</span>{" "}
               <Title />
             </h1>
             <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">

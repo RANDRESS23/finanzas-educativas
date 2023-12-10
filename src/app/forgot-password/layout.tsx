@@ -1,7 +1,8 @@
+import pkg from "@/../package.json";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Finanzas Educativas | Recuperar Contraseña",
+  title: `${pkg.description} | Recuperar Contraseña`,
 };
 
 export default function RecoveryPasswordLayout({

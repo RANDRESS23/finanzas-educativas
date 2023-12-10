@@ -20,11 +20,15 @@ export async function POST(request: Request) {
   const body = await request.json();
 
   try {
-    const existingFirstDimensionContent = await db.firstDimensionContent.findMany();
+    const existingFirstDimensionContent =
+      await db.firstDimensionContent.findMany();
 
     if (existingFirstDimensionContent.length > 0) {
       return NextResponse.json(
-        { messsage: "El contenido de la primera dimension ya se encuentra insertado" },
+        {
+          messsage:
+            "El contenido de la primera dimension ya se encuentra insertado",
+        },
         { status: 400 },
       );
     }

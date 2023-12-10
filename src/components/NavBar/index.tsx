@@ -29,6 +29,7 @@ import {
   PigIcon,
   UserIcon,
 } from "./icons";
+import pkg from "@/../package.json";
 
 export default function NavBar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -90,10 +91,10 @@ export default function NavBar() {
               width={40}
               src={IconoFinanzasEducativas}
               priority
-              alt="Finanzas Educativas"
+              alt={`${pkg.description} logotype`}
             />
             <div className="flex justify-center items-center text-2xl font-bold">
-              Finanzas Educativas
+              {pkg.description}
             </div>
           </Link>
         </div>

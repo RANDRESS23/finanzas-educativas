@@ -66,27 +66,21 @@ export default function ModalSavingContent({
                         className="text-xl font-semibold leading-6 text-gray-900 dark:text-gray-300"
                       >
                         Editar la sección de{" "}
-                        <span className="text-sushi-500">
-                          Ahorro
-                        </span>
+                        <span className="text-sushi-500">Ahorro</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          isSavingMeaningEdit
-                            ? (
-                                <ModalFormSavingMeaning 
-                                  setOpen={setOpen}
-                                  setOpen2={setOpen2}
-                                />
-                              )
-                            : (
-                                <ModalFormSavingFeature
-                                  setOpen={setOpen}
-                                  setOpen2={setOpen2}
-                                  idSavingFeature={idSavingFeature}
-                                />
-                              )
-                        }
+                        {isSavingMeaningEdit ? (
+                          <ModalFormSavingMeaning
+                            setOpen={setOpen}
+                            setOpen2={setOpen2}
+                          />
+                        ) : (
+                          <ModalFormSavingFeature
+                            setOpen={setOpen}
+                            setOpen2={setOpen2}
+                            idSavingFeature={idSavingFeature}
+                          />
+                        )}
                       </div>
                     </div>
                   </div>

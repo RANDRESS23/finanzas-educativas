@@ -12,7 +12,11 @@ interface CardContentProps {
   section: string;
 }
 
-export default function CardContent({ title, description, section }: CardContentProps) {
+export default function CardContent({
+  title,
+  description,
+  section,
+}: CardContentProps) {
   const [open, setOpen] = useState(false);
 
   const cancelButtonRef = useRef(null);
@@ -41,43 +45,35 @@ export default function CardContent({ title, description, section }: CardContent
           </div>
         </div>
       </div>
-      {
-        section === "home" 
-          ? (
-              <ModalContent
-              open={open}
-              setOpen={setOpen}
-              cancelButtonRef={cancelButtonRef}
-              title={title}
-              />
-            )
-          : section === "first-dimension"
-            ? (
-                <ModalContentFirstDimension 
-                  open={open}
-                  setOpen={setOpen}
-                  cancelButtonRef={cancelButtonRef}
-                  title={title}
-                />
-              )
-            : section === "second-dimension"
-              ? (
-                  <ModalContentSecondDimension
-                    open={open}
-                    setOpen={setOpen}
-                    cancelButtonRef={cancelButtonRef}
-                    title={title}
-                  />
-                )
-              : (
-                  <ModalContentFirstDimension 
-                    open={open}
-                    setOpen={setOpen}
-                    cancelButtonRef={cancelButtonRef}
-                    title={title}
-                  />
-                )
-      }
+      {section === "home" ? (
+        <ModalContent
+          open={open}
+          setOpen={setOpen}
+          cancelButtonRef={cancelButtonRef}
+          title={title}
+        />
+      ) : section === "first-dimension" ? (
+        <ModalContentFirstDimension
+          open={open}
+          setOpen={setOpen}
+          cancelButtonRef={cancelButtonRef}
+          title={title}
+        />
+      ) : section === "second-dimension" ? (
+        <ModalContentSecondDimension
+          open={open}
+          setOpen={setOpen}
+          cancelButtonRef={cancelButtonRef}
+          title={title}
+        />
+      ) : (
+        <ModalContentFirstDimension
+          open={open}
+          setOpen={setOpen}
+          cancelButtonRef={cancelButtonRef}
+          title={title}
+        />
+      )}
     </>
   );
 }

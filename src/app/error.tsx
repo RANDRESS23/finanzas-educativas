@@ -14,7 +14,7 @@ interface ErrorProps {
 export default function ErrorPage({ error, reset }: ErrorProps) {
   useEffect(() => {
     // Log the error to an error reporting service
-    console.error(error);
+    console.error({ error });
   }, [error]);
 
   return (

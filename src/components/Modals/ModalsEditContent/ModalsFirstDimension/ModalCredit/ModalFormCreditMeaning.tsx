@@ -13,7 +13,10 @@ interface ModalFormCreditMeaningProps {
   setOpen2: (st: boolean) => void;
 }
 
-export default function ModalFormCreditMeaning({ setOpen, setOpen2 }: ModalFormCreditMeaningProps) {
+export default function ModalFormCreditMeaning({
+  setOpen,
+  setOpen2,
+}: ModalFormCreditMeaningProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingCreditMeaning, setIsLoadingCreditMeaning] = useState(false);
   const router = useRouter();
@@ -80,7 +83,10 @@ export default function ModalFormCreditMeaning({ setOpen, setOpen2 }: ModalFormC
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="creditMeaning">
+        <label
+          className="text-gray-700 dark:text-gray-300"
+          htmlFor="creditMeaning"
+        >
           Concepto de Crédito
         </label>
         <textarea

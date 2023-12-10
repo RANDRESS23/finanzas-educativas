@@ -1,5 +1,6 @@
-import { authOptions } from "@/libs/authOptions";
+import pkg from "@/../package.json";
 import Title from "@/components/Title";
+import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
 import PersonalInfo from "./PersonalInfo";
@@ -16,7 +17,7 @@ export default async function PersonalInformationPage() {
       <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-3xl">
         <h2 className="mt-3 text-center text-3xl font-bold leading-9 tracking-tight">
           Completa tu perfíl en{" "}
-          <Title text="¡Finanzas Educativas!" isTextStatic />
+          <Title text={`¡${pkg.description}!`} isTextStatic />
         </h2>
       </div>
       <div className="flex justify-center items-center gap-16 mt-7">

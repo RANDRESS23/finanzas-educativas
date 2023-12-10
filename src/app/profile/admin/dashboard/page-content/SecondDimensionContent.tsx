@@ -22,11 +22,10 @@ export default async function SecondDimensionContent() {
     stepsOfAGoodDecisionContent,
     takeIntoAccountAGoodDecisionContent,
   }: SecondDimensionContent = await getSecondDimensionContent();
-  const aGoodDecisionContentDescription = 
-    aGoodDecisionContent[0].slice(0, 30);
-  const stepsOfAGoodDecisionContentDescription = 
+  const aGoodDecisionContentDescription = aGoodDecisionContent[0].slice(0, 30);
+  const stepsOfAGoodDecisionContentDescription =
     stepsOfAGoodDecisionContent[0].description.slice(0, 30);
-  const takeIntoAccountAGoodDecisionContentDescription = 
+  const takeIntoAccountAGoodDecisionContentDescription =
     takeIntoAccountAGoodDecisionContent[0].slice(0, 30);
 
   return (
@@ -43,7 +42,9 @@ export default async function SecondDimensionContent() {
               </div>
               <p className="">
                 Editar información de la Segunda Dimensión{" "}
-                <span className="text-sushi-500">(Toma de decisiones financieras)</span>
+                <span className="text-sushi-500">
+                  (Toma de decisiones financieras)
+                </span>
               </p>
             </blockquote>
             <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">

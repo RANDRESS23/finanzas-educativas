@@ -12,7 +12,9 @@ interface ModalFormAGoodDecisionProps {
   setOpen: (st: boolean) => void;
 }
 
-export default function ModalFormAGoodDecision({ setOpen }: ModalFormAGoodDecisionProps) {
+export default function ModalFormAGoodDecision({
+  setOpen,
+}: ModalFormAGoodDecisionProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [isLoadingAGoodDecision, setIsLoadingAGoodDecision] = useState(false);
   const router = useRouter();
@@ -32,10 +34,13 @@ export default function ModalFormAGoodDecision({ setOpen }: ModalFormAGoodDecisi
     setIsLoading(true);
 
     try {
-      const response = await api.put("/admin/second-dimension/a-good-decision", {
-        firstParagraph: data.firstParagraph,
-        secondParagraph: data.secondParagraph,
-      });
+      const response = await api.put(
+        "/admin/second-dimension/a-good-decision",
+        {
+          firstParagraph: data.firstParagraph,
+          secondParagraph: data.secondParagraph,
+        },
+      );
 
       if (response.status === 201) {
         tosty.success("¡Datos actualizados exitosamente!");
@@ -60,7 +65,9 @@ export default function ModalFormAGoodDecision({ setOpen }: ModalFormAGoodDecisi
       try {
         setIsLoadingAGoodDecision(true);
 
-        const aGoodDecision = await fetch(`/api/admin/second-dimension/a-good-decision`);
+        const aGoodDecision = await fetch(
+          `/api/admin/second-dimension/a-good-decision`,
+        );
         const response = await aGoodDecision.json();
 
         reset(formValues => ({
@@ -81,14 +88,18 @@ export default function ModalFormAGoodDecision({ setOpen }: ModalFormAGoodDecisi
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="firstParagraph">
+        <label
+          className="text-gray-700 dark:text-gray-300"
+          htmlFor="firstParagraph"
+        >
           Primer Párrafo
         </label>
         <textarea
           id="firstParagraph"
           rows={4}
           {...register("firstParagraph", {
-            required: "El primer párrafo de una buena decisión es un campo obligatorio!",
+            required:
+              "El primer párrafo de una buena decisión es un campo obligatorio!",
           })}
           className={clsxe(errors.firstParagraph, "resize-none w-full mt-2")}
           spellCheck="false"
@@ -96,16 +107,20 @@ export default function ModalFormAGoodDecision({ setOpen }: ModalFormAGoodDecisi
           disabled={isLoading || isLoadingAGoodDecision}
         />
       </div>
-      
+
       <div className="mb-4 w-full">
-        <label className="text-gray-700 dark:text-gray-300" htmlFor="secondParagraph">
+        <label
+          className="text-gray-700 dark:text-gray-300"
+          htmlFor="secondParagraph"
+        >
           Segundo Párrafo
         </label>
         <textarea
           id="secondParagraph"
           rows={4}
           {...register("secondParagraph", {
-            required: "El segundo párrafo de una buena decision es un campo obligatorio!",
+            required:
+              "El segundo párrafo de una buena decision es un campo obligatorio!",
           })}
           className={clsxe(errors.secondParagraph, "resize-none w-full mt-2")}
           spellCheck="false"

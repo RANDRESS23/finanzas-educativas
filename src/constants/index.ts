@@ -1,5 +1,7 @@
+import pkg from "@/../package.json";
+
 // Human-readable title for your website
-export const rpName = "Finanzas Educativas";
+export const rpName = pkg.description;
 // A unique identifier for your website
 export const rpID = new URL(
   process.env.NODE_ENV === "production"

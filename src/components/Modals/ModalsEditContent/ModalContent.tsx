@@ -65,19 +65,13 @@ export default function ModalContent({
                         Editar <span className="text-sushi-500">{title}</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          title === "Bienvenida" 
-                            ? (
-                                <ModalFormWelcome setOpen={setOpen} />
-                              ) 
-                            : title === "Pildoras de Conocimiento"
-                              ? (
-                                  <ModalPill setOpen={setOpen} />
-                                )
-                              : (
-                                  <ModalVideo setOpen={setOpen} />
-                                )
-                        }
+                        {title === "Bienvenida" ? (
+                          <ModalFormWelcome setOpen={setOpen} />
+                        ) : title === "Pildoras de Conocimiento" ? (
+                          <ModalPill setOpen={setOpen} />
+                        ) : (
+                          <ModalVideo setOpen={setOpen} />
+                        )}
                       </div>
                     </div>
                   </div>

@@ -24,10 +24,8 @@ export default async function FirstDimensionContent() {
   }: FirstDimensionContent = await getFirstDimensionContent();
   const savingContentDescription = savingContent.savingMeaning.slice(0, 30);
   const creditContentDescription = creditContent.creditMeaning.slice(0, 30);
-  const expenseAndIncomeContentDescription = expenseAndIncomeContent.expenseMeaning.slice(
-    0,
-    30,
-  );
+  const expenseAndIncomeContentDescription =
+    expenseAndIncomeContent.expenseMeaning.slice(0, 30);
 
   return (
     <div className="flex">
@@ -43,7 +41,9 @@ export default async function FirstDimensionContent() {
               </div>
               <p className="">
                 Editar información de la Primera Dimensión{" "}
-                <span className="text-sushi-500">(Conocimiento de las finanzas personales)</span>
+                <span className="text-sushi-500">
+                  (Conocimiento de las finanzas personales)
+                </span>
               </p>
             </blockquote>
             <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">

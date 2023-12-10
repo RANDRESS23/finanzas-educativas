@@ -1,3 +1,4 @@
+import pkg from "@/../package.json";
 import { db } from "@/libs/prismaDB";
 import metaKeys from "@/meta/metaKeys";
 import { type Metadata } from "next";
@@ -6,7 +7,7 @@ import AboutSection from "./AboutSection";
 import Team from "./Team";
 
 export const metadata: Metadata = {
-  title: "Finanzas Educativas | Nosotros",
+  title: `${pkg.description} | Nosotros`,
 };
 
 export const dynamic = "force-dynamic";

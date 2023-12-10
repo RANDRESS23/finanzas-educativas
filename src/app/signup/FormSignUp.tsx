@@ -1,13 +1,14 @@
 "use client";
 
+import pkg from "@/../package.json";
 import InputShowPsw from "@/components/ChkbxPsw";
 import Input from "@/components/Input";
 import InputSelect from "@/components/InputSelect";
 import api from "@/libs/api";
 import { tosty } from "@/libs/tosty";
 import { signIn } from "next-auth/react";
-import Link from "next/link";
 import { useRouter } from "next-nprogress-bar";
+import Link from "next/link";
 import { useState } from "react";
 import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form";
 import { LiaSignInAltSolid as SignupIcon } from "react-icons/lia";
@@ -226,7 +227,7 @@ export default function FormSignUp() {
               <div className="leading-6">
                 <label htmlFor="legalInformation" className="font-medium">
                   He leído y acepto los Términos Legales y la Política de
-                  Privacidad de Finanzas Educativas
+                  Privacidad de {pkg.description}
                 </label>
               </div>
             </div>

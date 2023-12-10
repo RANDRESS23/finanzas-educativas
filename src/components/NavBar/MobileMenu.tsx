@@ -1,5 +1,6 @@
 "use client";
 
+import pkg from "@/../package.json";
 import IconoFinanzasEducativas from "@/assets/icono_finanzas_educativas.png";
 import ThemeToggle from "@/components/Theme/ThemeToggle";
 import { useCloseSession } from "@/hooks/useCloseSession";
@@ -65,7 +66,7 @@ export default function MobileMenu({
               width={40}
               src={IconoFinanzasEducativas}
               priority
-              alt="Finanzas Educativas"
+              alt={`${pkg.description} logotype`}
             />
           </Link>
 

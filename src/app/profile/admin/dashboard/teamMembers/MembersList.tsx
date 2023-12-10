@@ -1,7 +1,7 @@
+import pkg from "@/../package.json";
 import { db } from "@/libs/prismaDB";
 import Image from "next/image";
 import FormDeleteMemberTeam from "./FormDeleteMemberTeam";
-import pkg from "@/../package.json";
 
 export default async function MembersList() {
   const teamMembers = await db.teamMember.findMany({

@@ -97,3 +97,35 @@ export async function POST(request: Request) {
     );
   }
 }
+
+export async function PATCH(request: Request) {
+  const body = await request.json();
+  const id = body.userId;
+
+  try {
+    const userDeleted = await db.user.update({
+      data: { disabled: true },
+      where: { id },
+    });
+
+    if (!userDeleted) {
+      return {
+        message: "No se pudo deshabilitar el usuario. Intente más tarde.",
+      };
+    }
+
+    return NextResponse.json(
+      {
+        message: `El usuario ${userDeleted.firstName} ${userDeleted.lastName} ha sido deshabilitado.`,
+      },
+      { status: 201 },
+    );
+  } catch (error) {
+    console.error({ error });
+
+    return NextResponse.json(
+      { message: "Something went wrong.", error },
+      { status: 500 },
+    );
+  }
+}

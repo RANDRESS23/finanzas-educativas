@@ -17,7 +17,7 @@ const oswald = Oswald({
 
 export const metadata: Metadata = {
   applicationName: pkg.description,
-  title: "Finanzas Educativas | Bienvenidos",
+  title: `${pkg.description} | Bienvenidos`,
   generator: "Next JS",
   creator: pkg.publisher,
   publisher: pkg.publisher,

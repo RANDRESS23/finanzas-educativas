@@ -1,8 +1,9 @@
-import type { TitleComponentOption, EChartsOption } from "echarts";
+import { type StatisticData } from "@/components/Statistics/Chart/Pie";
+import type { EChartsOption, TitleComponentOption } from "echarts";
 
 export default function getOptsAndStats(
   title: TitleComponentOption,
-  data: [],
+  data: StatisticData,
 ): EChartsOption {
   return {
     title: {

@@ -7,7 +7,7 @@ interface CreditSectionProps {
   creditContent: CreditContent;
 }
 
-export default function CreditSection({creditContent}: CreditSectionProps) {
+export default function CreditSection({ creditContent }: CreditSectionProps) {
   const { creditMeaning, creditTypes } = creditContent;
 
   return (

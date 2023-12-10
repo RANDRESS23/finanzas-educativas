@@ -10,5 +10,5 @@ export interface SecondDimensionContent {
   stepsOfAGoodDecisionContent: StepOfAGoodDecision[];
   takeIntoAccountAGoodDecisionContent: string;
   createdAt: Date;
-  updatedAt: Date;                
+  updatedAt: Date;
 }

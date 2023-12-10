@@ -1,7 +1,8 @@
+import pkg from "@/../package.json";
 import { type Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Finanzas Educativas | Perfíl",
+  title: `${pkg.description} | Perfíl`,
 };
 
 export default async function RootLayout({

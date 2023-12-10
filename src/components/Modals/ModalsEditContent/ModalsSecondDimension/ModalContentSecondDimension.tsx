@@ -65,19 +65,15 @@ export default function ModalContentSecondDimension({
                         Editar <span className="text-sushi-500">{title}</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          title === "Buena Toma de Decisión" 
-                            ? (
-                                <ModalFormAGoodDecision setOpen={setOpen} />
-                              ) 
-                            : title === "Formas de Tomar Buenas Decisiones"
-                              ? (
-                                  <ModalStepsOfAGoodDecision setOpen={setOpen} />
-                                )
-                              : (
-                                  <ModalFormTakeIntoAccountAGoodDecision setOpen={setOpen} />
-                                )
-                        }
+                        {title === "Buena Toma de Decisión" ? (
+                          <ModalFormAGoodDecision setOpen={setOpen} />
+                        ) : title === "Formas de Tomar Buenas Decisiones" ? (
+                          <ModalStepsOfAGoodDecision setOpen={setOpen} />
+                        ) : (
+                          <ModalFormTakeIntoAccountAGoodDecision
+                            setOpen={setOpen}
+                          />
+                        )}
                       </div>
                     </div>
                   </div>

@@ -5,9 +5,12 @@ export async function GET() {
   try {
     const firstDimensionContentInfo = await db.firstDimensionContent.findMany();
 
-    return NextResponse.json(firstDimensionContentInfo[0].expenseAndIncomeContent, {
-      status: 200,
-    });
+    return NextResponse.json(
+      firstDimensionContentInfo[0].expenseAndIncomeContent,
+      {
+        status: 200,
+      },
+    );
   } catch (error) {
     console.error({ error });
 
@@ -19,10 +22,12 @@ export async function GET() {
 }
 
 export async function PUT(request: Request) {
-  const body: { expenseMeaning: string; incomeMeaning: string } = await request.json();
+  const body: { expenseMeaning: string; incomeMeaning: string } =
+    await request.json();
 
   try {
-    const [firstDimensionContentInfo] = await db.firstDimensionContent.findMany();
+    const [firstDimensionContentInfo] =
+      await db.firstDimensionContent.findMany();
     const expenseAndIncomeInfoUpdated = await db.firstDimensionContent.update({
       where: {
         id: firstDimensionContentInfo.id,

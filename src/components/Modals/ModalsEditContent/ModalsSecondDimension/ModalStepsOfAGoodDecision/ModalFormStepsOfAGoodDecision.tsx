@@ -20,7 +20,8 @@ export default function ModalFormStepsOfAGoodDecision({
   idStepOfAGoodDecision,
 }: ModalFormStepsOfAGoodDecisionProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingStepsOfAGoodDecision, setIsLoadingStepsOfAGoodDecision] = useState(false);
+  const [isLoadingStepsOfAGoodDecision, setIsLoadingStepsOfAGoodDecision] =
+    useState(false);
   const router = useRouter();
 
   const defaultValues = {
@@ -134,7 +135,9 @@ export default function ModalFormStepsOfAGoodDecision({
           className="text-sm rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-sushi-400 mb-2"
           disabled={isLoading || isLoadingStepsOfAGoodDecision}
         >
-          {isLoading || isLoadingStepsOfAGoodDecision ? "CARGANDO..." : "ACTUALIZAR"}
+          {isLoading || isLoadingStepsOfAGoodDecision
+            ? "CARGANDO..."
+            : "ACTUALIZAR"}
         </button>
         <button
           type="button"

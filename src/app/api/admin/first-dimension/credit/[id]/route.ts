@@ -28,7 +28,8 @@ export async function PUT(
   const body: { title: string; description: string } = await request.json();
 
   try {
-    const [firstDimensionContentInfo] = await db.firstDimensionContent.findMany();
+    const [firstDimensionContentInfo] =
+      await db.firstDimensionContent.findMany();
 
     const creditTypesUpdated =
       firstDimensionContentInfo.creditContent.creditTypes.map(

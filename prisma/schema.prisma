@@ -34,8 +34,8 @@ type SavingFeature {
 }
 
 type SavingContent {
-  savingMeaning   String
-  savingFeatures  SavingFeature[]
+  savingMeaning  String
+  savingFeatures SavingFeature[]
 }
 
 type CreditType {
@@ -50,9 +50,9 @@ type CreditContent {
 }
 
 type ExpenseAndIncomeContent {
-  id              String
-  expenseMeaning  String
-  incomeMeaning   String
+  id             String
+  expenseMeaning String
+  incomeMeaning  String
 }
 
 type StepOfAGoodDecision {
@@ -92,6 +92,7 @@ model User {
   updatedAt        DateTime        @updatedAt
   currentChallenge String?
   is2FAEnabled     Boolean         @default(false)
+  disabled         Boolean         @default(false)
   moreInfo         UserMoreInfo[]
   authenticators   Authenticator[]
   preTest          UserPreTest[]
@@ -155,21 +156,21 @@ model HomeContent {
 }
 
 model FirstDimensionContent {
-  id                       String                   @id @default(auto()) @map("_id") @db.ObjectId
-  savingContent            SavingContent
-  creditContent            CreditContent
-  expenseAndIncomeContent  ExpenseAndIncomeContent
-  createdAt                DateTime                 @default(now())
-  updatedAt                DateTime                 @updatedAt
+  id                      String                  @id @default(auto()) @map("_id") @db.ObjectId
+  savingContent           SavingContent
+  creditContent           CreditContent
+  expenseAndIncomeContent ExpenseAndIncomeContent
+  createdAt               DateTime                @default(now())
+  updatedAt               DateTime                @updatedAt
 }
 
 model SecondDimensionContent {
-  id                                  String                      @id @default(auto()) @map("_id") @db.ObjectId
+  id                                  String                @id @default(auto()) @map("_id") @db.ObjectId
   aGoodDecisionContent                String[]
   stepsOfAGoodDecisionContent         StepOfAGoodDecision[]
   takeIntoAccountAGoodDecisionContent String[]
-  createdAt                           DateTime                    @default(now())
-  updatedAt                           DateTime                    @updatedAt
+  createdAt                           DateTime              @default(now())
+  updatedAt                           DateTime              @updatedAt
 }
 
 model Meta {

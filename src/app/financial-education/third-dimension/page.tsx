@@ -1,12 +1,7 @@
-import { type Metadata } from "next";
 import LIST_OF_FINANCE_MANAGEMENT from "@/meta/financeManagement";
+import Image from "next/image";
 import Link from "next/link";
 import { GiReceiveMoney } from "react-icons/gi";
-import Image from "next/image";
-
-export const metadata: Metadata = {
-  title: "Finanzas Educativas | Educación Financiera",
-};
 
 export default function ThirdDimension() {
   return (

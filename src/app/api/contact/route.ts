@@ -4,6 +4,7 @@ import { sendEmail } from "@/libs/sgMail";
 import { contactSchema } from "@/schemas/contact.schema";
 import { type Contact } from "@prisma/client";
 import { NextResponse } from "next/server";
+import pkg from "@/../package.json";
 
 export async function POST(request: Request) {
   const body = await request.json();
@@ -19,7 +20,7 @@ export async function POST(request: Request) {
       throw new Error();
     }
 
-    const subject = "Nuevo Contacto Finanzas Educativas";
+    const subject = `Nuevo Contacto ${pkg.description}`;
 
     const msgSendedToUser = await sendEmail(
       contactData.email,
@@ -46,7 +47,7 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json(
-      { message: "Gracias por contactar con el equipo de Finanzas Educativas" },
+      { message: `Gracias por contactar con el equipo de ${pkg.description}` },
       { status: 201 },
     );
   } catch (error) {

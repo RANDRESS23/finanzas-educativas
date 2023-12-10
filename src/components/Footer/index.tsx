@@ -1,5 +1,6 @@
 "use client";
 
+import pkg from "@/../package.json";
 import { useCloseSession } from "@/hooks/useCloseSession";
 import footerContactIcons from "@/meta/footerContactIcons";
 import clsx from "clsx";
@@ -97,7 +98,7 @@ export default function Footer() {
       </div>
       <div>
         <p className="text-sm text-gray-400 text-center">
-          © {new Date().getFullYear()} Finanzas Educativas. Todos los derechos
+          © {new Date().getFullYear()} {pkg.description}. Todos los derechos
           reservados.
         </p>
       </div>

@@ -3,7 +3,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(_: Request, { params }: { params: { id: string } }) {
   try {
-    const secondDimensionContentInfo = await db.secondDimensionContent.findMany();
+    const secondDimensionContentInfo =
+      await db.secondDimensionContent.findMany();
 
     return NextResponse.json(
       secondDimensionContentInfo[0].stepsOfAGoodDecisionContent.find(
@@ -28,7 +29,8 @@ export async function PUT(
   const body: { title: string; description: string } = await request.json();
 
   try {
-    const [secondDimensionContentInfo] = await db.secondDimensionContent.findMany();
+    const [secondDimensionContentInfo] =
+      await db.secondDimensionContent.findMany();
 
     const stepsOfAGoodDecisionUpdated =
       secondDimensionContentInfo.stepsOfAGoodDecisionContent.map(
@@ -45,14 +47,15 @@ export async function PUT(
         },
       );
 
-    const stepsOfAGoodDecisionInfoUpdated = await db.secondDimensionContent.update({
-      where: {
-        id: secondDimensionContentInfo.id,
-      },
-      data: {
-        stepsOfAGoodDecisionContent: stepsOfAGoodDecisionUpdated,
-      },
-    });
+    const stepsOfAGoodDecisionInfoUpdated =
+      await db.secondDimensionContent.update({
+        where: {
+          id: secondDimensionContentInfo.id,
+        },
+        data: {
+          stepsOfAGoodDecisionContent: stepsOfAGoodDecisionUpdated,
+        },
+      });
 
     return NextResponse.json(
       {

@@ -8,11 +8,15 @@ interface ModalStepsOfAGoodDecisionProps {
   setOpen: (st: boolean) => void;
 }
 
-export default function ModalStepsOfAGoodDecision({ setOpen }: ModalStepsOfAGoodDecisionProps) {
-  const [isLoadingStepsOfAGoodDecision, setIsLoadingStepsOfAGoodDecision] = useState(false);
+export default function ModalStepsOfAGoodDecision({
+  setOpen,
+}: ModalStepsOfAGoodDecisionProps) {
+  const [isLoadingStepsOfAGoodDecision, setIsLoadingStepsOfAGoodDecision] =
+    useState(false);
   const [open2, setOpen2] = useState(false);
   const [stepsOfAGoodDecision, setStepsOfAGoodDecision] = useState([]);
-  const [idStepOfAGoodDecisionFocus, setIdStepOfAGoodDecisionFocus] = useState("");
+  const [idStepOfAGoodDecisionFocus, setIdStepOfAGoodDecisionFocus] =
+    useState("");
 
   const cancelButtonRef = useRef(null);
 
@@ -26,7 +30,9 @@ export default function ModalStepsOfAGoodDecision({ setOpen }: ModalStepsOfAGood
       try {
         setIsLoadingStepsOfAGoodDecision(true);
 
-        const stepsOfAGoodDecision = await fetch(`/api/admin/second-dimension/steps-of-a-good-decision`);
+        const stepsOfAGoodDecision = await fetch(
+          `/api/admin/second-dimension/steps-of-a-good-decision`,
+        );
         const response = await stepsOfAGoodDecision.json();
 
         setStepsOfAGoodDecision(response);
@@ -40,7 +46,12 @@ export default function ModalStepsOfAGoodDecision({ setOpen }: ModalStepsOfAGood
     getStepsOfAGoodDecision();
   }, []);
 
-  if (isLoadingStepsOfAGoodDecision) return <p>Cargando la sección de <b>formas de tomar buenas decisiones...</b></p>;
+  if (isLoadingStepsOfAGoodDecision)
+    return (
+      <p>
+        Cargando la sección de <b>formas de tomar buenas decisiones...</b>
+      </p>
+    );
 
   return (
     <div>

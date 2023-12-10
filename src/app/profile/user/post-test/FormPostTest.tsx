@@ -165,7 +165,7 @@ export default function FormPostTest() {
         ]}
         disabled={false}
       />
-      
+
       <InputRadio
         name="question6"
         label="6°- ¿Con lo que gana en su puesto de trabajo o su negocio, puede ahorrar?"
@@ -179,7 +179,7 @@ export default function FormPostTest() {
         ]}
         disabled={false}
       />
-      
+
       <InputRadio
         name="question7"
         label="7°- ¿Con lo que gana en su puesto de trabajo o su negocio, puede pagar todas sus deudas?"
@@ -273,8 +273,8 @@ export default function FormPostTest() {
         label="11°- Cuenta con un fondo de emergencias para contar con suficiente dinero en caso de un imprevisto o calamidad"
         register={register}
         options={[
-          { value: "Sí", label: "Sí", },
-          { value: "No", label: "No", },
+          { value: "Sí", label: "Sí" },
+          { value: "No", label: "No" },
         ]}
         disabled={false}
       />
@@ -373,9 +373,12 @@ export default function FormPostTest() {
         label="15°- ¿Qué tipo de cuenta suele utilizarse para el ahorro a corto plazo y gastos diarios?"
         register={register}
         options={[
-          { value: "Cuenta de ahorros", label: "Cuenta de ahorros", },
-          { value: "Cuenta corriente", label: "Cuenta corriente", },
-          { value: "Certificado de depósito", label: "Certificado de depósito", },
+          { value: "Cuenta de ahorros", label: "Cuenta de ahorros" },
+          { value: "Cuenta corriente", label: "Cuenta corriente" },
+          {
+            value: "Certificado de depósito",
+            label: "Certificado de depósito",
+          },
           { value: "No lo sabe", label: "No lo sabe" },
         ]}
         disabled={false}

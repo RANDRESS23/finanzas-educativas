@@ -66,27 +66,21 @@ export default function ModalCreditContent({
                         className="text-xl font-semibold leading-6 text-gray-900 dark:text-gray-300"
                       >
                         Editar la sección de{" "}
-                        <span className="text-sushi-500">
-                          Crédito
-                        </span>
+                        <span className="text-sushi-500">Crédito</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          isCreditMeaningEdit
-                            ? (
-                                <ModalFormCreditMeaning
-                                  setOpen={setOpen}
-                                  setOpen2={setOpen2}
-                                />
-                              )
-                            : (
-                                <ModalFormCreditType
-                                  setOpen={setOpen}
-                                  setOpen2={setOpen2}
-                                  idCreditType={idCreditType}
-                                />
-                              )
-                        }
+                        {isCreditMeaningEdit ? (
+                          <ModalFormCreditMeaning
+                            setOpen={setOpen}
+                            setOpen2={setOpen2}
+                          />
+                        ) : (
+                          <ModalFormCreditType
+                            setOpen={setOpen}
+                            setOpen2={setOpen2}
+                            idCreditType={idCreditType}
+                          />
+                        )}
                       </div>
                     </div>
                   </div>

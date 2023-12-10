@@ -1,3 +1,4 @@
+import pkg from "@/../package.json";
 import NotFoundSpaceGifDark from "@/assets/NotFoundSpace-dark.gif";
 import NotFoundSpaceGif from "@/assets/NotFounfSpace.gif";
 import { type Metadata } from "next";
@@ -7,7 +8,7 @@ import { BiHomeAlt2 as HomeIcon } from "react-icons/bi";
 import { MdContactSupport as ContactIcon } from "react-icons/md";
 
 export const metadata: Metadata = {
-  title: "Finanzas Educativas | Página No Encontrada",
+  title: `${pkg.description} | Página No Encontrada`,
 };
 
 export default function NotFound() {

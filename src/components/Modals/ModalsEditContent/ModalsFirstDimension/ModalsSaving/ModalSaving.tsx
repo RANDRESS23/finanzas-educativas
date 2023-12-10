@@ -12,7 +12,10 @@ export default function ModalSaving({ setOpen }: ModalFormSavingProps) {
   const [isLoadingSaving, setIsLoadingSaving] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [isSavingMeaningEdit, setIsSavingMeaningEdit] = useState(false);
-  const [saving, setSaving] = useState({ savingMeaning: "", savingFeatures: [] });
+  const [saving, setSaving] = useState({
+    savingMeaning: "",
+    savingFeatures: [],
+  });
   const [idSavingFeatureFocus, setIdSavingFeatureFocus] = useState("");
 
   const cancelButtonRef = useRef(null);
@@ -20,7 +23,7 @@ export default function ModalSaving({ setOpen }: ModalFormSavingProps) {
   const handleChangeSavingMeaning = () => {
     setIsSavingMeaningEdit(true);
     setOpen2(true);
-  }
+  };
 
   const handleChange = ({ id }: { id: string }) => {
     setIdSavingFeatureFocus(id);
@@ -50,10 +53,10 @@ export default function ModalSaving({ setOpen }: ModalFormSavingProps) {
 
   return (
     <div>
-      <p className="font-semibold text-lg">Edita el concepto de <span className="text-sushi-500">Ahorro: </span></p>
-      <div
-        className="mb-4 w-full flex justify-between items-center gap-3"
-      >
+      <p className="font-semibold text-lg">
+        Edita el concepto de <span className="text-sushi-500">Ahorro: </span>
+      </p>
+      <div className="mb-4 w-full flex justify-between items-center gap-3">
         <div>
           <p className="text-gray-700 dark:text-gray-300 font-semibold">
             Definición de Ahorro
@@ -71,7 +74,9 @@ export default function ModalSaving({ setOpen }: ModalFormSavingProps) {
           </button>
         </div>
       </div>
-      <p className="font-semibold text-lg mt-2">Edita las formas de <span className="text-sushi-500">Ahorro: </span></p>
+      <p className="font-semibold text-lg mt-2">
+        Edita las formas de <span className="text-sushi-500">Ahorro: </span>
+      </p>
       {saving.savingFeatures.map(
         ({
           id,

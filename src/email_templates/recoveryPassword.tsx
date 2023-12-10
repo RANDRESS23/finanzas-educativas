@@ -1,3 +1,5 @@
+import pkg from "@/../package.json";
+
 export function recoveryPassword({
   resetPasswordLink,
 }: {
@@ -453,7 +455,7 @@ export function recoveryPassword({
               <tr>
                 <td class="email-masthead">
                   <a href="https://finanzas-educativas.vercel.app/" class="f-fallback email-masthead_name">
-                  Finanzas Educativas
+                  ${pkg.description}
                 </a>
                 </td>
               </tr>
@@ -485,7 +487,7 @@ export function recoveryPassword({
                           </table>
                           <p>Por motivos de seguridad, si no solicitó un restablecimiento de contraseña, ignore este correo electrónico o comuníquese con <a href="https://finanzas-educativas.vercel.app/contact">soporte</a> si tiene preguntas.</p>
                           <p>Gracias,
-                            <br>El equipo de Finanzas Educativas ITFIP.</p>
+                            <br>El equipo de ${pkg.description} ITFIP.</p>
                           <!-- Sub copy -->
                         </div>
                       </td>
@@ -500,7 +502,7 @@ export function recoveryPassword({
                       <td class="content-cell" align="center">
                         <p class="f-fallback sub align-center">
                           Instituto Tolimense De Formación Técnica Profesional - ITFIP
-                          <br>Finanzas Educativas
+                          <br>${pkg.description}
                           <br>2023
                         </p>
                       </td>
