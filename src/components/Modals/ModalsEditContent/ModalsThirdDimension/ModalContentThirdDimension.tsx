@@ -63,13 +63,11 @@ export default function ModalContentThirdDimension({
                         Editar <span className="text-sushi-500">{title}</span>
                       </Dialog.Title>
                       <div className="mt-4 w-full">
-                        {
-                          title === "Manejo de Finanzas Adecuadamente" 
-                            ? (
-                                <ModalFinanceManagement setOpen={setOpen} />
-                              ) 
-                            : <></>
-                        }
+                        {title === "Manejo de Finanzas Adecuadamente" ? (
+                          <ModalFinanceManagement setOpen={setOpen} />
+                        ) : (
+                          <></>
+                        )}
                       </div>
                     </div>
                   </div>

@@ -20,7 +20,8 @@ export default function ModalFormFinanceManagement({
   idFinanceManagement,
 }: ModalFormFinanceManagementProps) {
   const [isLoading, setIsLoading] = useState(false);
-  const [isLoadingFinanceManagement, setIsLoadingFinanceManagement] = useState(false);
+  const [isLoadingFinanceManagement, setIsLoadingFinanceManagement] =
+    useState(false);
   const router = useRouter();
 
   const defaultValues = {
@@ -130,12 +131,9 @@ export default function ModalFormFinanceManagement({
           disabled={isLoading || isLoadingFinanceManagement}
         />
       </div>
-      
+
       <div className="mb-4 w-full">
-        <label
-          className="text-gray-700 dark:text-gray-300"
-          htmlFor="imageUrl"
-        >
+        <label className="text-gray-700 dark:text-gray-300" htmlFor="imageUrl">
           URL de la imagen para la Estrategia de Finanza
         </label>
         <textarea
@@ -157,7 +155,9 @@ export default function ModalFormFinanceManagement({
           className="text-sm rounded-md px-10 py-2 font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 duration-300 bg-boston-blue-600 hover:bg-sushi-500 disabled:opacity-50 w-full flex items-center justify-center gap-x-1 disabled:cursor-not-allowed enabled:active:bg-sushi-400 mb-2"
           disabled={isLoading || isLoadingFinanceManagement}
         >
-          {isLoading || isLoadingFinanceManagement ? "CARGANDO..." : "ACTUALIZAR"}
+          {isLoading || isLoadingFinanceManagement
+            ? "CARGANDO..."
+            : "ACTUALIZAR"}
         </button>
         <button
           type="button"

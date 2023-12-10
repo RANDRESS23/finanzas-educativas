@@ -20,17 +20,29 @@ export async function POST(request: Request) {
   const body = await request.json();
 
   try {
-    const existingThirdDimensionContent = await db.thirdDimensionContent.findMany();
+    const existingThirdDimensionContent =
+      await db.thirdDimensionContent.findMany();
 
     if (existingThirdDimensionContent.length > 0) {
       return NextResponse.json(
-        { messsage: "El contenido de la tercera dimension ya se encuentra insertado" },
+        {
+          messsage:
+            "El contenido de la tercera dimension ya se encuentra insertado",
+        },
         { status: 400 },
       );
     }
 
     const financeManagement = body.financeManagement.map(
-      ({ title, description, imageUrl }: { title: string; description: string; imageUrl: string }) => ({
+      ({
+        title,
+        description,
+        imageUrl,
+      }: {
+        title: string;
+        description: string;
+        imageUrl: string;
+      }) => ({
         id: crypto.randomUUID(),
         title,
         description,

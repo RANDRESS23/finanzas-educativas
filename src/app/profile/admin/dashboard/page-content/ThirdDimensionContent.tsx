@@ -17,8 +17,12 @@ const getThirdDimensionContent = async () => {
 };
 
 export default async function ThirdDimensionContent() {
-  const { financeManagement }: ThirdDimensionContent = await getThirdDimensionContent();
-  const financeManagementDescription = financeManagement[0].description.slice(0, 30);
+  const { financeManagement }: ThirdDimensionContent =
+    await getThirdDimensionContent();
+  const financeManagementDescription = financeManagement[0].description.slice(
+    0,
+    30,
+  );
 
   return (
     <div className="flex">
@@ -34,7 +38,9 @@ export default async function ThirdDimensionContent() {
               </div>
               <p className="">
                 Editar información de la Tercera Dimensión{" "}
-                <span className="text-sushi-500">(Administración de sus propias finanzas)</span>
+                <span className="text-sushi-500">
+                  (Administración de sus propias finanzas)
+                </span>
               </p>
             </blockquote>
             <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">

@@ -8,8 +8,11 @@ interface ModalFinanceManagementProps {
   setOpen: (st: boolean) => void;
 }
 
-export default function ModalFinanceManagement({ setOpen }: ModalFinanceManagementProps) {
-  const [isLoadingFinanceManagement, setIsLoadingFinanceManagement] = useState(false);
+export default function ModalFinanceManagement({
+  setOpen,
+}: ModalFinanceManagementProps) {
+  const [isLoadingFinanceManagement, setIsLoadingFinanceManagement] =
+    useState(false);
   const [open2, setOpen2] = useState(false);
   const [financeManagement, setFinanceManagement] = useState([]);
   const [idFinanceManagement, setIdFinanceManagement] = useState("");
@@ -26,7 +29,9 @@ export default function ModalFinanceManagement({ setOpen }: ModalFinanceManageme
       try {
         setIsLoadingFinanceManagement(true);
 
-        const financeManagement = await fetch(`/api/admin/third-dimension/finance-management`);
+        const financeManagement = await fetch(
+          `/api/admin/third-dimension/finance-management`,
+        );
         const response = await financeManagement.json();
 
         setFinanceManagement(response);
@@ -40,7 +45,12 @@ export default function ModalFinanceManagement({ setOpen }: ModalFinanceManageme
     getFinanceManagement();
   }, []);
 
-  if (isLoadingFinanceManagement) return <p>Cargando la sección de <b>manejo de finanzas adecuadamente...</b></p>;
+  if (isLoadingFinanceManagement)
+    return (
+      <p>
+        Cargando la sección de <b>manejo de finanzas adecuadamente...</b>
+      </p>
+    );
 
   return (
     <div>

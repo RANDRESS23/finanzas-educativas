@@ -9,5 +9,5 @@ export interface ThirdDimensionContent {
   id: string;
   financeManagement: FinanceManagement[];
   createdAt: Date;
-  updatedAt: Date;                
+  updatedAt: Date;
 }
