@@ -1,6 +1,6 @@
 "use client";
 
-import useStart2FAAuth from "@/hooks/userStart2FAAuth";
+import useStart2FAAuth from "@/hooks/useStart2FAAuth";
 import { type Session } from "next-auth";
 import { useEffect } from "react";
 

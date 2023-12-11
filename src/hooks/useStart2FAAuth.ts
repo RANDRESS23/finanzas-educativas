@@ -73,8 +73,10 @@ export default function useStart2FAAuth(): ReturnTypeUserStart2FAAuth {
 
           tosty.success("Usuario logueado!");
           router.refresh();
-          router.push("/profile/user");
+          return router.push("/profile/user");
         }
+
+        tosty.error(`${sessionResp?.error}`);
       } catch (error) {
         if (isAxiosError(error)) {
           tosty.error(error.response?.data.message);
