@@ -5,6 +5,7 @@ import AboutContent from "./AboutContent";
 import HomeContent from "./HomeContent";
 import FirstDimensionContent from "./FirstDimensionContent";
 import SecondDimensionContent from "./SecondDimensionContent";
+import ThirdDimensionContent from "./ThirdDimensionContent";
 
 export const dynamic = "force-dynamic";
 
@@ -20,6 +21,7 @@ export default async function PageContent() {
       <HomeContent />
       <FirstDimensionContent />
       <SecondDimensionContent />
+      <ThirdDimensionContent />
       <AboutContent />
     </div>
   );

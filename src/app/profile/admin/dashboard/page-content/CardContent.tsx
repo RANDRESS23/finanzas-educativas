@@ -5,6 +5,7 @@ import { LiaEdit as EditIcon } from "react-icons/lia";
 import ModalContent from "@/components/Modals/ModalsEditContent/ModalContent";
 import ModalContentFirstDimension from "@/components/Modals/ModalsEditContent/ModalsFirstDimension/ModalContentFirstDimension";
 import ModalContentSecondDimension from "@/components/Modals/ModalsEditContent/ModalsSecondDimension/ModalContentSecondDimension";
+import ModalContentThirdDimension from "@/components/Modals/ModalsEditContent/ModalsThirdDimension/ModalContentThirdDimension";
 
 interface CardContentProps {
   title: string;
@@ -70,7 +71,7 @@ export default function CardContent({ title, description, section }: CardContent
                   />
                 )
               : (
-                  <ModalContentFirstDimension 
+                  <ModalContentThirdDimension 
                     open={open}
                     setOpen={setOpen}
                     cancelButtonRef={cancelButtonRef}
