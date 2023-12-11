@@ -87,7 +87,7 @@ export default function FormPostTest({ userId }: IProps) {
 
   if (isLoading) {
     return (
-      <div className="top-0 left-0 w-screen h-screen flex justify-center mt-20">
+      <div className="top-0 left-0 right-0 flex justify-center mt-20">
         <div
           className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em]"
           role="status"
