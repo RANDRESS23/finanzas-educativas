@@ -38,7 +38,13 @@ export const authOptions: NextAuthOptions = {
           where: { document: credentials?.document },
         });
 
-        if (existingUser === null) return null;
+        if (!existingUser) return null;
+
+        if (existingUser.disabled) {
+          throw new Error(
+            `El usuario ${existingUser.firstName} ${existingUser.lastName} ha sido deshabilitado.`,
+          );
+        }
 
         const passwordMatch = await verifyPassword(
           credentials!.password,
@@ -59,7 +65,6 @@ export const authOptions: NextAuthOptions = {
           updatedAt: existingUser.updatedAt,
           is2FAEnabled: existingUser.is2FAEnabled,
           currentChallenge: existingUser.currentChallenge,
-          disabled: existingUser.disabled,
         };
       },
     }),
@@ -82,12 +87,12 @@ export const authOptions: NextAuthOptions = {
 
           userId = session.id;
         } else {
-          const userFound = await db.user.findUnique({
+          const existingUser = await db.user.findUnique({
             where: { document: credentials.document },
             select: { id: true },
           });
 
-          userId = userFound?.id;
+          userId = existingUser?.id;
         }
 
         if (!userId) return null;
@@ -96,8 +101,12 @@ export const authOptions: NextAuthOptions = {
           include: { authenticators: true },
         });
 
-        if (!existingUser) {
-          return null;
+        if (!existingUser) return null;
+
+        if (existingUser.disabled) {
+          throw new Error(
+            `El usuario ${existingUser.firstName} ${existingUser.lastName} ha sido deshabilitado.`,
+          );
         }
 
         const expectedChallenge = existingUser.currentChallenge;
@@ -160,7 +169,6 @@ export const authOptions: NextAuthOptions = {
             updatedAt: existingUser.updatedAt,
             is2FAEnabled: existingUser.is2FAEnabled,
             currentChallenge: existingUser.currentChallenge,
-            disabled: existingUser.disabled,
           };
         }
         return null;

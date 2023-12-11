@@ -46,7 +46,7 @@ export default function FormSignIn() {
       });
 
       if (response?.error !== null) {
-        return tosty.error("Datos incorrectos!");
+        return tosty.error("Datos incorrectos o usuario deshabilitado.");
       }
 
       if (response?.ok) {

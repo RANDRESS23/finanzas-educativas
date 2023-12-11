@@ -11,7 +11,7 @@ declare module "next-auth" {
     } & DefaultSession["user"];
   }
 
-  interface User extends Omit<UserModel, "role"> {
+  interface User extends Omit<Omit<UserModel, "role">, "disabled"> {
     hashedPassword?: string;
   }
 }
