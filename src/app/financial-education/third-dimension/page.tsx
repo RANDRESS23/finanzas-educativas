@@ -1,7 +1,7 @@
 import { type Metadata } from "next";
-import Link from "next/link";
-import { GiReceiveMoney } from "react-icons/gi";
-import Image from "next/image";
+// import Link from "next/link";
+// import { GiReceiveMoney } from "react-icons/gi";
+// import Image from "next/image";
 // import type { ThirdDimensionContent } from "@/types/third-dimension-content";
 
 export const metadata: Metadata = {
