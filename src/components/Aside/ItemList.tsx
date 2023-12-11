@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 interface ItemListProps {
-  href: string;
+  href: string | string[];
   icon: React.ReactElement;
   title: string;
 }
@@ -13,12 +13,15 @@ interface ItemListProps {
 export default function ItemList({ href, icon, title }: ItemListProps) {
   const pathname = usePathname();
 
-  const pathMatch = pathname === href;
+  const pathMatch = !Array.isArray(href)
+    ? pathname === href
+    : href.find(p => p === pathname.replace(/\/[^\/]+$/, "")) ||
+      pathname === href[0];
 
   return (
     <li>
       <Link
-        href={href}
+        href={!Array.isArray(href) ? href : href[0]}
         className={clsx(
           "text-base font-semibold rounded-lg hover:text-sushi-500 hover:bg-gray-100 dark:hover:bg-slate-800 flex items-center p-2 group",
           {

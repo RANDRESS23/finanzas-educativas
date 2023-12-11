@@ -28,7 +28,7 @@ export default async function PostTestStatisticPage() {
           <main>
             <div className="pt-6 px-4">
               <CounterUserIntruments
-                instrument="Encuesta post-test"
+                instrument="Instrumento Post-Test"
                 statistic="/post-test/counts"
               />
 

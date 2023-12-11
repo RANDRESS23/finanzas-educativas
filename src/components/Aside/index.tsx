@@ -48,7 +48,12 @@ export default function Aside() {
                 title="Contenido"
               />
               <ItemList
-                href="/profile/admin/dashboard/users"
+                href={[
+                  "/profile/admin/dashboard/users",
+                  "/profile/admin/dashboard/users/instruments/characterization",
+                  "/profile/admin/dashboard/users/instruments/post-test",
+                  "/profile/admin/dashboard/users/instruments/pre-test",
+                ]}
                 icon={
                   <UsersIcon className="text-2xl dark:text-gray-400 text-gray-600" />
                 }

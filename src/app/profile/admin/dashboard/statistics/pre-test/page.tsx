@@ -28,7 +28,7 @@ export default async function PreTestStatisticsPage() {
           <main>
             <div className="pt-6 px-4">
               <CounterUserIntruments
-                instrument="Encuesta pre-test"
+                instrument="Instrumento Pre-Test"
                 statistic="/pre-test/counts"
               />
 

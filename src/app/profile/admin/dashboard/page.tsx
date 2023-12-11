@@ -21,7 +21,7 @@ export default async function DashboardPage() {
           <main>
             <div className="pt-6 px-4">
               <CounterUserIntruments
-                instrument="Encuesta caracterización"
+                instrument="Instrumento de Caracterización"
                 statistic="/characterization/counts"
               />
 
