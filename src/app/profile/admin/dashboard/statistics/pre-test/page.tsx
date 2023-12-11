@@ -1,5 +1,5 @@
-import StatisticsCount from "@/app/profile/admin/dashboard/StatisticsCount";
 import PieStatic from "@/components/Statistics/Chart/PieStatic";
+import CounterUserIntruments from "@/components/Statistics/Counter/CounterUserIntruments";
 import dimensionsData from "@/json/questions-pre-test.json";
 import { authOptions } from "@/libs/authOptions";
 import { translateDimensionName } from "@/libs/translator";
@@ -27,7 +27,10 @@ export default async function PreTestStatisticsPage() {
         >
           <main>
             <div className="pt-6 px-4">
-              <StatisticsCount />
+              <CounterUserIntruments
+                instrument="Encuesta pre-test"
+                statistic="/pre-test/counts"
+              />
 
               <blockquote className="w-full flex items-center gap-3 text-3xl font-semibold leading-8 sm:leading-9 mt-20 mb-8 justify-center">
                 <h1 className="">

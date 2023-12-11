@@ -1,8 +1,8 @@
 import Pie from "@/components/Statistics/Chart/Pie";
+import CounterUserIntruments from "@/components/Statistics/Counter/CounterUserIntruments";
 import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
-import StatisticsCount from "@/app/profile/admin/dashboard/StatisticsCount";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -20,7 +20,10 @@ export default async function DashboardPage() {
         >
           <main>
             <div className="pt-6 px-4">
-              <StatisticsCount />
+              <CounterUserIntruments
+                instrument="Encuesta caracterización"
+                statistic="/characterization/counts"
+              />
 
               <blockquote className="w-full flex items-center gap-3 text-3xl font-semibold leading-8 sm:leading-9 mt-16 mb-8 justify-center">
                 <h1 className="">
