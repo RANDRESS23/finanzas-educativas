@@ -1,28 +1,28 @@
 import { type Metadata } from "next";
-// import Link from "next/link";
-// import { GiReceiveMoney } from "react-icons/gi";
-// import Image from "next/image";
-// import type { ThirdDimensionContent } from "@/types/third-dimension-content";
+import Link from "next/link";
+import { GiReceiveMoney } from "react-icons/gi";
+import Image from "next/image";
+import type { ThirdDimensionContent } from "@/types/third-dimension-content";
 
 export const metadata: Metadata = {
   title: "Finanzas Educativas | Educación Financiera",
 };
 
-// const getThirdDimensionContent = async () => {
-//   try {
-//     const thirdDimensionContent = await fetch(
-//       `${process.env.NEXTAUTH_URL}/api/admin/third-dimension`,
-//     );
-//     const data = await thirdDimensionContent.json();
+const getThirdDimensionContent = async () => {
+  try {
+    const thirdDimensionContent = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/admin/third-dimension`,
+    );
+    const data = await thirdDimensionContent.json();
     
-//     return data;
-//   } catch (error) {
-//     console.error({ error });
-//   }
-// };
+    return data;
+  } catch (error) {
+    console.error({ error });
+  }
+};
 
 export default async function ThirdDimension() {
-  // const { financeManagement }: ThirdDimensionContent = await getThirdDimensionContent();
+  const { financeManagement }: ThirdDimensionContent = await getThirdDimensionContent();
 
   return (
     <div className="py-36">
@@ -38,7 +38,7 @@ export default async function ThirdDimension() {
           </p>
         </blockquote>
         <div className="flex justify-center items-center gap-y-9 gap-x-20 flex-wrap">
-          {/* {financeManagement.map(
+          {financeManagement.map(
             ({ id, title, description, imageUrl }) => (
               <div
                 key={id}
@@ -86,7 +86,7 @@ export default async function ThirdDimension() {
                 </div>
               </div>
             ),
-          )} */}
+          )}
         </div>
       </div>
     </div>
