@@ -32,7 +32,7 @@ export default async function PreTestStatisticsPage() {
                 statistic="/pre-test/counts"
               />
 
-              <blockquote className="w-full flex items-center gap-3 text-3xl font-semibold leading-8 sm:leading-9 mt-20 mb-8 justify-center">
+              <blockquote className="w-full flex items-center gap-3 text-3xl font-semibold leading-8 sm:leading-9 mt-20 mb-8 justify-center text-center">
                 <h1 className="">
                   Estadísticas del instrumento{" "}
                   <span className="text-sushi-500">Post-Test</span>
