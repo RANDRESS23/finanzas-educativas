@@ -9,6 +9,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import videosAfterLogged from "@/json/videosAfterLogged.json";
+import type { HomeContent } from "@/types/home-content";
+import Pill from "@/components/Pill";
 
 const isUserAnwseredPreTest = async (idUser: string) => {
   try {
@@ -18,6 +20,19 @@ const isUserAnwseredPreTest = async (idUser: string) => {
     const data = await existUserPreTestInfo.json();
 
     return data.id ? true : false;
+  } catch (error) {
+    console.error({ error });
+  }
+};
+
+const getHomeContent = async () => {
+  try {
+    const homeContent = await fetch(
+      `${process.env.NEXTAUTH_URL}/api/admin/home-content`,
+    );
+    const data = await homeContent.json();
+
+    return data;
   } catch (error) {
     console.error({ error });
   }
@@ -38,12 +53,16 @@ const isUserAnwseredPostTest = async (idUser: string) => {
 
 export default async function ProfileUserPage() {
   const session = await getServerSession(authOptions);
+  
   const isUserAnwseredPreTestInApp = await isUserAnwseredPreTest(
     session?.user.id,
   );
+
   const isUserAnwseredPostTestInApp = await isUserAnwseredPostTest(
     session?.user.id,
   );
+
+  const { knowledgePillsContent }: HomeContent = await getHomeContent();
 
   if (session?.user?.email === "admin@gmail.com") {
     redirect("/profile/admin");
@@ -110,6 +129,26 @@ export default async function ProfileUserPage() {
             {videosAfterLogged.map((video_url, i) => (
               <VideoComponent video_url={video_url} key={i} />
             ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mb-48">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-10 flow-finanzas-xd">
+            <p>
+              Pildoras de <span className="text-sushi-500">Conocimiento</span>
+            </p>
+            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">
+              {knowledgePillsContent.subtitle}
+            </p>
+          </blockquote>
+          <div className="flex justify-center items-center gap-9 flex-wrap">
+            {knowledgePillsContent.knowledgePills.map(
+              ({ title, description }, index) => (
+                <Pill key={index} title={title} description={description} />
+              ),
+            )}
           </div>
         </div>
       </div>
