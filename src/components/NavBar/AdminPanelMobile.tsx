@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { BiSolidBookContent as DashboardIcon } from "react-icons/bi";
 import { FaUsersRectangle as MemebersIcon } from "react-icons/fa6";
+import { LuFilePieChart as InstChStatisticIcon } from "react-icons/lu";
 import { PiUsersFourFill as UsersIcon } from "react-icons/pi";
-import { SiSoundcharts as AdminIcon } from "react-icons/si";
+import {
+  RiPieChartBoxLine as PosttestStatisticIcon,
+  RiPieChartBoxFill as PretestStatisticIcon,
+} from "react-icons/ri";
 
 interface AdminPanelMobileProps {
   handleResetMenus: () => void;
@@ -18,8 +22,24 @@ export default function AdminPanelMobile({
         className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
         onClick={handleResetMenus}
       >
-        Estadísticas
-        <AdminIcon className="text-2xl text-gray-600" />
+        Inst: Caracterización
+        <InstChStatisticIcon className="text-2xl text-gray-600" />
+      </Link>
+      <Link
+        href="/profile/admin/dashboard"
+        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+        onClick={handleResetMenus}
+      >
+        Inst: Pre-Test
+        <PretestStatisticIcon className="text-2xl text-gray-600" />
+      </Link>
+      <Link
+        href="/profile/admin/dashboard"
+        className="group flex justify-between items-center gap-2 rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 hover:bg-gray-50 dark:hover:bg-slate-800 hover:text-sushi-500"
+        onClick={handleResetMenus}
+      >
+        Inst: Post-Test
+        <PosttestStatisticIcon className="text-2xl text-gray-600" />
       </Link>
       <Link
         href="/profile/admin/dashboard/page-content"

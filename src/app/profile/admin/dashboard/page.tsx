@@ -1,8 +1,8 @@
 import Pie from "@/components/Statistics/Chart/Pie";
-import CounterUserIntruments from "@/components/Statistics/Counter/CounterUserIntruments";
 import { authOptions } from "@/libs/authOptions";
 import { getServerSession } from "next-auth/next";
 import { redirect } from "next/navigation";
+import StatisticsCount from "@/app/profile/admin/dashboard/StatisticsCount";
 
 export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
@@ -20,20 +20,14 @@ export default async function DashboardPage() {
         >
           <main>
             <div className="pt-6 px-4">
-              <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                <CounterUserIntruments
-                  instrument="Encuesta caracterización"
-                  statistic="/characterization/counts"
-                />
-                <CounterUserIntruments
-                  instrument="Encuesta pre-test"
-                  statistic="/pre-test/counts"
-                />
-                <CounterUserIntruments
-                  instrument="Encuesta post-test"
-                  statistic="/post-test/counts"
-                />
-              </div>
+              <StatisticsCount />
+
+              <blockquote className="w-full flex items-center gap-3 text-3xl font-semibold leading-8 sm:leading-9 mt-16 mb-8 justify-center">
+                <h1 className="">
+                  Estadísticas del instrumento de{" "}
+                  <span className="text-sushi-500">Caracterización</span>
+                </h1>
+              </blockquote>
 
               <div className="grid grid-cols-1 2xl:grid-cols-2 xl:gap-4 my-4">
                 <div className="shadow dark:shadow-slate-700 mb-4 p-4 sm:p-6 h-full">

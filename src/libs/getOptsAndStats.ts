@@ -23,7 +23,14 @@ export default function getOptsAndStats(
         name: title.text,
         type: "pie",
         radius: "50%",
-        data,
+        data: data.map(entry => ({
+          name: entry.name,
+          value: entry.value,
+          label: {
+            formatter: "{b}: {d}%",
+            alignTo: "labelLine",
+          },
+        })),
         emphasis: {
           itemStyle: {
             shadowBlur: 10,

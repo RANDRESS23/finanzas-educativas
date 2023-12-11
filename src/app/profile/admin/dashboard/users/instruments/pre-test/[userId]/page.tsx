@@ -21,13 +21,6 @@ export default async function PreTestPage({ params: { userId } }: IParams) {
       </div>
       <div className="flex justify-center items-center gap-16 mt-7">
         <div className="pb-12 sm:mx-auto sm:w-full sm:max-w-xl md:max-w-5xl">
-          <div className="sm:mx-auto sm:w-full sm:max-w-xl md:max-w-5xl">
-            <h2 className="mt-5 text-2xl font-bold tracking-tight mb-2">
-              <span className="text-boston-blue-600">Dimensión 1:</span>{" "}
-              Conocimiento de las{" "}
-              <span className="text-sushi-600">Finanzas Personales</span>
-            </h2>
-          </div>
           <FormPreTest userId={userId} />
         </div>
       </div>

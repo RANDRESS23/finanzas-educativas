@@ -20,10 +20,12 @@ export async function GET() {
       const userDimension = user[`questions${dimension}Dimension`];
       if (userDimension) {
         userDimension.forEach(q => {
+          const question = q.question;
           const answer = q.answer;
-          dimensionCounts[answer] = dimensionCounts[answer] || {};
-          dimensionCounts[answer][q.question] =
-            (dimensionCounts[answer][q.question] || 0) + 1;
+
+          dimensionCounts[question] = dimensionCounts[question] || {};
+          dimensionCounts[question][answer] =
+            (dimensionCounts[question][answer] || 0) + 1;
         });
       }
     });
@@ -31,5 +33,24 @@ export async function GET() {
     result[`dimension${dimension}`] = dimensionCounts;
   }
 
-  return NextResponse.json(result);
+  const transformedResult: {
+    [key: string]: { [key: string]: { [key: string]: number } };
+  } = {};
+
+  for (const dimension of dimensions) {
+    transformedResult[`dimension${dimension}`] = {};
+
+    // Iterar sobre cada pregunta
+    Object.keys(result[`dimension${dimension}`]).forEach(question => {
+      transformedResult[`dimension${dimension}`][question] = {};
+
+      // Iterar sobre cada respuesta en la pregunta
+      Object.keys(result[`dimension${dimension}`][question]).forEach(answer => {
+        transformedResult[`dimension${dimension}`][question][answer] =
+          result[`dimension${dimension}`][question][answer];
+      });
+    });
+  }
+
+  return NextResponse.json(transformedResult);
 }

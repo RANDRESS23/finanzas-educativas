@@ -1,0 +1,83 @@
+{
+  "dimensionFirst": [
+    {
+      "name": "question1",
+      "subtext": "1°- ¿La cantidad de ingresos que obtiene de sus actividades económicas le permite realizar ahorros?",
+      "text": "Pregunta 1"
+    },
+    {
+      "name": "question2",
+      "subtext": "2°- ¿La cantidad de ingresos que recibe de sus actividades económicas le permite pagar todos sus gastos?",
+      "text": "Pregunta 2"
+    },
+    {
+      "name": "question3",
+      "subtext": "3°- ¿Sabe perfectamente con cuánto dinero cuenta para sus gastos mensuales?",
+      "text": "Pregunta 3"
+    },
+    {
+      "name": "question4",
+      "subtext": "4°- ¿Organiza sus gastos conforme a lo que recibe o gana?",
+      "text": "Pregunta 4"
+    },
+    {
+      "name": "question5",
+      "subtext": "5°- ¿Lleva un control de lo que va a comprar y de lo que vende?",
+      "text": "Pregunta 5"
+    },
+    {
+      "name": "question6",
+      "subtext": "6°- ¿Con lo que gana en su puesto de trabajo o su negocio, puede ahorrar?",
+      "text": "Pregunta 6"
+    },
+    {
+      "name": "question7",
+      "subtext": "7°- ¿Con lo que gana en su puesto de trabajo o su negocio, puede pagar todas sus deudas?",
+      "text": "Pregunta 7"
+    }
+  ],
+  "dimensionSecond": [
+    {
+      "name": "question8",
+      "subtext": "8°- ¿Consideraría la posibilidad de invertir sus ahorros o parte de sus ahorros en productos financieros como CDT, fondos de inversión, acciones, bonos, entre otros?",
+      "text": "Pregunta 8"
+    },
+    {
+      "name": "question9",
+      "subtext": "9°- ¿Consideraría la posibilidad de adquirir un crédito o préstamo en una entidad financiera, para su negocio, vivienda, educación o libre inversión?",
+      "text": "Pregunta 9"
+    },
+    {
+      "name": "question10",
+      "subtext": "10°- Cuando necesita adquirir un préstamo de dinero, usted acude preferiblemente a:",
+      "text": "Pregunta 10"
+    },
+    {
+      "name": "question11",
+      "subtext": "11°- Cuenta con un fondo de emergencias para contar con suficiente dinero en caso de un imprevisto o calamidad",
+      "text": "Pregunta 11"
+    }
+  ],
+  "dimensionThird": [
+    {
+      "name": "question12",
+      "subtext": "12°- Opción que consideraría más conveniente pensando en su jubilación:",
+      "text": "Pregunta 12"
+    },
+    {
+      "name": "question13",
+      "subtext": "13°- ¿Cuál de los siguientes factores es más importante al considerar la inversión a largo plazo?",
+      "text": "Pregunta 13"
+    },
+    {
+      "name": "question14",
+      "subtext": "14°- En la organización de sus gastos (presupuesto personal), ¿Qué respuesta o afirmación es verdadera?",
+      "text": "Pregunta 14"
+    },
+    {
+      "name": "question15",
+      "subtext": "15°- ¿Qué tipo de cuenta suele utilizarse para el ahorro a corto plazo y gastos diarios?",
+      "text": "Pregunta 15"
+    }
+  ]
+}
