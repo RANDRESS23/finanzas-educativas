@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: `${pkg.description} | Registrarse`,
 };
 
-async function Signup() {
+export default async function Signup() {
   const session = await getServerSession(authOptions);
 
   if (session !== null && session?.user?.email !== "admin@gmail.com") {
@@ -56,5 +56,3 @@ async function Signup() {
     </div>
   );
 }
-
-export default Signup;

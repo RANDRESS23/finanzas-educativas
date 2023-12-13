@@ -2,8 +2,6 @@
 
 import { Toaster } from "react-hot-toast";
 
-const ToasterProvider = () => {
+export default function ToasterProvider() {
   return <Toaster />;
-};
-
-export default ToasterProvider;
+}

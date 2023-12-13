@@ -10,7 +10,7 @@ import Link from "next/link";
 
 export const cl = clsx("origin-right top-8 capitalize text-sm right-0");
 
-async function RowUsers() {
+export default async function RowUsers() {
   const users = await db.user.findMany({
     select: {
       id: true,
@@ -114,5 +114,3 @@ async function RowUsers() {
     </tr>
   ));
 }
-
-export default RowUsers;

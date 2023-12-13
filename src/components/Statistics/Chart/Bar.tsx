@@ -1,5 +1,3 @@
-function Bar() {
+export default function Bar() {
   return <div>Bar</div>;
 }
-
-export default Bar;

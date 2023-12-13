@@ -3,7 +3,7 @@ import RowUsers from "./RowUsers";
 
 const cl = "origin-center w-32 top-5 capitalize text-sm";
 
-function TableUsers() {
+export default function TableUsers() {
   return (
     <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-800/20">
       <thead className="bg-gray-50 dark:bg-slate-800/50">
@@ -88,5 +88,3 @@ function TableUsers() {
     </table>
   );
 }
-
-export default TableUsers;
