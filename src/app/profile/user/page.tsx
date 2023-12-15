@@ -53,7 +53,7 @@ const isUserAnwseredPostTest = async (idUser: string) => {
 
 export default async function ProfileUserPage() {
   const session = await getServerSession(authOptions);
-  
+
   const isUserAnwseredPreTestInApp = await isUserAnwseredPreTest(
     session?.user.id,
   );

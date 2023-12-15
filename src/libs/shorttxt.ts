@@ -3,5 +3,5 @@ export const shorttxt: (
   sz?: number,
   endDecorator?: string,
 ) => string = (txt, sz = 4, endDecorator = "...") => {
-  return txt.split(" ").slice(0, sz).join(" ").concat(endDecorator);
+  return `${txt.split(" ").slice(0, sz).join(" ")}${endDecorator}`;
 };

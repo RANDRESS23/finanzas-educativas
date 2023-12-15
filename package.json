@@ -39,7 +39,8 @@
     "lint": "next lint",
     "format": "prettier -w ./src",
     "postinstall": "prisma generate",
-    "generate-sitemap": "ts-node ./src/scripts/generate-sitemap.ts"
+    "generate-sitemap": "ts-node ./src/scripts/generate-sitemap.ts",
+    "ncu": "ncu -u"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
@@ -60,7 +61,7 @@
     "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.48.2",
+    "react-hook-form": "^7.49.2",
     "react-hot-toast": "^2.4.1",
     "react-icons": "^4.12.0",
     "sharp": "^0.33.0",
@@ -72,17 +73,18 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.5",
     "@types/node": "^20.10.4",
-    "@types/react": "^18.2.42",
+    "@types/react": "^18.2.45",
     "@types/react-dom": "^18.2.17",
     "autoprefixer": "^10.4.16",
     "eslint": "^8.55.0",
     "eslint-config-next": "^14.0.4",
+    "npm-check-updates": "^16.14.12",
     "postcss": "^8.4.32",
-    "prettier": "^3.1.0",
+    "prettier": "^3.1.1",
     "prisma": "^5.7.0",
     "sitemap": "^7.1.1",
     "tailwindcss": "^3.3.6",
-    "ts-node": "^10.9.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "zlib": "^1.0.5"
   }
