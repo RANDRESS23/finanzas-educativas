@@ -86,8 +86,6 @@ export default function FormCreateMemberTeam() {
           selectProps={{
             id: "teamId",
             name: "teamId",
-            placeholder: "Seleccione un rol",
-            autoComplete: "off",
             required: true,
           }}
           label="Rol Equipo"

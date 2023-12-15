@@ -3,13 +3,13 @@ import FA2Container from "@/components/FA2/FA2Container";
 import Footer from "@/components/Footer";
 import NavBar from "@/components/NavBar";
 import Overflow from "@/components/Overflow";
-import ProgressProvider from "@/context/ProgressProvider";
+import ProgressProvider from "@/providers/ProgressProvider";
 import SessionProviderContext from "@/providers/SessionProvider";
 import ThemeProvider from "@/providers/ThemeProvider";
-import ToasterProvider from "@/providers/ToasterProvider";
 import "atropos/css";
 import { type Metadata } from "next";
 import { Oswald } from "next/font/google";
+import { Toaster as ToasterProvider } from "react-hot-toast";
 import "./globals.css";
 
 const oswald = Oswald({
