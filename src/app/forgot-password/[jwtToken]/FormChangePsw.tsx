@@ -75,7 +75,6 @@ export default function FormChangePsw({ jwtToken, payload }: IParams) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      {/* hidden field for accesibility */}
       <div className="hidden">
         <label htmlFor="username">Nombre de usuario:</label>
         <input

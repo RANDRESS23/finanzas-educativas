@@ -59,3 +59,36 @@ body::-webkit-scrollbar:vertical {
   width: 50px;
   scrollbar-color: var(--primary-color);
 }
+
+.spinner-box {
+  @apply w-80 h-80 flex justify-center items-center bg-transparent;
+}
+
+.leo-border-1 {
+  @apply absolute w-36 h-36 p-[3px] flex justify-center items-center rounded-full bg-boston-blue-600;
+  background: linear-gradient(0deg, #008aae1a 33%, #008aae 100%);
+  animation: spin3D 2s linear 0s infinite;
+}
+
+.leo-border-2 {
+  @apply absolute w-36 h-36 p-[3px] flex justify-center items-center rounded-full bg-sushi-500;
+  background: linear-gradient(0deg, #79ad341a 33%, #79ad34 100%);
+  animation: spin3D 1.6s linear 0s infinite;
+}
+
+.leo-core-1 {
+  @apply w-full h-full rounded-full  dark:bg-slate-800/80 bg-zinc-100/40;
+}
+
+.leo-core-2 {
+  @apply w-full h-full rounded-full  dark:bg-slate-800/80 bg-zinc-100/40;
+}
+
+@keyframes spin3D {
+  from {
+    transform: rotate3d(0.5, 0.5, 0.5, 360deg);
+  }
+  to {
+    transform: rotate3d(0deg);
+  }
+}

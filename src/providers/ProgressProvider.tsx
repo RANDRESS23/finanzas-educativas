@@ -10,7 +10,7 @@ export default function ProgressProvider({
   return (
     <>
       <ProgressBar
-        height="3px"
+        height="5px"
         color="#79ad34"
         options={{
           showSpinner: false,
