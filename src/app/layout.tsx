@@ -33,7 +33,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="es" className={oswald.className}>
+    <html lang="es" className={oswald.className} suppressHydrationWarning>
       <head>
         <link
           rel="shortcut icon"

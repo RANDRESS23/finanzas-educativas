@@ -132,7 +132,7 @@ export default async function Home() {
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
             {informativeVideosContent.informativeVideos.map(({ id, url }) => (
-              <VideoComponent video_url={url} key={id} />
+              <VideoComponent videoid={url} key={id} />
             ))}
           </div>
         </div>

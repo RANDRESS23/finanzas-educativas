@@ -51,29 +51,27 @@ export default function ModalVideo({ setOpen }: ModalFormWelcomeProps) {
           const urlSliced = url.slice(0, 30);
 
           return (
-            <>
-              <div
-                className="mb-4 w-full flex justify-between items-center gap-3"
-                key={id}
-              >
-                <div>
-                  <p className="text-gray-700 dark:text-gray-300 font-semibold">
-                    {title}
-                  </p>
-                  <p className="text-gray-500 dark:text-gray-300 text-sm whitespace-nowrap overflow-hidden animate-typing">
-                    {urlSliced}...
-                  </p>
-                </div>
-                <div className="flex items-center text-base font-bold">
-                  <button
-                    onClick={() => handleChange({ id })}
-                    className="rounded-full p-3 bg-sushi-400 hover:bg-sushi-300 transition-colors duration-300 enabled:active:bg-sushi-500"
-                  >
-                    <EditIcon className="text-xl" />
-                  </button>
-                </div>
+            <div
+              className="mb-4 w-full flex justify-between items-center gap-3"
+              key={id}
+            >
+              <div>
+                <p className="text-gray-700 dark:text-gray-300 font-semibold">
+                  {title}
+                </p>
+                <p className="text-gray-500 dark:text-gray-300 text-sm whitespace-nowrap overflow-hidden animate-typing">
+                  {urlSliced}...
+                </p>
               </div>
-            </>
+              <div className="flex items-center text-base font-bold">
+                <button
+                  onClick={() => handleChange({ id })}
+                  className="rounded-full p-3 bg-sushi-400 hover:bg-sushi-300 transition-colors duration-300 enabled:active:bg-sushi-500"
+                >
+                  <EditIcon className="text-xl" />
+                </button>
+              </div>
+            </div>
           );
         },
       )}

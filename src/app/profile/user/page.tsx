@@ -126,8 +126,8 @@ export default async function ProfileUserPage() {
             </p>
           </blockquote>
           <div className="flex justify-center items-center gap-9 flex-wrap">
-            {videosAfterLogged.map((video_url, i) => (
-              <VideoComponent video_url={video_url} key={i} />
+            {videosAfterLogged.map(videoid => (
+              <VideoComponent videoid={videoid} key={videoid} />
             ))}
           </div>
         </div>

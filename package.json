@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.7.17",
+    "@next/third-parties": "^14.0.4",
     "@prisma/client": "^5.7.0",
     "@sendgrid/mail": "^8.1.0",
     "@simplewebauthn/browser": "^8.3.4",
