@@ -38,9 +38,9 @@ export default async function Home() {
   return (
     <>
       <div className="relative isolate px-6 mt-[-5rem] lg:px-8 py-20">
-        <div className="mx-auto max-w-2xl h-screen flex flex-col justify-center items-center">
-          <div className="flex mb-8 justify-center">
-            <div className="relative rounded-full px-3 py-1 text-sm leading-6 text-gray-600 dark:text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-200/10 dark:hover:ring-gray-200/20">
+        <div className="flex flex-col items-center justify-center h-screen max-w-2xl mx-auto">
+          <div className="flex justify-center mb-8">
+            <div className="relative px-3 py-1 text-sm leading-6 text-gray-600 rounded-full dark:text-gray-400 ring-1 ring-gray-900/10 hover:ring-gray-900/20 dark:ring-gray-200/10 dark:hover:ring-gray-200/20">
               Aprender un poco sobre finanzas.{" "}
               <Link
                 href="/financial-education/first-dimension"
@@ -51,13 +51,13 @@ export default async function Home() {
             </div>
           </div>
           <div className="text-center">
-            <h1 className="mb-5 sm:mb-10 text-4xl font-bold tracking-tight sm:text-6xl">
+            <h1 className="mb-5 text-4xl font-bold tracking-tight sm:mb-10 sm:text-6xl">
               Bienvenido a <Title text={`¡${pkg.description}!`} isTextStatic />
             </h1>
             <p className="text-lg leading-8 text-gray-600 dark:text-gray-400">
               {welcomeContent.subtitle}
             </p>
-            <div className="mt-10 flex items-center justify-center gap-x-6">
+            <div className="flex items-center justify-center mt-10 gap-x-6">
               {session !== null &&
               session?.user?.email === "admin@gmail.com" ? (
                 <>
@@ -100,16 +100,16 @@ export default async function Home() {
       </div>
 
       <div className="mb-48">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-10 flow-finanzas-xd">
+        <div className="px-6 mx-auto max-w-7xl lg:px-8">
+          <blockquote className="mb-10 text-3xl font-semibold leading-8 text-center sm:text-4xl sm:leading-9 flow-finanzas-xd">
             <p>
               Pildoras de <span className="text-sushi-500">Conocimiento</span>
             </p>
-            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">
+            <p className="w-full mx-auto mt-5 text-lg font-normal text-gray-600 dark:text-gray-400 md:w-3/5">
               {knowledgePillsContent.subtitle}
             </p>
           </blockquote>
-          <div className="flex justify-center items-center gap-9 flex-wrap">
+          <div className="flex flex-wrap items-center justify-center gap-9">
             {knowledgePillsContent.knowledgePills.map(
               ({ title, description }, index) => (
                 <Pill key={index} title={title} description={description} />
@@ -119,24 +119,24 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="py-7 pb-24 sm:pb-32">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <blockquote className="text-center text-3xl font-semibold leading-8 sm:text-4xl sm:leading-9 mb-8">
+      {/* <div className="pb-24 py-7 sm:pb-32">
+        <div className="px-6 mx-auto max-w-7xl lg:px-8">
+          <blockquote className="mb-8 text-3xl font-semibold leading-8 text-center sm:text-4xl sm:leading-9">
             <p>
               Videos Informativos{" "}
               <span className="text-sushi-500">Educativos</span>
             </p>
-            <p className="text-lg font-normal mt-5 mx-auto text-gray-600 dark:text-gray-400 w-full md:w-3/5">
+            <p className="w-full mx-auto mt-5 text-lg font-normal text-gray-600 dark:text-gray-400 md:w-3/5">
               {informativeVideosContent.subtitle}
             </p>
           </blockquote>
-          <div className="flex justify-center items-center gap-9 flex-wrap">
+          <div className="flex flex-wrap items-center justify-center gap-9">
             {informativeVideosContent.informativeVideos.map(({ id, url }) => (
               <VideoComponent videoid={url} key={id} />
             ))}
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
