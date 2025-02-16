@@ -1,7 +1,7 @@
 import { LogInIcon } from "@/components/NavBar/icons";
 import Pill from "@/components/Pill";
 import Title from "@/components/Title";
-import VideoComponent from "@/components/Video";
+// import VideoComponent from "@/components/Video";
 import { authOptions } from "@/libs/authOptions";
 import type { HomeContent } from "@/types/home-content";
 import { getServerSession } from "next-auth/next";
@@ -28,7 +28,7 @@ export default async function Home() {
   const {
     welcomeContent,
     knowledgePillsContent,
-    informativeVideosContent,
+    // informativeVideosContent,
   }: HomeContent = await getHomeContent();
 
   if (session !== null && session?.user?.email !== "admin@gmail.com") {
